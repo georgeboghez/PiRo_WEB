@@ -1,5 +1,9 @@
 .flex-container {
 	display: flex;
-	justify-content: center;
 	justify-content: space-between;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	padding-right: 10%;
+	padding-left: 10%;
+	background-color: #1ACAE2;
 }
