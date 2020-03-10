@@ -1,0 +1,38 @@
+	nav {
+	display: flex;
+	justify-content: center;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-bottom: 1%;
+	padding-top: 1%;
+	background-color: #00008b;
+}
+
+.navbar-container {
+	display: flex;
+	width: 250px;
+	height: 100px;
+	justify-content: center;
+	align-items: center;
+}
+
+#triangle-logo {
+	width: 0;
+	height: 0;
+	border-top: 50px solid transparent;
+	border-right: 100px solid white;
+	border-bottom: 50px solid transparent;
+}
+
+#page-title {
+	padding-left: 10px; 
+	font-size: 40px;
+	font-family: sans-serif;
+	color: white;
+}
+
+.navbar-container > h2 {
+	font-size: 20px;
+	font-family: sans-serif;
+	color: white;
+}
