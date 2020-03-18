@@ -1,9 +1,5 @@
 .FAQ-container {
-	display: inline-flex;
-	flex-direction: column;
-    align-items: flex-end;
-    width: 20%;
-    float:right;
+
 }
 
 .FAQ-Q {
@@ -46,4 +42,4 @@ h4 {
 	font-family: sans-serif;
 	color: black;
 }
- 	
+
