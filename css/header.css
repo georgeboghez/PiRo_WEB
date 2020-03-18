@@ -1,7 +1,9 @@
 header {
+	z-index: 2;
 	background-color: #00008b;
 	position: fixed;
 	display: flex;
+	overflow: hidden;
 	left: 0;
     top: 0;
 	height: 120px;
@@ -51,6 +53,7 @@ nav {
 
 nav > a {
 	margin-left: 50px;
+	display: block;
 	color: white;
 	font-size: 20px;
 	font-weight: bold;
