@@ -1,6 +1,6 @@
 header {
 	z-index: 2;
-	background-color: #00008b;
+	background-color: #1b2653;
 	position: fixed;
 	display: flex;
 	overflow: hidden;
@@ -22,8 +22,8 @@ header {
 }
 
 .logo-container:hover {
-	border-color: grey;
-	color: grey;
+	border-color: #2a3e52;
+	color: inherit;
 }
 
 #triangle-logo {
@@ -62,5 +62,5 @@ nav > a {
 }
 
 nav > a:hover {
-	color: grey;
+	color: inherit;
 }
