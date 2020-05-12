@@ -1,0 +1,23 @@
+{
+  "name": "piro_web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "chartist": "^0.11.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/georgeboghez/PiRo_WEB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/georgeboghez/PiRo_WEB/issues"
+  },
+  "homepage": "https://github.com/georgeboghez/PiRo_WEB#readme"
+}
