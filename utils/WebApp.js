@@ -1,8 +1,7 @@
 const http = require('http')
-const { port } = require('../utils/constants')
+
 class WebApp {
-  constructor (port, router) {
-    this.port = port
+  constructor (router) {
     this.router = router
   }
 
@@ -10,7 +9,7 @@ class WebApp {
 
   }
 
-  listen () {
+  listen (port) {
     var app = this
     var server = http.createServer(function (req, res) {
       app.router.route(req, res)

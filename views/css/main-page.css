@@ -1,8 +1,3 @@
-.map-container, .summary, .description, .contact, header, footer {
-	min-width: 400px;
-}
-
-
 .map-container {
 	display: flex;
 	flex-direction: column;
@@ -10,8 +5,8 @@
 	align-items: center;
 	background-color: #1b2653;
 	margin: auto;
-	width: 100%;
 	height: auto;
+	width: 100%;
 	min-height: 80vh;
 }
 
