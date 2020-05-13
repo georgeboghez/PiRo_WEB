@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+    <title>Pagina mea</title>
+	<link href="css/custom-statistics.css" rel="stylesheet">
+	<link href="css/header.css" rel="stylesheet">
+	<link href="css/footer.css" rel="stylesheet">
+	<link href="css/page-content.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+	<script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  
+  <body>
+  
+	<header>
+	<div class="logo-container">
+		<a id="triangle-logo" href="index.html"></a>
+		<a id="page-title" href="index.html">PiRo</a>
+	</div>
+
+	<nav>
+		<a href="statistics-page.html">Statistics</a>
+		<a href="about-page.html">About</a>
+		<a href="contact-us.html">Contact Us</a>
+	</nav>
+	</header>
+	
+	<p id="stats_title"></p>
+	<p id="stats_title">Custom Statistics</p>
+	<p id="stats_text">Complete the form below to generate and export graphs based on custom statistics.</p>
+
+
+		<div class="custom-stats-grid">
+		
+			<div class="custom-stats-container">
+				<label for="gender">Gender</label>
+				<select id="gender"> <option value="male">Male</option> <option value="female">Female</option></select>
+
+				<label for="grade">Grade</label>
+				<select id="grade"> 
+				<option value="male">9</option> 
+				<option value="female">10</option>
+				</select>
+
+				<label for="category">Category</label>
+				<select id="category"> 
+				<option value="math">Mathematics</option> 
+				<option value="science">Science</option> 
+				<option value="reading">Reading</option>
+				</select>
+
+				<label for="question">Question</label>
+				<select id="question">
+				<option value="bar">----</option>
+				</select>
+			</div>
+			
+			<div class="custom-stats-image-grid">
+				
+				<div class="ct-chart ct-perfect-fourth"></div>
+				<script>
+					var data = {
+						labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+						series: [
+							[5, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8],
+							[3, 2, 9, 5, 4, 6, 4, 6, 7, 8, 7, 4]
+						]
+					};
+
+					var options = {
+						seriesBarDistance: 10
+					};
+
+					var chart = new Chartist.Bar('.ct-chart', data, options);
+                    
+                    chart.on('draw', function(context) {
+
+                      if(context.type === 'bar') {
+                         context.element.attr({
+                          style: 'stroke:  #f1aa0b'
+                        });
+                      }
+                      
+                    });
+				</script>
+				
+				<div class="custom-stats-buttons">
+				<p>Export: </p>
+				<button type="button">SVG</button>
+				<button type="button">CSS</button>
+				<button type="button">PNG</button>
+				</div>	
+			</div>
+			
+		</div>
+	
+	<footer>
+	<div class = "footer-container">
+		<p>Telefon: 0744 443 545</p>
+		<p>E-mail: abcd@gmail.com</p>
+		<p>Adresa: Strada X nr. 20, Iasi</p>
+	</div>
+	</footer>
+	
+	
+  </body>
+  
+</html>
