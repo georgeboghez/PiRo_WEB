@@ -56,4 +56,18 @@ function getSVG(req, res) {
     }
 }
 
-module.exports = { exempleAPI, getIndexHTML, getCSS, getSVG }
+function getJS(req, res) {
+    try {
+      let svg = fs.readFileSync('views' + req.url)
+      res.statusCode = 200
+      res.setHeader('Content-Type', 'text/javascript')
+      res.write(svg)
+    } catch (e) {
+      console.log(e)
+      res.statusCode = 500
+      res.setHeader('Content-Type', 'text/html')
+      res.write('Internal server error')
+    }
+}
+
+module.exports = { exempleAPI, getIndexHTML, getCSS, getSVG, getJS }

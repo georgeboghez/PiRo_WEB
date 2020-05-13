@@ -18,6 +18,8 @@ router.get('/assets/img/romania.svg', indexController.getSVG)
 router.get('/assets/img/ag.svg', indexController.getSVG)
 router.get('/assets/img/school.svg', indexController.getSVG)
 router.get('/assets/img/dice.svg', indexController.getSVG)
+router.get('/assets/img/menu.svg', indexController.getSVG)
+router.get('/assets/js/header.js', indexController.getJS)
 
 // router.get('about.html', aboutController.getHTML)
 

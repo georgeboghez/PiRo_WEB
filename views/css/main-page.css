@@ -1,3 +1,8 @@
+.map-container, .summary, .description, .contact, header, footer {
+	min-width: 400px;
+}
+
+
 .map-container {
 	display: flex;
 	flex-direction: column;
@@ -184,7 +189,7 @@
 	}
 }
 
-@media (max-width: 450px) {
+@media (max-width: 500px) {
 	.map-container svg {
 		width: 100%;
 		height: calc(width * 0.5);
