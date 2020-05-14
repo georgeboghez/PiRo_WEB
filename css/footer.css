@@ -21,3 +21,25 @@ footer {
 	font-family: sans-serif;
 	color: white;
 }
+
+@media only screen and (min-width: 1024px){
+	.footer-container > p {
+	font-size: 20px;
+	font-family: sans-serif;
+	color: white;
+}	
+}
+@media only screen and (min-width: 768px){
+	.footer-container > p {
+	font-size: 16px;
+	font-family: sans-serif;
+	color: white;
+}	
+}
+@media only screen and (min-width: 478px){
+	.footer-container > p {
+	font-size: 16px;
+	font-family: sans-serif;
+	color: white;
+}	
+}
