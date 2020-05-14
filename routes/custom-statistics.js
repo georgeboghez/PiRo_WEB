@@ -10,4 +10,4 @@ router.get('/css/custom-statistics.css', statisticsController.getCSS)
 router.get('/assets/img/graph.png', statisticsController.getSVG)
 
 
-module.exports.index = router
+module.exports.statistics = router
