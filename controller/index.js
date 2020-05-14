@@ -1,5 +1,6 @@
 const fs = require('fs')
 const util = require('util');
+const db = require('../model/db')
 
 function exempleAPI(req,res)
 {
@@ -8,18 +9,31 @@ function exempleAPI(req,res)
   res.write(JSON.stringify({ success: true, message: 'example ran successfully' }))
 }
 
-// function getFile(url) {
-//     return new Promise((resolve, reject) => {
-//         return fs.readFile(url, (err, data) => err !== undefined ? reject(err) : resolve(data))
-//     })
-// }
+// db.connect((err, database) => {
+//   if (err) return next(err);
+
+//   database.collection('pisa_results').findOne({}, (err, result) => {
+//     if (err) throw err;
+
+//     console.log(result.CNTSTUID);
+
+
+//     db.disconnect((err) => {
+//       if (err) throw err;
+
+//       console.log('Everything finished, database connection closed');
+//     });
+//   });
+// });
 
 function getIndexHTML (req, res) {
   try {
     let indexHTML = fs.readFileSync('./views/index.html')
     res.statusCode = 200
+
     res.setHeader('Content-Type', 'text/html')
     res.write(indexHTML)
+
   } catch (e) {
     console.log(e)
     res.statusCode = 500
