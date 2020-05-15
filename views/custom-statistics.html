@@ -14,23 +14,31 @@
   </head>
   
   <body>
-  
-	<header>
-	<div class="logo-container">
-		<a id="triangle-logo" href="index.html"></a>
-		<a id="page-title" href="index.html">PiRo</a>
-	</div>
 
-	<nav>
-		<a href="statistics-page.html">Statistics</a>
-		<a href="about-page.html">About</a>
-		<a href="contact-us.html">Contact Us</a>
-	</nav>
+	<header>
+		<div class="logo-container">
+			<a id="triangle-logo" href="index.html"></a>
+			<a id="page-title" href="index.html">PiRo</a>
+		</div>
+
+		<nav>
+			<a href="custom-statistics">Statistics</a>
+			<a href="about-page.html">About</a>
+			<a href="contact-us.html">Contact Us</a>
+			<div class="dropdown">
+				<img src="assets/img/menu.svg" onclick="myFunction()" class="dropbtn"></img>
+				<div id="myDropdown" class="dropdown-content">
+					<a href="custom-statistics">Statistics</a>
+					<a href="about-page.html">About</a>
+					<a href="contact-us.html">Contact Us</a>
+				</div>
+			</div>
+		</nav>
 	</header>
 	
-	<p id="stats_title"></p>
-	<p id="stats_title">Custom Statistics</p>
-	<p id="stats_text">Complete the form below to generate and export graphs based on custom statistics.</p>
+	<main>
+		<p id="stats_title">Custom Statistics</p>
+		<p id="stats_text">Complete the form below to generate and export graphs based on custom statistics.</p>
 
 
 		<div class="custom-stats-grid">
@@ -62,6 +70,22 @@
 				
 				<div class="ct-chart ct-perfect-fourth"></div>
 				<script>
+					function myFunction() {
+						document.getElementById("myDropdown").classList.toggle("show");
+					}
+					window.onclick = function(event) {
+						if (!event.target.matches('.dropbtn')) {
+							var dropdowns = document.getElementsByClassName("dropdown-content");
+							var i;
+							for (i = 0; i < dropdowns.length; i++) {
+								var openDropdown = dropdowns[i];
+								if (openDropdown.classList.contains('show')) {
+									openDropdown.classList.remove('show');
+								}
+							}
+						}
+					}
+
 					var data = {
 						labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 						series: [
@@ -75,16 +99,16 @@
 					};
 
 					var chart = new Chartist.Bar('.ct-chart', data, options);
-                    
-                    chart.on('draw', function(context) {
+	                
+	                chart.on('draw', function(context) {
 
-                      if(context.type === 'bar') {
-                         context.element.attr({
-                          style: 'stroke:  #f1aa0b'
-                        });
-                      }
-                      
-                    });
+	                  if(context.type === 'bar') {
+	                     context.element.attr({
+	                      style: 'stroke:  #f1aa0b'
+	                    });
+	                  }
+	                  
+	                });
 				</script>
 				
 				<div class="custom-stats-buttons">
@@ -96,7 +120,7 @@
 			</div>
 			
 		</div>
-	
+	</main>
 	<footer>
 	<div class = "footer-container">
 		<p>Telefon: 0744 443 545</p>
