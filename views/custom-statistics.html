@@ -68,7 +68,7 @@
 			
 			<div class="custom-stats-image-grid">
 				
-				<div class="ct-chart ct-perfect-fourth"></div>
+				<div class="ct-chart ct-perfect-fourth" id="stats-chart"></div>
 				<script>
 					function myFunction() {
 						document.getElementById("myDropdown").classList.toggle("show");
@@ -99,16 +99,7 @@
 					};
 
 					var chart = new Chartist.Bar('.ct-chart', data, options);
-	                
-	                chart.on('draw', function(context) {
 
-	                  if(context.type === 'bar') {
-	                     context.element.attr({
-	                      style: 'stroke:  #f1aa0b'
-	                    });
-	                  }
-	                  
-	                });
 				</script>
 				
 				<div class="custom-stats-buttons">
