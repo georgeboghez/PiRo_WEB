@@ -42,6 +42,22 @@ function getIndexHTML (req, res) {
   }
 }
 
+function createChartInstitutional (req, res) {
+  try {
+    let indexHTML = fs.readFileSync('./views/index.html')
+    res.statusCode = 200
+
+    res.setHeader('Content-Type', 'text/html')
+    res.write(indexHTML)
+
+  } catch (e) {
+    console.log(e)
+    res.statusCode = 500
+    res.setHeader('Content-Type', 'text/html')
+    res.write('Internal server error')
+  }
+}
+
 function getCSS (req, res) {
   try {
     let css = fs.readFileSync('./views' + req.url)
@@ -84,4 +100,4 @@ function getJS(req, res) {
     }
 }
 
-module.exports = { exempleAPI, getIndexHTML, getCSS, getSVG, getJS }
+module.exports = { exempleAPI, getIndexHTML, getCSS, getSVG, getJS, createChartInstitutional }

@@ -1,72 +1,58 @@
 <!DOCTYPE html>
 <html>
-
-  <head>
-	<meta charset="utf-8">
-    <title>Pagina mea</title>
-	<link href="css/custom-statistics.css" rel="stylesheet">
-	<link href="css/header.css" rel="stylesheet">
-	<link href="css/footer.css" rel="stylesheet">
-	<link href="css/page-content.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
-	<script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-  
-  <body>
-
-	<header>
-		<div class="logo-container">
-			<a id="triangle-logo" href="index.html"></a>
-			<a id="page-title" href="index.html">PiRo</a>
-		</div>
-
-		<nav>
-			<a href="custom-statistics">Statistics</a>
-			<a href="about-page.html">About</a>
-			<a href="contact-us.html">Contact Us</a>
-			<div class="dropdown">
-				<img src="assets/img/menu.svg" onclick="myFunction()" class="dropbtn"></img>
-				<div id="myDropdown" class="dropdown-content">
-					<a href="custom-statistics">Statistics</a>
-					<a href="about-page.html">About</a>
-					<a href="contact-us.html">Contact Us</a>
-				</div>
-			</div>
-		</nav>
-	</header>
+	<head>
+		<meta charset="utf-8">
+		<title>Pagina mea</title>
+		<link href="css/custom-statistics.css" rel="stylesheet">
+		<link href="css/header.css" rel="stylesheet">
+		<link href="css/footer.css" rel="stylesheet">
+		<link href="css/page-content.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+		<script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script type="text/javascript">
+			function changeFunc() {
+				var selectBox = document.getElementById("type");
+				var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+				console.log(selectedValue);
+				alert(selectedValue);
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						document.getElementById("demo").innerHTML = this.responseText;
+					}
+				};
+				xhttp.open("GET", "/chart-institutional", true);
+				xhttp.send();
+			}
+		</script>
+	</head>
 	
-	<main>
-		<p id="stats_title">Custom Statistics</p>
-		<p id="stats_text">Complete the form below to generate and export graphs based on custom statistics.</p>
-
-
-		<div class="custom-stats-grid">
-		
-			<div class="custom-stats-container">
-				<label for="gender">Gender</label>
-				<select id="gender"> <option value="male">Male</option> <option value="female">Female</option></select>
-
-				<label for="grade">Grade</label>
-				<select id="grade"> 
-				<option value="male">9</option> 
-				<option value="female">10</option>
-				</select>
-
-				<label for="category">Category</label>
-				<select id="category"> 
-				<option value="math">Mathematics</option> 
-				<option value="science">Science</option> 
-				<option value="reading">Reading</option>
-				</select>
-
-				<label for="question">Question</label>
-				<select id="question">
-				<option value="bar">----</option>
-				</select>
+	<body>
+		<header>
+			<div class="logo-container">
+				<a id="triangle-logo" href="index.html"></a>
+				<a id="page-title" href="index.html">PiRo</a>
 			</div>
-			
-			<div class="custom-stats-image-grid">
+			<nav>
+				<a href="custom-statistics">Statistics</a>
+				<a href="about-page.html">About</a>
+				<a href="contact-us.html">Contact Us</a>
+				<div class="dropdown">
+					<img src="assets/img/menu.svg" onclick="myFunction()" class="dropbtn"></img>
+					<div id="myDropdown" class="dropdown-content">
+						<a href="custom-statistics">Statistics</a>
+						<a href="about-page.html">About</a>
+						<a href="contact-us.html">Contact Us</a>
+					</div>
+				</div>
+			</nav>
+		</header>
+		
+		<main>
+			<p id="stats_title">Custom Statistics</p>
+			<p id="stats_text">Complete the form below to generate and export graphs based on custom statistics.</p>
+			<div class="custom-stats-grid">
 				
 				<div class="ct-chart ct-perfect-fourth" id="stats-chart"></div>
 				<script>
@@ -102,25 +88,17 @@
 
 				</script>
 				
-				<div class="custom-stats-buttons">
-				<p>Export: </p>
-				<button type="button">SVG</button>
-				<button type="button">CSS</button>
-				<button type="button">PNG</button>
-				</div>	
 			</div>
-			
-		</div>
-	</main>
-	<footer>
-	<div class = "footer-container">
-		<p>Telefon: 0744 443 545</p>
-		<p>E-mail: abcd@gmail.com</p>
-		<p>Adresa: Strada X nr. 20, Iasi</p>
-	</div>
-	</footer>
+		</main>
+		<footer>
+			<div class = "footer-container">
+				<p>Telefon: 0744 443 545</p>
+				<p>E-mail: abcd@gmail.com</p>
+				<p>Adresa: Strada X nr. 20, Iasi</p>
+			</div>
+		</footer>
+		
+		
+	</body>
 	
-	
-  </body>
-  
 </html>

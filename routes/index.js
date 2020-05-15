@@ -8,6 +8,7 @@ var router = new Router()
 
 router.get('/exemplu', indexController.exempleAPI)
 router.get('/', indexController.getIndexHTML)
+router.get('/chart-institutional', indexController.createChartInstitutional)
 router.get('/index', indexController.getIndexHTML)
 router.get('/index.html', indexController.getIndexHTML)
 router.get('/css/header.css', indexController.getCSS)
