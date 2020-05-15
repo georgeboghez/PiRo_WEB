@@ -8,6 +8,7 @@ router.get('/chart-test', statisticsController.getChartHTML)
 router.get('/custom-statistics', statisticsController.getCustomStatsHTML)
 router.get('/css/custom-statistics.css', statisticsController.getCSS)
 router.get('/assets/img/graph.png', statisticsController.getSVG)
+router.get('/chart-gender', statisticsController.getGenderChart)
 
 
 module.exports.statistics = router

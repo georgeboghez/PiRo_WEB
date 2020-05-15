@@ -81,6 +81,15 @@ p2 {
   font-size: 16px;
 }
 
+.gen-button {
+  background-color: #1b2653 !important;
+}
+
+.gen-button:hover {
+  background-color: #f1aa0b !important;
+  border-color: #f1aa0b;
+}
+
 .custom-stats-buttons > button {
   background-color: #f1aa0b;
   border: none;

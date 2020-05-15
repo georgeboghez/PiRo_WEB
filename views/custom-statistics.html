@@ -25,6 +25,36 @@
 				xhttp.open("GET", "/chart-institutional", true);
 				xhttp.send();
 			}
+			function myFunction() {
+				document.getElementById("myDropdown").classList.toggle("show");
+			}
+
+			function generateChart() {
+				var selectBox = document.getElementById("gender");
+				var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						document.getElementById("chart").innerHTML = this.responseText;
+					}
+				};
+				xhttp.open("GET", "/chart-gender", true);
+				xhttp.send();
+			}
+			
+			window.onclick = function(event) {
+				if (!event.target.matches('.dropbtn')) {
+					var dropdowns = document.getElementsByClassName("dropdown-content");
+					var i;
+					for (i = 0; i < dropdowns.length; i++) {
+						var openDropdown = dropdowns[i];
+						if (openDropdown.classList.contains('show')) {
+							openDropdown.classList.remove('show');
+						}
+					}
+				}
+			}
 		</script>
 	</head>
 	
@@ -50,87 +80,76 @@
 		</header>
 		
 		<main>
-
 			<p id="stats_title">Custom Statistics</p>
 			<p id="stats_text">Complete the form below to generate and export graphs based on custom statistics.</p>
 			<div class="custom-stats-grid">
-		
-			<div class="custom-stats-container">
-				<label for="gender">Gender</label>
-				<select id="gender"> <option value="male">Male</option> <option value="female">Female</option></select>
+				
+				<div class="custom-stats-container">
+					<label for="type">Statistics Type</label>
+					<select id="type">
+						<option value="national">National</option>
+						<option value="county">County</option>
+						<option value="institutional">Institutional</option>
+						<option value="random">Random</option>
+					</select>
+					<label for="gender">Gender</label>
+					<select id="gender">
+						<option value="male">Male</option>
+						<option value="female">Female</option>
+					</select>
+					<label for="grade">Grade</label>
+					<select id="grade">
+						<option value="male">9</option>
+						<option value="female">10</option>
+					</select>
+					<label for="category">Category</label>
+					<select id="category">
+						<option value="math">Mathematics</option>
+						<option value="science">Science</option>
+						<option value="reading">Reading</option>
+					</select>
+					<label for="question">Question</label>
+					<select id="question">
+						<option value="bar">----</option>
+					</select>
 
-				<label for="grade">Grade</label>
-				<select id="grade"> 
-				<option value="male">9</option> 
-				<option value="female">10</option>
-				</select>
-
-				<label for="category">Category</label>
-				<select id="category"> 
-				<option value="math">Mathematics</option> 
-				<option value="science">Science</option> 
-				<option value="reading">Reading</option>
-				</select>
-
-				<label for="question">Question</label>
-				<select id="question">
-				<option value="bar">----</option>
-				</select>
-			</div>
-			
-			<div class="custom-stats-image-grid">	
-				<div class="ct-chart ct-perfect-fourth" id="stats-chart"></div>
-				<script>
-					function myFunction() {
-						document.getElementById("myDropdown").classList.toggle("show");
-					}
-					window.onclick = function(event) {
-						if (!event.target.matches('.dropbtn')) {
-							var dropdowns = document.getElementsByClassName("dropdown-content");
-							var i;
-							for (i = 0; i < dropdowns.length; i++) {
-								var openDropdown = dropdowns[i];
-								if (openDropdown.classList.contains('show')) {
-									openDropdown.classList.remove('show');
-								}
-							}
-						}
-					}
-
-					var data = {
-						labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-						series: [
-							[5, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8],
-							[3, 2, 9, 5, 4, 6, 4, 6, 7, 8, 7, 4]
-						]
-					};
-
-					var options = {
-						seriesBarDistance: 10
-					};
-
-					var chart = new Chartist.Bar('.ct-chart', data, options);
-
-				</script>
-
-				<div class="custom-stats-buttons">
-				<p>Export: </p>
-				<button type="button">SVG</button>
-				<button type="button">CSS</button>
-				<button type="button">PNG</button>
+					<button class="button gen-button" onclick="generateChart()"> Generate </button>
 				</div>
+				
+				<div class="custom-stats-image-grid">
+					<div id="chart"> </div>
+<!-- 					<div class="ct-chart ct-perfect-fourth" id="stats-chart"></div>
+					<script>
+						var data = {
+							labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+							series: [
+								[5, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8],
+								[3, 2, 9, 5, 4, 6, 4, 6, 7, 8, 7, 4]
+							]
+						};
+						var options = {
+							seriesBarDistance: 10
+						};
+						var chart = new Chartist.Bar('.ct-chart', data, options);
+					</script> -->
+					<div class="custom-stats-buttons">
+						<p>Export: </p>
+						<button type="button">SVG</button>
+						<button type="button">CSS</button>
+						<button type="button">PNG</button>
+					</div>
+					
+				</div>
+			</main>
+			<footer>
+				<div class = "footer-container">
+					<p>Telefon: 0744 443 545</p>
+					<p>E-mail: abcd@gmail.com</p>
+					<p>Adresa: Strada X nr. 20, Iasi</p>
+				</div>
+			</footer>
 			
-			</div>
-		</main>
-		<footer>
-			<div class = "footer-container">
-				<p>Telefon: 0744 443 545</p>
-				<p>E-mail: abcd@gmail.com</p>
-				<p>Adresa: Strada X nr. 20, Iasi</p>
-			</div>
-		</footer>
+			
+		</body>
 		
-		
-	</body>
-	
-</html>
+	</html>
