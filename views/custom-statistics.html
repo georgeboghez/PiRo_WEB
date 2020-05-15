@@ -50,10 +50,35 @@
 		</header>
 		
 		<main>
+
 			<p id="stats_title">Custom Statistics</p>
 			<p id="stats_text">Complete the form below to generate and export graphs based on custom statistics.</p>
 			<div class="custom-stats-grid">
-				
+		
+			<div class="custom-stats-container">
+				<label for="gender">Gender</label>
+				<select id="gender"> <option value="male">Male</option> <option value="female">Female</option></select>
+
+				<label for="grade">Grade</label>
+				<select id="grade"> 
+				<option value="male">9</option> 
+				<option value="female">10</option>
+				</select>
+
+				<label for="category">Category</label>
+				<select id="category"> 
+				<option value="math">Mathematics</option> 
+				<option value="science">Science</option> 
+				<option value="reading">Reading</option>
+				</select>
+
+				<label for="question">Question</label>
+				<select id="question">
+				<option value="bar">----</option>
+				</select>
+			</div>
+			
+			<div class="custom-stats-image-grid">	
 				<div class="ct-chart ct-perfect-fourth" id="stats-chart"></div>
 				<script>
 					function myFunction() {
@@ -87,7 +112,14 @@
 					var chart = new Chartist.Bar('.ct-chart', data, options);
 
 				</script>
-				
+
+				<div class="custom-stats-buttons">
+				<p>Export: </p>
+				<button type="button">SVG</button>
+				<button type="button">CSS</button>
+				<button type="button">PNG</button>
+				</div>
+			
 			</div>
 		</main>
 		<footer>
