@@ -13,6 +13,36 @@ function exempleAPI(req,res)
 //         return fs.readFile(url, (err, data) => err !== undefined ? reject(err) : resolve(data))
 //     })
 // }
+function submitTrueHTML(req, res)
+{
+  try {
+    let htmlcode = '<p id ="msgemailtrue">Email sent!</p>'
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'image/png')
+    res.write(htmlcode)
+  } catch (e) {
+    console.log(e)
+    res.statusCode = 500
+    res.setHeader('Content-Type', 'text/html')
+    res.write('Internal server error')
+  }
+}
+
+function submitFalseHTML(req, res)
+{
+
+    try {
+      let htmlcode = '<p id = "msgemailfalse">Email incorrect!</p>'
+      res.statusCode = 200
+      res.setHeader('Content-Type', 'image/png')
+      res.write(htmlcode)
+    } catch (e) {
+      console.log(e)
+      res.statusCode = 500
+      res.setHeader('Content-Type', 'text/html')
+      res.write('Internal server error')
+    }
+}
 
 function getPNG(req, res) {
     try {
@@ -70,4 +100,4 @@ function getJS(req, res) {
 }
 
 
-module.exports = { exempleAPI, getContactHTML, getCSS, getPNG, getJS }
+module.exports = { exempleAPI, getContactHTML, getCSS, getPNG, getJS, submitTrueHTML, submitFalseHTML }

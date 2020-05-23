@@ -11,9 +11,11 @@ router.get('/css/header.css', contactusController.getCSS)
 router.get('/css/footer.css', contactusController.getCSS)
 router.get('/css/contact-us.css', contactusController.getCSS)
 router.get('/assets/img/document.png', contactusController.getPNG)
-router.get('/assets/img/questionmark.png', contactusController.getPNG)
+router.get('/assets/img/qm.png', contactusController.getPNG)
 router.get('/assets/img/suitcase.png', contactusController.getPNG)
 router.get('/assets/img/top.png', contactusController.getPNG)
+router.get('/submitFalse', contactusController.submitFalseHTML)
+router.get('/submitTrue', contactusController.submitTrueHTML)
 
 // router.get('about.html', aboutController.getHTML)
 
