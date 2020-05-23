@@ -1,36 +1,42 @@
-// db.js
-const MongoClient = require('mongodb').MongoClient;
+const MongoClient = require('mongodb').MongoClient
 
-let connection, database;
+const uri = 'mongodb://radu:radu123@ds119024.mlab.com:19024/heroku_gbmt6hp8';
+const dbName = 'heroku_gbmt6hp8';
+const collName = 'pisa_results';
 
-var connect = function (next) {
-    // already established? => return connection
-    if (database) return next(undefined, database);
-
-    // establish connection
-    MongoClient.connect("mongodb://radu:radu123@ds119024.mlab.com:19024/heroku_gbmt6hp8", (err, db) => {
-      if (err) return next(err);
-
-      // save connection
-      connection = db;
-
-      // connect to database
-      database = db.db('heroku_gbmt6hp8');
-
-      // call callback
-      next(undefined, database);
-    });
-  }
-
-var disconnect = function (callback) {
-  if (!connection) return callback();
-    // close connection
-    connection.close();
-    callback();
-}
-
+var client;
+var db;
 
 module.exports = {
-  connect: connect,
-  disconnect: disconnect
+  find: async (query) => {
+    try {
+      if(!client) {
+        client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+      }
+      if(!db) {
+        db = client.db(dbName);
+      }
+      return db.collection(collName).find(query);
+    }catch(err) {
+      console.log("Error: " + err.message);
+    } //finally {
+    //   client.close();
+    // }
+  },
+  count: async (query) => {
+    try {
+      if(!client) {
+        client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+      }
+      if(!db) {
+        db = client.db(dbName);
+      }
+      return db.collection(collName).countDocuments(query)
+    }catch(err) {
+      return err.message
+    } //finally {
+    //   client.close();
+    // }
+  }
+
 }

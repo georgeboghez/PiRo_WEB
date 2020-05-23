@@ -28,7 +28,9 @@ class Router {
     if (req.method === 'GET') {
       if (this.getRoutes[url] !== undefined) {
         try {
-          this.getRoutes[url](req, res)
+          //this.getRoutes[url](req, res)
+          this.handleRoute(req, res, this.getRoutes[url])
+          return
         } catch (e) {
           console.log(e)
         }
@@ -37,12 +39,26 @@ class Router {
     if (req.method === 'POST') {
       if (this.postRoutes[url] !== undefined) {
         try {
-          this.postRoutes[url](req, res)
+          // this.postRoutes[url](req, res)
+          this.handleRoute(req, res, this.postRoutes[url])
+          return
         } catch (e) {
           console.log(e)
         }
       }
     }
+    res.end()
+  }
+
+  handleRoute (req, res, route) {    
+      if(route.constructor.name == 'AsyncFunction') {
+        route(req, res).then(_ => res.end()).catch(e => {console.log(e.message)})
+      }
+      else {
+        route(req, res)
+        res.end()
+      }
+
   }
 }
 

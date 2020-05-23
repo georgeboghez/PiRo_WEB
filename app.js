@@ -12,6 +12,7 @@ router.use('', index)
 router.use('', contactus)
 router.use('', about)
 router.use('', statistics)
+
 console.log(router)
 
 const app = new WebApp(router)
