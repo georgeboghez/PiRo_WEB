@@ -103,6 +103,7 @@ p2 {
 
 #stats-chart .ct-series-a .ct-bar {
     stroke: #f1aa0b;
+    stroke-width: 80px;
 }
 
 #stats-chart .ct-series-b .ct-bar {
