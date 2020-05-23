@@ -8,11 +8,13 @@ const generate = require('node-chartist');
 async function getGenderChart (req, res) {
   res.writeHead(200, {"Content-Type": "application/json"});
 
-  var result = await db.count({ST004D01T : "1.0"});
+  var maleCount   = await db.count({ST004D01T : "1.0"});
+  var femaleCount = await db.count({ST004D01T : "2.0"});
 
   res.write(JSON.stringify({
     type: true,
-    resultData: result
+    male: maleCount,
+    female: femaleCount
   }))
 }
 

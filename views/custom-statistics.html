@@ -36,7 +36,24 @@
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
-						document.getElementById("chart").innerHTML = this.responseText;
+
+						let genderData = JSON.parse(this.responseText)
+						let maleCount = genderData['male']
+						let femaleCount = genderData['female']
+
+						var data = {
+							labels: ['Male', 'Female'],
+							series: [
+								[maleCount, femaleCount]
+							]
+						};
+						var options = {
+							seriesBarDistance: 10
+						};
+						var chart = new Chartist.Bar('.ct-chart', data, options);
+
+						document.getElementById("stats-chart").innerHTML = chart
+
 					}
 				};
 				xhttp.open("GET", "/chart-gender", true);
@@ -117,21 +134,21 @@
 				</div>
 				
 				<div class="custom-stats-image-grid">
-					<div id="chart"> </div>
-<!-- 					<div class="ct-chart ct-perfect-fourth" id="stats-chart"></div>
-					<script>
-						var data = {
-							labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-							series: [
-								[5, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8],
-								[3, 2, 9, 5, 4, 6, 4, 6, 7, 8, 7, 4]
-							]
-						};
-						var options = {
-							seriesBarDistance: 10
-						};
-						var chart = new Chartist.Bar('.ct-chart', data, options);
-					</script> -->
+<!--					<div id="chart"> </div>-->
+				 <div class="ct-chart ct-perfect-fourth" id="stats-chart"></div>
+					<!-- 					<script>
+                                            var data = {
+                                                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                                                series: [
+                                                    [5, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8],
+                                                    [3, 2, 9, 5, 4, 6, 4, 6, 7, 8, 7, 4]
+                                                ]
+                                            };
+                                            var options = {
+                                                seriesBarDistance: 10
+                                            };
+                                            var chart = new Chartist.Bar('.ct-chart', data, options);
+                                        </script> -->
 					<div class="custom-stats-buttons">
 						<p>Export: </p>
 						<button type="button">SVG</button>
