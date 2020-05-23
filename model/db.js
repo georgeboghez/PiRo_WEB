@@ -8,6 +8,20 @@ var client;
 var db;
 
 module.exports = {
+  connect: async () => {
+    try {
+      if(!client) {
+        client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true});
+      }
+      if(!db) {
+        db = client.db(dbName);
+      }
+      console.log('Successfully connected to the database\n')
+    }
+    catch(err) {
+      throw err;
+    }
+  },
   find: async (query) => {
     try {
       if(!client) {
@@ -18,7 +32,7 @@ module.exports = {
       }
       return db.collection(collName).find(query);
     }catch(err) {
-      console.log("Error: " + err.message);
+      throw err;
     } //finally {
     //   client.close();
     // }
@@ -33,7 +47,7 @@ module.exports = {
       }
       return db.collection(collName).countDocuments(query)
     }catch(err) {
-      return err.message
+      throw err;
     } //finally {
     //   client.close();
     // }
