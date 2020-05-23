@@ -14,12 +14,8 @@ router.get('/assets/img/document.png', contactusController.getPNG)
 router.get('/assets/img/qm.png', contactusController.getPNG)
 router.get('/assets/img/suitcase.png', contactusController.getPNG)
 router.get('/assets/img/top.png', contactusController.getPNG)
-router.get('/submitFalseE', contactusController.submitFalseEmailHTML)
-router.get('/submitFalseN', contactusController.submitFalseNameHTML)
-router.get('/submitFalseS', contactusController.submitFalseSurnameHTML)
-router.get('/submitTrueE', contactusController.submitTrueEHTML)
-router.get('/submitTrueN', contactusController.submitTrueNHTML)
-router.get('/submitTrueS', contactusController.submitTrueSHTML)
+
+router.post('/sendMail', contactusController.sendMailtoFront)
 
 // router.get('about.html', aboutController.getHTML)
 
