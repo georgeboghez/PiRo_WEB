@@ -22,8 +22,10 @@ main {
 	position: relative;
 	display: flex;
 	flex-direction: column;
+	top: 120px;
 	grid-gap: 10px;
 	min-height: 100%;
+	padding-bottom: 120px;
 }
 .button {
   background-color: white;
