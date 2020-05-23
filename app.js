@@ -9,7 +9,11 @@ const { statistics } = require('./routes/custom-statistics')
 
 const router = new Router()
 
-db.connect() 
+try {
+  db.connect() 
+} catch(e) {
+  console.log("Couldn't establish database connection: " + e.message);
+}
 
 router.use('', index)
 router.use('', contactus)
