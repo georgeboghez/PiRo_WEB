@@ -29,6 +29,62 @@
 				document.getElementById("myDropdown").classList.toggle("show");
 			}
 
+			function randomStats() {
+
+				let smallStats = `
+				<label for="type">Statistics Type</label>
+					<select id="type" onchange="randomStats()">
+							<option value="national">National</option>
+							<option value="county">County</option>
+							<option value="institutional">Institutional</option>
+							<option selected="random">Random</option>
+							</select>
+							<button class="button gen-button" onclick="generateChart()"> Generate </button>
+							`;
+
+				let allStats = `
+				<label for="type">Statistics Type</label>
+				<select id="type" onchange="randomStats()">
+						<option value="national">National</option>
+						<option value="county">County</option>
+						<option value="institutional">Institutional</option>
+						<option value="random">Random</option>
+						</select>
+						<label for="gender">Gender</label>
+						<select id="gender">
+						<option value="male">Male</option>
+						<option value="female">Female</option>
+						</select>
+						<label for="grade">Grade</label>
+						<select id="grade">
+						<option value="male">9</option>
+						<option value="female">10</option>
+						</select>
+						<label for="category">Category</label>
+						<select id="category">
+						<option value="math">Mathematics</option>
+						<option value="science">Science</option>
+						<option value="reading">Reading</option>
+						</select>
+						<label for="question">Question</label>
+						<select id="question">
+						<option value="bar">----</option>
+						</select>
+
+						<button class="button gen-button" onclick="generateChart()"> Generate </button>
+						</div>`;
+
+
+				var selectBox = document.getElementById("type");
+				var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+				if (selectedValue === "random")
+					document.getElementById("stats").innerHTML = smallStats
+				else
+					document.getElementById("stats").innerHTML = allStats
+
+			}
+
 			function generateChart() {
 				var selectBox = document.getElementById("gender");
 				var selectedValue = selectBox.options[selectBox.selectedIndex].value;
@@ -37,18 +93,43 @@
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
 
-						let genderData = JSON.parse(this.responseText)
-						let maleCount = genderData['male']
+						/*let genderData  = JSON.parse(this.responseText)
+						let maleCount   = genderData['male']
 						let femaleCount = genderData['female']
+						let maleLabel   = 'Male (' + maleCount + ')'
+						let femaleLabel = 'Female (' + femaleCount + ')'
 
 						var data = {
-							labels: ['Male', 'Female'],
-							series: [
-								[maleCount, femaleCount]
-							]
+							labels: [maleLabel, femaleLabel],
+							series: [ [maleCount, femaleCount] ]
 						};
 						var options = {
-							seriesBarDistance: 10
+							seriesBarDistance: 10,
+							showLabel: true
+						};
+						var chart = new Chartist.Bar('.ct-chart', data, options);*/
+
+						genderData = JSON.parse(this.responseText)
+						var count
+						var label
+
+						if (selectedValue === "male") {
+							count = genderData['male']
+							label = 'Male (' + count + ')'
+						}
+
+						else {
+							count = genderData['female']
+							label = 'Female (' + count + ')'
+						}
+
+						var data = {
+							labels: [label],
+							series: [ [count] ]
+						};
+						var options = {
+							seriesBarDistance: 10,
+							showLabel: true
 						};
 						var chart = new Chartist.Bar('.ct-chart', data, options);
 					}
@@ -98,9 +179,9 @@
 			<p id="stats_text">Complete the form below to generate and export graphs based on custom statistics.</p>
 			<div class="custom-stats-grid">
 				
-				<div class="custom-stats-container">
+				<div class="custom-stats-container" id="stats">
 					<label for="type">Statistics Type</label>
-					<select id="type">
+					<select id="type" onchange="randomStats()">
 						<option value="national">National</option>
 						<option value="county">County</option>
 						<option value="institutional">Institutional</option>
