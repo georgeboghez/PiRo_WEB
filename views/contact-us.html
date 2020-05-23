@@ -24,9 +24,64 @@
             return false;
          return true;
       }
+      function isNameValid(name) {
+         if (!name)
+            return false;
+         if(name.length>254)
+            return false;
+         return true;
+      }
       function submitForm(){
          var email = document.getElementById("email").value;
-         if(isEmailValid(email))
+         var name = document.getElementById("fname").value;
+         var surname = document.getElementById("lname").value;
+         var nameState = false;
+         var snameState = false;
+         if(!isNameValid(name))
+         {
+            var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("nameval").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("GET", "/submitFalseN", true);
+                xhttp.send();
+         }
+         else {
+         	var nameState = true;
+            var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("nameval").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("GET", "/submitTrueN", true);
+                xhttp.send();
+         }
+         if(!isNameValid(surname))
+         {	
+            var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("snameval").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("GET", "/submitFalseS", true);
+                xhttp.send();
+         }
+         else {
+         	var snameState = true;
+            var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("snameval").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("GET", "/submitTrueS", true);
+                xhttp.send();
+         }
+         if(isEmailValid(email) && snameState && nameState)
          {
             var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
@@ -34,7 +89,7 @@
                         document.getElementById("subbut").innerHTML = this.responseText;
                     }
                 };
-                xhttp.open("GET", "/submitTrue", true);
+                xhttp.open("GET", "/submitTrueE", true);
                 xhttp.send();
          }
          else {
@@ -44,7 +99,7 @@
                         document.getElementById("subbut").innerHTML = this.responseText;
                     }
                 };
-                xhttp.open("GET", "/submitFalse", true);
+                xhttp.open("GET", "/submitFalseE", true);
                 xhttp.send();
          }
       }
@@ -412,6 +467,10 @@
                   <label for="subject">Message</label>
                   <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
                      <input type="submit" value="Submit" onclick = "submitForm()">
+                  <div id = "nameval">
+                  </div>
+                  <div id = "snameval">
+                  </div>
                   <div id = "subbut">
                   </div>
                </div>

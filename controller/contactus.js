@@ -13,7 +13,7 @@ function exempleAPI(req,res)
 //         return fs.readFile(url, (err, data) => err !== undefined ? reject(err) : resolve(data))
 //     })
 // }
-function submitTrueHTML(req, res)
+function submitTrueEHTML(req, res)
 {
   try {
     let htmlcode = '<p id ="msgemailtrue">Email sent!</p>'
@@ -27,12 +27,72 @@ function submitTrueHTML(req, res)
     res.write('Internal server error')
   }
 }
+function submitTrueNHTML(req, res)
+{
+  try {
+    let htmlcode = '<p id ="msgemailtrue"></p>'
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'image/png')
+    res.write(htmlcode)
+  } catch (e) {
+    console.log(e)
+    res.statusCode = 500
+    res.setHeader('Content-Type', 'text/html')
+    res.write('Internal server error')
+  }
+}
+function submitTrueSHTML(req, res)
+{
+  try {
+    let htmlcode = '<p id ="msgemailtrue"></p>'
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'image/png')
+    res.write(htmlcode)
+  } catch (e) {
+    console.log(e)
+    res.statusCode = 500
+    res.setHeader('Content-Type', 'text/html')
+    res.write('Internal server error')
+  }
+}
 
-function submitFalseHTML(req, res)
+function submitFalseEmailHTML(req, res)
 {
 
     try {
       let htmlcode = '<p id = "msgemailfalse">Email incorrect!</p>'
+      res.statusCode = 200
+      res.setHeader('Content-Type', 'image/png')
+      res.write(htmlcode)
+    } catch (e) {
+      console.log(e)
+      res.statusCode = 500
+      res.setHeader('Content-Type', 'text/html')
+      res.write('Internal server error')
+    }
+}
+
+function submitFalseNameHTML(req, res)
+{
+
+    try {
+      let htmlcode = '<p id = "msgemailfalse">First Name box is mandatory!</p>'
+      res.statusCode = 200
+      res.setHeader('Content-Type', 'image/png')
+      res.write(htmlcode)
+    } catch (e) {
+      console.log(e)
+      res.statusCode = 500
+      res.setHeader('Content-Type', 'text/html')
+      res.write('Internal server error')
+    }
+}
+
+function submitFalseSurnameHTML(req, res)
+{
+
+    try {
+      let htmlcode = '<p id = "msgemailfalse">Last Name box is mandatory!</p>'
       res.statusCode = 200
       res.setHeader('Content-Type', 'image/png')
       res.write(htmlcode)
@@ -100,4 +160,4 @@ function getJS(req, res) {
 }
 
 
-module.exports = { exempleAPI, getContactHTML, getCSS, getPNG, getJS, submitTrueHTML, submitFalseHTML }
+module.exports = { exempleAPI, getContactHTML, getCSS, getPNG, getJS, submitTrueEHTML, submitTrueNHTML, submitTrueSHTML, submitFalseEmailHTML, submitFalseNameHTML, submitFalseSurnameHTML }
