@@ -44,12 +44,12 @@
   color:#1b2653;
 }
 
-#msgemailtrue{
-  color: green;
+.invalid-data {
+  color: red;
 }
 
-#msgemailfalse{
-  color: red;
+.valid-data {
+  color: green;
 }
 
 .FAQ-card:hover {

@@ -1,36 +1,12 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <title>PiRo</title>
-      <link rel="stylesheet" type="text/css" href="css/header.css">
-      <link rel="stylesheet" type="text/css" href="css/footer.css">
-      <link rel="stylesheet" type="text/css" href="css/contact-us.css">
-      <link rel="stylesheet" type="text/css" href="css/page-content.css">
-      <script type="text/javascript">
-      function isEmailValid(email) {
-         var emailRegex = /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
-         if (!email)
-            return false;
-         if(email.length>254)
-            return false;
-         var valid = emailRegex.test(email);
-         if(!valid)
-            return false;
-         var parts = email.split("@");
-         if(parts[0].length>64)
-            return false;
-         var domainParts = parts[1].split(".");
-         if(domainParts.some(function(part) { return part.length>63; }))
-            return false;
-         return true;
-      }
-      function isNameValid(name) {
-         if (!name)
-            return false;
-         if(name.length>254)
-            return false;
-         return true;
-      }
+<head>
+   <title>PiRo</title>
+   <link rel="stylesheet" type="text/css" href="css/header.css">
+   <link rel="stylesheet" type="text/css" href="css/footer.css">
+   <link rel="stylesheet" type="text/css" href="css/contact-us.css">
+   <link rel="stylesheet" type="text/css" href="css/page-content.css">
+   <script type="text/javascript">
       function submitForm(){
          var email = document.getElementById("email").value;
          var name = document.getElementById("fname").value;
@@ -38,194 +14,123 @@
          var content = document.getElementById("subject").value;
 
          var xhr = new XMLHttpRequest();
-		xhr.open("POST", '/sendMail', true);
+         xhr.open("POST", '/sendMail', true);
 
-		//Send the proper header information along with the request
-		xhr.setRequestHeader("Content-Type", "application/json");
+         //Send the proper header information along with the request
+   		xhr.setRequestHeader("Content-Type", "application/json");
 
-		xhr.onreadystatechange = function() { // Call a function when the state changes.
-		    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-		        // Request finished. Do processing here.
-		    }
-		}
-		xhr.send(JSON.stringify({EmailAdress:email,FirstName:name,LastName:surname}));
-		console.log(JSON.stringify({EmailAdress:email,FirstName:name,LastName:surname,EmailContent:content}));
-		// xhr.send(new Int8Array()); 
-		// xhr.send(document);
-
-         // var nameState = false;
-         // var snameState = false;
-         // if(!isNameValid(name))
-         // {
-         //    var xhttp = new XMLHttpRequest();
-         //        xhttp.onreadystatechange = function() {
-         //            if (this.readyState == 4 && this.status == 200) {
-         //                document.getElementById("nameval").innerHTML = this.responseText;
-         //            }
-         //        };
-         //        xhttp.open("GET", "/submitFalseN", true);
-         //        xhttp.send();
-         // }
-         // else {
-         // 	var nameState = true;
-         //    var xhttp = new XMLHttpRequest();
-         //        xhttp.onreadystatechange = function() {
-         //            if (this.readyState == 4 && this.status == 200) {
-         //                document.getElementById("nameval").innerHTML = this.responseText;
-         //            }
-         //        };
-         //        xhttp.open("GET", "/submitTrueN", true);
-         //        xhttp.send();
-         // }
-         // if(!isNameValid(surname))
-         // {	
-         //    var xhttp = new XMLHttpRequest();
-         //        xhttp.onreadystatechange = function() {
-         //            if (this.readyState == 4 && this.status == 200) {
-         //                document.getElementById("snameval").innerHTML = this.responseText;
-         //            }
-         //        };
-         //        xhttp.open("GET", "/submitFalseS", true);
-         //        xhttp.send();
-         // }
-         // else {
-         // 	var snameState = true;
-         //    var xhttp = new XMLHttpRequest();
-         //        xhttp.onreadystatechange = function() {
-         //            if (this.readyState == 4 && this.status == 200) {
-         //                document.getElementById("snameval").innerHTML = this.responseText;
-         //            }
-         //        };
-         //        xhttp.open("GET", "/submitTrueS", true);
-         //        xhttp.send();
-         // }
-         // if(isEmailValid(email) && snameState && nameState)
-         // {
-         //    var xhttp = new XMLHttpRequest();
-         //        xhttp.onreadystatechange = function() {
-         //            if (this.readyState == 4 && this.status == 200) {
-         //                document.getElementById("subbut").innerHTML = this.responseText;
-         //            }
-         //        };
-         //        xhttp.open("GET", "/submitTrueE", true);
-         //        xhttp.send();
-         // }
-         // else {
-         //    var xhttp = new XMLHttpRequest();
-         //        xhttp.onreadystatechange = function() {
-         //            if (this.readyState == 4 && this.status == 200) {
-         //                document.getElementById("subbut").innerHTML = this.responseText;
-         //            }
-         //        };
-         //        xhttp.open("GET", "/submitFalseE", true);
-         //        xhttp.send();
-         // }
+   		xhr.onreadystatechange = function() { // Call a function when the state changes.
+            if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+               document.getElementById("email-warning").innerHTML = this.responseText;
+            }
+         }
+         xhr.send(JSON.stringify({ EmailAdress: email, FirstName: name, LastName: surname, EmailContent: content }));
       }
-      </script>
-   </head>
-   <body>
-      <header>
-         <div class="logo-container">
-            <a id="triangle-logo" href="index.html"></a>
-            <a id="page-title" href="index.html">PiRo</a>
-         </div>
-         <nav>
-            <a href="statistics-page.html">Statistics</a>
-            <a href="about-page.html">About</a>
-            <a href="contact-us.html">Contact Us</a>
-         </nav>
-      </header>
-      <button onclick="topFunction()" id="topbtn" title="Go to top">Top</button>
-      <script>
+</script>
+</head>
+<body>
+   <header>
+      <div class="logo-container">
+         <a id="triangle-logo" href="index.html"></a>
+         <a id="page-title" href="index.html">PiRo</a>
+      </div>
+      <nav>
+         <a href="statistics-page.html">Statistics</a>
+         <a href="about-page.html">About</a>
+         <a href="contact-us.html">Contact Us</a>
+      </nav>
+   </header>
+   <button onclick="topFunction()" id="topbtn" title="Go to top">Top</button>
+   <script>
       var mybutton = document.getElementById("topbtn");
       window.onscroll = function() {scrollFunction()};
       function scrollFunction() {
-      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-      mybutton.style.display = "block";
-      } else {
-      mybutton.style.display = "none";
-      }
+         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+         } else {
+            mybutton.style.display = "none";
+         }
       }
       function topFunction() {
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
+         document.body.scrollTop = 0;
+         document.documentElement.scrollTop = 0;
       }
-      </script>
-      <main>
-         <div id = "top"></div>
-         <div class="FAQ">
-            <h2 class="FAQ-title">
+   </script>
+   <main>
+      <div id = "top"></div>
+      <div class="FAQ">
+         <h2 class="FAQ-title">
             Frequently asked questions.
-            </h2>
-            <div class="FAQ-container">
-               <div class="FAQ-card">
-                  <a class="FAQ-itemLink" href="#pisa-exam-answers">
-                     <img height="100" src="assets/img/qm.png">
+         </h2>
+         <div class="FAQ-container">
+            <div class="FAQ-card">
+               <a class="FAQ-itemLink" href="#pisa-exam-answers">
+                  <img height="100" src="assets/img/qm.png">
+                  <p class="FAQ-item-title">
+                     Pisa exam.
+                  </p>
+                  <ul class="FAQ-item-statisticsList">
+                     <li> What is the pisa exam? </li>
+                     <li> How do i take the exam? </li>
+                     <li> How long does it take to recieve results? </li>
+                  </ul>
+               </a>
+            </div>
+            <div class="FAQ-card">
+               <a class="FAQ-itemLink" href="#about-us-answers">
+                  <img height="100" src="assets/img/document.png">
+                  <p class="FAQ-item-title">
+                     About us.
+                  </p>
+                  <ul class="FAQ-item-statisticsList">
+                     <li> What do we offer? </li>
+                     <li> How do you contact us? </li>
+                     <li> How do I learn more about the website? </li>
+                  </ul>
+               </a>
+            </div>
+            <div class="FAQ-card">
+               <div class = "thirdCard">
+                  <a class="FAQ-itemLink" href="#work-us-answers">
+                     <img height="100" src="assets/img/suitcase.png">
                      <p class="FAQ-item-title">
-                        Pisa exam.
+                        Work with us.
                      </p>
                      <ul class="FAQ-item-statisticsList">
-                        <li> What is the pisa exam? </li>
-                        <li> How do i take the exam? </li>
-                        <li> How long does it take to recieve results? </li>
+                        <li> How do i apply for work? </li>
+                        <li> What kind of experience is needed? </li>
+                        <li> Do you offer internships? </li>
                      </ul>
                   </a>
                </div>
-               <div class="FAQ-card">
-                  <a class="FAQ-itemLink" href="#about-us-answers">
-                     <img height="100" src="assets/img/document.png">
-                     <p class="FAQ-item-title">
-                        About us.
-                     </p>
-                     <ul class="FAQ-item-statisticsList">
-                        <li> What do we offer? </li>
-                        <li> How do you contact us? </li>
-                        <li> How do I learn more about the website? </li>
-                     </ul>
-                  </a>
-               </div>
-               <div class="FAQ-card">
-                  <div class = "thirdCard">
-                     <a class="FAQ-itemLink" href="#work-us-answers">
-                        <img height="100" src="assets/img/suitcase.png">
-                        <p class="FAQ-item-title">
-                           Work with us.
-                        </p>
-                        <ul class="FAQ-item-statisticsList">
-                           <li> How do i apply for work? </li>
-                           <li> What kind of experience is needed? </li>
-                           <li> Do you offer internships? </li>
-                        </ul>
-                     </a>
-                  </div>
-               </div>
-            </main>
-            <div class = "pisa-exam-answers" id = "pisa-exam-answers">
-               <div class = "Answers">
-                  <p class = "topAnswer">PISA is an international study that was launched by the OECD in 1997, first administered in 2000 and now covers over 80 countries. Every 3 years the PISA survey provides comparative data on 15-year-olds’ performance in reading, mathematics and science. In addition, each cycle explores a distinct “innovative domain” such as Collaborative Problem Solving (PISA 2015) and Global Competence (PISA 2018). The results have informed education policy discussions at the national and global level since its inception.</p>
-                  <p>You can take the test by visiting the official <a href="https://www.oecd.org/pisa/test-2012/">PISA website</a> and choosing one cathegory in which you would like to participate.</p>
-                  <p>However if you are participating as a student, the results may take anywhere between a week and a month to arrive.</p>
-               </div>
             </div>
-            <div class = "about-us-answers "id = "about-us-answers">
-               <div class = "Answers">
-                  <p class = "topAnswer">We offer very accesible information about the PISA exam at a very extensive degree. You can find out anything about the exam aswell as results from past years on our website.</p>
-                  <p>You can contact us at the phone number found at te bottom page aswell as by emailing us at the adress foundin the same place. Alternatively, you can complete the formular underneath to contact us. Click on <a href="#contact-formular">Contact us here</a> to be redirected to it.</p>
-                  <p>You can find out more about us and the amazing team behind this project in the About section found at the top of the page at all time.</p>
-               </div>
+         </main>
+         <div class = "pisa-exam-answers" id = "pisa-exam-answers">
+            <div class = "Answers">
+               <p class = "topAnswer">PISA is an international study that was launched by the OECD in 1997, first administered in 2000 and now covers over 80 countries. Every 3 years the PISA survey provides comparative data on 15-year-olds’ performance in reading, mathematics and science. In addition, each cycle explores a distinct “innovative domain” such as Collaborative Problem Solving (PISA 2015) and Global Competence (PISA 2018). The results have informed education policy discussions at the national and global level since its inception.</p>
+               <p>You can take the test by visiting the official <a href="https://www.oecd.org/pisa/test-2012/">PISA website</a> and choosing one cathegory in which you would like to participate.</p>
+               <p>However if you are participating as a student, the results may take anywhere between a week and a month to arrive.</p>
             </div>
-            <div class = "work-us-answers" id = "work-us-answers">
-               <div class = "Answers">
-                  <p class = "topAnswer">You can apply for a job by sending us an email at the adress found at the bottom of the page.</p>
-                  <p>The email will have to contain a short description of why you would like to work with us aswell as your CV attached.</p>
-                  <p>We can work with a lot of different knowledge, as we handle different subjects all the time.</p>
-                  <p>Common things we look for in our employees is html, css and javascript aswell as SQL knowledge, however upon inspection of a candidate's CV we might find any skillset usefull to our team.</p>
-                  <p>Yes! We do. At the moment our only internships will be held during the summer but stay tuned to hear more.</p>
-                  <p>If you are interested you can subscribe to our newsletter.</p>
-               </div>
+         </div>
+         <div class = "about-us-answers "id = "about-us-answers">
+            <div class = "Answers">
+               <p class = "topAnswer">We offer very accesible information about the PISA exam at a very extensive degree. You can find out anything about the exam aswell as results from past years on our website.</p>
+               <p>You can contact us at the phone number found at te bottom page aswell as by emailing us at the adress foundin the same place. Alternatively, you can complete the formular underneath to contact us. Click on <a href="#contact-formular">Contact us here</a> to be redirected to it.</p>
+               <p>You can find out more about us and the amazing team behind this project in the About section found at the top of the page at all time.</p>
             </div>
-            <div id = "contact-formular" class="form-container">
-               <!-- <form method = "GET" action="/send_data"> -->
+         </div>
+         <div class = "work-us-answers" id = "work-us-answers">
+            <div class = "Answers">
+               <p class = "topAnswer">You can apply for a job by sending us an email at the adress found at the bottom of the page.</p>
+               <p>The email will have to contain a short description of why you would like to work with us aswell as your CV attached.</p>
+               <p>We can work with a lot of different knowledge, as we handle different subjects all the time.</p>
+               <p>Common things we look for in our employees is html, css and javascript aswell as SQL knowledge, however upon inspection of a candidate's CV we might find any skillset usefull to our team.</p>
+               <p>Yes! We do. At the moment our only internships will be held during the summer but stay tuned to hear more.</p>
+               <p>If you are interested you can subscribe to our newsletter.</p>
+            </div>
+         </div>
+         <div id = "contact-formular" class="form-container">
+            <!-- <form method = "GET" action="/send_data"> -->
                <div class="form-card">
                   <label for="fname">First Name</label>
                   <input type="text" id="fname" name="firstname" placeholder="Your name..">
@@ -484,12 +389,9 @@
                   </select>
                   <label for="subject">Message</label>
                   <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-                     <input type="submit" value="Submit" onclick = "submitForm()">
-                  <div id = "nameval">
-                  </div>
-                  <div id = "snameval">
-                  </div>
-                  <div id = "subbut">
+                  <input type="submit" value="Submit" onclick = "submitForm()">
+                  
+                  <div id = "email-warning">
                   </div>
                </div>
                <!-- </form> -->
@@ -502,4 +404,4 @@
                </div>
             </footer>
          </body>
-      </html>
+         </html>
