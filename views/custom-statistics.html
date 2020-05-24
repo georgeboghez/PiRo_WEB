@@ -1,97 +1,143 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Pagina mea</title>
-		<link href="css/custom-statistics.css" rel="stylesheet">
-		<link href="css/header.css" rel="stylesheet">
-		<link href="css/footer.css" rel="stylesheet">
-		<link href="css/page-content.css" rel="stylesheet">
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
-		<script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script type="text/javascript">
-			function changeFunc() {
-				var selectBox = document.getElementById("type");
-				var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-				console.log(selectedValue);
-				alert(selectedValue);
-				var xhttp = new XMLHttpRequest();
-				xhttp.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
-						document.getElementById("demo").innerHTML = this.responseText;
-					}
-				};
-				xhttp.open("GET", "/chart-institutional", true);
-				xhttp.send();
-			}
-			function myFunction() {
-				document.getElementById("myDropdown").classList.toggle("show");
-			}
+<head>
+	<meta charset="utf-8">
+	<title>Pagina mea</title>
+	<link href="css/custom-statistics.css" rel="stylesheet">
+	<link href="css/header.css" rel="stylesheet">
+	<link href="css/footer.css" rel="stylesheet">
+	<link href="css/page-content.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+	<script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript">
+		function changeFunc() {
+			var selectBox = document.getElementById("type");
+			var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+			console.log(selectedValue);
+			alert(selectedValue);
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("demo").innerHTML = this.responseText;
+				}
+			};
+			xhttp.open("GET", "/chart-institutional", true);
+			xhttp.send();
+		}
+		function myFunction() {
+			document.getElementById("myDropdown").classList.toggle("show");
+		}
 
-			function randomStats() {
+		function pickCategory() {
 
-				let smallStats = `
-				<label for="type">Statistics Type</label>
-					<select id="type" onchange="randomStats()">
-							<option value="national">National</option>
-							<option value="county">County</option>
-							<option value="institutional">Institutional</option>
-							<option selected="random">Random</option>
-							</select>
-							<button class="button gen-button" onclick="generateChart()"> Generate </button>
-							`;
+			let trust_selected = `
+			<label for="type">Statistics Type</label>
+			<select id="type" onchange="changeStats()">
+			<option value="select-option">Select Statistics Type</option>
+			<option value="specific-questions" selected>Specific Questions</option>
+			<option value="county">County</option>
+			<option value="institutional">Institutional</option>
+			<option value="random">Random</option>
+			</select>
+			<label for="category">Category</label>
+			<select id="category" onchange="pickCategory()">
+			<option value="select-category">Select Category</option>
+			<option value="language-lessons">Languege Lessons</option>
+			<option value="trust" selected>Trust</option>
+			</select>
+			<label for="question">Question</label>
+			<select id="question">
+			<option value="ST123Q02NA">Question #1</option>
+			<option value="ST123Q03NA">Question #2</option>
+			<option value="ST123Q04NA">Question #3</option>
+			</select>
 
-				let allStats = `
-				<label for="type">Statistics Type</label>
-				<select id="type" onchange="randomStats()">
-						<option value="national">National</option>
-						<option value="county">County</option>
-						<option value="institutional">Institutional</option>
-						<option value="random">Random</option>
-						</select>
-						<label for="gender">Gender</label>
-						<select id="gender">
-						<option value="male">Male</option>
-						<option value="female">Female</option>
-						</select>
-						<label for="grade">Grade</label>
-						<select id="grade">
-						<option value="male">9</option>
-						<option value="female">10</option>
-						</select>
-						<label for="category">Category</label>
-						<select id="category">
-						<option value="math">Mathematics</option>
-						<option value="science">Science</option>
-						<option value="reading">Reading</option>
-						</select>
-						<label for="question">Question</label>
-						<select id="question">
-						<option value="bar">----</option>
-						</select>
+			<button class="button gen-button" onclick="generateByQuestion()"> Generate </button>
+			</div>`;
 
-						<button class="button gen-button" onclick="generateChart()"> Generate </button>
-						</div>`;
+			var selectBox = document.getElementById("category");
+			var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 
-
-				var selectBox = document.getElementById("type");
-				var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-
-				if (selectedValue === "random")
-					document.getElementById("stats").innerHTML = smallStats
-				else
-					document.getElementById("stats").innerHTML = allStats
-
+			if (selectedValue === "trust") {
+				document.getElementById("stats").innerHTML = trust_selected
 			}
 
-			function generateChart() {
-				var selectBox = document.getElementById("gender");
-				var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+		}
 
-				var xhttp = new XMLHttpRequest();
-				xhttp.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
+		function generateByQuestion() {
+			var selectBox = document.getElementById("question");
+			var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					resultData = JSON.parse(this.responseText)
+
+					var data = {
+						labels: [1, 2, 3, 4],
+						series: [ [resultData["result1"], resultData["result2"], resultData["result3"], resultData["result4"]] ]
+					};
+					var options = {
+						seriesBarDistance: 5,
+						showLabel: true
+					};
+					var chart = new Chartist.Bar('.ct-chart', data, options);
+				}
+			};
+			xhttp.open("POST", "/question-chart", true);
+			xhttp.send(JSON.stringify({ questionId: selectedValue }));
+		}
+
+		function changeStats() {
+
+			let random_selected = `
+			<label for="type">Statistics Type</label>
+			<select id="type" onchange="randomStats()">
+			<option value="national">National</option>
+			<option value="county">County</option>
+			<option value="institutional">Institutional</option>
+			<option selected="random" selected>Random</option>
+			</select>
+
+			<button class="button gen-button" onclick="generateByQuestion()"> Generate </button>
+			</div>`;
+
+			let specific_questions_selected = `
+			<label for="type">Statistics Type</label>
+			<select id="type" onchange="changeStats()">
+			<option value="select-option">Select Statistics Type</option>
+			<option value="specific-questions" selected>Specific Questions</option>
+			<option value="county">County</option>
+			<option value="institutional">Institutional</option>
+			<option value="random">Random</option>
+			</select>
+			<label for="category">Category</label>
+			<select id="category" onchange="pickCategory()">
+			<option value="select-category">Select Category</option>
+			<option value="language-lessons">Languege Lessons</option>
+			<option value="trust">Trust</option>
+			</select>`;
+
+
+			var selectBox = document.getElementById("type");
+			var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+			if (selectedValue === "random") {
+				document.getElementById("stats").innerHTML = random_selected
+			}
+			else if(selectedValue === "specific-questions") {
+				document.getElementById("stats").innerHTML = specific_questions_selected;
+			}
+		}
+
+		function generateChart() {
+			var selectBox = document.getElementById("gender");
+			var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
 
 						/*let genderData  = JSON.parse(this.responseText)
 						let maleCount   = genderData['male']
@@ -181,38 +227,17 @@
 				
 				<div class="custom-stats-container" id="stats">
 					<label for="type">Statistics Type</label>
-					<select id="type" onchange="randomStats()">
-						<option value="national">National</option>
+					<select id="type" onchange="changeStats()">
+						<option value="select-option"> Select Statistics Type</option>
+						<option value="specific-questions">Specific Questions</option>
 						<option value="county">County</option>
 						<option value="institutional">Institutional</option>
 						<option value="random">Random</option>
 					</select>
-					<label for="gender">Gender</label>
-					<select id="gender">
-						<option value="male">Male</option>
-						<option value="female">Female</option>
-					</select>
-					<label for="grade">Grade</label>
-					<select id="grade">
-						<option value="male">9</option>
-						<option value="female">10</option>
-					</select>
-					<label for="category">Category</label>
-					<select id="category">
-						<option value="math">Mathematics</option>
-						<option value="science">Science</option>
-						<option value="reading">Reading</option>
-					</select>
-					<label for="question">Question</label>
-					<select id="question">
-						<option value="bar">----</option>
-					</select>
-
-					<button class="button gen-button" onclick="generateChart()"> Generate </button>
 				</div>
 				
 				<div class="custom-stats-image-grid">
-				 <div class="ct-chart ct-perfect-fourth" id="stats-chart"></div>
+					<div class="ct-chart ct-perfect-fourth" id="stats-chart"></div>
 					<div class="custom-stats-buttons">
 						<p>Export: </p>
 						<button type="button">SVG</button>
@@ -233,4 +258,4 @@
 			
 		</body>
 		
-	</html>
+		</html>

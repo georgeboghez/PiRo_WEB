@@ -1,5 +1,6 @@
 const fs = require('fs')
 const util = require('util');
+const controllerUtils = require('../utils/controllerUtils')
 
 const nodemailer = require('nodemailer');
 
@@ -10,21 +11,11 @@ function exempleAPI(req,res)
   res.write(JSON.stringify({ success: true, message: 'example ran successfully' }))
 }
 
-async function toStringChunk(req){
-  return new Promise((resolve) => {
-    let body = '';
-    req.on('data', chunk => {
-      body += chunk.toString();
-      resolve(body);
-    });
-  })
-}
-
 
 async function sendMailtoFront(req, res)
 {
   try {
-    var body = await toStringChunk(req);
+    var body = await controllerUtils.toStringChunk(req);
     var data = JSON.parse(body);
     res.setHeader('Content-Type', 'text/html')
 

@@ -3,6 +3,7 @@ const util = require('util');
 const db = require('../model/db')
 const co = require('co');
 const generate = require('node-chartist');
+const controllerUtils = require('../utils/controllerUtils')
 
 
 async function getGenderChart (req, res) {
@@ -19,6 +20,36 @@ async function getGenderChart (req, res) {
     }))
   } catch(e) {
     console.log(e.message)
+    res.statusCode = 500
+    res.setHeader('Content-Type', 'text/html')
+    res.write('Internal server error')
+  }
+}
+
+async function getQuestionChartData (req, res) {
+  try {
+    var body = await controllerUtils.toStringChunk(req);
+    var data = JSON.parse(body);
+    var query = {}
+    query[data.questionId] = "1.0"
+    var result_1 = await db.count(query);
+    query[data.questionId] = "2.0"
+    var result_2 = await db.count(query);
+    query[data.questionId] = "3.0"
+    var result_3 = await db.count(query);
+    query[data.questionId] = "4.0"
+    var result_4 = await db.count(query);
+    
+    res.setHeader('Content-Type', 'application/json')
+    res.write(JSON.stringify({
+      result1 : result_1,
+      result2 : result_2,
+      result3 : result_3,
+      result4 : result_4
+    }))
+
+  } catch (e) {
+    console.log(e)
     res.statusCode = 500
     res.setHeader('Content-Type', 'text/html')
     res.write('Internal server error')
@@ -68,17 +99,17 @@ function getCSS (req, res) {
 }
 
 function getSVG(req, res) {
-    try {
-      let svg = fs.readFileSync('views' + req.url)
-      res.statusCode = 200
-      res.setHeader('Content-Type', 'image/svg+xml')
-      res.write(svg)
-    } catch (e) {
-      console.log(e)
-      res.statusCode = 500
-      res.setHeader('Content-Type', 'text/html')
-      res.write('Internal server error')
-    }
+  try {
+    let svg = fs.readFileSync('views' + req.url)
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'image/svg+xml')
+    res.write(svg)
+  } catch (e) {
+    console.log(e)
+    res.statusCode = 500
+    res.setHeader('Content-Type', 'text/html')
+    res.write('Internal server error')
+  }
 }
 
-module.exports = { getChartHTML, getCustomStatsHTML, getCSS, getSVG, getGenderChart }
+module.exports = { getChartHTML, getCustomStatsHTML, getCSS, getSVG, getGenderChart, getQuestionChartData }
