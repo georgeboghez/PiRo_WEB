@@ -52,6 +52,14 @@ p2 {
   resize: vertical;
 }
 
+#chart-title {
+  font-size: 20px;
+  font-family: sans-serif;
+  /*padding-top: 1%;*/
+  /*padding-bottom: 2%;*/
+  text-align: center;
+}
+
 .custom-stats-image-grid {
     display: grid;
 	grid-template-columns: auto;
