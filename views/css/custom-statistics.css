@@ -60,6 +60,12 @@ p2 {
   text-align: center;
 }
 
+.ct-label {
+  color: white;
+  font-size: 12px !important;
+  font-weight: bold !important;
+}
+
 .custom-stats-image-grid {
     display: grid;
 	grid-template-columns: auto;

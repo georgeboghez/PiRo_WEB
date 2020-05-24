@@ -25,121 +25,34 @@
 			xhttp.open("GET", "/chart-institutional", true);
 			xhttp.send();
 		}
+
 		function myFunction() {
 			document.getElementById("myDropdown").classList.toggle("show");
 		}
 
-		var questions = '{"ST123Q02NA": "Thinking about 2018: My parents support my educational efforts and achievements.", "ST123Q03NA": "Thinking about 2018: My parents support me when I am facing difficulties at school.", "ST123Q04NA": "Thinking about 2018: My parents encourage me to be confident.", "ST186Q10HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Miserable", "ST186Q09HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Proud", "ST186Q08HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Sad", "ST186Q07HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Lively", "ST186Q06HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Scared", "ST186Q05HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Happy", "ST186Q03HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Cheerful", "ST186Q02HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Afraid", "ST186Q01HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Joyful"}'
-		var Questions = JSON.parse(questions)
-		function pickCategory() {
-
-			let trust_selected = `
-			<label for="type">Statistics Type</label>
-			<select id="type" onchange="changeStats()">
-			<option value="select-option">Select Statistics Type</option>
-			<option value="specific-questions" selected>Specific Questions</option>
-			<option value="county">County</option>
-			<option value="institutional">Institutional</option>
-			<option value="random">Random</option>
-			</select>
-			<label for="category">Category</label>
-			<select id="category" onchange="pickCategory()">
-			<option value="select-category">Select Category</option>
-			<option value="feelings">Feelings</option>
-			<option value="trust" selected>Trust</option>
-			</select>
-			<label for="question">Question</label>
-			<select id="question">`+
-			'<option value="ST123Q02NA">'+Questions["ST123Q02NA"]+'</option>'+
-			'<option value="ST123Q03NA">'+Questions["ST123Q03NA"]+'</option>'+
-			'<option value="ST123Q04NA">'+Questions["ST123Q04NA"]+'</option>'+
-			`</select>
-
-			<button class="button gen-button" onclick="generateByQuestion()"> Generate </button>
-			</div>`;
-
-			let feelings_selected = `
-			<label for="type">Statistics Type</label>
-			<select id="type" onchange="changeStats()">
-			<option value="select-option">Select Statistics Type</option>
-			<option value="specific-questions" selected>Specific Questions</option>
-			<option value="county">County</option>
-			<option value="institutional">Institutional</option>
-			<option value="random">Random</option>
-			</select>
-			<label for="category">Category</label>
-			<select id="category" onchange="pickCategory()">
-			<option value="select-category">Select Category</option>
-			<option value="feelings" selected>Feelings</option>
-			<option value="trust">Trust</option>
-			</select>
-			<label for="question">Question</label>
-			<select id="question">` +
-					'<option value="ST186Q05HA">'+Questions["ST186Q05HA"]+'</option>'+
-					'<option value="ST186Q06HA">'+Questions["ST186Q06HA"]+'</option>'+
-					'<option value="ST186Q07HA">'+Questions["ST186Q07HA"]+'</option>'+
-					'<option value="ST186Q10HA">'+Questions["ST186Q10HA"]+'</option>'+
-					'<option value="ST186Q09HA">'+Questions["ST186Q09HA"]+'</option>'+
-					'<option value="ST186Q02HA">'+Questions["ST186Q02HA"]+'</option>'+
-					'<option value="ST186Q01HA">'+Questions["ST186Q01HA"]+'</option>'+
-					'<option value="ST186Q08HA">'+Questions["ST186Q08HA"]+'</option>'+
-					'<option value="ST186Q03HA">'+Questions["ST186Q03HA"]+'</option>'+
-			`</select>
-
-			<button class="button gen-button" onclick="generateByQuestion()"> Generate </button>
-			</div>`;
-
-			var selectBox = document.getElementById("category");
-			var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-
-			if (selectedValue === "trust") {
-				document.getElementById("stats").innerHTML = trust_selected
-			}
-			else if (selectedValue === "feelings") {
-				document.getElementById("stats").innerHTML = feelings_selected
-			}
-
-		}
-
-		function generateByQuestion() {
-			var selectBox = document.getElementById("question");
-			var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					resultData = JSON.parse(this.responseText)
-
-					var data = {
-						//labels: [1, 2, 3, 4],
-						labels: ['Very Rarely ('+resultData["result1"]+')', 'Rarely ('+resultData["result2"]+')', 'Often ('+resultData["result3"]+')', 'Very Often ('+resultData["result4"]+')'],
-						series: [ [resultData["result1"], resultData["result2"], resultData["result3"], resultData["result4"]] ]
-					};
-					var options = {
-						seriesBarDistance: 5,
-						showLabel: true
-					};
-					var chart = new Chartist.Bar('.ct-chart', data, options);
-					//document.getElementById("chart-title").innerHTML = JSON.stringify(Questions[selectedValue]);
-					document.getElementById("chart-title").innerHTML = Questions[selectedValue];
-				}
-			};
-			xhttp.open("POST", "/question-chart", true);
-			xhttp.send(JSON.stringify({ questionId: selectedValue }));
-		}
-
 		function changeStats() {
+
+			let nothing_selected = `
+			<label for="type">Statistics Type</label>
+			<select id="type" onchange="changeStats()">
+			<option value="select-option" selected>Select Statistics Type</option>
+			<option value="specific-questions">Specific Questions</option>
+			<option value="county">County</option>
+			<option value="institutional">Institutional</option>
+			<option value="random">Random</option>
+			</select>`;
 
 			let random_selected = `
 			<label for="type">Statistics Type</label>
-			<select id="type" onchange="randomStats()">
-			<option value="national">National</option>
+			<select id="type" onchange="changeStats()">
+			<option value="select-option">Select Statistics Type</option>
+			<option value="specific-questions">Specific Questions</option>
 			<option value="county">County</option>
 			<option value="institutional">Institutional</option>
-			<option selected="random" selected>Random</option>
+			<option value="random" selected>Random</option>
 			</select>
 
-			<button class="button gen-button" onclick="generateByQuestion()"> Generate </button>
+			<button class="button gen-button" onclick="randomStats()"> Generate </button>
 			</div>`;
 
 			let specific_questions_selected = `
@@ -163,11 +76,162 @@
 			var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 
 			if (selectedValue === "random") {
-				document.getElementById("stats").innerHTML = random_selected
+				document.getElementById("stats").innerHTML = random_selected;
 			}
 			else if(selectedValue === "specific-questions") {
 				document.getElementById("stats").innerHTML = specific_questions_selected;
 			}
+			else if(selectedValue === "select-option") {
+				var data = {
+					// A labels array that can contain any sort of values
+					labels: [1, 2, 3, 4],
+					// Our series array that contains series objects or in this case series data arrays
+					series: [
+						[]
+					]
+				};
+
+				// Create a new line chart object where as first parameter we pass in a selector
+				// that is resolving to our chart container element. The Second parameter
+				// is the actual data object.
+				new Chartist.Line('.ct-chart', data);
+				document.getElementById("stats").innerHTML = nothing_selected;
+				document.getElementById("chart-title").innerHTML = "Empty Chart";
+			}
+		}
+
+		function pickCategory() {
+
+			const Questions = {"ST123Q02NA": "Thinking about 2018: My parents support my educational efforts and achievements.", "ST123Q03NA": "Thinking about 2018: My parents support me when I am facing difficulties at school.", "ST123Q04NA": "Thinking about 2018: My parents encourage me to be confident.", "ST186Q10HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Miserable", "ST186Q09HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Proud", "ST186Q08HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Sad", "ST186Q07HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Lively", "ST186Q06HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Scared", "ST186Q05HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Happy", "ST186Q03HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Cheerful", "ST186Q02HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Afraid", "ST186Q01HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Joyful"}
+
+			nothing_selected = `
+			<label for="type">Statistics Type</label>
+			<select id="type" onchange="changeStats()">
+			<option value="select-option">Select Statistics Type</option>
+			<option value="specific-questions" selected>Specific Questions</option>
+			<option value="county">County</option>
+			<option value="institutional">Institutional</option>
+			<option value="random">Random</option>
+			</select>
+			<label for="category">Category</label>
+			<select id="category" onchange="pickCategory()">
+			<option value="select-category" selected>Select Category</option>
+			<option value="feelings">Feelings</option>
+			<option value="trust">Trust</option>
+			</select>`
+
+			let trust_selected = `
+			<label for="type">Statistics Type</label>
+			<select id="type" onchange="changeStats()">
+			<option value="select-option">Select Statistics Type</option>
+			<option value="specific-questions" selected>Specific Questions</option>
+			<option value="county">County</option>
+			<option value="institutional">Institutional</option>
+			<option value="random">Random</option>
+			</select>
+			<label for="category">Category</label>
+			<select id="category" onchange="pickCategory()">
+			<option value="select-category">Select Category</option>
+			<option value="feelings">Feelings</option>
+			<option value="trust" selected>Trust</option>
+			</select>
+			<label for="question">Question</label>
+			<select id="question">
+			<option value="ST123Q02NA">${Questions["ST123Q02NA"]}</option>
+			<option value="ST123Q03NA">${Questions["ST123Q03NA"]}</option>
+			<option value="ST123Q04NA">${Questions["ST123Q04NA"]}</option>
+			</select>
+
+			<button class="button gen-button" onclick="generateByQuestion()"> Generate </button>
+			</div>`;
+
+			let feelings_selected = `
+			<label for="type">Statistics Type</label>
+			<select id="type" onchange="changeStats()">
+			<option value="select-option">Select Statistics Type</option>
+			<option value="specific-questions" selected>Specific Questions</option>
+			<option value="county">County</option>
+			<option value="institutional">Institutional</option>
+			<option value="random">Random</option>
+			</select>
+			<label for="category">Category</label>
+			<select id="category" onchange="pickCategory()">
+			<option value="select-category">Select Category</option>
+			<option value="feelings" selected>Feelings</option>
+			<option value="trust">Trust</option>
+			</select>
+			<label for="question">Question</label>
+			<select id="question">
+					<option value="ST186Q05HA">${Questions["ST186Q05HA"]}</option>
+					<option value="ST186Q06HA">${Questions["ST186Q06HA"]}</option>
+					<option value="ST186Q07HA">${Questions["ST186Q07HA"]}</option>
+					<option value="ST186Q10HA">${Questions["ST186Q10HA"]}</option>
+					<option value="ST186Q09HA">${Questions["ST186Q09HA"]}</option>
+					<option value="ST186Q02HA">${Questions["ST186Q02HA"]}</option>
+					<option value="ST186Q01HA">${Questions["ST186Q01HA"]}</option>
+					<option value="ST186Q08HA">${Questions["ST186Q08HA"]}</option>
+					<option value="ST186Q03HA">${Questions["ST186Q03HA"]}</option>
+			</select>
+
+			<button class="button gen-button" onclick="generateByQuestion()"> Generate </button>
+			</div>`;
+
+			var selectBox = document.getElementById("category");
+			var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+			if (selectedValue === "trust") {
+				document.getElementById("stats").innerHTML = trust_selected;
+			}
+			else if (selectedValue === "feelings") {
+				document.getElementById("stats").innerHTML = feelings_selected;
+			}
+			else if(selectedValue === "select-category") {
+				document.getElementById("stats").innerHTML = nothing_selected;
+			}
+
+		}
+
+		function generateByQuestion() {
+			var selectBox = document.getElementById("question");
+			var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+			var selectedOption = selectBox.options[selectBox.selectedIndex].text;
+
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					resultData = JSON.parse(this.responseText)
+					console.log(resultData["result1"], resultData["result2"], resultData["result3"], resultData["result4"])
+					var data = {
+						//labels: [1, 2, 3, 4],
+						labels: [ resultData["result1"], resultData["result2"], resultData["result3"], resultData["result4"] ],
+						series: [ resultData["result1"], resultData["result2"], resultData["result3"], resultData["result4"] ]
+					};
+					var options = {
+						seriesBarDistance: 5,
+						showLabel: true
+					};
+
+					var sum = function(a, b) { return a + b };
+
+					var chart = new Chartist.Pie('.ct-chart', data,  {
+						labelInterpolationFnc: function(value) {
+							if(resultData["result1"] == value) {
+								return 'Very Rarely (' + Math.round(value / data.series.reduce(sum) * 100) + '%)';
+							} else if(resultData["result2"] == value) {
+								return 'Rarely (' + Math.round(value / data.series.reduce(sum) * 100) + '%)';
+							} else if(resultData["result3"] == value) {
+								return 'Often (' + Math.round(value / data.series.reduce(sum) * 100) + '%)';
+							} else if(resultData["result4"] == value) {
+								return 'Very Often (' + Math.round(value / data.series.reduce(sum) * 100) + '%)';
+							}
+						}
+					});
+					//document.getElementById("chart-title").innerHTML = JSON.stringify(Questions[selectedValue]);
+					document.getElementById("chart-title").innerHTML = selectedOption;
+				}
+			};
+			xhttp.open("POST", "/question-chart", true);
+			xhttp.send(JSON.stringify({ questionId: selectedValue }));
 		}
 
 		function generateChart() {
@@ -276,8 +340,8 @@
 				</div>
 				
 				<div class="custom-stats-image-grid">
-					<p id="chart-title"></p>
-					<div class="ct-chart ct-perfect-fourth" id="stats-chart">
+					<p id="chart-title">Empty Chart</p>
+					<div class="ct-chart ct-perfect-fourth ct-label" id="stats-chart">
 						<script>
 
 							//This is the empty chart.
