@@ -10,6 +10,7 @@ router.get('/css/custom-statistics.css', statisticsController.getCSS)
 router.get('/assets/img/graph.png', statisticsController.getSVG)
 router.get('/chart-gender', statisticsController.getGenderChart)
 router.post('/question-chart', statisticsController.getQuestionChartData)
+router.get('/get-institutions',statisticsController.getInstitutions)
 
 
 

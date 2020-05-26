@@ -6,6 +6,23 @@ const generate = require('node-chartist');
 const controllerUtils = require('../utils/controllerUtils')
 
 
+async function getInstitutions (req,res) {
+  try {
+    res.writeHead(200, {"Content-Type": "application/json"});
+
+    var institutions   = await db.distinct("CNTSCHID");
+    res.write(JSON.stringify({
+      type: true,
+      institutions: institutions,
+    }))
+  } catch(e) {
+    console.log(e.message)
+    res.statusCode = 500
+    res.setHeader('Content-Type', 'text/html')
+    res.write('Internal server error')
+  }
+}
+
 async function getGenderChart (req, res) {
   try {
     res.writeHead(200, {"Content-Type": "application/json"});
@@ -39,7 +56,7 @@ async function getQuestionChartData (req, res) {
     var result_3 = await db.count(query);
     query[data.questionId] = "4.0"
     var result_4 = await db.count(query);
-    
+
     res.setHeader('Content-Type', 'application/json')
     res.write(JSON.stringify({
       result1 : result_1,
@@ -112,4 +129,4 @@ function getSVG(req, res) {
   }
 }
 
-module.exports = { getChartHTML, getCustomStatsHTML, getCSS, getSVG, getGenderChart, getQuestionChartData }
+module.exports = { getChartHTML, getCustomStatsHTML, getCSS, getSVG, getGenderChart, getQuestionChartData, getInstitutions }

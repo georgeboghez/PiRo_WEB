@@ -51,6 +51,21 @@ module.exports = {
     } //finally {
     //   client.close();
     // }
+  },
+  distinct: async (field) => {
+    try {
+      if(!client) {
+        client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+      }
+      if(!db) {
+        db = client.db(dbName);
+      }
+      return db.collection(collName).distinct(field)
+    }catch(err) {
+      throw err;
+    } //finally {
+    //   client.close();
+    // }
   }
 
 }
