@@ -6,6 +6,7 @@ const generate = require('node-chartist');
 const controllerUtils = require('../utils/controllerUtils')
 
 
+
 async function getInstitutions (req,res) {
   try {
     res.writeHead(200, {"Content-Type": "application/json"});
@@ -37,6 +38,62 @@ async function getGenderChart (req, res) {
     }))
   } catch(e) {
     console.log(e.message)
+    res.statusCode = 500
+    res.setHeader('Content-Type', 'text/html')
+    res.write('Internal server error')
+  }
+}
+
+
+async function getInstGenderChart (req, res) {
+  try {
+    var body = await controllerUtils.toStringChunk(req);
+    var data = JSON.parse(body);
+    var query = {CNTSCHID:data["institutionID"],ST004D01T : "1.0"}
+    var maleCount = await db.count(query)
+    query = {CNTSCHID:data["institutionID"],ST004D01T : "2.0"}
+    var femaleCount = await db.count(query)
+    res.setHeader('Content-Type', 'application/json')
+    res.write(JSON.stringify({
+      male : maleCount,
+      female : femaleCount,
+    }))
+
+  } catch (e) {
+    console.log(e)
+    res.statusCode = 500
+    res.setHeader('Content-Type', 'text/html')
+    res.write('Internal server error')
+  }
+}
+
+async function getInstQuestionChart (req, res) {
+  try {
+    var body = await controllerUtils.toStringChunk(req);
+    var data = JSON.parse(body);
+    var query = {}
+    query[data.questionID] = "1.0"
+    query['CNTSCHID'] = data['institutionID']
+    var result_1 = await db.count(query);
+    query[data.questionID] = "2.0"
+    query['CNTSCHID'] = data['institutionID']
+    var result_2 = await db.count(query);
+    query[data.questionID] = "3.0"
+    query['CNTSCHID'] = data['institutionID']
+    var result_3 = await db.count(query);
+    query[data.questionID] = "4.0"
+    query['CNTSCHID'] = data['institutionID']
+    var result_4 = await db.count(query);
+    console.log(data['institutionID']);
+    res.setHeader('Content-Type', 'application/json')
+    res.write(JSON.stringify({
+      result1 : result_1,
+      result2 : result_2,
+      result3 : result_3,
+      result4 : result_4,
+    }))
+  } catch (e) {
+    console.log(e)
     res.statusCode = 500
     res.setHeader('Content-Type', 'text/html')
     res.write('Internal server error')
@@ -129,4 +186,4 @@ function getSVG(req, res) {
   }
 }
 
-module.exports = { getChartHTML, getCustomStatsHTML, getCSS, getSVG, getGenderChart, getQuestionChartData, getInstitutions }
+module.exports = { getChartHTML, getCustomStatsHTML, getCSS, getSVG, getGenderChart, getQuestionChartData, getInstitutions, getInstGenderChart, getInstQuestionChart }
