@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Pagina mea</title>
-	<link href="css/custom-statistics.css" rel="stylesheet">
-	<link href="css/header.css" rel="stylesheet">
-	<link href="css/footer.css" rel="stylesheet">
-	<link href="css/page-content.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
-	<script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script type="text/javascript">
-		function changeFunc() {
-			var selectBox = document.getElementById("type");
-			var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-			alert(selectedValue);
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					document.getElementById("demo").innerHTML = this.responseText;
-				}
-			};
-			xhttp.open("GET", "/chart-institutional", true);
-			xhttp.send();
-		}
+    <meta charset="utf-8">
+    <title>Pagina mea</title>
+    <link href="css/custom-statistics.css" rel="stylesheet">
+    <link href="css/header.css" rel="stylesheet">
+    <link href="css/footer.css" rel="stylesheet">
+    <link href="css/page-content.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript">
+        function changeFunc() {
+            var selectBox = document.getElementById("type");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            alert(selectedValue);
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("demo").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "/chart-institutional", true);
+            xhttp.send();
+        }
 
-		function myFunction() {
-			document.getElementById("myDropdown").classList.toggle("show");
-		}
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
 
-		function changeStats() {
-			const INSTITUTIONS=["6.4200029E7","6.4200103E7","6.4200031E7","6.4200146E7","6.4200116E7","6.4200056E7","6.4200139E7","6.4200147E7","6.4200161E7","6.4200054E7","6.4200145E7","6.4200156E7","6.4200073E7","6.4200153E7","6.4200059E7","6.4200039E7","6.4200081E7","6.4200128E7","6.4200131E7","6.420013E7","6.4200046E7","6.4200157E7","6.4200094E7","6.4200134E7","6.4200165E7","6.4200015E7","6.4200011E7","6.4200126E7","6.4200155E7","6.42001E7","6.4200078E7","6.4200089E7","6.4200104E7","6.4200044E7","6.4200079E7","6.4200047E7","6.420002E7","6.4200049E7","6.4200057E7","6.4200119E7","6.4200167E7","6.4200061E7","6.4200151E7","6.4200032E7","6.4200042E7","6.4200082E7","6.4200088E7","6.4200037E7","6.4200109E7","6.4200023E7","6.4200006E7","6.4200117E7","6.4200115E7","6.4200028E7","6.4200137E7","6.4200008E7","6.4200083E7","6.4200012E7","6.4200005E7","6.4200123E7","6.4200038E7","6.4200068E7","6.420001E7","6.4200098E7","6.420011E7","6.4200036E7","6.4200135E7","6.4200018E7","6.4200076E7","6.4200105E7","6.420015E7","6.4200169E7","6.4200097E7","6.4200106E7","6.4200051E7","6.4200136E7","6.4200065E7","6.4200168E7","6.4200112E7","6.4200102E7","6.4200052E7","6.4200113E7","6.4200085E7","6.4200062E7","6.4200013E7","6.4200162E7","6.420004E7","6.4200053E7","6.4200164E7","6.4200108E7","6.4200121E7","6.420016E7","6.4200021E7","6.4200093E7","6.4200019E7","6.4200086E7","6.4200154E7","6.4200127E7","6.4200149E7","6.4200152E7","6.4200141E7","6.4200118E7","6.4200072E7","6.4200144E7","6.4200092E7","6.4200017E7","6.4200101E7","6.420012E7","6.4200009E7","6.4200014E7","6.4200171E7","6.420009E7","6.4200129E7","6.4200071E7","6.4200026E7","6.4200045E7","6.4200035E7","6.4200069E7","6.4200075E7","6.4200099E7","6.4200022E7","6.4200064E7","6.4200024E7","6.4200058E7","6.4200041E7","6.4200034E7","6.4200159E7","6.4200091E7","6.4200025E7","6.4200166E7","6.4200143E7","6.420003E7","6.420005E7","6.4200033E7","6.4200063E7","6.4200084E7","6.4200138E7","6.4200124E7","6.4200114E7","6.420014E7","6.420008E7"]
+        function changeStats() {
+            const INSTITUTIONS = ["6.4200029E7", "6.4200103E7", "6.4200031E7", "6.4200146E7", "6.4200116E7", "6.4200056E7", "6.4200139E7", "6.4200147E7", "6.4200161E7", "6.4200054E7", "6.4200145E7", "6.4200156E7", "6.4200073E7", "6.4200153E7", "6.4200059E7", "6.4200039E7", "6.4200081E7", "6.4200128E7", "6.4200131E7", "6.420013E7", "6.4200046E7", "6.4200157E7", "6.4200094E7", "6.4200134E7", "6.4200165E7", "6.4200015E7", "6.4200011E7", "6.4200126E7", "6.4200155E7", "6.42001E7", "6.4200078E7", "6.4200089E7", "6.4200104E7", "6.4200044E7", "6.4200079E7", "6.4200047E7", "6.420002E7", "6.4200049E7", "6.4200057E7", "6.4200119E7", "6.4200167E7", "6.4200061E7", "6.4200151E7", "6.4200032E7", "6.4200042E7", "6.4200082E7", "6.4200088E7", "6.4200037E7", "6.4200109E7", "6.4200023E7", "6.4200006E7", "6.4200117E7", "6.4200115E7", "6.4200028E7", "6.4200137E7", "6.4200008E7", "6.4200083E7", "6.4200012E7", "6.4200005E7", "6.4200123E7", "6.4200038E7", "6.4200068E7", "6.420001E7", "6.4200098E7", "6.420011E7", "6.4200036E7", "6.4200135E7", "6.4200018E7", "6.4200076E7", "6.4200105E7", "6.420015E7", "6.4200169E7", "6.4200097E7", "6.4200106E7", "6.4200051E7", "6.4200136E7", "6.4200065E7", "6.4200168E7", "6.4200112E7", "6.4200102E7", "6.4200052E7", "6.4200113E7", "6.4200085E7", "6.4200062E7", "6.4200013E7", "6.4200162E7", "6.420004E7", "6.4200053E7", "6.4200164E7", "6.4200108E7", "6.4200121E7", "6.420016E7", "6.4200021E7", "6.4200093E7", "6.4200019E7", "6.4200086E7", "6.4200154E7", "6.4200127E7", "6.4200149E7", "6.4200152E7", "6.4200141E7", "6.4200118E7", "6.4200072E7", "6.4200144E7", "6.4200092E7", "6.4200017E7", "6.4200101E7", "6.420012E7", "6.4200009E7", "6.4200014E7", "6.4200171E7", "6.420009E7", "6.4200129E7", "6.4200071E7", "6.4200026E7", "6.4200045E7", "6.4200035E7", "6.4200069E7", "6.4200075E7", "6.4200099E7", "6.4200022E7", "6.4200064E7", "6.4200024E7", "6.4200058E7", "6.4200041E7", "6.4200034E7", "6.4200159E7", "6.4200091E7", "6.4200025E7", "6.4200166E7", "6.4200143E7", "6.420003E7", "6.420005E7", "6.4200033E7", "6.4200063E7", "6.4200084E7", "6.4200138E7", "6.4200124E7", "6.4200114E7", "6.420014E7", "6.420008E7"]
 
-			let nothing_selected = `
+            let nothing_selected = `
 			<label for="type">Statistics Type</label>
 			<select id="type" onchange="changeStats()">
 			<option value="select-option" selected>Select Statistics Type</option>
@@ -42,7 +42,7 @@
 			<option value="random">Random</option>
 			</select>`;
 
-			let random_selected = `
+            let random_selected = `
 			<label for="type">Statistics Type</label>
 			<select id="type" onchange="changeStats()">
 			<option value="select-option">Select Statistics Type</option>
@@ -54,7 +54,7 @@
 			<button class="button gen-button" onclick="randomStats()"> Generate </button>
 			</div>`;
 
-			let specific_questions_selected = `
+            let specific_questions_selected = `
 			<label for="type">Statistics Type</label>
 			<select id="type" onchange="changeStats()">
 			<option value="select-option">Select Statistics Type</option>
@@ -70,7 +70,7 @@
 			<option value="trust">Trust</option>
 			</select>`;
 
-			var institutional_selected = `
+            var institutional_selected = `
 			<label for="type">Statistics Type</label>
 			<select id="type" onchange="changeStats()">
 			<option value="select-option">Select Statistics Type</option>
@@ -84,12 +84,12 @@
 			<option value="select-Institution" selected>Select Institution</option>
 			`
 
-			for (var i = 0; i < INSTITUTIONS.length; i++) {
-				institutional_selected += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
-			}
-			institutional_selected +=	'</select>';
+            for (var i = 0; i < INSTITUTIONS.length; i++) {
+                institutional_selected += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
+            }
+            institutional_selected += '</select>';
 
-			var institution_chosen = `
+            var institution_chosen = `
 			<label for="type">Statistics Type</label>
 			<select id="type" onchange="changeStats()">
 			<option value="select-option">Select Statistics Type</option>
@@ -103,45 +103,43 @@
 			<option value="select-Institution">Select Institution</option>
 			`
 
-			for (var i = 0; i < INSTITUTIONS.length; i++) {
-				institution_chosen+= '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
-			}
-			institution_chosen +=	'</select>'
+            for (var i = 0; i < INSTITUTIONS.length; i++) {
+                institution_chosen += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
+            }
+            institution_chosen += '</select>'
 
-			var selectBox = document.getElementById("type");
-			var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            var selectBox = document.getElementById("type");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 
-			if (selectedValue === "random") {
-				document.getElementById("stats").innerHTML = random_selected;
-			}
-			else if(selectedValue === "specific-questions") {
-				document.getElementById("stats").innerHTML = specific_questions_selected;
-			}
-			else if(selectedValue === "institutional"){
-				document.getElementById("stats").innerHTML = institutional_selected;
-			}
-			else if(selectedValue === "select-option") {
-				var data = {
-					// A labels array that can contain any sort of values
-					labels: [1, 2, 3, 4],
-					// Our series array that contains series objects or in this case series data arrays
-					series: [
-						[]
-					]
-				};
+            if (selectedValue === "random") {
+                document.getElementById("stats").innerHTML = random_selected;
+            } else if (selectedValue === "specific-questions") {
+                document.getElementById("stats").innerHTML = specific_questions_selected;
+            } else if (selectedValue === "institutional") {
+                document.getElementById("stats").innerHTML = institutional_selected;
+            } else if (selectedValue === "select-option") {
+                var data = {
+                    // A labels array that can contain any sort of values
+                    labels: [1, 2, 3, 4],
+                    // Our series array that contains series objects or in this case series data arrays
+                    series: [
+                        []
+                    ]
+                };
 
-				// Create a new line chart object where as first parameter we pass in a selector
-				// that is resolving to our chart container element. The Second parameter
-				// is the actual data object.
-				new Chartist.Line('.ct-chart', data);
-				document.getElementById("stats").innerHTML = nothing_selected;
-				document.getElementById("chart-title").innerHTML = "Empty Chart";
-			}
-		}
-		function pickInstitution() {
-			const INSTITUTIONS=["6.4200029E7","6.4200103E7","6.4200031E7","6.4200146E7","6.4200116E7","6.4200056E7","6.4200139E7","6.4200147E7","6.4200161E7","6.4200054E7","6.4200145E7","6.4200156E7","6.4200073E7","6.4200153E7","6.4200059E7","6.4200039E7","6.4200081E7","6.4200128E7","6.4200131E7","6.420013E7","6.4200046E7","6.4200157E7","6.4200094E7","6.4200134E7","6.4200165E7","6.4200015E7","6.4200011E7","6.4200126E7","6.4200155E7","6.42001E7","6.4200078E7","6.4200089E7","6.4200104E7","6.4200044E7","6.4200079E7","6.4200047E7","6.420002E7","6.4200049E7","6.4200057E7","6.4200119E7","6.4200167E7","6.4200061E7","6.4200151E7","6.4200032E7","6.4200042E7","6.4200082E7","6.4200088E7","6.4200037E7","6.4200109E7","6.4200023E7","6.4200006E7","6.4200117E7","6.4200115E7","6.4200028E7","6.4200137E7","6.4200008E7","6.4200083E7","6.4200012E7","6.4200005E7","6.4200123E7","6.4200038E7","6.4200068E7","6.420001E7","6.4200098E7","6.420011E7","6.4200036E7","6.4200135E7","6.4200018E7","6.4200076E7","6.4200105E7","6.420015E7","6.4200169E7","6.4200097E7","6.4200106E7","6.4200051E7","6.4200136E7","6.4200065E7","6.4200168E7","6.4200112E7","6.4200102E7","6.4200052E7","6.4200113E7","6.4200085E7","6.4200062E7","6.4200013E7","6.4200162E7","6.420004E7","6.4200053E7","6.4200164E7","6.4200108E7","6.4200121E7","6.420016E7","6.4200021E7","6.4200093E7","6.4200019E7","6.4200086E7","6.4200154E7","6.4200127E7","6.4200149E7","6.4200152E7","6.4200141E7","6.4200118E7","6.4200072E7","6.4200144E7","6.4200092E7","6.4200017E7","6.4200101E7","6.420012E7","6.4200009E7","6.4200014E7","6.4200171E7","6.420009E7","6.4200129E7","6.4200071E7","6.4200026E7","6.4200045E7","6.4200035E7","6.4200069E7","6.4200075E7","6.4200099E7","6.4200022E7","6.4200064E7","6.4200024E7","6.4200058E7","6.4200041E7","6.4200034E7","6.4200159E7","6.4200091E7","6.4200025E7","6.4200166E7","6.4200143E7","6.420003E7","6.420005E7","6.4200033E7","6.4200063E7","6.4200084E7","6.4200138E7","6.4200124E7","6.4200114E7","6.420014E7","6.420008E7"]
+                // Create a new line chart object where as first parameter we pass in a selector
+                // that is resolving to our chart container element. The Second parameter
+                // is the actual data object.
+                new Chartist.Line('.ct-chart', data);
+                document.getElementById("stats").innerHTML = nothing_selected;
+                document.getElementById("chart-title").innerHTML = "Empty Chart";
+            }
+        }
 
-			var institution_chosen = `
+        function pickInstitution() {
+            const INSTITUTIONS = ["6.4200029E7", "6.4200103E7", "6.4200031E7", "6.4200146E7", "6.4200116E7", "6.4200056E7", "6.4200139E7", "6.4200147E7", "6.4200161E7", "6.4200054E7", "6.4200145E7", "6.4200156E7", "6.4200073E7", "6.4200153E7", "6.4200059E7", "6.4200039E7", "6.4200081E7", "6.4200128E7", "6.4200131E7", "6.420013E7", "6.4200046E7", "6.4200157E7", "6.4200094E7", "6.4200134E7", "6.4200165E7", "6.4200015E7", "6.4200011E7", "6.4200126E7", "6.4200155E7", "6.42001E7", "6.4200078E7", "6.4200089E7", "6.4200104E7", "6.4200044E7", "6.4200079E7", "6.4200047E7", "6.420002E7", "6.4200049E7", "6.4200057E7", "6.4200119E7", "6.4200167E7", "6.4200061E7", "6.4200151E7", "6.4200032E7", "6.4200042E7", "6.4200082E7", "6.4200088E7", "6.4200037E7", "6.4200109E7", "6.4200023E7", "6.4200006E7", "6.4200117E7", "6.4200115E7", "6.4200028E7", "6.4200137E7", "6.4200008E7", "6.4200083E7", "6.4200012E7", "6.4200005E7", "6.4200123E7", "6.4200038E7", "6.4200068E7", "6.420001E7", "6.4200098E7", "6.420011E7", "6.4200036E7", "6.4200135E7", "6.4200018E7", "6.4200076E7", "6.4200105E7", "6.420015E7", "6.4200169E7", "6.4200097E7", "6.4200106E7", "6.4200051E7", "6.4200136E7", "6.4200065E7", "6.4200168E7", "6.4200112E7", "6.4200102E7", "6.4200052E7", "6.4200113E7", "6.4200085E7", "6.4200062E7", "6.4200013E7", "6.4200162E7", "6.420004E7", "6.4200053E7", "6.4200164E7", "6.4200108E7", "6.4200121E7", "6.420016E7", "6.4200021E7", "6.4200093E7", "6.4200019E7", "6.4200086E7", "6.4200154E7", "6.4200127E7", "6.4200149E7", "6.4200152E7", "6.4200141E7", "6.4200118E7", "6.4200072E7", "6.4200144E7", "6.4200092E7", "6.4200017E7", "6.4200101E7", "6.420012E7", "6.4200009E7", "6.4200014E7", "6.4200171E7", "6.420009E7", "6.4200129E7", "6.4200071E7", "6.4200026E7", "6.4200045E7", "6.4200035E7", "6.4200069E7", "6.4200075E7", "6.4200099E7", "6.4200022E7", "6.4200064E7", "6.4200024E7", "6.4200058E7", "6.4200041E7", "6.4200034E7", "6.4200159E7", "6.4200091E7", "6.4200025E7", "6.4200166E7", "6.4200143E7", "6.420003E7", "6.420005E7", "6.4200033E7", "6.4200063E7", "6.4200084E7", "6.4200138E7", "6.4200124E7", "6.4200114E7", "6.420014E7", "6.420008E7"]
+
+            var institution_chosen = `
 			<label for="type">Statistics Type</label>
 			<select id="type" onchange="changeStats()">
 			<option value="select-option">Select Statistics Type</option>
@@ -154,37 +152,47 @@
 			<select id="institution" onchange="pickInstitution()">
 			<option value="select-Institution">Select Institution</option>
 			`
-			var selectBox2 = document.getElementById("institution");
-			var selectedValue2 = selectBox2.options[selectBox2.selectedIndex].value;
-			var selectBoxInst = selectBox2.options[selectBox2.selectedIndex].text;
-			for (var i = 0; i < INSTITUTIONS.length; i++) {
-					if (INSTITUTIONS[i] == selectBoxInst)
-					{
-						institution_chosen += '<option value = "' + INSTITUTIONS[i] + '" selected>' + INSTITUTIONS[i] + '</option>';
-					}
-					else
-					{
-						institution_chosen+= '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
-					}
-			}
-			institution_chosen +=	'</select>' + `
+            var selectBox2 = document.getElementById("institution");
+            var selectedValue2 = selectBox2.options[selectBox2.selectedIndex].value;
+            var selectBoxInst = selectBox2.options[selectBox2.selectedIndex].text;
+            for (var i = 0; i < INSTITUTIONS.length; i++) {
+                if (INSTITUTIONS[i] == selectBoxInst) {
+                    institution_chosen += '<option value = "' + INSTITUTIONS[i] + '" selected>' + INSTITUTIONS[i] + '</option>';
+                } else {
+                    institution_chosen += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
+                }
+            }
+            institution_chosen += '</select>' + `
 			<label for="option-type">Statistics Options</label>
 			<select id="option-type" onchange="chosenInstOption()">
 			<option value="select-option2">Select Option</option>
 			<option value="gender-option">Gender</option>
 			<option value="questions-option">Questions</option>
+			<option value="comparison-option">Comparison</option>
 			</select>
 			`
-			console.log(selectBoxInst)
-			document.getElementById("stats").innerHTML = institution_chosen;
-		}
+            document.getElementById("stats").innerHTML = institution_chosen;
+        }
 
-		function chosenInstOption(){
-			const INSTITUTIONS=["6.4200029E7","6.4200103E7","6.4200031E7","6.4200146E7","6.4200116E7","6.4200056E7","6.4200139E7","6.4200147E7","6.4200161E7","6.4200054E7","6.4200145E7","6.4200156E7","6.4200073E7","6.4200153E7","6.4200059E7","6.4200039E7","6.4200081E7","6.4200128E7","6.4200131E7","6.420013E7","6.4200046E7","6.4200157E7","6.4200094E7","6.4200134E7","6.4200165E7","6.4200015E7","6.4200011E7","6.4200126E7","6.4200155E7","6.42001E7","6.4200078E7","6.4200089E7","6.4200104E7","6.4200044E7","6.4200079E7","6.4200047E7","6.420002E7","6.4200049E7","6.4200057E7","6.4200119E7","6.4200167E7","6.4200061E7","6.4200151E7","6.4200032E7","6.4200042E7","6.4200082E7","6.4200088E7","6.4200037E7","6.4200109E7","6.4200023E7","6.4200006E7","6.4200117E7","6.4200115E7","6.4200028E7","6.4200137E7","6.4200008E7","6.4200083E7","6.4200012E7","6.4200005E7","6.4200123E7","6.4200038E7","6.4200068E7","6.420001E7","6.4200098E7","6.420011E7","6.4200036E7","6.4200135E7","6.4200018E7","6.4200076E7","6.4200105E7","6.420015E7","6.4200169E7","6.4200097E7","6.4200106E7","6.4200051E7","6.4200136E7","6.4200065E7","6.4200168E7","6.4200112E7","6.4200102E7","6.4200052E7","6.4200113E7","6.4200085E7","6.4200062E7","6.4200013E7","6.4200162E7","6.420004E7","6.4200053E7","6.4200164E7","6.4200108E7","6.4200121E7","6.420016E7","6.4200021E7","6.4200093E7","6.4200019E7","6.4200086E7","6.4200154E7","6.4200127E7","6.4200149E7","6.4200152E7","6.4200141E7","6.4200118E7","6.4200072E7","6.4200144E7","6.4200092E7","6.4200017E7","6.4200101E7","6.420012E7","6.4200009E7","6.4200014E7","6.4200171E7","6.420009E7","6.4200129E7","6.4200071E7","6.4200026E7","6.4200045E7","6.4200035E7","6.4200069E7","6.4200075E7","6.4200099E7","6.4200022E7","6.4200064E7","6.4200024E7","6.4200058E7","6.4200041E7","6.4200034E7","6.4200159E7","6.4200091E7","6.4200025E7","6.4200166E7","6.4200143E7","6.420003E7","6.420005E7","6.4200033E7","6.4200063E7","6.4200084E7","6.4200138E7","6.4200124E7","6.4200114E7","6.420014E7","6.420008E7"]
+        function chosenInstOption() {
+            const INSTITUTIONS = ["6.4200029E7", "6.4200103E7", "6.4200031E7", "6.4200146E7", "6.4200116E7", "6.4200056E7", "6.4200139E7", "6.4200147E7", "6.4200161E7", "6.4200054E7", "6.4200145E7", "6.4200156E7", "6.4200073E7", "6.4200153E7", "6.4200059E7", "6.4200039E7", "6.4200081E7", "6.4200128E7", "6.4200131E7", "6.420013E7", "6.4200046E7", "6.4200157E7", "6.4200094E7", "6.4200134E7", "6.4200165E7", "6.4200015E7", "6.4200011E7", "6.4200126E7", "6.4200155E7", "6.42001E7", "6.4200078E7", "6.4200089E7", "6.4200104E7", "6.4200044E7", "6.4200079E7", "6.4200047E7", "6.420002E7", "6.4200049E7", "6.4200057E7", "6.4200119E7", "6.4200167E7", "6.4200061E7", "6.4200151E7", "6.4200032E7", "6.4200042E7", "6.4200082E7", "6.4200088E7", "6.4200037E7", "6.4200109E7", "6.4200023E7", "6.4200006E7", "6.4200117E7", "6.4200115E7", "6.4200028E7", "6.4200137E7", "6.4200008E7", "6.4200083E7", "6.4200012E7", "6.4200005E7", "6.4200123E7", "6.4200038E7", "6.4200068E7", "6.420001E7", "6.4200098E7", "6.420011E7", "6.4200036E7", "6.4200135E7", "6.4200018E7", "6.4200076E7", "6.4200105E7", "6.420015E7", "6.4200169E7", "6.4200097E7", "6.4200106E7", "6.4200051E7", "6.4200136E7", "6.4200065E7", "6.4200168E7", "6.4200112E7", "6.4200102E7", "6.4200052E7", "6.4200113E7", "6.4200085E7", "6.4200062E7", "6.4200013E7", "6.4200162E7", "6.420004E7", "6.4200053E7", "6.4200164E7", "6.4200108E7", "6.4200121E7", "6.420016E7", "6.4200021E7", "6.4200093E7", "6.4200019E7", "6.4200086E7", "6.4200154E7", "6.4200127E7", "6.4200149E7", "6.4200152E7", "6.4200141E7", "6.4200118E7", "6.4200072E7", "6.4200144E7", "6.4200092E7", "6.4200017E7", "6.4200101E7", "6.420012E7", "6.4200009E7", "6.4200014E7", "6.4200171E7", "6.420009E7", "6.4200129E7", "6.4200071E7", "6.4200026E7", "6.4200045E7", "6.4200035E7", "6.4200069E7", "6.4200075E7", "6.4200099E7", "6.4200022E7", "6.4200064E7", "6.4200024E7", "6.4200058E7", "6.4200041E7", "6.4200034E7", "6.4200159E7", "6.4200091E7", "6.4200025E7", "6.4200166E7", "6.4200143E7", "6.420003E7", "6.420005E7", "6.4200033E7", "6.4200063E7", "6.4200084E7", "6.4200138E7", "6.4200124E7", "6.4200114E7", "6.420014E7", "6.420008E7"]
 
-			const Questions = {"ST123Q02NA": "Thinking about 2018: My parents support my educational efforts and achievements.", "ST123Q03NA": "Thinking about 2018: My parents support me when I am facing difficulties at school.", "ST123Q04NA": "Thinking about 2018: My parents encourage me to be confident.", "ST186Q10HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Miserable", "ST186Q09HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Proud", "ST186Q08HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Sad", "ST186Q07HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Lively", "ST186Q06HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Scared", "ST186Q05HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Happy", "ST186Q03HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Cheerful", "ST186Q02HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Afraid", "ST186Q01HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Joyful"}
+            const Questions = {
+                "ST123Q02NA": "Thinking about 2018: My parents support my educational efforts and achievements.",
+                "ST123Q03NA": "Thinking about 2018: My parents support me when I am facing difficulties at school.",
+                "ST123Q04NA": "Thinking about 2018: My parents encourage me to be confident.",
+                "ST186Q10HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Miserable",
+                "ST186Q09HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Proud",
+                "ST186Q08HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Sad",
+                "ST186Q07HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Lively",
+                "ST186Q06HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Scared",
+                "ST186Q05HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Happy",
+                "ST186Q03HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Cheerful",
+                "ST186Q02HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Afraid",
+                "ST186Q01HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Joyful"
+            }
 
-			var gender_chosen = `
+            var gender_chosen = `
 			<label for="type">Statistics Type</label>
 			<select id="type" onchange="changeStats()">
 			<option value="select-option">Select Statistics Type</option>
@@ -198,29 +206,27 @@
 			<option value="select-Institution">Select Institution</option>
 			`;
 
-			var selectBox2 = document.getElementById("institution");
-			var selectedValue2 = selectBox2.options[selectBox2.selectedIndex].value;
-			var selectBoxInst = selectBox2.options[selectBox2.selectedIndex].text;
-			for (var i = 0; i < INSTITUTIONS.length; i++) {
-					if (INSTITUTIONS[i] == selectBoxInst)
-					{
-						gender_chosen += '<option value = "' + INSTITUTIONS[i] + '" selected>' + INSTITUTIONS[i] + '</option>';
-					}
-					else
-					{
-						gender_chosen+= '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
-					}
-			}
-			gender_chosen +=	'</select>' + `
+            var selectBox2 = document.getElementById("institution");
+            var selectedValue2 = selectBox2.options[selectBox2.selectedIndex].value;
+            var selectBoxInst = selectBox2.options[selectBox2.selectedIndex].text;
+            for (var i = 0; i < INSTITUTIONS.length; i++) {
+                if (INSTITUTIONS[i] == selectBoxInst) {
+                    gender_chosen += '<option value = "' + INSTITUTIONS[i] + '" selected>' + INSTITUTIONS[i] + '</option>';
+                } else {
+                    gender_chosen += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
+                }
+            }
+            gender_chosen += '</select>' + `
 			<label for="option-type">Statistics Options</label>
 			<select id="option-type" onchange="chosenInstOption()">
 			<option value="select-option2">Select Option</option>
 			<option value="gender-option" selected>Gender</option>
 			<option value="questions-option">Questions</option>
+			<option value="comparison-option">Comparison</option>
 			</select>
 			<button class="button gen-button" onclick="generateGenderGraph()"> Generate </button>`;
 
-			var questions_chosen = `
+            var questions_chosen = `
 			<label for="type">Statistics Type</label>
 			<select id="type" onchange="changeStats()">
 			<option value="select-option">Select Statistics Type</option>
@@ -234,127 +240,316 @@
 			<option value="select-Institution">Select Institution</option>
 			`;
 
-			var selectBox2 = document.getElementById("institution");
-			var selectedValue2 = selectBox2.options[selectBox2.selectedIndex].value;
-			var selectBoxInst = selectBox2.options[selectBox2.selectedIndex].text;
-			// var selectBoxQuestions = document.getElementById("all-questions");
-			// var selectBoxQuest = selectBoxQuestions.options[selectBoxQuestions.selectedIndes].text;
-			for (var i = 0; i < INSTITUTIONS.length; i++) {
-					if (INSTITUTIONS[i] == selectBoxInst)
-					{
-						questions_chosen += '<option value = "' + INSTITUTIONS[i] + '" selected>' + INSTITUTIONS[i] + '</option>';
-					}
-					else
-					{
-						questions_chosen+= '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
-					}
-			}
-			questions_chosen +=	'</select>' + `
+
+            var selectBox2 = document.getElementById("institution");
+            var selectedValue2 = selectBox2.options[selectBox2.selectedIndex].value;
+            var selectBoxInst = selectBox2.options[selectBox2.selectedIndex].text;
+            // var selectBoxQuestions = document.getElementById("all-questions");
+            // var selectBoxQuest = selectBoxQuestions.options[selectBoxQuestions.selectedIndes].text;
+            for (var i = 0; i < INSTITUTIONS.length; i++) {
+                if (INSTITUTIONS[i] == selectBoxInst) {
+                    questions_chosen += '<option value = "' + INSTITUTIONS[i] + '" selected>' + INSTITUTIONS[i] + '</option>';
+                } else {
+                    questions_chosen += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
+                }
+            }
+            questions_chosen += '</select>' + `
 			<label for="option-type">Statistics Options</label>
 			<select id="option-type" onchange="chosenInstOption()">
 			<option value="select-option2">Select Option</option>
 			<option value="gender-option">Gender</option>
 			<option value="questions-option" selected>Questions</option>
+			<option value="comparison-option">Comparison</option>
 			</select>
 			<label for="all-questions">Questions</label>
 			<select id="all-questions">
 			<option value="select-question" selected>Select Question</option>`
-			for (question in Questions) {
-						questions_chosen += '<option value = "' + question + '">' + Questions[question] + '</option>';
-			}
-			questions_chosen += `</select>
+            for (question in Questions) {
+                questions_chosen += '<option value = "' + question + '">' + Questions[question] + '</option>';
+            }
+            questions_chosen += `</select>
 			<button class="button gen-button" onclick="chooseInstQuestions()"> Generate </button>
 			</div>
 			`;
 
-			var selectBox = document.getElementById("option-type");
-			var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-			if(selectedValue == "questions-option")
-			{
-				document.getElementById("stats").innerHTML = questions_chosen;
-			}
-			else if(selectedValue == "gender-option")
-			{
-				document.getElementById("stats").innerHTML = gender_chosen;
-			}
-		}
+            var comparison_chosen = `
+			<label for="type">Statistics Type</label>
+			<select id="type" onchange="changeStats()">
+			<option value="select-option">Select Statistics Type</option>
+			<option value="specific-questions">Specific Questions</option>
+			<option value="county">County</option>
+			<option value="institutional" selected>Institutional</option>
+			<option value="random">Random</option>
+			</select>
+			<label for="institution">Pick Institution</label>
+			<select id="institution" onchange="pickInstitution()">
+			<option value="select-Institution">Select Institution</option>
+			`;
 
-		function chooseInstQuestions(){
-			var selectBox = document.getElementById("institution");
-			var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-			var selectQuest = document.getElementById("all-questions");
-			var selectValueQ = selectQuest.options[selectQuest.selectedIndex].value;
-			var selectQT = selectQuest.options[selectQuest.selectedIndex].text;
-			console.log(selectValueQ)
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					resultData = JSON.parse(this.responseText)
-					var data = {
-						series: [resultData['result1'],resultData['result2'],resultData['result3'],resultData['result4']]
-					};
 
-					var sum = function(a, b) { return a + b };
+            var selectBox2 = document.getElementById("institution");
+            var selectedValue2 = selectBox2.options[selectBox2.selectedIndex].value;
+            var selectBoxInst = selectBox2.options[selectBox2.selectedIndex].text;
+            // var selectBoxQuestions = document.getElementById("all-questions");
+            // var selectBoxQuest = selectBoxQuestions.options[selectBoxQuestions.selectedIndes].text;
+            for (var i = 0; i < INSTITUTIONS.length; i++) {
+                if (INSTITUTIONS[i] == selectBoxInst) {
+                    comparison_chosen += '<option value = "' + INSTITUTIONS[i] + '" selected>' + INSTITUTIONS[i] + '</option>';
+                } else {
+                    comparison_chosen += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
+                }
+            }
+            comparison_chosen += '</select>' + `
+			<label for="option-type">Statistics Options</label>
+			<select id="option-type" onchange="chosenInstOption()">
+			<option value="select-option2">Select Option</option>
+			<option value="gender-option">Gender</option>
+			<option value="questions-option" >Questions</option>
+			<option value="comparison-option" selected>Comparison</option>
+			</select>
+			<label for="pick-institution2">Pick Institution #2</label>
+			<select id="pick-institution2" onchange="pickQuestionForComparison()">
+			<option value="select-option2" selected>Select Institution #2</option>`
+            for (var i = 0; i < INSTITUTIONS.length; i++) {
+                comparison_chosen += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
+            }
+            comparison_chosen += `</select>
+			`;
 
-					var chart = new Chartist.Pie('.ct-chart', data,  {
-                        labelInterpolationFnc: function(value) {
-                            if(resultData["result1"] == value) {
+            var selectBox = document.getElementById("option-type");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            if (selectedValue == "questions-option") {
+                document.getElementById("stats").innerHTML = questions_chosen;
+            } else if (selectedValue == "gender-option") {
+                document.getElementById("stats").innerHTML = gender_chosen;
+            } else if (selectedValue == "comparison-option") {
+                document.getElementById("stats").innerHTML = comparison_chosen;
+            }
+        }
+
+        function pickQuestionForComparison() {
+
+            const INSTITUTIONS = ["6.4200029E7", "6.4200103E7", "6.4200031E7", "6.4200146E7", "6.4200116E7", "6.4200056E7", "6.4200139E7", "6.4200147E7", "6.4200161E7", "6.4200054E7", "6.4200145E7", "6.4200156E7", "6.4200073E7", "6.4200153E7", "6.4200059E7", "6.4200039E7", "6.4200081E7", "6.4200128E7", "6.4200131E7", "6.420013E7", "6.4200046E7", "6.4200157E7", "6.4200094E7", "6.4200134E7", "6.4200165E7", "6.4200015E7", "6.4200011E7", "6.4200126E7", "6.4200155E7", "6.42001E7", "6.4200078E7", "6.4200089E7", "6.4200104E7", "6.4200044E7", "6.4200079E7", "6.4200047E7", "6.420002E7", "6.4200049E7", "6.4200057E7", "6.4200119E7", "6.4200167E7", "6.4200061E7", "6.4200151E7", "6.4200032E7", "6.4200042E7", "6.4200082E7", "6.4200088E7", "6.4200037E7", "6.4200109E7", "6.4200023E7", "6.4200006E7", "6.4200117E7", "6.4200115E7", "6.4200028E7", "6.4200137E7", "6.4200008E7", "6.4200083E7", "6.4200012E7", "6.4200005E7", "6.4200123E7", "6.4200038E7", "6.4200068E7", "6.420001E7", "6.4200098E7", "6.420011E7", "6.4200036E7", "6.4200135E7", "6.4200018E7", "6.4200076E7", "6.4200105E7", "6.420015E7", "6.4200169E7", "6.4200097E7", "6.4200106E7", "6.4200051E7", "6.4200136E7", "6.4200065E7", "6.4200168E7", "6.4200112E7", "6.4200102E7", "6.4200052E7", "6.4200113E7", "6.4200085E7", "6.4200062E7", "6.4200013E7", "6.4200162E7", "6.420004E7", "6.4200053E7", "6.4200164E7", "6.4200108E7", "6.4200121E7", "6.420016E7", "6.4200021E7", "6.4200093E7", "6.4200019E7", "6.4200086E7", "6.4200154E7", "6.4200127E7", "6.4200149E7", "6.4200152E7", "6.4200141E7", "6.4200118E7", "6.4200072E7", "6.4200144E7", "6.4200092E7", "6.4200017E7", "6.4200101E7", "6.420012E7", "6.4200009E7", "6.4200014E7", "6.4200171E7", "6.420009E7", "6.4200129E7", "6.4200071E7", "6.4200026E7", "6.4200045E7", "6.4200035E7", "6.4200069E7", "6.4200075E7", "6.4200099E7", "6.4200022E7", "6.4200064E7", "6.4200024E7", "6.4200058E7", "6.4200041E7", "6.4200034E7", "6.4200159E7", "6.4200091E7", "6.4200025E7", "6.4200166E7", "6.4200143E7", "6.420003E7", "6.420005E7", "6.4200033E7", "6.4200063E7", "6.4200084E7", "6.4200138E7", "6.4200124E7", "6.4200114E7", "6.420014E7", "6.420008E7"]
+
+            const Questions = {
+                "ST123Q02NA": "Thinking about 2018: My parents support my educational efforts and achievements.",
+                "ST123Q03NA": "Thinking about 2018: My parents support me when I am facing difficulties at school.",
+                "ST123Q04NA": "Thinking about 2018: My parents encourage me to be confident.",
+                "ST186Q10HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Miserable",
+                "ST186Q09HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Proud",
+                "ST186Q08HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Sad",
+                "ST186Q07HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Lively",
+                "ST186Q06HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Scared",
+                "ST186Q05HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Happy",
+                "ST186Q03HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Cheerful",
+                "ST186Q02HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Afraid",
+                "ST186Q01HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Joyful"
+            }
+
+            var institution2_chosen = `
+			<label for="type">Statistics Type</label>
+			<select id="type" onchange="changeStats()">
+			<option value="select-option">Select Statistics Type</option>
+			<option value="specific-questions">Specific Questions</option>
+			<option value="county">County</option>
+			<option value="institutional" selected>Institutional</option>
+			<option value="random">Random</option>
+			</select>
+			<label for="institution">Pick Institution</label>
+			<select id="institution" onchange="pickInstitution()">
+			<option value="select-Institution">Select Institution</option>
+			`;
+
+
+            var selectBox2 = document.getElementById("institution");
+            var selectedValue2 = selectBox2.options[selectBox2.selectedIndex].value;
+            var selectBoxInst = selectBox2.options[selectBox2.selectedIndex].text;
+            // var selectBoxQuestions = document.getElementById("all-questions");
+            // var selectBoxQuest = selectBoxQuestions.options[selectBoxQuestions.selectedIndes].text;
+            for (var i = 0; i < INSTITUTIONS.length; i++) {
+                if (INSTITUTIONS[i] == selectBoxInst) {
+                    institution2_chosen += '<option value = "' + INSTITUTIONS[i] + '" selected>' + INSTITUTIONS[i] + '</option>';
+                } else {
+                    institution2_chosen += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
+                }
+            }
+            institution2_chosen += '</select>' + `
+			<label for="option-type">Statistics Options</label>
+			<select id="option-type" onchange="pickQuestionForComparison()">
+			<option value="select-option2">Select Option</option>
+			<option value="gender-option">Gender</option>
+			<option value="questions-option" >Questions</option>
+			<option value="comparison-option" selected>Comparison</option>
+			</select>
+			<label for="pick-institution2">Pick Institution #2</label>
+			<select id="pick-institution2">
+			<option value="select-option2" selected>Select Institution #2</option>`
+            var selectBox3 = document.getElementById("pick-institution2");
+            var selectedValue2 = selectBox2.options[selectBox3.selectedIndex].value;
+            var selectBoxInst2 = selectBox2.options[selectBox3.selectedIndex].text;
+            for (var i = 0; i < INSTITUTIONS.length; i++) {
+                if (INSTITUTIONS[i] == selectBoxInst2) {
+                    institution2_chosen += '<option value = "' + INSTITUTIONS[i] + '" selected>' + INSTITUTIONS[i] + '</option>';
+                } else {
+                    institution2_chosen += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
+                }
+            }
+
+            institution2_chosen += `</select>
+            <label for="institution2-question">Pick Question</label>
+			<select id="institution2-question">
+			<option value="select-question-comparison" selected>Select Question</option>`
+            for (question in Questions) {
+                institution2_chosen += '<option value = "' + question + '">' + Questions[question] + '</option>';
+            }
+            institution2_chosen += `</select>
+			<button class="button gen-button" onclick="generateComparisonChart()"> Generate </button>
+			</div>`
+
+            var selectBox = document.getElementById("pick-institution2");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            if (selectedValue !== "select-option2") {
+                document.getElementById("stats").innerHTML = institution2_chosen;
+            }
+        }
+
+        function generateComparisonChart() {
+            var selectBox = document.getElementById("institution");
+            var institution1 = selectBox.options[selectBox.selectedIndex].value;
+
+            var selectBox2 = document.getElementById("pick-institution2");
+            var institution2 = selectBox2.options[selectBox2.selectedIndex].value;
+
+            var selectBox3 = document.getElementById("institution2-question");
+            var question = selectBox3.options[selectBox3.selectedIndex].value;
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    resultData = JSON.parse(this.responseText)
+                    console.log(resultData)
+
+                    var data = {
+                        //labels: [1, 2, 3, 4],
+                        labels: [`Very Rarely (${resultData["inst_1_result_1"]}, ${resultData["inst_2_result_1"]})`,
+                                 `Rarely (${resultData["inst_1_result_2"]}, ${resultData["inst_2_result_2"]})`,
+                                 `Often (${resultData["inst_1_result_3"]}, ${resultData["inst_2_result_3"]})`,
+                                 `Very Often (${resultData["inst_1_result_4"]}, ${resultData["inst_2_result_4"]})`],
+                        series: [
+                            [resultData["inst_1_result_1"], resultData["inst_1_result_2"], resultData["inst_1_result_3"], resultData["inst_1_result_4"]],
+                            [resultData["inst_2_result_1"], resultData["inst_2_result_2"], resultData["inst_2_result_3"], resultData["inst_2_result_4"]]
+                        ]
+                    };
+                    var options = {
+                        seriesBarDistance: 5,
+                        axisX: {
+                            offset: 60
+                        },
+                        showLabel: true
+                    };
+                    var chart = new Chartist.Bar('.ct-chart', data, options);
+                    //document.getElementById("chart-title").innerHTML = JSON.stringify(Questions[selectedValue]);
+                    document.getElementById("chart-title").innerHTML = `"${selectBox3.options[selectBox3.selectedIndex].text}"
+                    Asked in institutions ${institution1} and ${institution2}`;
+                }
+            };
+
+
+            xhttp.open("POST", "/comparison-chart", true);
+            xhttp.send(JSON.stringify({institution1: institution1, institution2: institution2, questionId: question}));
+
+        }
+
+        function chooseInstQuestions() {
+            var selectBox = document.getElementById("institution");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            var selectQuest = document.getElementById("all-questions");
+            var selectValueQ = selectQuest.options[selectQuest.selectedIndex].value;
+            var selectQT = selectQuest.options[selectQuest.selectedIndex].text;
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    resultData = JSON.parse(this.responseText)
+                    var data = {
+                        series: [resultData['result1'], resultData['result2'], resultData['result3'], resultData['result4']]
+                    };
+
+                    var sum = function (a, b) {
+                        return a + b
+                    };
+
+                    var chart = new Chartist.Pie('.ct-chart', data, {
+                        labelInterpolationFnc: function (value) {
+                            if (resultData["result1"] == value) {
                                 return 'Very Rarely (' + Math.round(value / data.series.reduce(sum) * 100) + '%) - ' + resultData['result1'];
-                            } else if(resultData["result2"] == value) {
+                            } else if (resultData["result2"] == value) {
                                 return 'Rarely (' + Math.round(value / data.series.reduce(sum) * 100) + '%) - ' + resultData['result2'];
-                            } else if(resultData["result3"] == value) {
+                            } else if (resultData["result3"] == value) {
                                 return 'Often (' + Math.round(value / data.series.reduce(sum) * 100) + '%) - ' + resultData['result3'];
-                            } else if(resultData["result4"] == value) {
+                            } else if (resultData["result4"] == value) {
                                 return 'Very Often (' + Math.round(value / data.series.reduce(sum) * 100) + '%) - ' + resultData['result4'];
                             }
                         }
                     });
-					document.getElementById("chart-title").innerHTML = `"${selectQT}" Asked in institution ${selectBox.options[selectBox.selectedIndex].text}`;
-				}
-			};
-			xhttp.open("POST", "/question-inst-chart", true);
-			xhttp.send(JSON.stringify({ institutionID: selectedValue, questionID: selectValueQ }));
+                    document.getElementById("chart-title").innerHTML = `"${selectQT}" Asked in institution ${selectBox.options[selectBox.selectedIndex].text}`;
+                }
+            };
+            xhttp.open("POST", "/question-inst-chart", true);
+            xhttp.send(JSON.stringify({institutionID: selectedValue, questionID: selectValueQ}));
 
 
-		}
+        }
 
-		function generateGenderGraph(){
-			var selectBox = document.getElementById("institution");
-			var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+        function generateGenderGraph() {
+            var selectBox = document.getElementById("institution");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					resultData = JSON.parse(this.responseText)
-					var data = {
-					  series: [resultData['male'],resultData['female']]
-					};
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    resultData = JSON.parse(this.responseText)
+                    var data = {
+                        series: [resultData['male'], resultData['female']]
+                    };
 
-					var sum = function(a, b) { return a + b };
+                    var sum = function (a, b) {
+                        return a + b
+                    };
 
-					new Chartist.Pie('.ct-chart', data, {
-					  labelInterpolationFnc: function(value) {
-							if(value == resultData['male'])
-							{
-								return  "" + Math.round(value / data.series.reduce(sum) * 100) + '% Male';
-							}
-							else {
-								return  "" + Math.round(value / data.series.reduce(sum) * 100) + '% Female';
-							}
-					  }
-					});
-					document.getElementById("chart-title").innerHTML = "Gender chart for institution: " + selectBox.options[selectBox.selectedIndex].text;
-				}
-			};
-			xhttp.open("POST", "/gender-inst-chart", true);
-			xhttp.send(JSON.stringify({ institutionID: selectedValue }));
-		}
+                    new Chartist.Pie('.ct-chart', data, {
+                        labelInterpolationFnc: function (value) {
+                            if (value == resultData['male']) {
+                                return "" + Math.round(value / data.series.reduce(sum) * 100) + '% Male';
+                            } else {
+                                return "" + Math.round(value / data.series.reduce(sum) * 100) + '% Female';
+                            }
+                        }
+                    });
+                    document.getElementById("chart-title").innerHTML = "Gender chart for institution: " + selectBox.options[selectBox.selectedIndex].text;
+                }
+            };
+            xhttp.open("POST", "/gender-inst-chart", true);
+            xhttp.send(JSON.stringify({institutionID: selectedValue}));
+        }
 
-		function pickCategory() {
+        function pickCategory() {
 
-			const Questions = {"ST123Q02NA": "Thinking about 2018: My parents support my educational efforts and achievements.", "ST123Q03NA": "Thinking about 2018: My parents support me when I am facing difficulties at school.", "ST123Q04NA": "Thinking about 2018: My parents encourage me to be confident.", "ST186Q10HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Miserable", "ST186Q09HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Proud", "ST186Q08HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Sad", "ST186Q07HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Lively", "ST186Q06HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Scared", "ST186Q05HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Happy", "ST186Q03HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Cheerful", "ST186Q02HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Afraid", "ST186Q01HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Joyful"}
+            const Questions = {
+                "ST123Q02NA": "Thinking about 2018: My parents support my educational efforts and achievements.",
+                "ST123Q03NA": "Thinking about 2018: My parents support me when I am facing difficulties at school.",
+                "ST123Q04NA": "Thinking about 2018: My parents encourage me to be confident.",
+                "ST186Q10HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Miserable",
+                "ST186Q09HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Proud",
+                "ST186Q08HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Sad",
+                "ST186Q07HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Lively",
+                "ST186Q06HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Scared",
+                "ST186Q05HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Happy",
+                "ST186Q03HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Cheerful",
+                "ST186Q02HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Afraid",
+                "ST186Q01HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Joyful"
+            }
 
-			nothing_selected = `
+            nothing_selected = `
 			<label for="type">Statistics Type</label>
 			<select id="type" onchange="changeStats()">
 			<option value="select-option">Select Statistics Type</option>
@@ -370,7 +565,7 @@
 			<option value="trust">Trust</option>
 			</select>`
 
-			let trust_selected = `
+            let trust_selected = `
 			<label for="type">Statistics Type</label>
 			<select id="type" onchange="changeStats()">
 			<option value="select-option">Select Statistics Type</option>
@@ -394,7 +589,7 @@
 			<button class="button gen-button" onclick="generateByQuestion()"> Generate </button>
 			</div>`;
 
-			let feelings_selected = `
+            let feelings_selected = `
 			<label for="type">Statistics Type</label>
 			<select id="type" onchange="changeStats()">
 			<option value="select-option">Select Statistics Type</option>
@@ -424,57 +619,55 @@
 			<button class="button gen-button" onclick="generateByQuestion()"> Generate </button>
 			</div>`;
 
-			var selectBox = document.getElementById("category");
-			var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            var selectBox = document.getElementById("category");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 
-			if (selectedValue === "trust") {
-				document.getElementById("stats").innerHTML = trust_selected;
-			}
-			else if (selectedValue === "feelings") {
-				document.getElementById("stats").innerHTML = feelings_selected;
-			}
-			else if(selectedValue === "select-category") {
-				document.getElementById("stats").innerHTML = nothing_selected;
-			}
+            if (selectedValue === "trust") {
+                document.getElementById("stats").innerHTML = trust_selected;
+            } else if (selectedValue === "feelings") {
+                document.getElementById("stats").innerHTML = feelings_selected;
+            } else if (selectedValue === "select-category") {
+                document.getElementById("stats").innerHTML = nothing_selected;
+            }
 
-		}
+        }
 
-		function generateByQuestion() {
-			var selectBox = document.getElementById("question");
-			var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+        function generateByQuestion() {
+            var selectBox = document.getElementById("question");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					resultData = JSON.parse(this.responseText)
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    resultData = JSON.parse(this.responseText)
 
-					var data = {
-						//labels: [1, 2, 3, 4],
-						labels: [`Very Rarely (${resultData["result1"]})`, `Rarely (${resultData["result2"]})`, `Often (${resultData["result3"]})`, `Very Often (${resultData["result4"]})`],
-						series: [ [resultData["result1"], resultData["result2"], resultData["result3"], resultData["result4"]] ]
-					};
-					var options = {
-						seriesBarDistance: 5,
-						showLabel: true
-					};
-					var chart = new Chartist.Bar('.ct-chart', data, options);
-					//document.getElementById("chart-title").innerHTML = JSON.stringify(Questions[selectedValue]);
-					document.getElementById("chart-title").innerHTML = selectBox.options[selectBox.selectedIndex].text;
-				}
-			};
-			xhttp.open("POST", "/question-chart", true);
-			xhttp.send(JSON.stringify({ questionId: selectedValue }));
-		}
+                    var data = {
+                        //labels: [1, 2, 3, 4],
+                        labels: [`Very Rarely (${resultData["result1"]})`, `Rarely (${resultData["result2"]})`, `Often (${resultData["result3"]})`, `Very Often (${resultData["result4"]})`],
+                        series: [[resultData["result1"], resultData["result2"], resultData["result3"], resultData["result4"]]]
+                    };
+                    var options = {
+                        seriesBarDistance: 5,
+                        showLabel: true
+                    };
+                    var chart = new Chartist.Bar('.ct-chart', data, options);
+                    //document.getElementById("chart-title").innerHTML = JSON.stringify(Questions[selectedValue]);
+                    document.getElementById("chart-title").innerHTML = selectBox.options[selectBox.selectedIndex].text;
+                }
+            };
+            xhttp.open("POST", "/question-chart", true);
+            xhttp.send(JSON.stringify({questionId: selectedValue}));
+        }
 
-		function generateChart() {
-			var selectBox = document.getElementById("gender");
-			var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+        function generateChart() {
+            var selectBox = document.getElementById("gender");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
 
-					/*let genderData  = JSON.parse(this.responseText)
+                    /*let genderData  = JSON.parse(this.responseText)
                     let maleCount   = genderData['male']
                     let femaleCount = genderData['female']
                     let maleLabel   = 'Male (' + maleCount + ')'
@@ -489,128 +682,126 @@
                     };
                     var chart = new Chartist.Bar('.ct-chart', data, options);*/
 
-					genderData = JSON.parse(this.responseText)
-					var count
-					var label
+                    genderData = JSON.parse(this.responseText)
+                    var count
+                    var label
 
-					if (selectedValue === "male") {
-						count = genderData['male']
-						label = 'Male (' + count + ')'
-					}
+                    if (selectedValue === "male") {
+                        count = genderData['male']
+                        label = 'Male (' + count + ')'
+                    } else {
+                        count = genderData['female']
+                        label = 'Female (' + count + ')'
+                    }
 
-					else {
-						count = genderData['female']
-						label = 'Female (' + count + ')'
-					}
+                    var data = {
+                        labels: [label],
+                        series: [[count]]
+                    };
+                    var options = {
+                        seriesBarDistance: 10,
+                        showLabel: true
+                    };
+                    var chart = new Chartist.Bar('.ct-chart', data, options);
+                }
+            };
+            xhttp.open("GET", "/chart-gender", true);
+            xhttp.send();
+        }
 
-					var data = {
-						labels: [label],
-						series: [ [count] ]
-					};
-					var options = {
-						seriesBarDistance: 10,
-						showLabel: true
-					};
-					var chart = new Chartist.Bar('.ct-chart', data, options);
-				}
-			};
-			xhttp.open("GET", "/chart-gender", true);
-			xhttp.send();
-		}
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+</head>
 
-		window.onclick = function(event) {
-			if (!event.target.matches('.dropbtn')) {
-				var dropdowns = document.getElementsByClassName("dropdown-content");
-				var i;
-				for (i = 0; i < dropdowns.length; i++) {
-					var openDropdown = dropdowns[i];
-					if (openDropdown.classList.contains('show')) {
-						openDropdown.classList.remove('show');
-					}
-				}
-			}
-		}
-	</script>
-	</head>
+<body>
+<header>
+    <div class="logo-container">
+        <a id="triangle-logo" href="index.html"></a>
+        <a id="page-title" href="index.html">PiRo</a>
+    </div>
+    <nav>
+        <a href="custom-statistics">Statistics</a>
+        <a href="about-page.html">About</a>
+        <a href="contact-us.html">Contact Us</a>
+        <div class="dropdown">
+            <img src="assets/img/menu.svg" onclick="myFunction()" class="dropbtn"></img>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="custom-statistics">Statistics</a>
+                <a href="about-page.html">About</a>
+                <a href="contact-us.html">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+</header>
 
-	<body>
-		<header>
-			<div class="logo-container">
-				<a id="triangle-logo" href="index.html"></a>
-				<a id="page-title" href="index.html">PiRo</a>
-			</div>
-			<nav>
-				<a href="custom-statistics">Statistics</a>
-				<a href="about-page.html">About</a>
-				<a href="contact-us.html">Contact Us</a>
-				<div class="dropdown">
-					<img src="assets/img/menu.svg" onclick="myFunction()" class="dropbtn"></img>
-					<div id="myDropdown" class="dropdown-content">
-						<a href="custom-statistics">Statistics</a>
-						<a href="about-page.html">About</a>
-						<a href="contact-us.html">Contact Us</a>
-					</div>
-				</div>
-			</nav>
-		</header>
+<main>
+    <p id="stats_title">Custom Statistics</p>
+    <p id="stats_text">Complete the form below to generate and export graphs based on custom statistics.</p>
+    <div class="custom-stats-grid">
 
-		<main>
-			<p id="stats_title">Custom Statistics</p>
-			<p id="stats_text">Complete the form below to generate and export graphs based on custom statistics.</p>
-			<div class="custom-stats-grid">
+        <div class="custom-stats-container" id="stats">
+            <label for="type">Statistics Type</label>
+            <select id="type" onchange="changeStats()">
+                <option value="select-option"> Select Statistics Type</option>
+                <option value="specific-questions">Specific Questions</option>
+                <option value="county">County</option>
+                <option value="institutional">Institutional</option>
+                <option value="random">Random</option>
+            </select>
+        </div>
 
-				<div class="custom-stats-container" id="stats">
-					<label for="type">Statistics Type</label>
-					<select id="type" onchange="changeStats()">
-						<option value="select-option"> Select Statistics Type</option>
-						<option value="specific-questions">Specific Questions</option>
-						<option value="county">County</option>
-						<option value="institutional">Institutional</option>
-						<option value="random">Random</option>
-					</select>
-				</div>
+        <div class="custom-stats-image-grid">
+            <p id="chart-title"></p>
+            <div class="ct-chart ct-perfect-fourth" id="stats-chart">
+                <script>
 
-				<div class="custom-stats-image-grid">
-					<p id="chart-title"></p>
-					<div class="ct-chart ct-perfect-fourth" id="stats-chart">
-						<script>
+                    //This is the empty chart.
 
-							//This is the empty chart.
+                    var data = {
+                        // A labels array that can contain any sort of values
+                        labels: [1, 2, 3, 4],
+                        // Our series array that contains series objects or in this case series data arrays
+                        series: [
+                            []
+                        ]
+                    };
 
-							var data = {
-								// A labels array that can contain any sort of values
-								labels: [1, 2, 3, 4],
-								// Our series array that contains series objects or in this case series data arrays
-								series: [
-									[]
-								]
-							};
+                    // Create a new line chart object where as first parameter we pass in a selector
+                    // that is resolving to our chart container element. The Second parameter
+                    // is the actual data object.
+                    new Chartist.Line('.ct-chart', data);
 
-							// Create a new line chart object where as first parameter we pass in a selector
-							// that is resolving to our chart container element. The Second parameter
-							// is the actual data object.
-							new Chartist.Line('.ct-chart', data);
+                </script>
+            </div>
+            <div class="custom-stats-buttons">
+                <p>Export: </p>
+                <button type="button">SVG</button>
+                <button type="button">CSS</button>
+                <button type="button">PNG</button>
+            </div>
 
-						</script>
-					</div>
-					<div class="custom-stats-buttons">
-						<p>Export: </p>
-						<button type="button">SVG</button>
-						<button type="button">CSS</button>
-						<button type="button">PNG</button>
-					</div>
-
-				</div>
-			</main>
-			<footer>
-				<div class = "footer-container">
-					<p>Telefon: 0744 443 545</p>
-					<p>E-mail: abcd@gmail.com</p>
-					<p>Adresa: Strada X nr. 20, Iasi</p>
-				</div>
-			</footer>
+        </div>
+</main>
+<footer>
+    <div class="footer-container">
+        <p>Telefon: 0744 443 545</p>
+        <p>E-mail: abcd@gmail.com</p>
+        <p>Adresa: Strada X nr. 20, Iasi</p>
+    </div>
+</footer>
 
 
-		</body>
+</body>
 
-		</html>
+</html>

@@ -13,6 +13,7 @@ router.post('/question-chart', statisticsController.getQuestionChartData)
 router.get('/get-institutions', statisticsController.getInstitutions)
 router.post('/gender-inst-chart', statisticsController.getInstGenderChart)
 router.post('/question-inst-chart', statisticsController.getInstQuestionChart)
+router.post('/comparison-chart', statisticsController.getComparisonChart)
 
 
 
