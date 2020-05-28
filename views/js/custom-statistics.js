@@ -737,7 +737,7 @@ function changeStats() {
           resultData = JSON.parse(this.responseText)
 
           csvData = `Question,Institution,Very Rarely,Rarely,Often,Very Often\n` +
-                    `${selectQT},${institution},${resultData["result1"]},${resultData["result2"]},${resultData["result3"]},${resultData["result4"]}`
+                    `${selectQT},${selectedValue},${resultData["result1"]},${resultData["result2"]},${resultData["result3"]},${resultData["result4"]}`
 
           var data = {
             series: [resultData['result1'], resultData['result2'], resultData['result3'], resultData['result4']]
