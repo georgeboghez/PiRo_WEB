@@ -15,6 +15,7 @@ router.post('/gender-inst-chart', statisticsController.getInstGenderChart)
 router.post('/question-inst-chart', statisticsController.getInstQuestionChart)
 router.post('/comparison-chart', statisticsController.getComparisonChart)
 router.post('/country-chart', statisticsController.getCountryChart)
+router.get('/js/custom-statistics.js', statisticsController.getJS)
 
 
 

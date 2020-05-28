@@ -7,6 +7,8 @@
    <link rel="stylesheet" type="text/css" href="css/contact-us.css">
    <link rel="stylesheet" type="text/css" href="css/page-content.css">
    <script type="text/javascript">
+   var mybutton = document.getElementById("topbtn");
+   window.onscroll = function() {scrollFunction()};
       function submitForm(){
          var email = document.getElementById("email").value;
          var name = document.getElementById("fname").value;
@@ -25,6 +27,17 @@
             }
          }
          xhr.send(JSON.stringify({ EmailAdress: email, FirstName: name, LastName: surname, EmailContent: content }));
+      }
+      function scrollFunction() {
+         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+         } else {
+            mybutton.style.display = "none";
+         }
+      }
+      function topFunction() {
+         document.body.scrollTop = 0;
+         document.documentElement.scrollTop = 0;
       }
    </script>
 </head>
@@ -51,21 +64,6 @@
    </header>
 
    <button onclick="topFunction()" id="topbtn" title="Go to top">Top</button>
-   <script>
-      var mybutton = document.getElementById("topbtn");
-      window.onscroll = function() {scrollFunction()};
-      function scrollFunction() {
-         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            mybutton.style.display = "block";
-         } else {
-            mybutton.style.display = "none";
-         }
-      }
-      function topFunction() {
-         document.body.scrollTop = 0;
-         document.documentElement.scrollTop = 0;
-      }
-   </script>
    <main>
       <div id = "top"></div>
       <div class="FAQ">
@@ -147,7 +145,7 @@
                   <label for="lname">Last Name</label>
                   <input type="text" id="lname" name="lastname" placeholder="Your last name..">
                   <label for="email">Email</label>
-                  <input type="text" id="email" name="email" placeholder="Your email here..">     
+                  <input type="text" id="email" name="email" placeholder="Your email here..">
                   <label for="subject">Message</label>
                   <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
                   <input type="submit" value="Submit" onclick = "submitForm()">

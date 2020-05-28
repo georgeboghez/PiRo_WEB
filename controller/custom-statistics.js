@@ -268,6 +268,20 @@ function getCSS (req, res) {
   }
 }
 
+function getJS (req, res) {
+  try {
+    let javascript = fs.readFileSync('./views' + req.url)
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'text/javascript')
+    res.write(javascript)
+  } catch (e) {
+    console.log(e)
+    res.statusCode = 500
+    res.setHeader('Content-Type', 'text/html')
+    res.write('Internal server error')
+  }
+}
+
 function getSVG(req, res) {
   try {
     let svg = fs.readFileSync('views' + req.url)
@@ -283,4 +297,4 @@ function getSVG(req, res) {
 }
 
 module.exports = { getChartHTML, getCustomStatsHTML, getCSS, getSVG, getGenderChart, getQuestionChartData, getInstitutions, getInstGenderChart, getInstQuestionChart,
-                   getComparisonChart, getCountryChart }
+                   getComparisonChart, getCountryChart, getJS }
