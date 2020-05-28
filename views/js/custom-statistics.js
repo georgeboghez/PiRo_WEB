@@ -1,3 +1,5 @@
+var csvData;
+
 function changeFunc() {
   var selectBox = document.getElementById("type");
   var selectedValue = selectBox.options[selectBox.selectedIndex].value;
@@ -362,6 +364,10 @@ function changeStats() {
             [resultData["second_country_result"]["AverageScore"], resultData["second_country_result"]["MathematicsScore"], resultData["second_country_result"]["ScienceScore"], resultData["second_country_result"]["ReadingScore"]
             ]
             ]
+            csvData = `Country,Overall Score,Mathematics Score,Science Score,Reading Score\n` +
+                      `Romania,${resultData["romania_result"]["AverageScore"]},${resultData["romania_result"]["MathematicsScore"]},${resultData["romania_result"]["ScienceScore"]},${resultData["romania_result"]["ReadingScore"]}\n` +
+                      `${country},${resultData["second_country_result"]["AverageScore"]},${resultData["second_country_result"]["MathematicsScore"]},${resultData["second_country_result"]["ScienceScore"]},${resultData["second_country_result"]["ReadingScore"]}`
+            //downloadCSV();
           }
           else {
             data["labels"] = [`Overall Ranking (${resultData["romania_result"]["AverageRanking"]}, ${resultData["second_country_result"]["AverageRanking"]})`, `Mathematics Ranking (${resultData["romania_result"]["MathematicsRanking"]}, ${resultData["second_country_result"]["MathematicsRanking"]})`, `Science Ranking (${resultData["romania_result"]["ScienceRanking"]}, ${resultData["second_country_result"]["ScienceRanking"]})`, `Reading Ranking (${resultData["romania_result"]["ReadingRanking"]}, ${resultData["second_country_result"]["ReadingRanking"]}, )`
@@ -372,6 +378,10 @@ function changeStats() {
             [resultData["second_country_result"]["AverageRanking"], resultData["second_country_result"]["MathematicsRanking"], resultData["second_country_result"]["ScienceRanking"], resultData["second_country_result"]["ReadingRanking"]
             ]
             ]
+            csvData = `Country,Overall Ranking,Mathematics Ranking,Science Ranking,Reading Ranking\n` +
+                      `Romania,${resultData["romania_result"]["AverageRanking"]},${resultData["romania_result"]["MathematicsRanking"]},${resultData["romania_result"]["ScienceRanking"]},${resultData["romania_result"]["ReadingRanking"]}\n` +
+                      `${country},${resultData["second_country_result"]["AverageRanking"]},${resultData["second_country_result"]["MathematicsRanking"]},${resultData["second_country_result"]["ScienceRanking"]},${resultData["second_country_result"]["ReadingRanking"]}`
+            //downloadCSV();
           }
           var options = {
             reverseData: true,
@@ -384,7 +394,8 @@ function changeStats() {
                 // //document.getElementById("chart-title").innerHTML = JSON.stringify(Questions[selectedValue]);
                 document.getElementById("chart-title").innerHTML = `Countries Romania and ${country} ranked by ${rankingOption}`;
             }
-        };
+
+      };
 
 
         xhttp.open("POST", "/country-chart", true);
@@ -682,7 +693,10 @@ function changeStats() {
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           resultData = JSON.parse(this.responseText)
-          console.log(resultData)
+
+          csvData = `Question,Institution,Very Rarely,Rarely,Often,Very Often\n` +
+                    `${selectBox3.options[selectBox3.selectedIndex].text},${institution1},${resultData["inst_1_result_1"]},${resultData["inst_1_result_2"]},${resultData["inst_1_result_3"]},${resultData["inst_1_result_4"]}\n` +
+                    `${selectBox3.options[selectBox3.selectedIndex].text},${institution2},${resultData["inst_2_result_1"]},${resultData["inst_2_result_2"]},${resultData["inst_2_result_3"]},${resultData["inst_2_result_4"]}`
 
           var data = {
                     //labels: [1, 2, 3, 4],
@@ -721,6 +735,10 @@ function changeStats() {
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           resultData = JSON.parse(this.responseText)
+
+          csvData = `Question,Institution,Very Rarely,Rarely,Often,Very Often\n` +
+                    `${selectQT},${institution},${resultData["result1"]},${resultData["result2"]},${resultData["result3"]},${resultData["result4"]}`
+
           var data = {
             series: [resultData['result1'], resultData['result2'], resultData['result3'], resultData['result4']]
           };
@@ -766,6 +784,9 @@ function changeStats() {
           var sum = function (a, b) {
             return a + b
           };
+
+          csvData = `Institution,Male,Female\n` +
+                    `${selectedValue},${resultData['male']},${resultData['female']}`
 
           new Chartist.Pie('.ct-chart', data, {
             labelInterpolationFnc: function (value) {
@@ -886,11 +907,14 @@ function changeStats() {
     function generateByQuestion() {
       var selectBox = document.getElementById("question");
       var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+      var question = selectBox.options[selectBox.selectedIndex].text;
 
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           resultData = JSON.parse(this.responseText)
+          csvData = `Question,Very Rarely,Rarely,Often,Very Often\n` +
+                    `${question},${resultData["result1"]},${resultData["result2"]},${resultData["result3"]},${resultData["result4"]}`
 
           var data = {
                     //labels: [1, 2, 3, 4],
@@ -903,7 +927,7 @@ function changeStats() {
                 };
                 var chart = new Chartist.Bar('.ct-chart', data, options);
                 //document.getElementById("chart-title").innerHTML = JSON.stringify(Questions[selectedValue]);
-                document.getElementById("chart-title").innerHTML = selectBox.options[selectBox.selectedIndex].text;
+                document.getElementById("chart-title").innerHTML = question;
             }
         };
         xhttp.open("POST", "/question-chart", true);
@@ -971,4 +995,16 @@ function changeStats() {
           }
         }
       }
+    }
+
+    function downloadCSV(){
+      var downloadLink = document.createElement("a");
+      var blob = new Blob(["\ufeff", csvData]);
+      var url = URL.createObjectURL(blob);
+      downloadLink.href = url;
+      downloadLink.download = "data.csv";
+
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
     }
