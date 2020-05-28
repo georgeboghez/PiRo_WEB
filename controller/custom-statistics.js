@@ -84,7 +84,6 @@ async function getInstQuestionChart (req, res) {
     query[data.questionID] = "4.0"
     query['CNTSCHID'] = data['institutionID']
     var result_4 = await db.count(query);
-    console.log(data['institutionID']);
     res.setHeader('Content-Type', 'application/json')
     res.write(JSON.stringify({
       result1 : result_1,
@@ -166,8 +165,6 @@ async function getComparisonChart (req, res) {
     query[data.questionId] = "4.0"
     query['CNTSCHID'] = data.institution2
     var inst_2_result_4 = await db.count(query);
-
-    console.log(query)
 
     res.setHeader('Content-Type', 'application/json')
     res.write(JSON.stringify({
