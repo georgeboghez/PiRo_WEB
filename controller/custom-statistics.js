@@ -99,6 +99,46 @@ async function getInstQuestionChart (req, res) {
   }
 }
 
+async function getCountryChart (req, res) {
+  try {
+    var body = await controllerUtils.toStringChunk(req);
+    var data = JSON.parse(body);
+    var query = {}
+    var projection = {}
+    query["Country"] = "Romania";
+    if(data["rankingOption"] == "score") {
+      projection["AverageScore"] = true;
+      projection["MathematicsScore"] = true;
+      projection["ScienceScore"] = true;
+      projection["ReadingScore"] = true;
+      projection["Country"] = false;
+      projection["_id"] = false;
+    }
+    else {
+      projection["AverageRanking"] = true;
+      projection["MathematicsRanking"] = true;
+      projection["ScienceRanking"] = true;
+      projection["ReadingRanking"] = true;
+      projection["_id"] = false;
+      projection["Country"] = false;
+    }
+    var romania_result = await db.findOne(query, projection, "worldwide_ranking");
+    query["Country"] = data.country;
+    var second_country_result = await db.findOne(query, projection, "worldwide_ranking");
+
+    res.setHeader('Content-Type', 'application/json')
+    res.write(JSON.stringify({
+      romania_result : romania_result,
+      second_country_result : second_country_result
+    }))
+  } catch (e) {
+    console.log(e)
+    res.statusCode = 500
+    res.setHeader('Content-Type', 'text/html')
+    res.write('Internal server error')
+  }
+}
+
 async function getQuestionChartData (req, res) {
   try {
     var body = await controllerUtils.toStringChunk(req);
@@ -243,4 +283,4 @@ function getSVG(req, res) {
 }
 
 module.exports = { getChartHTML, getCustomStatsHTML, getCSS, getSVG, getGenderChart, getQuestionChartData, getInstitutions, getInstGenderChart, getInstQuestionChart,
-                   getComparisonChart}
+                   getComparisonChart, getCountryChart }

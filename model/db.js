@@ -3,6 +3,7 @@ const MongoClient = require('mongodb').MongoClient
 const uri = 'mongodb://radu:radu123@ds119024.mlab.com:19024/heroku_gbmt6hp8';
 const dbName = 'heroku_gbmt6hp8';
 const collName = 'pisa_results';
+const countriesCollName = 'worldwide_ranking';
 
 var client;
 var db;
@@ -22,7 +23,7 @@ module.exports = {
       throw err;
     }
   },
-  find: async (query) => {
+  find: async (query, collName = 'pisa_results') => {
     try {
       if(!client) {
         client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -31,6 +32,21 @@ module.exports = {
         db = client.db(dbName);
       }
       return db.collection(collName).find(query);
+    }catch(err) {
+      throw err;
+    } //finally {
+    //   client.close();
+    // }
+  },
+  findOne: async (query, projection, collName = 'pisa_results') => {
+    try {
+      if(!client) {
+        client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+      }
+      if(!db) {
+        db = client.db(dbName);
+      }
+      return db.collection(collName).findOne(query, projection);
     }catch(err) {
       throw err;
     } //finally {
