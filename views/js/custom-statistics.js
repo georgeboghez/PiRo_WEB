@@ -21,70 +21,7 @@ function myFunction() {
 function changeStats() {
   const INSTITUTIONS = ["6.4200029E7", "6.4200103E7", "6.4200031E7", "6.4200146E7", "6.4200116E7", "6.4200056E7", "6.4200139E7", "6.4200147E7", "6.4200161E7", "6.4200054E7", "6.4200145E7", "6.4200156E7", "6.4200073E7", "6.4200153E7", "6.4200059E7", "6.4200039E7", "6.4200081E7", "6.4200128E7", "6.4200131E7", "6.420013E7", "6.4200046E7", "6.4200157E7", "6.4200094E7", "6.4200134E7", "6.4200165E7", "6.4200015E7", "6.4200011E7", "6.4200126E7", "6.4200155E7", "6.42001E7", "6.4200078E7", "6.4200089E7", "6.4200104E7", "6.4200044E7", "6.4200079E7", "6.4200047E7", "6.420002E7", "6.4200049E7", "6.4200057E7", "6.4200119E7", "6.4200167E7", "6.4200061E7", "6.4200151E7", "6.4200032E7", "6.4200042E7", "6.4200082E7", "6.4200088E7", "6.4200037E7", "6.4200109E7", "6.4200023E7", "6.4200006E7", "6.4200117E7", "6.4200115E7", "6.4200028E7", "6.4200137E7", "6.4200008E7", "6.4200083E7", "6.4200012E7", "6.4200005E7", "6.4200123E7", "6.4200038E7", "6.4200068E7", "6.420001E7", "6.4200098E7", "6.420011E7", "6.4200036E7", "6.4200135E7", "6.4200018E7", "6.4200076E7", "6.4200105E7", "6.420015E7", "6.4200169E7", "6.4200097E7", "6.4200106E7", "6.4200051E7", "6.4200136E7", "6.4200065E7", "6.4200168E7", "6.4200112E7", "6.4200102E7", "6.4200052E7", "6.4200113E7", "6.4200085E7", "6.4200062E7", "6.4200013E7", "6.4200162E7", "6.420004E7", "6.4200053E7", "6.4200164E7", "6.4200108E7", "6.4200121E7", "6.420016E7", "6.4200021E7", "6.4200093E7", "6.4200019E7", "6.4200086E7", "6.4200154E7", "6.4200127E7", "6.4200149E7", "6.4200152E7", "6.4200141E7", "6.4200118E7", "6.4200072E7", "6.4200144E7", "6.4200092E7", "6.4200017E7", "6.4200101E7", "6.420012E7", "6.4200009E7", "6.4200014E7", "6.4200171E7", "6.420009E7", "6.4200129E7", "6.4200071E7", "6.4200026E7", "6.4200045E7", "6.4200035E7", "6.4200069E7", "6.4200075E7", "6.4200099E7", "6.4200022E7", "6.4200064E7", "6.4200024E7", "6.4200058E7", "6.4200041E7", "6.4200034E7", "6.4200159E7", "6.4200091E7", "6.4200025E7", "6.4200166E7", "6.4200143E7", "6.420003E7", "6.420005E7", "6.4200033E7", "6.4200063E7", "6.4200084E7", "6.4200138E7", "6.4200124E7", "6.4200114E7", "6.420014E7", "6.420008E7"]
 
-  const COUNTRIES = ["China(Beijing,Shanghai,Jiangsu,Zhejiang)", "Singapore", "Macao", "Hong Kong,China", "Estonia", "Japan", "South Korea", "Canada", "Taiwan", "Finland", "Poland", "Ireland", "Slovenia", "United Kingdom",
-  "New Zealand",
-  "Netherlands",
-  "Sweden",
-  "Denmark",
-  "Germany",
-  "Belgium",
-  "Australia",
-  "Switzerland",
-  "Norway",
-  "Czechia",
-  "United States",
-  "France",
-  "Portugal",
-  "Austria",
-  "Latvia",
-  "Russia",
-  "Iceland",
-  "Lithuania",
-  "Hungary",
-  "Italy",
-  "Luxembourg",
-  "Belarus",
-  "Croatia",
-  "Slovakia",
-  "Israel",
-  "Turkey",
-  "Ukraine",
-  "Malta",
-  "Greece",
-  "Serbia",
-  "Cyprus",
-  "Chile",
-  "United Arab Emirates",
-  "Malaysia",
-  "Romania",
-  "Bulgaria",
-  "Moldova",
-  "Uruguay",
-  "Brunei",
-  "Montenegro",
-  "Albania",
-  "Jordan",
-  "Mexico",
-  "Costa Rica",
-  "Qatar",
-  "Thailand",
-  "Colombia",
-  "Kazakhstan",
-  "Azerbaijan",
-  "Bosnia and Herzegovina",
-  "Peru",
-  "Brazil",
-  "North Macedonia",
-  "Argentina",
-  "Georgia",
-  "Saudi Arabia",
-  "Indonesia",
-  "Lebanon",
-  "Morocco",
-  "Panama",
-  "Kosovo",
-  "Philippines",
-  "Dominican Republic"]
+  const COUNTRIES = ["China(Beijing,Shanghai,Jiangsu,Zhejiang)", "Singapore", "Macao", "Hong Kong,China", "Estonia", "Japan", "South Korea", "Canada", "Taiwan", "Finland", "Poland", "Ireland", "Slovenia", "United Kingdom", "New Zealand", "Netherlands", "Sweden", "Denmark", "Germany", "Belgium", "Australia", "Switzerland", "Norway", "Czechia", "United States", "France", "Portugal", "Austria", "Latvia", "Russia", "Iceland", "Lithuania", "Hungary", "Italy", "Luxembourg", "Belarus", "Croatia", "Slovakia", "Israel", "Turkey", "Ukraine", "Malta", "Greece", "Serbia", "Cyprus", "Chile", "United Arab Emirates", "Malaysia", "Romania", "Bulgaria", "Moldova", "Uruguay", "Brunei", "Montenegro", "Albania", "Jordan", "Mexico", "Costa Rica", "Qatar", "Thailand", "Colombia", "Kazakhstan", "Azerbaijan", "Bosnia and Herzegovina", "Peru", "Brazil", "North Macedonia", "Argentina", "Georgia", "Saudi Arabia", "Indonesia", "Lebanon", "Morocco", "Panama", "Kosovo", "Philippines", "Dominican Republic"]
 
   let nothing_selected = `
   <label for="type">Statistics Type</label>
@@ -385,10 +322,10 @@ function changeStats() {
           }
           var options = {
             reverseData: true,
-        horizontalBars: true,
-        axisY: {
-            offset: 70
-        }
+            horizontalBars: true,
+            axisY: {
+                offset: 70
+            }
           };
           var chart = new Chartist.Bar('.ct-chart', data, options);
                 // //document.getElementById("chart-title").innerHTML = JSON.stringify(Questions[selectedValue]);
