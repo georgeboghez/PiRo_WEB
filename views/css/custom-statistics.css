@@ -117,6 +117,10 @@ p2 {
     stroke: #db990a;
 }
 
+#stats-chart .ct-label {
+  color:inherit;
+}
+
 @media only screen and (max-width:1100px) {
   .custom-stats-grid {
     width:100%;
