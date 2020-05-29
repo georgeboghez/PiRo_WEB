@@ -118,15 +118,12 @@ function changeStats() {
   <option value="institutional">Institutional</option>
   <option value="random">Random</option>
   </select>
-  <label for="pick-country">Pick Country</label>
-  <select id="pick-country" onchange="compareInternational()">
-  <option value="select-country">Select Country</option>`
-
-  for (var i = 0; i < COUNTRIES.length; i++) {
-    international_selected += '<option value = "' + COUNTRIES[i] + '">' + COUNTRIES[i] + '</option>';
-  }
-
-  international_selected += `</select>`;
+  <label for="rank-by">Rank By</label>
+      <select id="rank-by" onchange="compareInternational()">
+      <option value="select-rank-by">Select Option</option>
+      <option value="score">Score</option>
+      <option value="tier">Tier</option>
+      </select>`;
 
   let specific_questions_selected = `
   <label for="type">Statistics Type</label>
@@ -278,10 +275,63 @@ function changeStats() {
       "Philippines",
       "Dominican Republic"]
 
-      var selectBox = document.getElementById("pick-country");
-      var country = selectBox.options[selectBox.selectedIndex].value;
+      var country ="";
+      var selectBox = document.getElementById("rank-by");
+      var rankOption = selectBox.options[selectBox.selectedIndex].value;
 
       let nothing_selected = `
+      <label for="type">Statistics Type</label>
+      <select id="type" onchange="changeStats()">
+      <option value="select-option">Select Statistics Type</option>
+      <option value="specific-questions">Specific Questions</option>
+      <option value="international" selected>International</option>
+      <option value="institutional">Institutional</option>
+      <option value="random">Random</option>
+      </select>
+      <label for="rank-by">Rank By</label>
+          <select id="rank-by" onchange="compareInternational()">
+          <option value="select-rank-by">Select Option</option>
+          <option value="score">Score</option>
+          <option value="tier">Tier</option>
+          </select>`;
+
+      let international_selected = `
+      <label for="type">Statistics Type</label>
+      <select id="type" onchange="changeStats()">
+      <option value="select-option">Select Statistics Type</option>
+      <option value="specific-questions">Specific Questions</option>
+      <option value="international" selected>International</option>
+      <option value="institutional">Institutional</option>
+      <option value="random">Random</option>
+      </select>
+      <label for="rank-by">Rank By</label>
+          <select id="rank-by" onchange="compareInternational()">`;
+
+          if (rankOption == "score")
+            international_selected += `<option value="select-rank-by">Select Option</option> <option value="score" selected>Score</option> <option value="tier">Tier</option>`;
+          else if (rankOption == "tier")
+            international_selected += `<option value="select-rank-by">Select Option</option> <option value="score" selected>Score</option> <option value="tier" selected>Tier</option>`;
+
+      international_selected +=
+          `</select>
+      <label for="pick-country">Pick Country</label>
+            <select id="pick-country">
+            <option value="select-country">Select Country</option>`
+
+            for (var i = 0; i < COUNTRIES.length; i++) {
+              if(country == COUNTRIES[i]) {
+                international_selected += '<option value = "' + COUNTRIES[i] + '" selected>' + COUNTRIES[i] + '</option>';
+                country = COUNTRIES[i];
+              }
+              else {
+                international_selected += '<option value = "' + COUNTRIES[i] + '">' + COUNTRIES[i] + '</option>';
+              }
+            }
+      international_selected += `
+      </select>
+      <button class="button gen-button" onclick="generateCountryChart()"> Generate </button>`;
+
+      /*let nothing_selected = `
   <label for="type">Statistics Type</label>
   <select id="type" onchange="changeStats()">
   <option value="select-option">Select Statistics Type</option>
@@ -330,9 +380,9 @@ function changeStats() {
       <option value="tier">Tier</option>
       </select>
       <button class="button gen-button" onclick="generateCountryChart()"> Generate </button>
-      `;
+      `;*/
 
-      if(country!="select-country") {
+      if(rankOption != "select-rank-by") {
         document.getElementById("stats").innerHTML = international_selected;
       } else {
         document.getElementById("stats").innerHTML = nothing_selected;
@@ -610,7 +660,51 @@ function changeStats() {
         "ST186Q03HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Cheerful",
         "ST186Q02HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Afraid",
         "ST186Q01HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Joyful"
+      };
+
+      var comparison_chosen = `
+        <label for="type">Statistics Type</label>
+        <select id="type" onchange="changeStats()">
+        <option value="select-option">Select Statistics Type</option>
+        <option value="specific-questions">Specific Questions</option>
+        <option value="international">International</option>
+        <option value="institutional" selected>Institutional</option>
+        <option value="random">Random</option>
+        </select>
+        <label for="institution">Pick Institution</label>
+        <select id="institution" onchange="pickInstitution()">
+        <option value="select-Institution">Select Institution</option>
+        `;
+
+
+      var selectBox2 = document.getElementById("institution");
+      var selectedValue2 = selectBox2.options[selectBox2.selectedIndex].value;
+      var selectBoxInst = selectBox2.options[selectBox2.selectedIndex].text;
+      // var selectBoxQuestions = document.getElementById("all-questions");
+      // var selectBoxQuest = selectBoxQuestions.options[selectBoxQuestions.selectedIndes].text;
+      for (var i = 0; i < INSTITUTIONS.length; i++) {
+        if (INSTITUTIONS[i] == selectBoxInst) {
+          comparison_chosen += '<option value = "' + INSTITUTIONS[i] + '" selected>' + INSTITUTIONS[i] + '</option>';
+        } else {
+          comparison_chosen += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
+        }
       }
+      comparison_chosen += '</select>' + `
+        <label for="option-type">Statistics Options</label>
+        <select id="option-type" onchange="chosenInstOption()">
+        <option value="select-option2">Select Option</option>
+        <option value="gender-option">Gender</option>
+        <option value="questions-option" >Questions</option>
+        <option value="comparison-option" selected>Comparison</option>
+        </select>
+        <label for="pick-institution2">Pick Institution #2</label>
+        <select id="pick-institution2" onchange="pickQuestionForComparison()">
+        <option value="select-option2" selected>Select Institution #2</option>`
+      for (var i = 0; i < INSTITUTIONS.length; i++) {
+        comparison_chosen += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
+      }
+      comparison_chosen += `</select>
+        `;
 
       var institution2_chosen = `
       <label for="type">Statistics Type</label>
@@ -648,7 +742,7 @@ function changeStats() {
         <option value="comparison-option" selected>Comparison</option>
         </select>
         <label for="pick-institution2">Pick Institution #2</label>
-        <select id="pick-institution2">
+        <select id="pick-institution2" onchange="pickQuestionForComparison()">
         <option value="select-option2" selected>Select Institution #2</option>`
         var selectBox3 = document.getElementById("pick-institution2");
         var selectedValue2 = selectBox2.options[selectBox3.selectedIndex].value;
@@ -676,6 +770,9 @@ function changeStats() {
         var selectedValue = selectBox.options[selectBox.selectedIndex].value;
         if (selectedValue !== "select-option2") {
           document.getElementById("stats").innerHTML = institution2_chosen;
+        }
+        else {
+          document.getElementById("stats").innerHTML = comparison_chosen;
         }
     }
 
