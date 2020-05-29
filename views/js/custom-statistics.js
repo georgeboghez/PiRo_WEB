@@ -356,7 +356,7 @@ function changeStats() {
           }
 
           if(rankingOption == "score") {
-            data["labels"] = [`Overall Score (${resultData["romania_result"]["AverageScore"]}, ${resultData["second_country_result"]["AverageScore"]})`, `Mathematics Score (${resultData["romania_result"]["MathematicsScore"]}, ${resultData["second_country_result"]["MathematicsScore"]})`, `Science Score (${resultData["romania_result"]["ScienceScore"]}, ${resultData["second_country_result"]["ScienceScore"]})`, `Reading Score (${resultData["romania_result"]["ReadingScore"]}, ${resultData["second_country_result"]["ReadingScore"]}, )`
+            data["labels"] = [`Overall Score (${resultData["romania_result"]["AverageScore"]}, ${resultData["second_country_result"]["AverageScore"]})`, `Mathematics Score (${resultData["romania_result"]["MathematicsScore"]}, ${resultData["second_country_result"]["MathematicsScore"]})`, `Science Score (${resultData["romania_result"]["ScienceScore"]}, ${resultData["second_country_result"]["ScienceScore"]})`, `Reading Score (${resultData["romania_result"]["ReadingScore"]}, ${resultData["second_country_result"]["ReadingScore"]})`
             ]
             data["series"] = [
             [resultData["romania_result"]["AverageScore"], resultData["romania_result"]["MathematicsScore"], resultData["romania_result"]["ScienceScore"], resultData["romania_result"]["ReadingScore"]
@@ -370,12 +370,12 @@ function changeStats() {
             //downloadCSV();
           }
           else {
-            data["labels"] = [`Overall Ranking (${resultData["romania_result"]["AverageRanking"]}, ${resultData["second_country_result"]["AverageRanking"]})`, `Mathematics Ranking (${resultData["romania_result"]["MathematicsRanking"]}, ${resultData["second_country_result"]["MathematicsRanking"]})`, `Science Ranking (${resultData["romania_result"]["ScienceRanking"]}, ${resultData["second_country_result"]["ScienceRanking"]})`, `Reading Ranking (${resultData["romania_result"]["ReadingRanking"]}, ${resultData["second_country_result"]["ReadingRanking"]}, )`
+            data["labels"] = [`Overall Ranking (${resultData["romania_result"]["AverageRanking"]}, ${resultData["second_country_result"]["AverageRanking"]})`, `Mathematics Ranking (${resultData["romania_result"]["MathematicsRanking"]}, ${resultData["second_country_result"]["MathematicsRanking"]})`, `Science Ranking (${resultData["romania_result"]["ScienceRanking"]}, ${resultData["second_country_result"]["ScienceRanking"]})`, `Reading Ranking (${resultData["romania_result"]["ReadingRanking"]}, ${resultData["second_country_result"]["ReadingRanking"]})`
             ]
             data["series"] = [
-            [resultData["romania_result"]["AverageRanking"], resultData["romania_result"]["MathematicsRanking"], resultData["romania_result"]["ScienceRanking"], resultData["romania_result"]["ReadingRanking"]
+            [78 - resultData["romania_result"]["AverageRanking"],78 -  resultData["romania_result"]["MathematicsRanking"],78 -  resultData["romania_result"]["ScienceRanking"],78 -  resultData["romania_result"]["ReadingRanking"]
             ],
-            [resultData["second_country_result"]["AverageRanking"], resultData["second_country_result"]["MathematicsRanking"], resultData["second_country_result"]["ScienceRanking"], resultData["second_country_result"]["ReadingRanking"]
+            [78 -  resultData["second_country_result"]["AverageRanking"],78 -  resultData["second_country_result"]["MathematicsRanking"],78 -  resultData["second_country_result"]["ScienceRanking"],78 -  resultData["second_country_result"]["ReadingRanking"]
             ]
             ]
             csvData = `Country,Overall Ranking,Mathematics Ranking,Science Ranking,Reading Ranking\n` +
@@ -797,7 +797,7 @@ function changeStats() {
               }
             }
           });
-          
+
           document.getElementById("chart-title").innerHTML = "Gender chart for institution: " + selectBox.options[selectBox.selectedIndex].text;
         }
       };
@@ -1019,7 +1019,7 @@ function getSVG() {
 
   //set url value to a element's href attribute.
   var link = document.createElement("a");
-  
+
   link.download = name;
   link.href = url;
   link.click();
