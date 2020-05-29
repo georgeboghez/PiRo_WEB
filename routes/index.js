@@ -16,10 +16,12 @@ router.get('/css/footer.css', indexController.getCSS)
 router.get('/css/page-content.css', indexController.getCSS)
 router.get('/css/main-page.css', indexController.getCSS)
 router.get('/assets/img/romania.svg', indexController.getSVG)
+router.get('/assets/img/world.svg', indexController.getSVG)
 router.get('/assets/img/ag.svg', indexController.getSVG)
 router.get('/assets/img/school.svg', indexController.getSVG)
 router.get('/assets/img/dice.svg', indexController.getSVG)
 router.get('/assets/img/menu.svg', indexController.getSVG)
+router.get('/assets/img/questionmark.svg', indexController.getSVG)
 router.get('/assets/js/header.js', indexController.getJS)
 
 

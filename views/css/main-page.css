@@ -28,12 +28,12 @@
 	font-family: sans-serif;
 }
 
-.map-container svg path {
+.participating {
 	fill: #fff;
 	stroke: #253569;
 }
 
-.map-container svg path:hover {
+.participating:hover {
 	fill: #f1aa0b;
 	stroke: #2a3e52;
 }
@@ -184,7 +184,7 @@
 	}
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
 	.map-container svg {
 		width: 100%;
 		height: calc(width * 0.5);
