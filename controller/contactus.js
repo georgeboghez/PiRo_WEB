@@ -62,7 +62,7 @@ async function sendMailtoFront(req, res)
         res.statusCode = 200
         res.write(htmlcode)
       }
-      
+
     }    res.end();
   } catch (e) {
     console.log(e)
@@ -96,12 +96,12 @@ function isNameValid(name) {
  return true;
 }
 
-function getPNG(req, res) {
+function getSVG(req, res) {
   try {
-    let png = fs.readFileSync('views' + req.url)
+    let svg = fs.readFileSync('views' + req.url)
     res.statusCode = 200
-    res.setHeader('Content-Type', 'image/png')
-    res.write(png)
+    res.setHeader('Content-Type', 'image/svg+xml')
+    res.write(svg)
   } catch (e) {
     console.log(e)
     res.statusCode = 500
@@ -109,6 +109,7 @@ function getPNG(req, res) {
     res.write('Internal server error')
   }
 }
+
 function getContactHTML (req, res) {
   try {
     let indexHTML = fs.readFileSync('./views/contact-us.html')
@@ -152,4 +153,4 @@ function getJS(req, res) {
 }
 
 
-module.exports = { exempleAPI, getContactHTML, getCSS, getPNG, getJS, sendMailtoFront }
+module.exports = { exempleAPI, getContactHTML, getCSS, getSVG, getJS, sendMailtoFront }
