@@ -333,6 +333,11 @@ function changeStats() {
       var selectBox2 = document.getElementById("rank-by");
       var rankingOption = selectBox2.options[selectBox2.selectedIndex].value;
 
+      if (country == "select-country") {
+        alert("No country selected!");
+        return;
+      }
+
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -392,6 +397,25 @@ function changeStats() {
     function pickInstitution() {
       const INSTITUTIONS = ["6.4200029E7", "6.4200103E7", "6.4200031E7", "6.4200146E7", "6.4200116E7", "6.4200056E7", "6.4200139E7", "6.4200147E7", "6.4200161E7", "6.4200054E7", "6.4200145E7", "6.4200156E7", "6.4200073E7", "6.4200153E7", "6.4200059E7", "6.4200039E7", "6.4200081E7", "6.4200128E7", "6.4200131E7", "6.420013E7", "6.4200046E7", "6.4200157E7", "6.4200094E7", "6.4200134E7", "6.4200165E7", "6.4200015E7", "6.4200011E7", "6.4200126E7", "6.4200155E7", "6.42001E7", "6.4200078E7", "6.4200089E7", "6.4200104E7", "6.4200044E7", "6.4200079E7", "6.4200047E7", "6.420002E7", "6.4200049E7", "6.4200057E7", "6.4200119E7", "6.4200167E7", "6.4200061E7", "6.4200151E7", "6.4200032E7", "6.4200042E7", "6.4200082E7", "6.4200088E7", "6.4200037E7", "6.4200109E7", "6.4200023E7", "6.4200006E7", "6.4200117E7", "6.4200115E7", "6.4200028E7", "6.4200137E7", "6.4200008E7", "6.4200083E7", "6.4200012E7", "6.4200005E7", "6.4200123E7", "6.4200038E7", "6.4200068E7", "6.420001E7", "6.4200098E7", "6.420011E7", "6.4200036E7", "6.4200135E7", "6.4200018E7", "6.4200076E7", "6.4200105E7", "6.420015E7", "6.4200169E7", "6.4200097E7", "6.4200106E7", "6.4200051E7", "6.4200136E7", "6.4200065E7", "6.4200168E7", "6.4200112E7", "6.4200102E7", "6.4200052E7", "6.4200113E7", "6.4200085E7", "6.4200062E7", "6.4200013E7", "6.4200162E7", "6.420004E7", "6.4200053E7", "6.4200164E7", "6.4200108E7", "6.4200121E7", "6.420016E7", "6.4200021E7", "6.4200093E7", "6.4200019E7", "6.4200086E7", "6.4200154E7", "6.4200127E7", "6.4200149E7", "6.4200152E7", "6.4200141E7", "6.4200118E7", "6.4200072E7", "6.4200144E7", "6.4200092E7", "6.4200017E7", "6.4200101E7", "6.420012E7", "6.4200009E7", "6.4200014E7", "6.4200171E7", "6.420009E7", "6.4200129E7", "6.4200071E7", "6.4200026E7", "6.4200045E7", "6.4200035E7", "6.4200069E7", "6.4200075E7", "6.4200099E7", "6.4200022E7", "6.4200064E7", "6.4200024E7", "6.4200058E7", "6.4200041E7", "6.4200034E7", "6.4200159E7", "6.4200091E7", "6.4200025E7", "6.4200166E7", "6.4200143E7", "6.420003E7", "6.420005E7", "6.4200033E7", "6.4200063E7", "6.4200084E7", "6.4200138E7", "6.4200124E7", "6.4200114E7", "6.420014E7", "6.420008E7"]
 
+      var institutional_selected = `
+    <label for="type">Statistics Type</label>
+    <select id="type" onchange="changeStats()">
+    <option value="select-option">Select Statistics Type</option>
+    <option value="specific-questions">Specific Questions</option>
+    <option value="international">International</option>
+    <option value="institutional" selected>Institutional</option>
+    <option value="random">Random</option>
+    </select>
+    <label for="institution">Pick Institution</label>
+    <select id="institution" onchange="pickInstitution()">
+    <option value="select-Institution" selected>Select Institution</option>
+    `
+
+        for (var i = 0; i < INSTITUTIONS.length; i++) {
+          institutional_selected += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
+        }
+        institutional_selected += '</select>';
+
       var institution_chosen = `
       <label for="type">Statistics Type</label>
       <select id="type" onchange="changeStats()">
@@ -424,7 +448,13 @@ function changeStats() {
       <option value="comparison-option">Comparison</option>
       </select>
       `
-      document.getElementById("stats").innerHTML = institution_chosen;
+
+
+      if (selectedValue2 != "select-Institution") {
+        document.getElementById("stats").innerHTML = institution_chosen;
+      } else {
+        document.getElementById("stats").innerHTML = institutional_selected;
+      }
     }
 
     function chosenInstOption() {
@@ -444,6 +474,39 @@ function changeStats() {
         "ST186Q02HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Afraid",
         "ST186Q01HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Joyful"
       }
+
+      var institution_chosen = `
+      <label for="type">Statistics Type</label>
+      <select id="type" onchange="changeStats()">
+      <option value="select-option">Select Statistics Type</option>
+      <option value="specific-questions">Specific Questions</option>
+      <option value="international">International</option>
+      <option value="institutional" selected>Institutional</option>
+      <option value="random">Random</option>
+      </select>
+      <label for="institution">Pick Institution</label>
+      <select id="institution" onchange="pickInstitution()">
+      <option value="select-Institution">Select Institution</option>
+      `
+      var selectBox2 = document.getElementById("institution");
+      var selectedValue2 = selectBox2.options[selectBox2.selectedIndex].value;
+      var selectBoxInst = selectBox2.options[selectBox2.selectedIndex].text;
+      for (var i = 0; i < INSTITUTIONS.length; i++) {
+        if (INSTITUTIONS[i] == selectBoxInst) {
+          institution_chosen += '<option value = "' + INSTITUTIONS[i] + '" selected>' + INSTITUTIONS[i] + '</option>';
+        } else {
+          institution_chosen += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
+        }
+      }
+      institution_chosen += '</select>' + `
+      <label for="option-type">Statistics Options</label>
+      <select id="option-type" onchange="chosenInstOption()">
+      <option value="select-option2">Select Option</option>
+      <option value="gender-option">Gender</option>
+      <option value="questions-option">Questions</option>
+      <option value="comparison-option">Comparison</option>
+      </select>
+      `
 
       var gender_chosen = `
       <label for="type">Statistics Type</label>
@@ -577,6 +640,9 @@ function changeStats() {
           document.getElementById("stats").innerHTML = gender_chosen;
         } else if (selectedValue == "comparison-option") {
           document.getElementById("stats").innerHTML = comparison_chosen;
+        }
+          else {
+           document.getElementById("stats").innerHTML = institution_chosen;
         }
     }
 
@@ -723,6 +789,11 @@ function changeStats() {
       var selectBox3 = document.getElementById("institution2-question");
       var question = selectBox3.options[selectBox3.selectedIndex].value;
 
+      if (question == "select-question-comparison") {
+        alert("No question chosen!");
+        return;
+      }
+
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -765,6 +836,12 @@ function changeStats() {
       var selectQuest = document.getElementById("all-questions");
       var selectValueQ = selectQuest.options[selectQuest.selectedIndex].value;
       var selectQT = selectQuest.options[selectQuest.selectedIndex].text;
+
+      if (selectValueQ == "select-question") {
+        alert("No question chosen!");
+        return;
+      }
+
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -889,6 +966,7 @@ function changeStats() {
       </select>
       <label for="question">Question</label>
       <select id="question">
+      <option value="select-question">Select Question</option>
       <option value="ST123Q02NA">${Questions["ST123Q02NA"]}</option>
       <option value="ST123Q03NA">${Questions["ST123Q03NA"]}</option>
       <option value="ST123Q04NA">${Questions["ST123Q04NA"]}</option>
@@ -913,6 +991,7 @@ function changeStats() {
       </select>
       <label for="question">Question</label>
       <select id="question">
+      <option value="select-question">Select Question</option>
       <option value="ST186Q05HA">${Questions["ST186Q05HA"]}</option>
       <option value="ST186Q06HA">${Questions["ST186Q06HA"]}</option>
       <option value="ST186Q07HA">${Questions["ST186Q07HA"]}</option>
@@ -943,6 +1022,11 @@ function changeStats() {
       var selectBox = document.getElementById("question");
       var selectedValue = selectBox.options[selectBox.selectedIndex].value;
       var question = selectBox.options[selectBox.selectedIndex].text;
+
+      if (selectedValue == "select-question") {
+        alert("No question selected!");
+        return;
+      }
 
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
