@@ -1,4 +1,4 @@
-var csvData;
+var csvData = "empty";
 
 function changeFunc() {
   var selectBox = document.getElementById("type");
@@ -128,6 +128,7 @@ function changeStats() {
   } else if (selectedValue === "institutional") {
     document.getElementById("stats").innerHTML = institutional_selected;
   } else if (selectedValue === "select-option") {
+    csvData = "empty";
     var data = {
                 // A labels array that can contain any sort of values
                 labels: [1, 2, 3, 4],
@@ -738,7 +739,7 @@ function changeStats() {
         }
         institution2_chosen += '</select>' + `
         <label for="option-type">Statistics Options</label>
-        <select id="option-type" onchange="pickQuestionForComparison()">
+        <select id="option-type" onchange="chosenInstOption()">
         <option value="select-option2">Select Option</option>
         <option value="gender-option">Gender</option>
         <option value="questions-option" >Questions</option>
@@ -1248,11 +1249,15 @@ function getPNG2() {
 }
 
 function downloadCSV(){
+  if (csvData == "empty") {
+    alert("No chart generated!");
+    return;
+  }
   var downloadLink = document.createElement("a");
   var blob = new Blob(["\ufeff", csvData]);
   var url = URL.createObjectURL(blob);
   downloadLink.href = url;
-  downloadLink.download = "data.csv";
+  downloadLink.download = "chart-data.csv";
 
   document.body.appendChild(downloadLink);
   downloadLink.click();
