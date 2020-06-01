@@ -79,6 +79,8 @@ function changeStats() {
   <option value="homecond">Home Conditions</option>
   <option value="reading">Reading</option>
   <option value="agreedisagree">Agree or Disagree</option>
+  <option value="math">Mathematics</option>
+  <option value="science">Sciences</option>
   </select>`;
 
   var institutional_selected = `
@@ -1023,6 +1025,56 @@ function changeStats() {
          "ST181Q04HA": "Agree: I try harder when Im in competition with other people.",
          "ST181Q03HA": "Agree: It is important for me to perform better than other people on a task.",
          "ST181Q02HA": "Agree: I enjoy working in situations involving competition with others.",
+
+         "EC001Q02NA": "Approx how many hrs\\week attend add. instruct in the follow. domains? Mathematics",
+         "EC014Q01NA": "What does additional math cover? Content covered in regular school courses",
+         "EC014Q02NA": "What does additonal math cover? New or additional content notcovered in regular school courses",
+         "EC015Q01NA": "Which math instruction do you participate? One-on-one tutoring with a person",
+         "EC015Q07NA": "Which math instruction do you participate? Large group study or practice (8 or more students)",
+         "EC015Q08NA": "Which math instruction do you participate? Other additional mathematics instruction",
+         "EC017Q01NA": "Where do you attend this additional mathematics instruction? In my regular school building",
+         "EC017Q02NA": "Where do you attend this additional mathematics instruction? At some other place, i.e., not in my regular school",
+         "EC018Q01NA": "The teacher is one of my regular teachers in this years school courses. (mathematics)",
+         "EC018Q03NA": "The teacher mainly works for a business or organisation specialised in additional instruction. (mathematics)",
+         "EC018Q04NA": "The teacher is not specialised teaching personnel (e.g. a student). (mathematics)",
+         "EC019Q03NA": "My teacher does a lot to help me.",
+         "EC019Q07NA": "My teacher is pleased when I come up with new solutions to a problem.",
+         "EC019Q10NA": "My teacher gives hints or offers strategies that help me to solve a task.",
+         "EC019Q12NA": "My teacher helps me to find ways how to solve a problem.",
+         "EC023Q02NA": "Why don't you attend additional mathematics in this school year: None of the offerings suit my needs.",
+         "EC023Q03NA": "Why don't you attend additional mathematics in this school year: Not many of my friends are doing it.",
+         "EC023Q04NA": "Why don't you attend additional mathematics in this school year: I don't have time.",
+         "EC023Q05NA": "Why don't you attend additional mathematics in this school year: I don't have the money.",
+         "EC023Q06NA": "Why don't you attend additional mathematics in this school year: My teachers are knowledgeable enough.",
+         "EC023Q07NA": "Why don't you attend additional mathematics in this school year: My parents don't want me to do it.",
+         "EC023Q08NA": "Why don't you attend additional mathematics in this school year: It doesnt seem worth the money.",
+         "PA002Q01TA": "Watched TV programmes about science",
+
+         "PA002Q02TA": "Read books on scientific discoveries",
+         "PA002Q03TA": "Watched, read or listened to science fiction",
+         "PA002Q04TA": "Visited web sites about science topics",
+         "PA002Q05TA": "Attended a science club",
+         "PA002Q06NA": "Construction play, e.g.Lego bricks",
+         "PA002Q07NA": "Took apart technical devices",
+         "PA002Q08NA": "Fixed broken objects or items, e.g. broken electronic toys",
+         "PA002Q09NA": "Experimented with a science kit, electronics kit, or chemistry set, used a microscope or telescope",
+         "PA002Q10NA": "Played computer games with a science content",
+         "EC013Q06NA": "Why don't you attend additional science in this school year? My school teachers are knowledgeable enough.",
+         "EC013Q07NA": "Why don't you attend additional science in this school year? My parents don't want me to do it.",
+         "EC013Q08NA": "Why don't you attend additional science in this school year? It doesnt seem worth the money.",
+         "EC013Q09NA": "Why don't you attend additional science in this school year? My teachers say it is not useful.",
+         "EC013Q10NA": "Why don't you attend additional science in this school year? I have never considered add. science instruction.",
+         "ST071Q01NA": "This school year, approximately how many hours per week do you spend learning in addition? School Science",
+         "ST094Q01NA": "Disagree or agree with the statements? I have fun when I am learning broad science",
+         "ST094Q02NA": "Disagree or agree with the statements? I like reading about broad science topics.",
+         "ST094Q03NA": "Disagree or agree with the statements? I am happy working on broad science topics.",
+         "ST094Q04NA": "Disagree or agree with the statements? I enjoy acquiring new knowledge in broad science.",
+         "ST094Q05NA": "Disagree or agree with the statements? I am interested in learning about broad science.",
+         "ST095Q04NA": "To what extent are you interested in: Biosphere (e.g. ecosystem services, sustainability)",
+         "ST095Q07NA": "To what extent are you interested in: Motion and forces (e.g. velocity, friction, magnetic and gravi forces)",
+         "ST095Q08NA": "To what extent are you interested in: Energy and its transformation (e.g. conservation, chemical reactions)",
+         "ST095Q13NA": "To what extent are you interested in: broad science topics? The Universe and its history",
+         "ST095Q15NA": "To what extent are you interested in: broad science topics? How science can help us prevent disease"
       }
 
       nothing_selected = `
@@ -1042,6 +1094,8 @@ function changeStats() {
       <option value="homecond">Home Conditions</option>
       <option value="reading">Reading</option>
       <option value="agreedisagree">Agree or Disagree</option>
+      <option value="math">Mathematics</option>
+      <option value="science">Sciences</option>
       </select>`
 
       let trust_selected = `
@@ -1061,6 +1115,8 @@ function changeStats() {
       <option value="homecond">Home Conditions</option>
       <option value="reading">Reading</option>
       <option value="agreedisagree">Agree or Disagree</option>
+      <option value="math">Mathematics</option>
+      <option value="science">Sciences</option>
       </select>
       <label for="question">Question</label>
       <select id="question">
@@ -1068,6 +1124,107 @@ function changeStats() {
       <option value="ST123Q02NA">${Questions["ST123Q02NA"]}</option>
       <option value="ST123Q03NA">${Questions["ST123Q03NA"]}</option>
       <option value="ST123Q04NA">${Questions["ST123Q04NA"]}</option>
+      </select>
+      <button class="button gen-button" onclick="generateByQuestion()"> Generate </button>
+      </div>`;
+
+      let science_selected = `
+      <label for="type">Statistics Type</label>
+      <select id="type" onchange="changeStats()">
+      <option value="select-option">Select Statistics Type</option>
+      <option value="specific-questions" selected>Specific Questions</option>
+      <option value="international">International</option>
+      <option value="institutional">Institutional</option>
+      <option value="random">Random</option>
+      </select>
+      <label for="category">Category</label>
+      <select id="category" onchange="pickCategory()">
+      <option value="select-category">Select Category</option>
+      <option value="feelings">Feelings</option>
+      <option value="trust" >Trust</option>
+      <option value="homecond">Home Conditions</option>
+      <option value="reading">Reading</option>
+      <option value="agreedisagree">Agree or Disagree</option>
+      <option value="math">Mathematics</option>
+      <option value="science" selected>Sciences</option>
+      </select>
+      <label for="question">Question</label>
+      <select id="question">
+      <option value="select-question">Select Question</option>
+      <option value="PA002Q01TA">${Questions["PA002Q01TA"]}</option>
+      <option value="PA002Q02TA">${Questions["PA002Q02TA"]}</option>
+      <option value="PA002Q03TA">${Questions["PA002Q03TA"]}</option>
+      <option value="PA002Q04TA">${Questions["PA002Q04TA"]}</option>
+      <option value="PA002Q05TA">${Questions["PA002Q05TA"]}</option>
+      <option value="PA002Q06NA">${Questions["PA002Q06NA"]}</option>
+      <option value="PA002Q07NA">${Questions["PA002Q07NA"]}</option>
+      <option value="PA002Q08NA">${Questions["PA002Q08NA"]}</option>
+      <option value="PA002Q09NA">${Questions["PA002Q09NA"]}</option>
+      <option value="PA002Q10NA">${Questions["PA002Q10NA"]}</option>
+      <option value="EC013Q06NA">${Questions["EC013Q06NA"]}</option>
+      <option value="EC013Q07NA">${Questions["EC013Q07NA"]}</option>
+      <option value="EC013Q08NA">${Questions["EC013Q08NA"]}</option>
+      <option value="EC013Q09NA">${Questions["EC013Q09NA"]}</option>
+      <option value="EC013Q10NA">${Questions["EC013Q10NA"]}</option>
+      <option value="ST071Q01NA">${Questions["ST071Q01NA"]}</option>
+      <option value="ST094Q02NA">${Questions["ST094Q02NA"]}</option>
+      <option value="ST094Q03NA">${Questions["ST094Q03NA"]}</option>
+      <option value="ST094Q04NA">${Questions["ST094Q04NA"]}</option>
+      <option value="ST094Q05NA">${Questions["ST094Q05NA"]}</option>
+      <option value="ST095Q04NA">${Questions["ST095Q04NA"]}</option>
+      <option value="ST095Q07NA">${Questions["ST095Q07NA"]}</option>
+      <option value="ST095Q08NA">${Questions["ST095Q08NA"]}</option>
+      <option value="ST095Q13NA">${Questions["ST095Q13NA"]}</option>
+      <option value="ST095Q15NA">${Questions["ST095Q15NA"]}</option>
+      </select>
+      <button class="button gen-button" onclick="generateByQuestion()"> Generate </button>
+      </div>`;
+
+      let math_selected = `
+      <label for="type">Statistics Type</label>
+      <select id="type" onchange="changeStats()">
+      <option value="select-option">Select Statistics Type</option>
+      <option value="specific-questions" selected>Specific Questions</option>
+      <option value="international">International</option>
+      <option value="institutional">Institutional</option>
+      <option value="random">Random</option>
+      </select>
+      <label for="category">Category</label>
+      <select id="category" onchange="pickCategory()">
+      <option value="select-category">Select Category</option>
+      <option value="feelings">Feelings</option>
+      <option value="trust">Trust</option>
+      <option value="homecond">Home Conditions</option>
+      <option value="reading">Reading</option>
+      <option value="agreedisagree">Agree or Disagree</option>
+      <option value="math" selected>Mathematics</option>
+      <option value="science">Sciences</option>
+      </select>
+      <label for="question">Question</label>
+      <select id="question">
+      <option value="select-question">Select Question</option>
+      <option value="EC001Q02NA">${Questions["EC001Q02NA"]}</option>
+      <option value="EC014Q01NA">${Questions["EC014Q01NA"]}</option>
+      <option value="EC014Q02NA">${Questions["EC014Q02NA"]}</option>
+      <option value="EC015Q01NA">${Questions["EC015Q01NA"]}</option>
+      <option value="EC015Q07NA">${Questions["EC015Q07NA"]}</option>
+      <option value="EC015Q08NA">${Questions["EC015Q08NA"]}</option>
+      <option value="EC017Q01NA">${Questions["EC017Q01NA"]}</option>
+      <option value="EC017Q02NA">${Questions["EC017Q02NA"]}</option>
+      <option value="EC018Q01NA">${Questions["EC018Q01NA"]}</option>
+      <option value="EC018Q03NA">${Questions["EC018Q03NA"]}</option>
+      <option value="EC018Q04NA">${Questions["EC018Q04NA"]}</option>
+      <option value="EC019Q03NA">${Questions["EC019Q03NA"]}</option>
+      <option value="EC019Q07NA">${Questions["EC019Q07NA"]}</option>
+      <option value="EC019Q10NA">${Questions["EC019Q10NA"]}</option>
+      <option value="EC019Q12NA">${Questions["EC019Q12NA"]}</option>
+      <option value="EC023Q02NA">${Questions["EC023Q02NA"]}</option>
+      <option value="EC023Q03NA">${Questions["EC023Q03NA"]}</option>
+      <option value="EC023Q04NA">${Questions["EC023Q04NA"]}</option>
+      <option value="EC023Q05NA">${Questions["EC023Q05NA"]}</option>
+      <option value="EC023Q06NA">${Questions["EC023Q06NA"]}</option>
+      <option value="EC023Q07NA">${Questions["EC023Q07NA"]}</option>
+      <option value="EC023Q08NA">${Questions["EC023Q08NA"]}</option>
       </select>
       <button class="button gen-button" onclick="generateByQuestion()"> Generate </button>
       </div>`;
@@ -1089,6 +1246,8 @@ function changeStats() {
       <option value="homecond">Home Conditions</option>
       <option value="reading">Reading</option>
       <option value="agreedisagree" selected>Agree or Disagree</option>
+      <option value="math">Mathematics</option>
+      <option value="science">Sciences</option>
       </select>
       <label for="question">Question</label>
       <select id="question">
@@ -1133,6 +1292,8 @@ function changeStats() {
       <option value="homecond">Home Conditions</option>
       <option value="reading" selected>Reading</option>
       <option value="agreedisagree">Agree or Disagree</option>
+      <option value="math">Mathematics</option>
+      <option value="science">Sciences</option>
       </select>
       <label for="question">Question</label>
       <select id="question">
@@ -1201,6 +1362,8 @@ function changeStats() {
       <option value="homecond" selected>Home Conditions</option>
       <option value="reading">Reading</option>
       <option value="agreedisagree">Agree/Disagree</option>
+      <option value="math">Mathematics</option>
+      <option value="science">Sciences</option>
       </select>
       <label for="question">Question</label>
       <select id="question">
@@ -1253,6 +1416,8 @@ function changeStats() {
       <option value="homecond">Home Conditions</option>
       <option value="reading">Reading</option>
       <option value="agreedisagree">Agree or Disagree</option>
+      <option value="math">Mathematics</option>
+      <option value="science">Sciences</option>
       </select>
       <label for="question">Question</label>
       <select id="question">
@@ -1285,6 +1450,10 @@ function changeStats() {
         document.getElementById("stats").innerHTML = reading_selected;
       } else if (selectedValue === "agreedisagree") {
         document.getElementById("stats").innerHTML = agree_selected;
+      } else if (selectedValue === "math") {
+        document.getElementById("stats").innerHTML = math_selected;
+      } else if (selectedValue === "science") {
+        document.getElementById("stats").innerHTML = science_selected;
       }
 
     }
@@ -1397,7 +1566,7 @@ function returnSvgElements(title) {
   var words_length = 0;
   for(var index in words) {
     words_length += words[index].length
-    svg_elements +=  words[index] + ' '; 
+    svg_elements +=  words[index] + ' ';
     if(words_length > 40) {
        svg_elements += '</text>';
        height += 25;
@@ -1420,7 +1589,7 @@ function getSVG() {
   source = source.replace(/xmlns="http:\/\/www\.w3\.org\/2000\/xmlns\/"/g, '');
   var title = document.getElementById("chart-title").innerHTML
 
-  
+
   var svg_elements = returnSvgElements(title);
 
   source = source.replace(/<g/, '<defs> <style type="text/css"> <![CDATA[ .ct-bar {fill: none; stroke-width: 10px;} .ct-series-a .ct-bar {stroke: #f1aa0b;} .ct-series-b .ct-bar {stroke: #db990a;} .ct-grid { stroke: rgba(0,0,0,.2); stroke-width: 1px; stroke-dasharray: 2px; background-color: white; color: #2a3e52; border-color: #2a3e52; margin: 0; padding: 0; min-width: fit-content; } .ct-label { font-size: .75rem; line-height: 1; } .ct-series-a .ct-slice-pie{fill:#d70206}     .ct-slice-pie{fill:#f05b4f}.ct-series-c .ct-bar,.ct-series-c .ct-line,.ct-series-c .ct-point,.ct-series-c .ct-slice-donut{stroke:#f4c63d}.ct-series-c .ct-area,.ct-series-c .ct-slice-donut-solid,.ct-series-c .ct-slice-pie{fill:#f4c63d}.ct-series-d .ct-bar,.ct-series-d .ct-line,.ct-series-d .ct-point,.ct-series-d .ct-slice-donut{stroke:#d17905}.ct-series-d .ct-area,.ct-series-d .ct-slice-donut-solid,.ct-series-d .ct-slice-pie{fill:#d17905}.ct-series-e .ct-bar,.ct-series-e .ct-line,.ct-series-e .ct-point,.ct-series-e .ct-slice-donut{stroke:#453d3f}.ct-series-e .ct-area,.ct-series-e .ct-slice-donut-solid,.ct-series-e .ct-slice-pie{fill:#453d3f}.ct-series-f .ct-bar,.ct-series-f .ct-line,.ct-series-f .ct-point,.ct-series-f .ct-slice-donut{stroke:#59922b}.ct-series-f .ct-area,.ct-series-f .ct-slice-donut-solid,.ct-series-f .ct-slice-pie{fill:#59922b}.ct-series-g .ct-bar,.ct-series-g .ct-line,.ct-series-g .ct-point,.ct-series-g .ct-slice-donut{stroke:#0544d3}.ct-series-g .ct-area,.ct-series-g .ct-slice-donut-solid,.ct-series-g .ct-slice-pie{fill:#0544d3}.ct-series-h .ct-bar,.ct-series-h .ct-line,.ct-series-h .ct-point,.ct-series-h .ct-slice-donut{stroke:#6b0392}.ct-series-h .ct-area,.ct-series-h .ct-slice-donut-solid,.ct-series-h .ct-slice-pie{fill:#6b0392}.ct-series-i .ct-bar,.ct-series-i .ct-line,.ct-series-i .ct-point,.ct-series-i .ct-slice-donut{stroke:#f05b4f}.ct-series-i .ct-area,.ct-series-i .ct-slice-donut-solid,.ct-series-i .ct-slice-pie{fill:#f05b4f}.ct-series-j .ct-bar,.ct-series-j .ct-line,.ct-series-j .ct-point,.ct-series-j .ct-slice-donut{stroke:#dda458}.ct-series-j .ct-area,.ct-series-j .ct-slice-donut-solid,.ct-series-j .ct-slice-pie{fill:#dda458}.ct-series-k .ct-bar,.ct-series-k .ct-line,.ct-series-k .ct-point,.ct-series-k .ct-slice-donut{stroke:#eacf7d}.ct-series-k .ct-area,.ct-series-k .ct-slice-donut-solid,.ct-series-k .ct-slice-pie{fill:#eacf7d}.ct-series-l .ct-bar,.ct-series-l .ct-line,.ct-series-l .ct-point,.ct-series-l .ct-slice-donut{stroke:#86797d}.ct-series-l .ct-area,.ct-series-l .ct-slice-donut-solid,.ct-series-l .ct-slice-pie{fill:#86797d}.ct-series-m .ct-bar,.ct-series-m .ct-line,.ct-series-m .ct-point,.ct-series-m .ct-slice-donut{stroke:#b2c326}.ct-series-m .ct-area,.ct-series-m .ct-slice-donut-solid,.ct-series-m .ct-slice-pie{fill:#b2c326}.ct-series-n .ct-bar,.ct-series-n .ct-line,.ct-series-n .ct-point,.ct-series-n .ct-slice-donut{stroke:#6188e2}.ct-series-n .ct-area,.ct-series-n .ct-slice-donut-solid,.ct-series-n .ct-slice-pie{fill:#6188e2}.ct-series-o .ct-bar,.ct-series-o .ct-line,.ct-series-o .ct-point,.ct-series-o .ct-slice-donut{stroke:#a748ca}.ct-series-o .ct-area,.ct-series-o .ct-slice-donut-solid,.ct-series-o .ct-slice-pie{fill:#a748ca}.ct-square{display:block;position:relative;width:100%}.ct-square:before{display:block;float:left;content:"";width:0;height:0;padding-bottom:100%}.ct-square:after{display:table}.ct-square>svg{display:block;position:absolute;top:0;left:0}.ct-minor-second{display:block;position:relative;width:100%}.ct-minor-second:before{display:block;float:left;content:"";width:0;height:0;padding-bottom:93.75%}.ct-minor-second:after{display:table}.ct-minor-second>svg{display:block;position:absolute;top:0;left:0}.ct-major-second{display:block;position:relative;width:100%}.ct-major-second:before{display:block;float:left;content:"";width:0;height:0;padding-bottom:88.8888888889%}.ct-major-second:after{display:table}.ct-major-second>svg{display:block;position:absolute;top:0;left:0}.ct-minor-third{display:block;position:relative;width:100%}.ct-minor-third:before{display:block;float:left;content:"";width:0;height:0;padding-bottom:83.3333333333%}.ct-minor-third:after{display:table}.ct-minor-third>svg{display:block;position:absolute;top:0;left:0}.ct-major-third{display:block;position:relative;width:100%}.ct-major-third:before{display:block;float:left;content:"";width:0;height:0;padding-bottom:80%}.ct-major-third:after{display:table}.ct-major-third>svg{display:block;position:absolute;top:0;left:0}.ct-perfect-fourth{display:block;position:relative;width:100%}.ct-perfect-fourth:before{display:block;float:left;content:"";width:0;height:0;padding-bottom:75%}.ct-perfect-fourth:after{display:table}.ct-perfect-fourth>svg{display:block;position:absolute;top:0;left:0}.ct-perfect-fifth{display:block;position:relative;width:100%}.ct-perfect-fifth:before{display:block;float:left;content:"";width:0;height:0;padding-bottom:66.6666666667%}.ct-perfect-fifth:after{display:table}.ct-perfect-fifth>svg{display:block;position:absolute;top:0;left:0}.ct-minor-sixth{display:block;position:relative;width:100%}.ct-minor-sixth:before{display:block;float:left;content:"";width:0;height:0;padding-bottom:62.5%}.ct-minor-sixth:after{display:table}.ct-minor-sixth>svg{display:block;position:absolute;top:0;left:0}.ct-golden-section{display:block;position:relative;width:100%}.ct-golden-section:before{display:block;float:left;content:"";width:0;height:0;padding-bottom:61.804697157%}.ct-golden-section:after{content:"";display:table;clear:both}.ct-golden-section>svg{display:block;position:absolute;top:0;left:0}.ct-major-sixth{display:block;position:relative;width:100%}.ct-major-sixth:before{display:block;float:left;content:"";width:0;height:0;padding-bottom:60%}.ct-major-sixth:after{display:table}.ct-major-sixth>svg{display:block;position:absolute;top:0;left:0}.ct-minor-seventh{display:block;position:relative;width:100%}.ct-minor-seventh:before{display:block;float:left;content:"";width:0;height:0;padding-bottom:56.25%}.ct-minor-seventh:after{display:table}.ct-minor-seventh>svg{display:block;position:absolute;top:0;left:0}.ct-major-seventh{display:block;position:relative;width:100%}.ct-major-seventh:before{display:block;float:left;content:"";width:0;height:0;padding-bottom:53.3333333333%}.ct-major-seventh:after{display:table}.ct-major-seventh>svg{display:block;position:absolute;top:0;left:0}.ct-octave{display:block;position:relative;width:100%}.ct-octave:before{display:block;float:left;content:"";width:0;height:0;padding-bottom:50%}.ct-octave:after{display:table}.ct-octave>svg{display:block;position:absolute;top:0;left:0}.ct-major-tenth{display:block;position:relative;width:100%}.ct-major-tenth:before{display:block;float:left;content:"";width:0;height:0;padding-bottom:40%}.ct-major-tenth:after{display:table}.ct-major-tenth>svg{display:block;position:absolute;top:0;left:0}.ct-major-eleventh{display:block;position:relative;width:100%}.ct-major-eleventh:before{display:block;float:left;content:"";width:0;height:0;padding-bottom:37.5%}.ct-major-eleventh:after{display:table}.ct-major-eleventh>svg{display:block;position:absolute;top:0;left:0}.ct-major-twelfth{display:block;position:relative;width:100%}.ct-major-twelfth:before{display:block;float:left;content:"";width:0;height:0;padding-bottom:33.3333333333%}.ct-major-twelfth:after{display:table}.ct-major-twelfth>svg{display:block;position:absolute;top:0;left:0}.ct-double-octave{display:block;position:relative;width:100%}.ct-double-octave:before{display:block;float:left;content:"";width:0;height:0;padding-bottom:25%}.ct-double-octave:after{display:table}.ct-double-octave>svg{display:block;position:absolute;top:0;left:0} ]]> </style> </defs><g');
