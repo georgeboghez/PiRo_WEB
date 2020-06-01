@@ -11,28 +11,27 @@ var db;
 module.exports = {
   connect: async () => {
     try {
-      if(!client) {
-        client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true});
+      if (!client) {
+        client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
       }
-      if(!db) {
+      if (!db) {
         db = client.db(dbName);
       }
       console.log('Successfully connected to the database\n')
-    }
-    catch(err) {
+    } catch (err) {
       throw err;
     }
   },
   find: async (query, collName = 'pisa_results') => {
     try {
-      if(!client) {
+      if (!client) {
         client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
       }
-      if(!db) {
+      if (!db) {
         db = client.db(dbName);
       }
       return db.collection(collName).find(query);
-    }catch(err) {
+    } catch (err) {
       throw err;
     } //finally {
     //   client.close();
@@ -40,14 +39,14 @@ module.exports = {
   },
   findOne: async (query, projection, collName = 'pisa_results') => {
     try {
-      if(!client) {
+      if (!client) {
         client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
       }
-      if(!db) {
+      if (!db) {
         db = client.db(dbName);
       }
       return db.collection(collName).findOne(query, projection);
-    }catch(err) {
+    } catch (err) {
       throw err;
     } //finally {
     //   client.close();
@@ -55,14 +54,14 @@ module.exports = {
   },
   count: async (query) => {
     try {
-      if(!client) {
+      if (!client) {
         client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
       }
-      if(!db) {
+      if (!db) {
         db = client.db(dbName);
       }
       return db.collection(collName).countDocuments(query)
-    }catch(err) {
+    } catch (err) {
       throw err;
     } //finally {
     //   client.close();
@@ -70,14 +69,14 @@ module.exports = {
   },
   distinct: async (field) => {
     try {
-      if(!client) {
+      if (!client) {
         client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
       }
-      if(!db) {
+      if (!db) {
         db = client.db(dbName);
       }
       return db.collection(collName).distinct(field)
-    }catch(err) {
+    } catch (err) {
       throw err;
     } //finally {
     //   client.close();

@@ -1,60 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Pagina mea</title>
-	<link href="css/custom-statistics.css" rel="stylesheet">
-	<link href="css/header.css" rel="stylesheet">
-	<link href="css/footer.css" rel="stylesheet">
-	<link href="css/page-content.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
-	<script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script type="text/javascript" src="/js/custom-statistics.js"></script>
+  <meta charset="utf-8">
+  <title>PiRo</title>
+  <link href="css/custom-statistics.css" rel="stylesheet">
+  <link href="css/header.css" rel="stylesheet">
+  <link href="css/footer.css" rel="stylesheet">
+  <link href="css/page-content.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+  <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="/js/header.js"></script>
+  <script type="text/javascript" src="/js/custom-statistics.js"></script>
 </head>
+
 <body>
-	<header>
-		<div class="logo-container">
-			<a id="triangle-logo" href="index.html"></a>
-			<a id="page-title" href="index.html">PiRo</a>
-		</div>
-		<nav>
-			<a href="custom-statistics">Statistics</a>
-			<a href="about-page.html">About</a>
-			<a href="contact-us.html">Contact Us</a>
-			<div class="dropdown">
-				<img src="assets/img/menu.svg" onclick="myFunction()" class="dropbtn" alt = "TopButton" width="50" height="50"></img>
-				<div id="myDropdown" class="dropdown-content">
-					<a href="custom-statistics">Statistics</a>
-					<a href="about-page.html">About</a>
-					<a href="contact-us.html">Contact Us</a>
-				</div>
-			</div>
-		</nav>
-	</header>
-
-	<main>
-		<p id="stats_title">Custom Statistics</p>
-		<p id="stats_text">Complete the form below to generate and export graphs based on custom statistics.</p>
-		<div class="custom-stats-grid">
-
-			<div class="custom-stats-container" id="stats">
-				<label for="type">Statistics Type</label>
-				<select id="type" onchange="changeStats()">
-					<option value="select-option"> Select Statistics Type</option>
-					<option value="specific-questions">Specific Questions</option>
-					<option value="international">International</option>
-					<option value="institutional">Institutional</option>
-					<option value="random">Random</option>
-				</select>
-			</div>
-
-			<div class="custom-stats-image-grid">
-				<p id="chart-title">Empty Chart</p>
-				<div class="ct-chart ct-perfect-fourth" id="stats-chart">
-					<script>
-
-                    //This is the empty chart.
+  <header>
+    <div class="logo-container">
+      <a id="triangle-logo" href="index.html"></a>
+      <a id="page-title" href="index.html">PiRo</a>
+    </div>
+    <nav>
+      <a href="custom-statistics">Statistics</a>
+      <a href="contact-us.html">Contact Us</a>
+      <div class="dropdown">
+        <img class="dropbtn" src="assets/img/menu.svg" onclick="showDropdown()" alt="Menu">
+        <div id="myDropdown" class="dropdown-content">
+          <a href="custom-statistics">Statistics</a>
+          <a href="contact-us.html">Contact Us</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <p id="stats_title">Custom Statistics</p>
+    <p id="stats_text">Complete the form below to generate and export graphs based on custom statistics.</p>
+    <div class="custom-stats-grid">
+      <div class="custom-stats-container" id="stats">
+        <label for="type">Statistics Type</label>
+        <select id="type" onchange="changeStats()">
+          <option value="select-option"> Select Statistics Type</option>
+          <option value="specific-questions">Specific Questions</option>
+          <option value="international">International</option>
+          <option value="institutional">Institutional</option>
+          <option value="random">Random</option>
+        </select>
+      </div>
+      <div class="custom-stats-image-grid">
+        <p id="chart-title">Empty Chart</p>
+        <div class="ct-chart ct-perfect-fourth" id="stats-chart">
+          <script>
+            //This is the empty chart.
 
                     var data = {
                         // A labels array that can contain any sort of values
@@ -71,25 +67,22 @@
                     new Chartist.Line('.ct-chart', data);
 
                 </script>
-            </div>
-            <div class="custom-stats-buttons">
-            	<p>Export: </p>
-            	<button type="button" onclick="downloadSVG()"><a id="svg-button"></a>SVG</button>
-            	<button type="button" onclick="downloadCSV()">CSV</button>
-            	<button type="button" onclick="downloadPNG()">PNG</button>
-            </div>
-
         </div>
-    </main>
-    <footer>
-    	<div class="footer-container">
-    		<p>Telefon: 0744 443 545</p>
-    		<p>E-mail: abcd@gmail.com</p>
-    		<p>Adresa: Strada X nr. 20, Iasi</p>
-    	</div>
-    </footer>
-
-
+        <div class="custom-stats-buttons">
+          <p>Export: </p>
+          <button type="button" onclick="downloadSVG()"><a id="svg-button"></a>SVG</button>
+          <button type="button" onclick="downloadCSV()">CSV</button>
+          <button type="button" onclick="downloadPNG()">PNG</button>
+        </div>
+      </div>
+  </main>
+  <footer>
+    <div class="footer-container">
+      <p>Telefon: 0744 443 545</p>
+      <p>E-mail: abcd@gmail.com</p>
+      <p>Adresa: Strada X nr. 20, Iasi</p>
+    </div>
+  </footer>
 </body>
 
 </html>

@@ -97,6 +97,10 @@
 	padding: 12px;
 }
 
+.itemLink > img {
+	height: 100px;
+}
+
 .summary-item-title {
 	font-size: 36px;
 	font-weight: bold;

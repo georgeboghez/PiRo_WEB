@@ -1,284 +1,162 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>PiRo</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="css/header.css">
-	<link rel="stylesheet" type="text/css" href="css/footer.css">
-	<link rel="stylesheet" type="text/css" href="css/page-content.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
-	<script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/main-page.css">
-	<script type="text/javascript">
-		function loadMap() {
-		  var xhttp = new XMLHttpRequest();
-		  xhttp.onreadystatechange = function () {
-		    if (this.readyState == 4 && this.status == 200) {
-		      document.getElementById("map").innerHTML = this.responseText;
-		    }
-		  };
-		  xhttp.open("GET", "/assets/img/worldmap.svg", true);
-		  xhttp.send();
-		}
-
-		function myFunction() {
-			document.getElementById("myDropdown").classList.toggle("show");
-		}
-		function goToStatistics(id) {
-			location.href = "custom-statistics"
-		}
-		window.onclick = function(event) {
-			if (!event.target.matches('.dropbtn')) {
-				var dropdowns = document.getElementsByClassName("dropdown-content");
-				var i;
-				for (i = 0; i < dropdowns.length; i++) {
-					var openDropdown = dropdowns[i];
-					if (openDropdown.classList.contains('show')) {
-						openDropdown.classList.remove('show');
-					}
-				}
-			}
-		}
-	</script>
+  <title>PiRo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/header.css">
+  <link rel="stylesheet" type="text/css" href="css/footer.css">
+  <link rel="stylesheet" type="text/css" href="css/page-content.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+  <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/main-page.css">
+  <script type="text/javascript" src="/js/header.js"></script>
+  <script type="text/javascript" src="/js/index.js"></script>
 </head>
-<body onload="loadMap()">
-	<header>
-		<div class="logo-container">
-			<a id="triangle-logo" href="index.html"></a>
-			<a id="page-title" href="index.html">PiRo</a>
-		</div>
-		<nav>
-			<a href="custom-statistics">Statistics</a>
-			<a href="about-page.html">About</a>
-			<a href="contact-us.html">Contact Us</a>
-			<div class="dropdown">
-				<img src="assets/img/menu.svg" onclick="myFunction()" class="dropbtn" alt = "Menu" width="50" height="50"></img>
-				<div id="myDropdown" class="dropdown-content">
-					<a href="custom-statistics">Statistics</a>
-					<a href="about-page.html">About</a>
-					<a href="contact-us.html">Contact Us</a>
-				</div>
-			</div>
-		</nav>
-	</header>
-	<main>
-		<div class="description">
-			<p class="description-title">
-				PISA Results from Romania
-			</p>
-			<div class="description-container">
-				<div class="description-card">
-					<a class="itemLink" href="">
-						<div class="ct-chart ct-octave" id="stats-chart1">
-							<script>
-			                    //This is the empty chart.
-			                    var data = {
-			                        // A labels array that can contain any sort of values
-			                        labels: ["CN", "SG", "MO", "HK", "EE", "JP", "KR", "CA", "TW", "FI"],
-			                        // Our series array that contains series objects or in this case series data arrays
-			                        series: [
-			                        [578.7, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			                        [0, 556.3, 0, 0, 0, 0, 0, 0, 0, 0],
-			                        [0, 0, 542.3, 0, 0, 0, 0, 0, 0, 0],
-			                        [0, 0, 0, 530.7, 0, 0, 0, 0, 0, 0],
-			                        [0, 0, 0, 0, 525.3, 0, 0, 0, 0, 0],
-			                        [0, 0, 0, 0, 0, 520.0, 0, 0, 0, 0],
-			                        [0, 0, 0, 0, 0, 0, 519.7, 0, 0, 0],
-			                        [0, 0, 0, 0, 0, 0, 0, 516.7, 0, 0],
-			                        [0, 0, 0, 0, 0, 0, 0, 0, 516.7, 0],
-			                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 516.3]
-			                        ]
-			                    };
 
-			                    var options = {
-			                    	high: 578.7,
-			                    	low: 300,
-			                    	seriesBarDistance: 1
-			                    };
-
-			                    // Create a new line chart object where as first parameter we pass in a selector
-			                    // that is resolving to our chart container element. The Second parameter
-			                    // is the actual data object.
-			                    new Chartist.Bar('.ct-chart', data, options);
-			                </script>
-			            </div>
-			            <p class="summary-item-subtitle">
-			            	First 10 Countries Ranked by Score
-			            </p>
-			        </a>
-			    </div>
-			    <div class="description-card">
-			    	<a class="itemLink" href="">
-			    		<div class="ct-chart2 ct-octave" id="stats-chart2">
-			    			<script>
-			                    //This is the empty chart.
-			                    var data = {
-			                        // A labels array that can contain any sort of values
-			                        labels: ["CY", "CL", "AE", "MY", "RO", "BG", "MD", "UY", "BN", "ME"],
-			                        // Our series array that contains series objects or in this case series data arrays
-			                        series: [
-			                        [438.0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			                        [0, 437.7, 0, 0, 0, 0, 0, 0, 0, 0],
-			                        [0, 0, 433.7, 0, 0, 0, 0, 0, 0, 0],
-			                        [0, 0, 0, 431.0, 0, 0, 0, 0, 0, 0],
-			                        [0, 0, 0, 0, 428.0, 0, 0, 0, 0, 0],
-			                        [0, 0, 0, 0, 0, 426.7, 0, 0, 0, 0],
-			                        [0, 0, 0, 0, 0, 0, 424.3, 0, 0, 0],
-			                        [0, 0, 0, 0, 0, 0, 0, 423.7, 0, 0],
-			                        [0, 0, 0, 0, 0, 0, 0, 0, 423.0, 0],
-			                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 422.0]
-			                        ]
-			                    };
-
-			                    var options = {
-			                    	high: 578.7,
-			                    	low: 300,
-			                    	seriesBarDistance: 1
-			                    };
-
-			                    // Create a new line chart object where as first parameter we pass in a selector
-			                    // that is resolving to our chart container element. The Second parameter
-			                    // is the actual data object.
-			                    new Chartist.Bar('.ct-chart2', data, options);
-			                </script>
-			            </div>
-			            <p class="summary-item-subtitle">
-			            	Romania's Ranking
-			            </p>
-			        </a>
-			    </div>
-			    <div class="description-card">
-			    	<a class="itemLink" href="">
-			    		<div class="ct-chart3 ct-octave" id="stats-chart3">
-			    			<script>
-			                    //This is the empty chart.
-			                    var data = {
-			                        // A labels array that can contain any sort of values
-			                        labels: ["AR", "GE", "SA", "ID", "LB", "MA", "PA", "XK", "PH", "DO"],
-			                        // Our series array that contains series objects or in this case series data arrays
-			                        series: [
-			                        [395.0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			                        [0, 387.0, 0, 0, 0, 0, 0, 0, 0, 0],
-			                        [0, 0, 386.0, 0, 0, 0, 0, 0, 0, 0],
-			                        [0, 0, 0, 382.0, 0, 0, 0, 0, 0, 0],
-			                        [0, 0, 0, 0, 376.7, 0, 0, 0, 0, 0],
-			                        [0, 0, 0, 0, 0, 368.0, 0, 0, 0, 0],
-			                        [0, 0, 0, 0, 0, 0, 365.0, 0, 0, 0],
-			                        [0, 0, 0, 0, 0, 0, 0, 361.3, 0, 0],
-			                        [0, 0, 0, 0, 0, 0, 0, 0, 350.0, 0],
-			                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 334.3]
-			                        ]
-			                    };
-
-			                    var options = {
-			                    	high: 578.7,
-			                    	low:300,
-			                    	seriesBarDistance: 1
-			                    };
-
-			                    // Create a new line chart object where as first parameter we pass in a selector
-			                    // that is resolving to our chart container element. The Second parameter
-			                    // is the actual data object.
-			                    new Chartist.Bar('.ct-chart3', data, options);
-			                </script>
-			            </div>
-			            <p class="summary-item-subtitle">
-			            	Last 10 Countries Ranked by Score
-			            </p>
-			        </a>
-			    </div>
-			</div>
-		</div>
-		<div class="summary">
-			<h2 class="summary-title">
-				What is PiRo?
-			</h2>
-			<p class="summary-subtitle">
-				A platform for visualizing statistics about the <a href="about-page.html">PISA</a> results from Romania.
-			</p>
-			<div class="summary-container">
-				<div class="summary-card">
-					<a class="itemLink" href="">
-						<img height="100" src="assets/img/questionmark.svg" alt="Question-mark">
-						<p class="summary-item-title">
-							Questions
-						</p>
-						<p class="summary-item-subtitle">
-							Specific Questions
-						</p>
-						<ul class="summary-item-statisticsList">
-							<li> Statistic no. 1 </li>
-							<li> Statistic no. 2 </li>
-							<li> Statistic no. 3 </li>
-						</ul>
-						<button class="button card-button">Learn More</button>
-					</a>
-				</div>
-				<div class="summary-card">
-					<a class="itemLink" href="">
-						<img height="100" src="assets/img/world.svg" alt="World Map">
-						<p class="summary-item-title">
-							International
-						</p>
-						<p class="summary-item-subtitle">
-							Comparison
-						</p>
-						<ul class="summary-item-statisticsList">
-							<li> Statistic no. 1 </li>
-							<li> Statistic no. 2 </li>
-							<li> Statistic no. 3 </li>
-						</ul>
-						<button class="button card-button">Learn More</button>
-					</a>
-				</div>
-				<div class="summary-card">
-					<a class="itemLink" href="">
-						<img height="100" src="assets/img/school.svg" alt="Institution">
-						<p class="summary-item-title">
-							Institutional
-						</p>
-						<p class="summary-item-subtitle">
-							Institutional Statistics
-						</p>
-						<ul class="summary-item-statisticsList">
-							<li> Statistic no. 1 </li>
-							<li> Statistic no. 2 </li>
-							<li> Statistic no. 3 </li>
-						</ul>
-						<button class="button card-button">Learn More</button>
-					</a>
-				</div>
-				<div class="summary-card">
-					<a class="itemLink" href="">
-						<img height="100" src="assets/img/dice.svg" alt="Dice">
-						<p class="summary-item-title">
-							Random
-						</p>
-						<p class="summary-item-subtitle">
-							Random Statistics
-						</p>
-						<ul class="summary-item-statisticsList">
-							<li> Statistic no. 1 </li>
-							<li> Statistic no. 2 </li>
-							<li> Statistic no. 3 </li>
-						</ul>
-						<button class="button card-button">Learn More</button>
-					</a>
-				</div>
-			</div>
-		</div>
-		<div class="map-container">
-			<a href="">
-				World Results
-			</a>
-			<div id="map"></div>
-
-		</div>
-		<div class="contact">
-			<h2 class="contact-title">
-				Contact
-			</h2>
-		</div>
-	</main>
+<body onload="loadElements()">
+  <header>
+    <div class="logo-container">
+      <a id="triangle-logo" href="index.html"></a>
+      <a id="page-title" href="index.html">PiRo</a>
+    </div>
+    <nav>
+      <a href="custom-statistics">Statistics</a>
+      <a href="contact-us.html">Contact Us</a>
+      <div class="dropdown">
+        <img class="dropbtn" src="assets/img/menu.svg" onclick="showDropdown()" alt="Menu">
+        <div id="myDropdown" class="dropdown-content">
+          <a href="custom-statistics">Statistics</a>
+          <a href="contact-us.html">Contact Us</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="description">
+      <p class="description-title">
+        PISA Results from Romania
+      </p>
+      <div class="description-container">
+        <div class="description-card">
+          <a class="itemLink" href="">
+            <div class="ct-chart ct-octave" id="stats-chart1">
+            </div>
+            <p class="summary-item-subtitle">
+              First 10 Countries Ranked by Score
+            </p>
+          </a>
+        </div>
+        <div class="description-card">
+          <a class="itemLink" href="">
+            <div class="ct-chart2 ct-octave" id="stats-chart2">
+            </div>
+            <p class="summary-item-subtitle">
+              Romania's Ranking
+            </p>
+          </a>
+        </div>
+        <div class="description-card">
+          <a class="itemLink" href="">
+            <div class="ct-chart3 ct-octave" id="stats-chart3">
+            </div>
+            <p class="summary-item-subtitle">
+              Last 10 Countries Ranked by Score
+            </p>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="summary">
+      <h2 class="summary-title">
+        What is PiRo?
+      </h2>
+      <p class="summary-subtitle">
+        A platform for visualizing statistics about the <a href="https://www.oecd.org/pisa/">PISA</a> results from Romania.
+      </p>
+      <div class="summary-container">
+        <div class="summary-card">
+          <a class="itemLink" href="">
+            <img id="questionmark-img" alt="Question-mark">
+            <p class="summary-item-title">
+              Questions
+            </p>
+            <p class="summary-item-subtitle">
+              Specific Questions
+            </p>
+            <ul class="summary-item-statisticsList">
+              <li> Statistic no. 1 </li>
+              <li> Statistic no. 2 </li>
+              <li> Statistic no. 3 </li>
+            </ul>
+            <button class="button card-button">Learn More</button>
+          </a>
+        </div>
+        <div class="summary-card">
+          <a class="itemLink" href="">
+            <img id="worldmap-img" alt="World Map">
+            <p class="summary-item-title">
+              International
+            </p>
+            <p class="summary-item-subtitle">
+              Comparison
+            </p>
+            <ul class="summary-item-statisticsList">
+              <li> Statistic no. 1 </li>
+              <li> Statistic no. 2 </li>
+              <li> Statistic no. 3 </li>
+            </ul>
+            <button class="button card-button">Learn More</button>
+          </a>
+        </div>
+        <div class="summary-card">
+          <a class="itemLink" href="">
+            <img id="institution-img" alt="Institution">
+            <p class="summary-item-title">
+              Institutional
+            </p>
+            <p class="summary-item-subtitle">
+              Institutional Statistics
+            </p>
+            <ul class="summary-item-statisticsList">
+              <li> Statistic no. 1 </li>
+              <li> Statistic no. 2 </li>
+              <li> Statistic no. 3 </li>
+            </ul>
+            <button class="button card-button">Learn More</button>
+          </a>
+        </div>
+        <div class="summary-card">
+          <a class="itemLink" href="">
+            <img id="random-img" alt="Dice">
+            <p class="summary-item-title">
+              Random
+            </p>
+            <p class="summary-item-subtitle">
+              Random Statistics
+            </p>
+            <ul class="summary-item-statisticsList">
+              <li> Statistic no. 1 </li>
+              <li> Statistic no. 2 </li>
+              <li> Statistic no. 3 </li>
+            </ul>
+            <button class="button card-button">Learn More</button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="map-container">
+      <a href="">
+        World Results
+      </a>
+      <div id="map"></div>
+    </div>
+    <div class="contact">
+      <h2 class="contact-title">
+        Contact
+      </h2>
+    </div>
+  </main>
 </body>
+
 </html>
