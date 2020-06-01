@@ -812,6 +812,7 @@ function changeStats() {
           var answers2 = ``
           var series_array = []
           var series_array2 = []
+          label_array = []
           
           for(var key in resultData.resultsInstitution1) {
             keys += key +  ','
@@ -822,7 +823,7 @@ function changeStats() {
             label_array.push(key)
           }
 
-          csvData = `Question,Institution,${keys}\n${selectBox3.options[selectBox3.selectedIndex].text},${institution1}${answers}\n${selectBox3.options[selectBox3.selectedIndex].text},${institution2}${answers2}`
+          csvData = `Question,Institution,${keys}\n"${selectBox3.options[selectBox3.selectedIndex].text}",${institution1}${answers}\n${selectBox3.options[selectBox3.selectedIndex].text},${institution2}${answers2}`
 
           var data = {
                     //labels: [1, 2, 3, 4],
@@ -870,13 +871,15 @@ function changeStats() {
           var keys = `` 
           var answers = ``
           var series_array = []
+          label_array = []
+
           for(var key in resultData) {
             keys += key +  ','
             answers += ',' + resultData[key]
             series_array.push(resultData[key])
             label_array.push(key)
           }
-          csvData = `Question,Institution,${keys}\n${selectQT},${selectedValue}${answers}`
+          csvData = `Question,Institution,${keys}\n"${selectQT}",${selectedValue}${answers}`
           var data = {
             series: series_array
           };
@@ -1495,6 +1498,7 @@ function changeStats() {
           var keys = `` 
           var answers = ``
           var series_array = []
+          label_array = []
           
           for(var key in resultData) {
             keys += key +  ','
@@ -1503,7 +1507,7 @@ function changeStats() {
             label_array.push(`${key} (${resultData[key]})`)
           }
 
-          csvData = `Question,${keys}\n${question}${answers}`
+          csvData = `Question,${keys}\n"${question}"${answers}`
 
           var data = {
                     //labels: [1, 2, 3, 4],
