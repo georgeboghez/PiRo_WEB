@@ -1,5 +1,6 @@
 const fs = require('fs')
 const util = require('util');
+const url = require('url');
 const db = require('../model/db')
 const co = require('co');
 const generate = require('node-chartist');
@@ -47,8 +48,7 @@ async function getGenderChart (req, res) {
 
 async function getInstGenderChart (req, res) {
   try {
-    var body = await controllerUtils.toStringChunk(req);
-    var data = JSON.parse(body);
+    var data = url.parse(req.url, true).query;
     var query = {CNTSCHID:data["institutionID"],ST004D01T : "1.0"}
     var maleCount = await db.count(query)
     query = {CNTSCHID:data["institutionID"],ST004D01T : "2.0"}
@@ -69,27 +69,25 @@ async function getInstGenderChart (req, res) {
 
 async function getInstQuestionChart (req, res) {
   try {
-    var body = await controllerUtils.toStringChunk(req);
-    var data = JSON.parse(body);
+    var data = url.parse(req.url, true).query;
     var query = {}
-    query[data.questionID] = "1.0"
+    var answers = await db.distinct(data.questionId);
+    var index = answers.indexOf('');
+    if (index > -1) {
+      answers.splice(index, 1);
+    }
+    answers = answers.sort();
+    
     query['CNTSCHID'] = data['institutionID']
-    var result_1 = await db.count(query);
-    query[data.questionID] = "2.0"
-    query['CNTSCHID'] = data['institutionID']
-    var result_2 = await db.count(query);
-    query[data.questionID] = "3.0"
-    query['CNTSCHID'] = data['institutionID']
-    var result_3 = await db.count(query);
-    query[data.questionID] = "4.0"
-    query['CNTSCHID'] = data['institutionID']
-    var result_4 = await db.count(query);
+    
+    var results = {}
+    for(index in answers) {
+      query[data.questionId] = answers[index];
+      results[answers[index]] = await db.count(query);
+    }
     res.setHeader('Content-Type', 'application/json')
     res.write(JSON.stringify({
-      result1 : result_1,
-      result2 : result_2,
-      result3 : result_3,
-      result4 : result_4,
+      results : results
     }))
   } catch (e) {
     console.log(e)
@@ -101,8 +99,7 @@ async function getInstQuestionChart (req, res) {
 
 async function getCountryChart (req, res) {
   try {
-    var body = await controllerUtils.toStringChunk(req);
-    var data = JSON.parse(body);
+    var data = url.parse(req.url, true).query;
     var query = {}
     var projection = {}
     query["Country"] = "Romania";
@@ -141,24 +138,25 @@ async function getCountryChart (req, res) {
 
 async function getQuestionChartData (req, res) {
   try {
-    var body = await controllerUtils.toStringChunk(req);
-    var data = JSON.parse(body);
+    var data = url.parse(req.url, true).query;
     var query = {}
-    query[data.questionId] = "1.0"
-    var result_1 = await db.count(query);
-    query[data.questionId] = "2.0"
-    var result_2 = await db.count(query);
-    query[data.questionId] = "3.0"
-    var result_3 = await db.count(query);
-    query[data.questionId] = "4.0"
-    var result_4 = await db.count(query);
+
+    var answers = await db.distinct(data.questionId);
+    var index = answers.indexOf('');
+    if (index > -1) {
+      answers.splice(index, 1);
+    }
+    answers = answers.sort();
+    
+    var results = {}
+    for(index in answers) {
+      query[data.questionId] = answers[index];
+      results[answers[index]] = await db.count(query);
+    }
 
     res.setHeader('Content-Type', 'application/json')
     res.write(JSON.stringify({
-      result1 : result_1,
-      result2 : result_2,
-      result3 : result_3,
-      result4 : result_4
+      results: results
     }))
 
   } catch (e) {
@@ -171,53 +169,32 @@ async function getQuestionChartData (req, res) {
 
 async function getComparisonChart (req, res) {
   try {
-    var body = await controllerUtils.toStringChunk(req);
-    var data = JSON.parse(body);
+    var data = url.parse(req.url, true).query;
     var query = {}
-    query[data.questionId] = "1.0"
-    query['CNTSCHID'] = data.institution1
-    var inst_1_result_1 = await db.count(query);
 
-    query[data.questionId] = "1.0"
-    query['CNTSCHID'] = data.institution2
-    var inst_2_result_1 = await db.count(query);
+    var answers = await db.distinct(data.questionId);
+    var index = answers.indexOf('');
+    if (index > -1) {
+      answers.splice(index, 1);
+    }
+    answers = answers.sort();
 
-    query[data.questionId] = "2.0"
-    query['CNTSCHID'] = data.institution1
-    var inst_1_result_2 = await db.count(query);
+    var resultsInstitution1 = {}
+    var resultsInstitution2 = {}
 
-    query[data.questionId] = "2.0"
-    query['CNTSCHID'] = data.institution2
-    var inst_2_result_2 = await db.count(query);
-
-    query[data.questionId] = "3.0"
-    query['CNTSCHID'] = data.institution1
-    var inst_1_result_3 = await db.count(query);
-
-    query[data.questionId] = "3.0"
-    query['CNTSCHID'] = data.institution2
-    var inst_2_result_3 = await db.count(query);
-
-    query[data.questionId] = "4.0"
-    query['CNTSCHID'] = data.institution1
-    var inst_1_result_4 = await db.count(query);
-
-    query[data.questionId] = "4.0"
-    query['CNTSCHID'] = data.institution2
-    var inst_2_result_4 = await db.count(query);
-
+    for(index in answers) {
+      query['CNTSCHID'] = data.institution1
+      query[data.questionId] = answers[index];
+      resultsInstitution1[answers[index]] = await db.count(query);
+      query['CNTSCHID'] = data.institution2
+      query[data.questionId] = answers[index];
+      resultsInstitution2[answers[index]] = await db.count(query);
+    }
     res.setHeader('Content-Type', 'application/json')
     res.write(JSON.stringify({
-      inst_1_result_1: inst_1_result_1,
-      inst_2_result_1: inst_2_result_1,
-      inst_1_result_2: inst_1_result_2,
-      inst_2_result_2: inst_2_result_2,
-      inst_1_result_3: inst_1_result_3,
-      inst_2_result_3: inst_2_result_3,
-      inst_1_result_4: inst_1_result_4,
-      inst_2_result_4: inst_2_result_4
+      resultsInstitution1 : resultsInstitution1,
+      resultsInstitution2 : resultsInstitution2
     }))
-
   } catch (e) {
     console.log(e)
     res.statusCode = 500
