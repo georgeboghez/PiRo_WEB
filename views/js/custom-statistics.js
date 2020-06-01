@@ -1,4 +1,5 @@
 var csvData;
+var label_array = []
 
 function changeFunc() {
   var selectBox = document.getElementById("type");
@@ -389,9 +390,10 @@ function changeStats() {
 
       };
 
-
-        xhttp.open("POST", "/country-chart", true);
-        xhttp.send(JSON.stringify({country: country, rankingOption: rankingOption}));
+        xhttp.open("GET", "/country-chart" + '?' + `country=${country}&rankingOption=${rankingOption}`, true);
+        xhttp.send();
+        // xhttp.open("POST", "/country-chart", true);
+        // xhttp.send(JSON.stringify({country: country, rankingOption: rankingOption}));
     }
 
     function pickInstitution() {
@@ -799,19 +801,29 @@ function changeStats() {
         if (this.readyState == 4 && this.status == 200) {
           resultData = JSON.parse(this.responseText)
 
-          csvData = `Question,Institution,Very Rarely,Rarely,Often,Very Often\n` +
-                    `${selectBox3.options[selectBox3.selectedIndex].text},${institution1},${resultData["inst_1_result_1"]},${resultData["inst_1_result_2"]},${resultData["inst_1_result_3"]},${resultData["inst_1_result_4"]}\n` +
-                    `${selectBox3.options[selectBox3.selectedIndex].text},${institution2},${resultData["inst_2_result_1"]},${resultData["inst_2_result_2"]},${resultData["inst_2_result_3"]},${resultData["inst_2_result_4"]}`
+          var keys = `` 
+          var answers = ``
+          var answers2 = ``
+          var series_array = []
+          var series_array2 = []
+          
+          for(var key in resultData.resultsInstitution1) {
+            keys += key +  ','
+            answers += ',' + resultData.resultsInstitution1[key]
+            answers2 += ',' + resultData.resultsInstitution2[key]
+            series_array.push(resultData.resultsInstitution1[key])
+            series_array2.push(resultData.resultsInstitution2[key])
+            label_array.push(key)
+          }
+
+          csvData = `Question,Institution,${keys}\n${selectBox3.options[selectBox3.selectedIndex].text},${institution1}${answers}\n${selectBox3.options[selectBox3.selectedIndex].text},${institution2}${answers2}`
 
           var data = {
                     //labels: [1, 2, 3, 4],
-                    labels: [`Very Rarely (${resultData["inst_1_result_1"]}, ${resultData["inst_2_result_1"]})`,
-                    `Rarely (${resultData["inst_1_result_2"]}, ${resultData["inst_2_result_2"]})`,
-                    `Often (${resultData["inst_1_result_3"]}, ${resultData["inst_2_result_3"]})`,
-                    `Very Often (${resultData["inst_1_result_4"]}, ${resultData["inst_2_result_4"]})`],
+                    labels: label_array,
                     series: [
-                    [resultData["inst_1_result_1"], resultData["inst_1_result_2"], resultData["inst_1_result_3"], resultData["inst_1_result_4"]],
-                    [resultData["inst_2_result_1"], resultData["inst_2_result_2"], resultData["inst_2_result_3"], resultData["inst_2_result_4"]]
+                    series_array,
+                    series_array2
                     ]
                 };
                 var options = {
@@ -824,9 +836,10 @@ function changeStats() {
             }
         };
 
-
-        xhttp.open("POST", "/comparison-chart", true);
-        xhttp.send(JSON.stringify({institution1: institution1, institution2: institution2, questionId: question}));
+        xhttp.open("GET", "/comparison-chart" + '?' + `institution1=${institution1}&institution2=${institution2}&questionId=${question}`, true);
+        xhttp.send();
+        // xhttp.open("POST", "/comparison-chart", true);
+        // xhttp.send(JSON.stringify({institution1: institution1, institution2: institution2, questionId: question}));
 
     }
 
@@ -842,40 +855,43 @@ function changeStats() {
         return;
       }
 
+
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-          resultData = JSON.parse(this.responseText)
+          resultData = JSON.parse(this.responseText).results
 
-          csvData = `Question,Institution,Very Rarely,Rarely,Often,Very Often\n` +
-                    `${selectQT},${selectedValue},${resultData["result1"]},${resultData["result2"]},${resultData["result3"]},${resultData["result4"]}`
-
+          var keys = `` 
+          var answers = ``
+          var series_array = []
+          for(var key in resultData) {
+            keys += key +  ','
+            answers += ',' + resultData[key]
+            series_array.push(resultData[key])
+            label_array.push(key)
+          }
+          csvData = `Question,Institution,${keys}\n${selectQT},${selectedValue}${answers}`
           var data = {
-            series: [resultData['result1'], resultData['result2'], resultData['result3'], resultData['result4']]
+            series: series_array
           };
 
           var sum = function (a, b) {
             return a + b
           };
-
+          var index = 0;
           var chart = new Chartist.Pie('.ct-chart', data, {
             labelInterpolationFnc: function (value) {
-              if (resultData["result1"] == value) {
-                return 'Very Rarely (' + Math.round(value / data.series.reduce(sum) * 100) + '%) - ' + resultData['result1'];
-              } else if (resultData["result2"] == value) {
-                return 'Rarely (' + Math.round(value / data.series.reduce(sum) * 100) + '%) - ' + resultData['result2'];
-              } else if (resultData["result3"] == value) {
-                return 'Often (' + Math.round(value / data.series.reduce(sum) * 100) + '%) - ' + resultData['result3'];
-              } else if (resultData["result4"] == value) {
-                return 'Very Often (' + Math.round(value / data.series.reduce(sum) * 100) + '%) - ' + resultData['result4'];
-              }
+              return Math.round(value / data.series.reduce(sum) * 100) + '% - ' + label_array[index++];
             }
           });
           document.getElementById("chart-title").innerHTML = `"${selectQT}" Asked in institution ${selectBox.options[selectBox.selectedIndex].text}`;
         }
       };
-      xhttp.open("POST", "/question-inst-chart", true);
-      xhttp.send(JSON.stringify({institutionID: selectedValue, questionID: selectValueQ}));
+
+      xhttp.open("GET", "/question-inst-chart" + '?' + `institutionID=${selectedValue}&questionId=${selectValueQ}`, true);
+      xhttp.send();
+      // xhttp.open("POST", "/question-inst-chart", true);
+      // xhttp.send(JSON.stringify({institutionID: selectedValue, questionId: selectValueQ}));
 
 
     }
@@ -912,8 +928,11 @@ function changeStats() {
           document.getElementById("chart-title").innerHTML = "Gender chart for institution: " + selectBox.options[selectBox.selectedIndex].text;
         }
       };
-      xhttp.open("POST", "/gender-inst-chart", true);
-      xhttp.send(JSON.stringify({institutionID: selectedValue}));
+
+      xhttp.open("GET", "/gender-inst-chart" + '?' + `institutionID=${selectedValue}`, true);
+      xhttp.send();
+      // xhttp.open("POST", "/gender-inst-chart", true);
+      // xhttp.send(JSON.stringify({institutionID: selectedValue}));
     }
 
     function pickCategory() {
@@ -1031,14 +1050,25 @@ function changeStats() {
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-          resultData = JSON.parse(this.responseText)
-          csvData = `Question,Very Rarely,Rarely,Often,Very Often\n` +
-                    `${question},${resultData["result1"]},${resultData["result2"]},${resultData["result3"]},${resultData["result4"]}`
+          resultData = JSON.parse(this.responseText).results
+
+          var keys = `` 
+          var answers = ``
+          var series_array = []
+          
+          for(var key in resultData) {
+            keys += key +  ','
+            answers += ',' + resultData[key]
+            series_array.push(resultData[key])
+            label_array.push(`${key} (${resultData[key]})`)
+          }
+
+          csvData = `Question,${keys}\n${question}${answers}`
 
           var data = {
                     //labels: [1, 2, 3, 4],
-                    labels: [`Very Rarely (${resultData["result1"]})`, `Rarely (${resultData["result2"]})`, `Often (${resultData["result3"]})`, `Very Often (${resultData["result4"]})`],
-                    series: [[resultData["result1"], resultData["result2"], resultData["result3"], resultData["result4"]]]
+                    labels: label_array,
+                    series: [series_array]
                 };
                 var options = {
                   seriesBarDistance: 5,
@@ -1049,8 +1079,12 @@ function changeStats() {
                 document.getElementById("chart-title").innerHTML = question;
             }
         };
-        xhttp.open("POST", "/question-chart", true);
-        xhttp.send(JSON.stringify({questionId: selectedValue}));
+
+        xhttp.open("GET", "/question-chart" + '?' + `questionId=${selectedValue}`, true);
+        xhttp.send();
+
+        // xhttp.open("POST", "/question-chart", true);
+        // xhttp.send(JSON.stringify({questionId: selectedValue}));
     }
 
     function generateChart() {
@@ -1253,8 +1287,5 @@ function downloadCSV(){
   var url = URL.createObjectURL(blob);
   downloadLink.href = url;
   downloadLink.download = "data.csv";
-
-  document.body.appendChild(downloadLink);
   downloadLink.click();
-  document.body.removeChild(downloadLink);
 }
