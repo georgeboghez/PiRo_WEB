@@ -76,6 +76,9 @@ function changeStats() {
   <option value="select-category">Select Category</option>
   <option value="feelings">Feelings</option>
   <option value="trust">Trust</option>
+  <option value="homecond">Home Conditions</option>
+  <option value="reading">Reading</option>
+  <option value="agreedisagree">Agree or Disagree</option>
   </select>`;
 
   var institutional_selected = `
@@ -930,7 +933,95 @@ function changeStats() {
         "ST186Q05HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Happy",
         "ST186Q03HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Cheerful",
         "ST186Q02HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Afraid",
-        "ST186Q01HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Joyful"
+        "ST186Q01HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Joyful",
+        'ST011Q01TA': 'In your home: A desk to study at',
+         'ST011Q02TA': 'In your home: A room of your own',
+         'ST011Q03TA': 'In your home: A quiet place to study',
+         'ST011Q04TA': 'In your home: A computer you can use for school work',
+         'ST011Q05TA': 'In your home: Educational software',
+         'ST011Q06TA': 'In your home: A link to the Internet',
+         'ST011Q07TA': 'In your home: Classic literature (e.g. Shakespeare)',
+         'ST011Q08TA': 'In your home: Books of poetry',
+         'ST011Q09TA': 'In your home: Works of art (e.g. paintings)',
+         'ST011Q10TA': 'In your home: Books to help with your school work',
+         'ST011Q11TA': 'In your home: Technical reference books',
+         'ST011Q12TA': 'In your home: A dictionary',
+         'ST011Q16NA': 'In your home: Books on art, music, or design',
+         'ST011D17TA': 'In your home: Country-specific wealth item 1',
+         'ST011D18TA': 'In your home: Country-specific wealth item 2',
+         'ST011D19TA': 'In your home: Country-specific wealth item 3',
+         'ST012Q01TA': 'How many in your home: Televisions',
+         'ST012Q02TA': 'How many in your home: Cars',
+         'ST012Q03TA': 'How many in your home: Rooms with a bath or shower',
+         'ST012Q05NA': 'How many in your home: Cell phones with Internet access (e.g. smartphones)',
+         'ST012Q06NA': 'How many in your home: Computers (desktop computer, portable laptop, or notebook)',
+         'ST012Q07NA': 'How many in your home: Tablet computers (e.g. iPad, BlackBerry PlayBook)',
+         'ST012Q08NA': 'How many in your home: E-book readers (e.g. Kindle, Kobo, Bookeen)',
+         'ST012Q09NA': 'How many in your home: Musical instruments (e.g. guitar, piano)',
+         'ST013Q01TA': 'How many books are there in your home?',
+         "ST150Q01IA": "During the last month, how often did you have to read for school: Texts that include diagrams or maps",
+         "ST158Q07HA": "Taught at school: How to detect phishing or spam emails",
+         "ST158Q06HA": "Taught at school: How to detect whether the information is subjective or biased",
+         "ST158Q05HA": "Taught at school: How to use the short description below the links in the list of results of a search",
+         "ST158Q04HA": "Taught at school: To understand the consequences of making information publicly available online on Facebook, [...]",
+         "ST158Q03HA": "Taught at school: How to compare different web pages and decide what information is more relevant for your school work",
+         "ST158Q02HA": "Taught at school: How to decide whether to trust information from the Internet",
+         "ST158Q01HA": "Taught at school: How to use keywords when using a search engine such as Google, Yahoo, etc.",
+         "ST154Q01HA": "this academic year, how many pages was the longest piece of text you had to read for your test language lessons?",
+         "ST153Q10HA": "When you have to read, does the teacher ask you to: Write a text related to what you have read",
+         "ST153Q09HA": "When you have to read, does the teacher ask you to: Select a passage you liked or disliked and explain why",
+         "ST153Q08HA": "When you have to read, does the teacher ask you to: Compare the book with other books or texts on a similar topic",
+         "ST153Q06HA": "When you have to read, does the teacher ask you to: Compare the content of the book or the chapter with your own [...]",
+         "ST153Q05HA": "When you have to read, does the teacher ask you to: Answer questions about the book or the chapter",
+         "ST153Q04HA": "When you have to read, does the teacher ask you to: Give your personal thoughts about the book or the chapter [...]",
+         "ST153Q03HA": "When you have to read, does the teacher ask you to: Discuss in small groups with other students who read the same [...]",
+         "ST153Q02HA": "When you have to read, does the teacher ask you to: List and write a short description of the main characters",
+         "ST153Q01HA": "When you have to read, does the teacher ask you to: Write a summary of the book or the chapter",
+         "ST152Q08IA": "In your test language lessons, how often: The teacher poses questions that motivate students to participate actively.",
+         "ST152Q07IA": "In your test language lessons, how often: The teacher shows students how the information in texts builds on [...]",
+         "ST152Q06IA": "In your test language lessons, how often: The teacher helps students relate the stories they read to their lives.",
+         "ST152Q05IA": "In your test language lessons, how often: The teacher encourages students to express their opinion about a text.",
+         "ST150Q04HA": "During the last month, how often did you have to read for school: Digital texts including links",
+         "ST150Q03IA": "During the last month, how often did you have to read for school: Texts that include tables or graphs",
+         "ST150Q02IA": "During the last month, how often did you have to read for school: Fiction (e.g., novels, short stories)",
+         "ST160Q05IA": "How much do you agree or disagree? I read only to get information that I need.",
+         "ST160Q04IA": "How much do you agree or disagree? For me, reading is a waste of time.",
+         "ST160Q03IA": "How much do you agree or disagree? I like talking about books with other people.",
+         "ST160Q02IA": "How much do you agree or disagree? Reading is one of my favourite hobbies.",
+         "ST160Q01IA": "How much do you agree or disagree? I read only if I have to.",
+         "ST165Q05IA": "Usefulness for writing a summary: I read through the text, underlining the most important sentences. Then I write [...]",
+         "ST165Q04IA": "Usefulness for writing a summary: I carefully check whether the most important facts in the text are represented [...]",
+         "ST165Q03IA": "Usefulness for writing a summary: Before writing the summary, I read the text as many times as possible.",
+         "ST165Q02IA": "Usefulness for writing a summary: I try to copy out accurately as many sentences as possible.",
+         "ST165Q01IA": "Usefulness for writing a summary: I write a summary. Then I check that each paragraph is covered in the summary, [...]",
+         "ST164Q06IA": "Usefulness for understanding and memorising text: I read the text aloud to another person.",
+         "ST164Q05IA": "Usefulness for understanding and memorising text: I summarise the text in my own words.",
+         "ST164Q04IA": "Usefulness for understanding and memorising text: I underline important parts of the text.",
+         "ST164Q03IA": "Usefulness for understanding and memorising text: After reading the text, I discuss its content with other people.",
+         "ST164Q02IA": "Usefulness for understanding and memorising text: I quickly read through the text twice.",
+         "ST164Q01IA": "Usefulness for understanding and memorising text: I concentrate on the parts of the text that are easy to understand.",
+         "ST163Q04HA": "In the PISA test, how do you feel about the reading tasks: I was lost when I had to navigate between different pages.",
+         "ST163Q03HA": "In the PISA test, how do you feel about the reading tasks: Many texts were too difficult for me.",
+         "ST163Q02HA": "In the PISA test, how do you feel about the reading tasks: There were many words I could not understand.",
+         "ST161Q08HA": "Agree: I find it difficult to answer questions about a text.",
+         "ST161Q07HA": "Agree: I have to read a text several times before completely understanding it.",
+         "ST161Q06HA": "Agree: I have always had difficulty with reading.",
+         "ST161Q03HA": "Agree: I read fluently.",
+         "ST161Q02HA": "Agree: I am able to understand difficult texts.",
+         "ST161Q01HA": "Agree: I am a good reader.",
+         "ST185Q03HA": "Agree: I have a clear sense of what gives meaning to my life.", "ST185Q02HA": "Agree: I have discovered a satisfactory meaning in life.",
+         "ST185Q01HA": "Agree: My life has clear meaning or purpose.",
+         "ST184Q01HA": "Agree: Your intelligence is something about you that you can't change very much.",
+         "ST183Q03HA": "Agree: When I am failing, this makes me doubt my plans for the future.",
+         "ST183Q02HA": "Agree: When I am failing, I am afraid that I might not have enough talent.",
+         "ST183Q01HA": "Agree: When I am failing, I worry about what others think of me.",
+         "ST182Q06HA": "Agree: If I am not good at something, I would rather keep struggling to master it than move on to something I may [...]",
+         "ST182Q05HA": "Agree: Part of the enjoyment I get from doing things is when I improve on my past performance.",
+         "ST182Q04HA": "Agree: Once I start a task, I persist until it is finished.",
+         "ST182Q03HA": "Agree: I find satisfaction in working as hard as I can.",
+         "ST181Q04HA": "Agree: I try harder when Im in competition with other people.",
+         "ST181Q03HA": "Agree: It is important for me to perform better than other people on a task.",
+         "ST181Q02HA": "Agree: I enjoy working in situations involving competition with others.",
       }
 
       nothing_selected = `
@@ -947,6 +1038,9 @@ function changeStats() {
       <option value="select-category" selected>Select Category</option>
       <option value="feelings">Feelings</option>
       <option value="trust">Trust</option>
+      <option value="homecond">Home Conditions</option>
+      <option value="reading">Reading</option>
+      <option value="agreedisagree">Agree or Disagree</option>
       </select>`
 
       let trust_selected = `
@@ -963,6 +1057,9 @@ function changeStats() {
       <option value="select-category">Select Category</option>
       <option value="feelings">Feelings</option>
       <option value="trust" selected>Trust</option>
+      <option value="homecond">Home Conditions</option>
+      <option value="reading">Reading</option>
+      <option value="agreedisagree">Agree or Disagree</option>
       </select>
       <label for="question">Question</label>
       <select id="question">
@@ -973,6 +1070,170 @@ function changeStats() {
       </select>
       <button class="button gen-button" onclick="generateByQuestion()"> Generate </button>
       </div>`;
+
+      let agree_selected = `
+      <label for="type">Statistics Type</label>
+      <select id="type" onchange="changeStats()">
+      <option value="select-option">Select Statistics Type</option>
+      <option value="specific-questions" selected>Specific Questions</option>
+      <option value="international">International</option>
+      <option value="institutional">Institutional</option>
+      <option value="random">Random</option>
+      </select>
+      <label for="category">Category</label>
+      <select id="category" onchange="pickCategory()">
+      <option value="select-category">Select Category</option>
+      <option value="feelings">Feelings</option>
+      <option value="trust">Trust</option>
+      <option value="homecond">Home Conditions</option>
+      <option value="reading">Reading</option>
+      <option value="agreedisagree" selected>Agree or Disagree</option>
+      </select>
+      <label for="question">Question</label>
+      <select id="question">
+      <option value="select-question">Select Question</option>
+      <option value="ST161Q08HA">${Questions["ST161Q08HA"]}</option>
+      <option value="ST161Q07HA">${Questions["ST161Q07HA"]}</option>
+      <option value="ST161Q06HA">${Questions["ST161Q06HA"]}</option>
+      <option value="ST161Q03HA">${Questions["ST161Q03HA"]}</option>
+      <option value="ST161Q02HA">${Questions["ST161Q02HA"]}</option>
+      <option value="ST161Q01HA">${Questions["ST161Q01HA"]}</option>
+      <option value="ST185Q03HA">${Questions["ST185Q03HA"]}</option>
+      <option value="ST185Q01HA">${Questions["ST185Q01HA"]}</option>
+      <option value="ST184Q01HA">${Questions["ST184Q01HA"]}</option>
+      <option value="ST183Q03HA">${Questions["ST183Q03HA"]}</option>
+      <option value="ST183Q02HA">${Questions["ST183Q02HA"]}</option>
+      <option value="ST183Q01HA">${Questions["ST183Q01HA"]}</option>
+      <option value="ST182Q06HA">${Questions["ST182Q06HA"]}</option>
+      <option value="ST182Q05HA">${Questions["ST182Q05HA"]}</option>
+      <option value="ST182Q04HA">${Questions["ST182Q04HA"]}</option>
+      <option value="ST182Q03HA">${Questions["ST182Q03HA"]}</option>
+      <option value="ST181Q04HA">${Questions["ST181Q04HA"]}</option>
+      <option value="ST181Q03HA">${Questions["ST181Q03HA"]}</option>
+      <option value="ST181Q02HA">${Questions["ST181Q02HA"]}</option>
+      </select>
+      <button class="button gen-button" onclick="generateByQuestion()"> Generate </button>
+      </div>`;
+
+      let reading_selected = `
+      <label for="type">Statistics Type</label>
+      <select id="type" onchange="changeStats()">
+      <option value="select-option">Select Statistics Type</option>
+      <option value="specific-questions" selected>Specific Questions</option>
+      <option value="international">International</option>
+      <option value="institutional">Institutional</option>
+      <option value="random">Random</option>
+      </select>
+      <label for="category">Category</label>
+      <select id="category" onchange="pickCategory()">
+      <option value="select-category">Select Category</option>
+      <option value="feelings">Feelings</option>
+      <option value="trust">Trust</option>
+      <option value="homecond">Home Conditions</option>
+      <option value="reading" selected>Reading</option>
+      <option value="agreedisagree">Agree or Disagree</option>
+      </select>
+      <label for="question">Question</label>
+      <select id="question">
+      <option value="select-question">Select Question</option>
+      <option value="ST150Q01IA">${Questions["ST150Q01IA"]}</option>
+      <option value="ST158Q07HA">${Questions["ST158Q07HA"]}</option>
+      <option value="ST158Q06HA">${Questions["ST158Q06HA"]}</option>
+      <option value="ST158Q05HA">${Questions["ST158Q05HA"]}</option>
+      <option value="ST158Q04HA">${Questions["ST158Q04HA"]}</option>
+      <option value="ST158Q03HA">${Questions["ST158Q03HA"]}</option>
+      <option value="ST158Q01HA">${Questions["ST158Q01HA"]}</option>
+      <option value="ST154Q01HA">${Questions["ST154Q01HA"]}</option>
+      <option value="ST153Q10HA">${Questions["ST153Q10HA"]}</option>
+      <option value="ST153Q09HA">${Questions["ST153Q09HA"]}</option>
+      <option value="ST153Q08HA">${Questions["ST153Q08HA"]}</option>
+      <option value="ST153Q06HA">${Questions["ST153Q06HA"]}</option>
+      <option value="ST153Q05HA">${Questions["ST153Q05HA"]}</option>
+      <option value="ST153Q04HA">${Questions["ST153Q04HA"]}</option>
+      <option value="ST153Q03HA">${Questions["ST153Q03HA"]}</option>
+      <option value="ST153Q02HA">${Questions["ST153Q02HA"]}</option>
+      <option value="ST153Q01HA">${Questions["ST153Q01HA"]}</option>
+      <option value="ST152Q08IA">${Questions["ST152Q08IA"]}</option>
+      <option value="ST152Q07IA">${Questions["ST152Q07IA"]}</option>
+      <option value="ST152Q06IA">${Questions["ST152Q06IA"]}</option>
+      <option value="ST152Q05IA">${Questions["ST152Q05IA"]}</option>
+      <option value="ST150Q04HA">${Questions["ST150Q04HA"]}</option>
+      <option value="ST150Q03IA">${Questions["ST150Q03IA"]}</option>
+      <option value="ST150Q02IA">${Questions["ST150Q02IA"]}</option>
+      <option value="ST160Q05IA">${Questions["ST160Q05IA"]}</option>
+      <option value="ST160Q04IA">${Questions["ST160Q04IA"]}</option>
+      <option value="ST160Q03IA">${Questions["ST160Q03IA"]}</option>
+      <option value="ST160Q02IA">${Questions["ST160Q02IA"]}</option>
+      <option value="ST160Q01IA">${Questions["ST160Q01IA"]}</option>
+      <option value="ST165Q05IA">${Questions["ST165Q05IA"]}</option>
+      <option value="ST165Q04IA">${Questions["ST165Q04IA"]}</option>
+      <option value="ST165Q03IA">${Questions["ST165Q03IA"]}</option>
+      <option value="ST165Q02IA">${Questions["ST165Q02IA"]}</option>
+      <option value="ST165Q01IA">${Questions["ST165Q01IA"]}</option>
+      <option value="ST164Q06IA">${Questions["ST164Q06IA"]}</option>
+      <option value="ST164Q05IA">${Questions["ST164Q05IA"]}</option>
+      <option value="ST164Q04IA">${Questions["ST164Q04IA"]}</option>
+      <option value="ST164Q03IA">${Questions["ST164Q03IA"]}</option>
+      <option value="ST164Q02IA">${Questions["ST164Q02IA"]}</option>
+      <option value="ST164Q01IA">${Questions["ST164Q01IA"]}</option>
+      <option value="ST163Q04HA">${Questions["ST163Q04HA"]}</option>
+      <option value="ST163Q03HA">${Questions["ST163Q03HA"]}</option>
+      <option value="ST163Q02HA">${Questions["ST163Q02HA"]}</option>
+      </select>
+      <button class="button gen-button" onclick="generateByQuestion()"> Generate </button>
+      </div>`;
+
+      let homecond_selected = `
+      <label for="type">Statistics Type</label>
+      <select id="type" onchange="changeStats()">
+      <option value="select-option">Select Statistics Type</option>
+      <option value="specific-questions" selected>Specific Questions</option>
+      <option value="international">International</option>
+      <option value="institutional">Institutional</option>
+      <option value="random">Random</option>
+      </select>
+      <label for="category">Category</label>
+      <select id="category" onchange="pickCategory()">
+      <option value="select-category">Select Category</option>
+      <option value="feelings">Feelings</option>
+      <option value="trust">Trust</option>
+      <option value="homecond" selected>Home Conditions</option>
+      <option value="reading">Reading</option>
+      <option value="agreedisagree">Agree/Disagree</option>
+      </select>
+      <label for="question">Question</label>
+      <select id="question">
+      <option value="select-question">Select Question</option>
+      <option value="ST011Q01TA">${Questions["ST011Q01TA"]}</option>
+      <option value="ST011Q02TA">${Questions["ST011Q02TA"]}</option>
+      <option value="ST011Q03TA">${Questions["ST011Q03TA"]}</option>
+      <option value="ST011Q05TA">${Questions["ST011Q05TA"]}</option>
+      <option value="ST011Q03TA">${Questions["ST011Q03TA"]}</option>
+      <option value="ST011Q06TA">${Questions["ST011Q06TA"]}</option>
+      <option value="ST011Q07TA">${Questions["ST011Q07TA"]}</option>
+      <option value="ST011Q08TA">${Questions["ST011Q08TA"]}</option>
+      <option value="ST011Q09TA">${Questions["ST011Q09TA"]}</option>
+      <option value="ST011Q10TA">${Questions["ST011Q10TA"]}</option>
+      <option value="ST011Q11TA">${Questions["ST011Q11TA"]}</option>
+      <option value="ST011Q12TA">${Questions["ST011Q12TA"]}</option>
+      <option value="ST011Q16NA">${Questions["ST011Q16NA"]}</option>
+      <option value="ST011D17TA">${Questions["ST011D17TA"]}</option>
+      <option value="ST011D18TA">${Questions["ST011D18TA"]}</option>
+      <option value="ST011D19TA">${Questions["ST011D19TA"]}</option>
+      <option value="ST012Q01TA">${Questions["ST012Q01TA"]}</option>
+      <option value="ST012Q02TA">${Questions["ST012Q02TA"]}</option>
+      <option value="ST012Q03TA">${Questions["ST012Q03TA"]}</option>
+      <option value="ST012Q05NA">${Questions["ST012Q05NA"]}</option>
+      <option value="ST012Q06NA">${Questions["ST012Q06NA"]}</option>
+      <option value="ST012Q07NA">${Questions["ST012Q07NA"]}</option>
+      <option value="ST012Q08NA">${Questions["ST012Q08NA"]}</option>
+      <option value="ST012Q09NA">${Questions["ST012Q09NA"]}</option>
+      <option value="ST013Q01TA">${Questions["ST013Q01TA"]}</option>
+
+      </select>
+      <button class="button gen-button" onclick="generateByQuestion()"> Generate </button>
+      </div>`;
+
 
       let feelings_selected = `
       <label for="type">Statistics Type</label>
@@ -988,6 +1249,9 @@ function changeStats() {
       <option value="select-category">Select Category</option>
       <option value="feelings" selected>Feelings</option>
       <option value="trust">Trust</option>
+      <option value="homecond">Home Conditions</option>
+      <option value="reading">Reading</option>
+      <option value="agreedisagree">Agree or Disagree</option>
       </select>
       <label for="question">Question</label>
       <select id="question">
@@ -1014,6 +1278,12 @@ function changeStats() {
         document.getElementById("stats").innerHTML = feelings_selected;
       } else if (selectedValue === "select-category") {
         document.getElementById("stats").innerHTML = nothing_selected;
+      } else if (selectedValue === "homecond") {
+        document.getElementById("stats").innerHTML = homecond_selected;
+      } else if (selectedValue === "reading") {
+        document.getElementById("stats").innerHTML = reading_selected;
+      } else if (selectedValue === "agreedisagree") {
+        document.getElementById("stats").innerHTML = agree_selected;
       }
 
     }
