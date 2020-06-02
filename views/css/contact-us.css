@@ -154,6 +154,7 @@
 
 .pisa-exam-answers {
   display: flex;
+  position:relative;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -192,8 +193,13 @@
   padding-left: 100px;
   padding-right: 100px;
   text-align: center;
+  color: #2a3e52;
 }
-
+.topAnswer > a {
+  color: #2a3e52;
+  text-decoration: none;
+  text-decoration: underline; 
+}
 .form-container {
   display: flex;
   flex-direction: column;
@@ -314,6 +320,32 @@ input[type=submit]:hover {
 
 }
 
-main {
-  height: 800px;
+@media (max-width: 300px) {
+  .Answers {
+    font-size: 18px;
+    font-family: sans-serif;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    position:relative;
+  }
+
+  .FAQ-title {
+    font-size: 30px;
+    margin: 0;
+  }
+
+  .FAQ {
+    height: 1600px;
+  }
+
+  .FAQ-card {
+    flex: 0 1 60%;
+    width: 60%;
+  }
+
+  .FAQ-container {
+    flex-direction: column;
+  }
+
 }

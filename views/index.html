@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <title>PiRo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="css/header.css">
-  <link rel="stylesheet" type="text/css" href="css/footer.css">
-  <link rel="stylesheet" type="text/css" href="css/page-content.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
-  <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/main-page.css">
+  <meta name="description" content="Main page of PiRo">  
+  <link rel="stylesheet" type="text/css" href="css/header.css" aria-label="header">
+  <link rel="stylesheet" type="text/css" href="css/footer.css" aria-label="footer">
+  <link rel="stylesheet" type="text/css" href="css/page-content.css" aria-label="pageContent">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css" aria-label="chartistLink">
+  <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js" aria-label="chartistLink"></script>
+  <link rel="stylesheet" type="text/css" href="css/main-page.css" aria-label="mainPage">
   <script type="text/javascript" src="/js/header.js"></script>
   <script type="text/javascript" src="/js/index.js"></script>
 </head>
@@ -17,17 +18,17 @@
 <body onload="loadElements()">
   <header>
     <div class="logo-container">
-      <a id="triangle-logo" href="index.html"></a>
-      <a id="page-title" href="index.html">PiRo</a>
+      <a id="triangle-logo" href="index.html" aria-label="indexPage"></a>
+      <a id="page-title" href="index.html" aria-label="indexPage">PiRo</a>
     </div>
     <nav>
-      <a href="custom-statistics">Statistics</a>
-      <a href="contact-us.html">Contact Us</a>
+      <a href="custom-statistics" aria-label="statisticsPage">Statistics</a>
+      <a href="contact-us.html" aria-label="contactPage">Contact Us</a>
       <div class="dropdown">
         <img class="dropbtn" src="assets/img/menu.svg" onclick="showDropdown()" alt="Menu">
         <div id="myDropdown" class="dropdown-content">
-          <a href="custom-statistics">Statistics</a>
-          <a href="contact-us.html">Contact Us</a>
+          <a href="custom-statistics" aria-label="statisticsPage">Statistics</a>
+          <a href="contact-us.html" aria-label="contactPage">Contact Us</a>
         </div>
       </div>
     </nav>
@@ -39,7 +40,7 @@
       </p>
       <div class="description-container">
         <div class="description-card">
-          <a class="itemLink" href="">
+          <a class="itemLink" href="" aria-label="itemLink">
             <div class="ct-chart ct-octave" id="stats-chart1">
             </div>
             <p class="summary-item-subtitle">
@@ -48,7 +49,7 @@
           </a>
         </div>
         <div class="description-card">
-          <a class="itemLink" href="">
+          <a class="itemLink" href="" aria-label="itemLink">
             <div class="ct-chart2 ct-octave" id="stats-chart2">
             </div>
             <p class="summary-item-subtitle">
@@ -57,7 +58,7 @@
           </a>
         </div>
         <div class="description-card">
-          <a class="itemLink" href="">
+          <a class="itemLink" href="" aria-label="itemLink">
             <div class="ct-chart3 ct-octave" id="stats-chart3">
             </div>
             <p class="summary-item-subtitle">
@@ -72,11 +73,11 @@
         What is PiRo?
       </h2>
       <p class="summary-subtitle">
-        A platform for visualizing statistics about the <a href="https://www.oecd.org/pisa/">PISA</a> results from Romania.
+        A platform for visualizing statistics about the <a href="https://www.oecd.org/pisa/" aria-label="pisaLink">PISA</a> results from Romania.
       </p>
       <div class="summary-container">
         <div class="summary-card">
-          <a class="itemLink" href="">
+          <a class="itemLink" href="" aria-label="itemLink">
             <img id="questionmark-img" alt="Question-mark">
             <p class="summary-item-title">
               Questions
@@ -93,7 +94,7 @@
           </a>
         </div>
         <div class="summary-card">
-          <a class="itemLink" href="">
+          <a class="itemLink" href="" aria-label="itemLink">
             <img id="worldmap-img" alt="World Map">
             <p class="summary-item-title">
               International
@@ -110,7 +111,7 @@
           </a>
         </div>
         <div class="summary-card">
-          <a class="itemLink" href="">
+          <a class="itemLink" href="" aria-label="itemLink">
             <img id="institution-img" alt="Institution">
             <p class="summary-item-title">
               Institutional
@@ -127,7 +128,7 @@
           </a>
         </div>
         <div class="summary-card">
-          <a class="itemLink" href="">
+          <a class="itemLink" href="" aria-label="itemLink">
             <img id="random-img" alt="Dice">
             <p class="summary-item-title">
               Random
@@ -146,7 +147,7 @@
       </div>
     </div>
     <div class="map-container">
-      <a href="">
+      <a href="" aria-label="refrence">
         World Results
       </a>
       <div id="map"></div>
