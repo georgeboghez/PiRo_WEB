@@ -111,8 +111,6 @@ function loadElements() {
   loadImg("dice.svg", "random-img");
   loadMap();
 }
-var mybutton = document.getElementById("topbtn");
-window.onscroll = function() { scrollFunction() };
 
 function submitForm() {
   var email = document.getElementById("email").value;
@@ -132,17 +130,4 @@ function submitForm() {
     }
   }
   xhr.send(JSON.stringify({ EmailAdress: email, FirstName: name, LastName: surname, EmailContent: content }));
-}
-
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
-}
-
-function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
 }
