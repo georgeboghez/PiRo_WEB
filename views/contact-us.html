@@ -1,34 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang = "en">
 
 <head>
   <title>PiRo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="css/header.css">
-  <link rel="stylesheet" type="text/css" href="css/footer.css">
-  <link rel="stylesheet" type="text/css" href="css/contact-us.css">
-  <link rel="stylesheet" type="text/css" href="css/page-content.css">
+  <meta name="description" content="Contact us page for PiRo page">
+  <link rel="stylesheet" type="text/css" href="css/header.css" aria-label="header">
+  <link rel="stylesheet" type="text/css" href="css/footer.css" aria-label="footer">
+  <link rel="stylesheet" type="text/css" href="css/contact-us.css" aria-label="contactPage">
+  <link rel="stylesheet" type="text/css" href="css/page-content.css" aria-label="pageContent">
   <button onclick="topFunction()" id="topbtn" title="Go to top">Top</button>
-  <script type="text/javascript" src="/js/header.js">
+  <script async type="text/javascript" src="/js/header.js">
 </script>
-<script type="text/javascript" src="/js/scroller.js">
+<script async type="text/javascript" src="/js/scroller.js">
 </script>
 </head>
 
 <body>
   <header>
     <div class="logo-container">
-      <a id="triangle-logo" href="index.html"></a>
-      <a id="page-title" href="index.html">PiRo</a>
+      <a id="triangle-logo" href="index.html" aria-label="mainPage"></a>
+      <a id="page-title" href="index.html" aria-label="mainPage">PiRo</a>
     </div>
     <nav>
-      <a href="custom-statistics">Statistics</a>
-      <a href="contact-us.html">Contact Us</a>
+      <a href="custom-statistics" aria-label="statisticsPage">Statistics</a>
+      <a href="contact-us.html" aria-label="contactPage">Contact Us</a>
       <div class="dropdown">
         <img class="dropbtn" src="assets/img/menu.svg" onclick="showDropdown()" alt="Menu">
         <div id="myDropdown" class="dropdown-content">
-          <a href="custom-statistics">Statistics</a>
-          <a href="contact-us.html">Contact Us</a>
+          <a href="custom-statistics" aria-label="statisticsPage">Statistics</a>
+          <a href="contact-us.html" aria-label="contactPage">Contact Us</a>
         </div>
       </div>
     </nav>
@@ -41,7 +42,7 @@
       </h2>
       <div class="FAQ-container">
         <div class="FAQ-card">
-          <a class="FAQ-itemLink" href="#pisa-exam-answers">
+          <a class="FAQ-itemLink" href="#pisa-exam-answers" aria-label="linkPisa">
             <img height="100" src="assets/img/questionmark.svg" alt="Question Mark" width="100" height="100">
             <p class="FAQ-item-title">
               Pisa exam.
@@ -54,7 +55,7 @@
           </a>
         </div>
         <div class="FAQ-card">
-          <a class="FAQ-itemLink" href="#about-us-answers">
+          <a class="FAQ-itemLink" href="#about-us-answers" aria-label="linkAbout">
             <img height="100" src="assets/img/docs.svg" alt="Documents" width="100" height="100">
             <p class="FAQ-item-title">
               About us.
@@ -68,7 +69,7 @@
         </div>
         <div class="FAQ-card">
           <div class="thirdCard">
-            <a class="FAQ-itemLink" href="#work-us-answers">
+            <a class="FAQ-itemLink" href="#work-us-answers" aria-label="linkWork">
               <img height="100" src="assets/img/suitcase.svg" alt="Suitcase" width="100" height="100">
               <p class="FAQ-item-title">
                 Work with us.
@@ -85,7 +86,7 @@
   <div class="pisa-exam-answers" id="pisa-exam-answers">
     <div class="Answers">
       <p class="topAnswer">PISA is an international study that was launched by the OECD in 1997, first administered in 2000 and now covers over 80 countries. Every 3 years the PISA survey provides comparative data on 15-year-olds' performance in reading, mathematics and science. In addition, each cycle explores a distinct "innovative domain" such as Collaborative Problem Solving (PISA 2015) and Global Competence (PISA 2018). The results have informed education policy discussions at the national and global level since its inception.</p>
-      <p class="topAnswer">You can take the test by visiting the official <a href="https://www.oecd.org/pisa/test-2012/">PISA website</a> and choosing one cathegory in which you would like to participate.</p>
+      <p class="topAnswer">You can take the test by visiting the official <a href="https://www.oecd.org/pisa/test-2012/" aria-label="pisaSimulation">PISA website</a> and choosing one cathegory in which you would like to participate.</p>
       <p class="topAnswer">However if you are participating as a student, the results may take anywhere between a week and a month to arrive.</p>
     </div>
   </div>
