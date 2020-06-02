@@ -272,6 +272,20 @@ function getSVG(req, res) {
   }
 }
 
+function getGIF(req, res) {
+  try {
+    let gif = fs.readFileSync('views' + req.url)
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'image/gif')
+    res.write(gif)
+  } catch (e) {
+    console.log(e)
+    res.statusCode = 500
+    res.setHeader('Content-Type', 'text/html')
+    res.write('Internal server error')
+  }
+}
+
 module.exports = {
   getChartHTML,
   getCustomStatsHTML,
@@ -284,5 +298,6 @@ module.exports = {
   getInstQuestionChart,
   getComparisonChart,
   getCountryChart,
-  getJS
+  getJS,
+  getGIF
 }

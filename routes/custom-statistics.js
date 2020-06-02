@@ -16,6 +16,7 @@ router.get('/question-inst-chart', statisticsController.getInstQuestionChart)
 router.get('/comparison-chart', statisticsController.getComparisonChart)
 router.get('/country-chart', statisticsController.getCountryChart)
 router.get('/js/custom-statistics.js', statisticsController.getJS)
+router.get('/assets/img/loading.gif', statisticsController.getGIF)
 
 
 

@@ -1,9 +1,12 @@
 const INSTITUTIONS = ["6.4200029E7", "6.4200103E7", "6.4200031E7", "6.4200146E7", "6.4200116E7", "6.4200056E7", "6.4200139E7", "6.4200147E7", "6.4200161E7", "6.4200054E7", "6.4200145E7", "6.4200156E7", "6.4200073E7", "6.4200153E7", "6.4200059E7", "6.4200039E7", "6.4200081E7", "6.4200128E7", "6.4200131E7", "6.420013E7", "6.4200046E7", "6.4200157E7", "6.4200094E7", "6.4200134E7", "6.4200165E7", "6.4200015E7", "6.4200011E7", "6.4200126E7", "6.4200155E7", "6.42001E7", "6.4200078E7", "6.4200089E7", "6.4200104E7", "6.4200044E7", "6.4200079E7", "6.4200047E7", "6.420002E7", "6.4200049E7", "6.4200057E7", "6.4200119E7", "6.4200167E7", "6.4200061E7", "6.4200151E7", "6.4200032E7", "6.4200042E7", "6.4200082E7", "6.4200088E7", "6.4200037E7", "6.4200109E7", "6.4200023E7", "6.4200006E7", "6.4200117E7", "6.4200115E7", "6.4200028E7", "6.4200137E7", "6.4200008E7", "6.4200083E7", "6.4200012E7", "6.4200005E7", "6.4200123E7", "6.4200038E7", "6.4200068E7", "6.420001E7", "6.4200098E7", "6.420011E7", "6.4200036E7", "6.4200135E7", "6.4200018E7", "6.4200076E7", "6.4200105E7", "6.420015E7", "6.4200169E7", "6.4200097E7", "6.4200106E7", "6.4200051E7", "6.4200136E7", "6.4200065E7", "6.4200168E7", "6.4200112E7", "6.4200102E7", "6.4200052E7", "6.4200113E7", "6.4200085E7", "6.4200062E7", "6.4200013E7", "6.4200162E7", "6.420004E7", "6.4200053E7", "6.4200164E7", "6.4200108E7", "6.4200121E7", "6.420016E7", "6.4200021E7", "6.4200093E7", "6.4200019E7", "6.4200086E7", "6.4200154E7", "6.4200127E7", "6.4200149E7", "6.4200152E7", "6.4200141E7", "6.4200118E7", "6.4200072E7", "6.4200144E7", "6.4200092E7", "6.4200017E7", "6.4200101E7", "6.420012E7", "6.4200009E7", "6.4200014E7", "6.4200171E7", "6.420009E7", "6.4200129E7", "6.4200071E7", "6.4200026E7", "6.4200045E7", "6.4200035E7", "6.4200069E7", "6.4200075E7", "6.4200099E7", "6.4200022E7", "6.4200064E7", "6.4200024E7", "6.4200058E7", "6.4200041E7", "6.4200034E7", "6.4200159E7", "6.4200091E7", "6.4200025E7", "6.4200166E7", "6.4200143E7", "6.420003E7", "6.420005E7", "6.4200033E7", "6.4200063E7", "6.4200084E7", "6.4200138E7", "6.4200124E7", "6.4200114E7", "6.420014E7", "6.420008E7"]
 const COUNTRIES = ["China(Beijing,Shanghai,Jiangsu,Zhejiang)", "Singapore", "Macao", "Hong Kong,China", "Estonia", "Japan", "South Korea", "Canada", "Taiwan", "Finland", "Poland", "Ireland", "Slovenia", "United Kingdom", "New Zealand", "Netherlands", "Sweden", "Denmark", "Germany", "Belgium", "Australia", "Switzerland", "Norway", "Czechia", "United States", "France", "Portugal", "Austria", "Latvia", "Russia", "Iceland", "Lithuania", "Hungary", "Italy", "Luxembourg", "Belarus", "Croatia", "Slovakia", "Israel", "Turkey", "Ukraine", "Malta", "Greece", "Serbia", "Cyprus", "Chile", "United Arab Emirates", "Malaysia", "Romania", "Bulgaria", "Moldova", "Uruguay", "Brunei", "Montenegro", "Albania", "Jordan", "Mexico", "Costa Rica", "Qatar", "Thailand", "Colombia", "Kazakhstan", "Azerbaijan", "Bosnia and Herzegovina", "Peru", "Brazil", "North Macedonia", "Argentina", "Georgia", "Saudi Arabia", "Indonesia", "Lebanon", "Morocco", "Panama", "Kosovo", "Philippines", "Dominican Republic"]
-const QUESTIONS = {
+const QUESTIONS_TRUST = {
   "ST123Q02NA": "Thinking about 2018: My parents support my educational efforts and achievements.",
   "ST123Q03NA": "Thinking about 2018: My parents support me when I am facing difficulties at school.",
-  "ST123Q04NA": "Thinking about 2018: My parents encourage me to be confident.",
+  "ST123Q04NA": "Thinking about 2018: My parents encourage me to be confident."
+}
+
+const QUESTIONS_FEELINGS = {
   "ST186Q10HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Miserable",
   "ST186Q09HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Proud",
   "ST186Q08HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Sad",
@@ -12,7 +15,10 @@ const QUESTIONS = {
   "ST186Q05HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Happy",
   "ST186Q03HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Cheerful",
   "ST186Q02HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Afraid",
-  "ST186Q01HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Joyful",
+  "ST186Q01HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Joyful"
+}
+
+const QUESTIONS_HOME_CONDITIONS = {
   'ST011Q01TA': 'In your home: A desk to study at',
   'ST011Q02TA': 'In your home: A room of your own',
   'ST011Q03TA': 'In your home: A quiet place to study',
@@ -37,7 +43,10 @@ const QUESTIONS = {
   'ST012Q07NA': 'How many in your home: Tablet computers (e.g. iPad, BlackBerry PlayBook)',
   'ST012Q08NA': 'How many in your home: E-book readers (e.g. Kindle, Kobo, Bookeen)',
   'ST012Q09NA': 'How many in your home: Musical instruments (e.g. guitar, piano)',
-  'ST013Q01TA': 'How many books are there in your home?',
+  'ST013Q01TA': 'How many books are there in your home?'
+}
+
+const QUESTIONS_READING = {
   "ST150Q01IA": "During the last month, how often did you have to read for school: Texts that include diagrams or maps",
   "ST158Q07HA": "Taught at school: How to detect phishing or spam emails",
   "ST158Q06HA": "Taught at school: How to detect whether the information is subjective or biased",
@@ -81,7 +90,10 @@ const QUESTIONS = {
   "ST164Q01IA": "Usefulness for understanding and memorising text: I concentrate on the parts of the text that are easy to understand.",
   "ST163Q04HA": "In the PISA test, how do you feel about the reading tasks: I was lost when I had to navigate between different pages.",
   "ST163Q03HA": "In the PISA test, how do you feel about the reading tasks: Many texts were too difficult for me.",
-  "ST163Q02HA": "In the PISA test, how do you feel about the reading tasks: There were many words I could not understand.",
+  "ST163Q02HA": "In the PISA test, how do you feel about the reading tasks: There were many words I could not understand."
+}
+
+const QUESTIONS_AGREE = {
   "ST161Q08HA": "Agree: I find it difficult to answer questions about a text.",
   "ST161Q07HA": "Agree: I have to read a text several times before completely understanding it.",
   "ST161Q06HA": "Agree: I have always had difficulty with reading.",
@@ -101,8 +113,10 @@ const QUESTIONS = {
   "ST182Q03HA": "Agree: I find satisfaction in working as hard as I can.",
   "ST181Q04HA": "Agree: I try harder when Im in competition with other people.",
   "ST181Q03HA": "Agree: It is important for me to perform better than other people on a task.",
-  "ST181Q02HA": "Agree: I enjoy working in situations involving competition with others.",
+  "ST181Q02HA": "Agree: I enjoy working in situations involving competition with others."
+}
 
+const QUESTIONS_MATH = {
   "EC001Q02NA": "Approx how many hrs\\week attend add. instruct in the follow. domains? Mathematics",
   "EC014Q01NA": "What does additional math cover? Content covered in regular school courses",
   "EC014Q02NA": "What does additonal math cover? New or additional content notcovered in regular school courses",
@@ -124,9 +138,11 @@ const QUESTIONS = {
   "EC023Q05NA": "Why don't you attend additional mathematics in this school year: I don't have the money.",
   "EC023Q06NA": "Why don't you attend additional mathematics in this school year: My teachers are knowledgeable enough.",
   "EC023Q07NA": "Why don't you attend additional mathematics in this school year: My parents don't want me to do it.",
-  "EC023Q08NA": "Why don't you attend additional mathematics in this school year: It doesnt seem worth the money.",
-  "PA002Q01TA": "Watched TV programmes about science",
+  "EC023Q08NA": "Why don't you attend additional mathematics in this school year: It doesnt seem worth the money."
+}
 
+const QUESTIONS_SCIENCE = {
+  "PA002Q01TA": "Watched TV programmes about science",
   "PA002Q02TA": "Read books on scientific discoveries",
   "PA002Q03TA": "Watched, read or listened to science fiction",
   "PA002Q04TA": "Visited web sites about science topics",
@@ -155,7 +171,102 @@ const QUESTIONS = {
 }
 
 var csvData = "empty";
+
 var label_array = []
+
+var statistics_type_dropdown = `
+  <label for="type">Statistics Type</label>
+  <select id="type" onchange="changeStats()">
+  <option value="select-option" selected>Select Statistics Type</option>
+  <option value="specific-questions">Specific Questions</option>
+  <option value="international">International</option>
+  <option value="institutional">Institutional</option>
+  <option value="random">Random</option>
+  </select>`
+
+const category_dropdown = `
+  <label for="category">Category</label>
+  <select id="category" onchange="pickCategory()">
+  <option value="select-category" selected>Select Category</option>
+  <option value="feelings">Feelings</option>
+  <option value="trust">Trust</option>
+  <option value="homecond">Home Conditions</option>
+  <option value="reading">Reading</option>
+  <option value="agreedisagree">Agree or Disagree</option>
+  <option value="math">Mathematics</option>
+  <option value="science">Sciences</option>
+  </select>`
+
+const rank_by_dropdown = `
+  <label for="rank-by">Rank By</label>
+  <select id="rank-by" onchange="compareInternational()">
+  <option value="select-rank-by">Select Option</option>
+  <option value="score">Score</option>
+  <option value="tier">Tier</option>
+  </select>`
+
+var institutions_dropdown = `<label for="institution">Pick Institution</label>
+  <select id="institution" onchange="pickInstitution()">
+  <option value="select-institution" selected>Select Institution</option>`
+for (var i = 0; i < INSTITUTIONS.length; i++) {
+  institutions_dropdown += `<option value="${INSTITUTIONS[i]}"> ${INSTITUTIONS[i]} </option>`;
+}
+institutions_dropdown += '</select>';
+
+var institutions_comparison_dropdown = `<label for="pick-institution2">Pick Institution #2</label>
+  <select id="pick-institution2" onchange="pickQuestionForComparison()">
+  <option value="select-institution2" selected>Select Institution #2</option>`
+for (var i = 0; i < INSTITUTIONS.length; i++) {
+  institutions_comparison_dropdown += `<option value="${INSTITUTIONS[i]}"> ${INSTITUTIONS[i]} </option>`;
+}
+institutions_comparison_dropdown += `</select>`;
+
+var countries_dropdown =
+  `<label for="pick-country">Pick Country</label>
+  <select id="pick-country" onchange="pickCountry()">
+  <option value="select-country">Select Country</option>`
+for (var i = 0; i < COUNTRIES.length; i++) {
+  countries_dropdown += `<option value="${COUNTRIES[i]}"> ${COUNTRIES[i]} </option>`;
+}
+countries_dropdown += `</select>`
+
+const question_dropdown_start = `<label for="pick-question">Question</label>
+  <select id="pick-question" onchange="pickQuestion()">
+  <option value="select-question">Select Question</option>`
+const all_question_dropdown_start = `<label for="pick-question2">Question</label>
+  <select id="pick-question2" onchange="pickQuestionFromAll()">
+  <option value="select-question2">Select Question</option>`
+const all_question_institutions_dropdown_start = `<label for="pick-question3">Question</label>
+  <select id="pick-question3" onchange="pickQuestionForInstitutionComparison()">
+  <option value="select-question3">Select Question</option>`
+const question_dropdown_end = `</select>`
+
+const institution_options_dropdown = `<label for="option-type">Statistics Options</label>
+  <select id="option-type" onchange="chosenInstOption()">
+  <option value="select-option2">Select Option</option>
+  <option value="gender-option">Gender</option>
+  <option value="questions-option">Questions</option>
+  <option value="comparison-option">Comparison</option>
+  </select>
+  `
+
+var generate_button = `<button class="button gen-button" onclick=""> Generate </button>`
+
+var current_container_html = ''
+
+
+function generateEmptyChart() {
+  csvData = "empty";
+  var data = {
+    labels: [1, 2, 3, 4],
+    series: [
+      []
+    ]
+  };
+
+  new Chartist.Line('.ct-chart', data);
+  document.getElementById("chart-title").innerHTML = "Empty Chart";
+}
 
 function changeFunc() {
   var selectBox = document.getElementById("type");
@@ -164,267 +275,163 @@ function changeFunc() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("stats-chart").innerHTML = ''
       document.getElementById("demo").innerHTML = this.responseText;
     }
   };
+  document.getElementById("stats-chart").innerHTML = '<img src="/assets/img/loading.gif"/>';
   xhttp.open("GET", "/chart-institutional", true);
   xhttp.send();
 }
 
 function changeStats() {
-  let nothing_selected = `
-  <label for="type">Statistics Type</label>
-  <select id="type" onchange="changeStats()">
-  <option value="select-option" selected>Select Statistics Type</option>
-  <option value="specific-questions">Specific Questions</option>
-  <option value="international">International</option>
-  <option value="institutional">Institutional</option>
-  <option value="random">Random</option>
-  </select>`;
-
-  let random_selected = `
-  <label for="type">Statistics Type</label>
-  <select id="type" onchange="changeStats()">
-  <option value="select-option">Select Statistics Type</option>
-  <option value="specific-questions">Specific Questions</option>
-  <option value="international">International</option>
-  <option value="institutional">Institutional</option>
-  <option value="random" selected>Random</option>
-  </select>
-  <button class="button gen-button" onclick="randomStats()"> Generate </button>
-  </div>`;
-
-
-  let international_selected = `
-  <label for="type">Statistics Type</label>
-  <select id="type" onchange="changeStats()">
-  <option value="select-option">Select Statistics Type</option>
-  <option value="specific-questions">Specific Questions</option>
-  <option value="international" selected>International</option>
-  <option value="institutional">Institutional</option>
-  <option value="random">Random</option>
-  </select>
-  <label for="rank-by">Rank By</label>
-      <select id="rank-by" onchange="compareInternational()">
-      <option value="select-rank-by">Select Option</option>
-      <option value="score">Score</option>
-      <option value="tier">Tier</option>
-      </select>`;
-
-  let specific_questions_selected = `
-  <label for="type">Statistics Type</label>
-  <select id="type" onchange="changeStats()">
-  <option value="select-option">Select Statistics Type</option>
-  <option value="specific-questions" selected>Specific Questions</option>
-  <option value="international">International</option>
-  <option value="institutional">Institutional</option>
-  <option value="random">Random</option>
-  </select>
-  <label for="category">Category</label>
-  <select id="category" onchange="pickCategory()">
-  <option value="select-category">Select Category</option>
-  <option value="feelings">Feelings</option>
-  <option value="trust">Trust</option>
-  <option value="homecond">Home Conditions</option>
-  <option value="reading">Reading</option>
-  <option value="agreedisagree">Agree or Disagree</option>
-  <option value="math">Mathematics</option>
-  <option value="science">Sciences</option>
-  </select>`;
-
-  var institutional_selected = `
-  <label for="type">Statistics Type</label>
-  <select id="type" onchange="changeStats()">
-  <option value="select-option">Select Statistics Type</option>
-  <option value="specific-questions">Specific Questions</option>
-  <option value="international">International</option>
-  <option value="institutional" selected>Institutional</option>
-  <option value="random">Random</option>
-  </select>
-  <label for="institution">Pick Institution</label>
-  <select id="institution" onchange="pickInstitution()">
-  <option value="select-Institution" selected>Select Institution</option>
-  `
-
-  for (var i = 0; i < INSTITUTIONS.length; i++) {
-    institutional_selected += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
-  }
-  institutional_selected += '</select>';
-
-  var institution_chosen = `
-  <label for="type">Statistics Type</label>
-  <select id="type" onchange="changeStats()">
-  <option value="select-option">Select Statistics Type</option>
-  <option value="specific-questions">Specific Questions</option>
-  <option value="international">International</option>
-  <option value="institutional" selected>Institutional</option>
-  <option value="random">Random</option>
-  </select>
-  <label for="institution">Pick Institution</label>
-  <select id="institution" onchange="pickInstitution()">
-  <option value="select-Institution">Select Institution</option>
-  `
-
-  for (var i = 0; i < INSTITUTIONS.length; i++) {
-    institution_chosen += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
-  }
-  institution_chosen += '</select>'
-
   var selectBox = document.getElementById("type");
   var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-
-  if (selectedValue === "random") {
-    document.getElementById("stats").innerHTML = random_selected;
-  } else if (selectedValue === "international") {
-    document.getElementById("stats").innerHTML = international_selected;
+  current_container_html = statistics_type_dropdown.replace(`value="${selectedValue}"`, `value="${selectedValue}" selected`)
+  if (selectedValue === "select-option") {
+    generateEmptyChart()
   } else if (selectedValue === "specific-questions") {
-    document.getElementById("stats").innerHTML = specific_questions_selected;
+    current_container_html += category_dropdown
+  } else if (selectedValue === "international") {
+    current_container_html += rank_by_dropdown
   } else if (selectedValue === "institutional") {
-    document.getElementById("stats").innerHTML = institutional_selected;
-  } else if (selectedValue === "select-option") {
-    csvData = "empty";
-    var data = {
-      labels: [1, 2, 3, 4],
-      series: [
-        []
-      ]
-    };
+    current_container_html += institutions_dropdown
+  } else if (selectedValue === "random") {
+    current_container_html += generate_button.replace('onclick=""', 'onclick="randomStats()"')
+  }
+  document.getElementById("stats").innerHTML = current_container_html;
+}
 
-    new Chartist.Line('.ct-chart', data);
-    document.getElementById("stats").innerHTML = nothing_selected;
-    document.getElementById("chart-title").innerHTML = "Empty Chart";
+function replaceInQuestion(value, QUESTIONS) {
+  current_container_html = statistics_type_dropdown.replace('value="specific-questions"', 'value="specific-questions" selected')
+  current_container_html += category_dropdown.replace(`value="${value}"`, `value="${value}" selected`)
+  current_container_html += question_dropdown_start
+  for (var key in QUESTIONS) {
+    current_container_html += `<option value="${key}">${QUESTIONS[key]}</option>"`
+  }
+  current_container_html += question_dropdown_end
+  document.getElementById("stats").innerHTML = current_container_html;
+}
+
+function pickCategory() {
+  var categoryDropdown = document.getElementById("category");
+  var selected_category = categoryDropdown.options[categoryDropdown.selectedIndex].value;
+
+  if (selected_category === "feelings") {
+    replaceInQuestion(selected_category, QUESTIONS_FEELINGS)
+  } else if (selected_category === "trust") {
+    replaceInQuestion(selected_category, QUESTIONS_TRUST)
+  } else if (selected_category === "homecond") {
+    replaceInQuestion(selected_category, QUESTIONS_HOME_CONDITIONS)
+  } else if (selected_category === "agreedisagree") {
+    replaceInQuestion(selected_category, QUESTIONS_AGREE)
+  } else if (selected_category === "math") {
+    replaceInQuestion(selected_category, QUESTIONS_MATH)
+  } else if (selected_category === "science") {
+    replaceInQuestion(selected_category, QUESTIONS_SCIENCE)
+  } else if (selected_category === "reading") {
+    replaceInQuestion(selected_category, QUESTIONS_READING)
   }
 }
 
-function compareInternational() {
-  var country = "";
-  var selectBox = document.getElementById("rank-by");
-  var rankOption = selectBox.options[selectBox.selectedIndex].value;
+function pickQuestion() {
+  var questionDropdown = document.getElementById("pick-question");
+  var selectedQuestionId = questionDropdown.options[questionDropdown.selectedIndex].value;
+  var selectedQuestion = questionDropdown.options[questionDropdown.selectedIndex].text;
 
-  let nothing_selected = `
-      <label for="type">Statistics Type</label>
-      <select id="type" onchange="changeStats()">
-      <option value="select-option">Select Statistics Type</option>
-      <option value="specific-questions">Specific Questions</option>
-      <option value="international" selected>International</option>
-      <option value="institutional">Institutional</option>
-      <option value="random">Random</option>
-      </select>
-      <label for="rank-by">Rank By</label>
-          <select id="rank-by" onchange="compareInternational()">
-          <option value="select-rank-by">Select Option</option>
-          <option value="score">Score</option>
-          <option value="tier">Tier</option>
-          </select>`;
-
-  let international_selected = `
-      <label for="type">Statistics Type</label>
-      <select id="type" onchange="changeStats()">
-      <option value="select-option">Select Statistics Type</option>
-      <option value="specific-questions">Specific Questions</option>
-      <option value="international" selected>International</option>
-      <option value="institutional">Institutional</option>
-      <option value="random">Random</option>
-      </select>
-      <label for="rank-by">Rank By</label>
-          <select id="rank-by" onchange="compareInternational()">`;
-
-  if (rankOption == "score")
-    international_selected += `<option value="select-rank-by">Select Option</option> <option value="score" selected>Score</option> <option value="tier">Tier</option>`;
-  else if (rankOption == "tier")
-    international_selected += `<option value="select-rank-by">Select Option</option> <option value="score" selected>Score</option> <option value="tier" selected>Tier</option>`;
-
-  international_selected +=
-    `</select>
-      <label for="pick-country">Pick Country</label>
-            <select id="pick-country">
-            <option value="select-country">Select Country</option>`
-
-  for (var i = 0; i < COUNTRIES.length; i++) {
-    if (country == COUNTRIES[i]) {
-      international_selected += '<option value = "' + COUNTRIES[i] + '" selected>' + COUNTRIES[i] + '</option>';
-      country = COUNTRIES[i];
-    } else {
-      international_selected += '<option value = "' + COUNTRIES[i] + '">' + COUNTRIES[i] + '</option>';
-    }
+  var question_selected = current_container_html.replace(`value="${selectedQuestionId}"`, `value="${selectedQuestionId}" selected`)
+  if (selectedQuestionId != 'select-question') {
+    question_selected += generate_button.replace(`onclick=""`, `onclick="generateByQuestion('${selectedQuestionId}', '${selectedQuestion}')"`)
   }
-  international_selected += `
-      </select>
-      <button class="button gen-button" onclick="generateCountryChart()"> Generate </button>`;
-
-  /*let nothing_selected = `
-  <label for="type">Statistics Type</label>
-  <select id="type" onchange="changeStats()">
-  <option value="select-option">Select Statistics Type</option>
-  <option value="specific-questions">Specific Questions</option>
-  <option value="international" selected>International</option>
-  <option value="institutional">Institutional</option>
-  <option value="random">Random</option>
-  </select>
-  <label for="pick-country">Pick Country</label>
-  <select id="pick-country" onchange="compareInternational()">
-  <option value="select-country">Select Country</option>`
-
-  for (var i = 0; i < COUNTRIES.length; i++) {
-    nothing_selected += '<option value = "' + COUNTRIES[i] + '">' + COUNTRIES[i] + '</option>';
-  }
-
-  nothing_selected += `</select>`;
-
-      let international_selected = `
-      <label for="type">Statistics Type</label>
-      <select id="type" onchange="changeStats()">
-      <option value="select-option">Select Statistics Type</option>
-      <option value="specific-questions">Specific Questions</option>
-      <option value="international" selected>International</option>
-      <option value="institutional">Institutional</option>
-      <option value="random">Random</option>
-      </select>
-      <label for="pick-country">Pick Country</label>
-      <select id="pick-country" onchange="compareInternational()">
-      <option value="select-country">Select Country</option>`
-
-      for (var i = 0; i < COUNTRIES.length; i++) {
-        if(country == COUNTRIES[i]) {
-          international_selected += '<option value = "' + COUNTRIES[i] + '" selected>' + COUNTRIES[i] + '</option>';
-        }
-        else {
-          international_selected += '<option value = "' + COUNTRIES[i] + '">' + COUNTRIES[i] + '</option>';
-        }
-      }
-
-      international_selected += `</select>
-      <label for="rank-by">Rank By</label>
-      <select id="rank-by">
-      <option value="select-rank-by">Select Option</option>
-      <option value="score">Score</option>
-      <option value="tier">Tier</option>
-      </select>
-      <button class="button gen-button" onclick="generateCountryChart()"> Generate </button>
-      `;*/
-
-  if (rankOption != "select-rank-by") {
-    document.getElementById("stats").innerHTML = international_selected;
-  } else {
-    document.getElementById("stats").innerHTML = nothing_selected;
-  }
+  document.getElementById("stats").innerHTML = question_selected;
 }
 
-function generateCountryChart() {
-  var selectBox = document.getElementById("pick-country");
-  var country = selectBox.options[selectBox.selectedIndex].value;
-
-  var selectBox2 = document.getElementById("rank-by");
-  var rankingOption = selectBox2.options[selectBox2.selectedIndex].value;
-
-  if (country == "select-country") {
-    alert("No country selected!");
+function generateByQuestion(questionId, question) {
+  if (!QUESTIONS_FEELINGS.hasOwnProperty(questionId) && !QUESTIONS_TRUST.hasOwnProperty(questionId) && !QUESTIONS_HOME_CONDITIONS.hasOwnProperty(questionId) && !QUESTIONS_AGREE.hasOwnProperty(questionId) && !QUESTIONS_MATH.hasOwnProperty(questionId) && !QUESTIONS_SCIENCE.hasOwnProperty(questionId) && !QUESTIONS_READING.hasOwnProperty(questionId)) {
+    alert("No question selected!");
     return;
   }
 
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("stats-chart").innerHTML = ''
+      resultData = JSON.parse(this.responseText).results
+
+      var keys = ``
+      var answers = ``
+      var series_array = []
+      label_array = []
+
+      for (var key in resultData) {
+        keys += key + ','
+        answers += ',' + resultData[key]
+        series_array.push(resultData[key])
+        label_array.push(`${key} (${resultData[key]})`)
+      }
+
+      csvData = `Question,${keys}\n"${question}"${answers}`
+
+      var data = {
+        labels: label_array,
+        series: [series_array]
+      };
+      var options = {
+        seriesBarDistance: 5,
+        showLabel: true
+      };
+      var chart = new Chartist.Bar('.ct-chart', data, options);
+      document.getElementById("chart-title").innerHTML = question;
+    }
+  };
+
+  document.getElementById("stats-chart").innerHTML = '<img src="/assets/img/loading.gif"/>';
+  xhttp.open("GET", "/question-chart" + '?' + `questionId=${questionId}`, true);
+  xhttp.send();
+}
+
+function compareInternational() {
+  var selectBox = document.getElementById("rank-by");
+  var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+  if (selectedValue != "select-rank-by") {
+    current_container_html = statistics_type_dropdown.replace('value="international"', 'value="international" selected')
+    current_container_html += rank_by_dropdown.replace(`value="${selectedValue}"`, `value="${selectedValue}" selected`)
+    current_container_html += countries_dropdown
+  } else {
+    current_container_html = statistics_type_dropdown.replace('value="international"', 'value="international" selected')
+    current_container_html += rank_by_dropdown
+  }
+  document.getElementById("stats").innerHTML = current_container_html;
+}
+
+function pickCountry() {
+  var rankByDropdown = document.getElementById("rank-by");
+  var selectedRankingOption = rankByDropdown.options[rankByDropdown.selectedIndex].value;
+  var countryDropdown = document.getElementById("pick-country");
+  var selectedCountry = countryDropdown.options[countryDropdown.selectedIndex].value;
+
+  var country_selected = current_container_html.replace(`value="${selectedCountry}"`, `value="${selectedCountry}" selected`)
+  if (selectedCountry != 'select-country') {
+    country_selected += generate_button.replace(`onclick=""`, `onclick="generateCountryChart('${selectedRankingOption}', '${selectedCountry}')"`)
+  }
+  document.getElementById("stats").innerHTML = country_selected;
+}
+
+function generateCountryChart(rankingOption, country) {
+  if (!COUNTRIES.includes(country)) {
+    alert("No country selected!");
+    return;
+  }
+  if (rankingOption != "score" && rankingOption != "tier") {
+    alert("Invalid Ranking Option")
+    return;
+  }
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("stats-chart").innerHTML = ''
       resultData = JSON.parse(this.responseText)
 
       var data = {
@@ -463,369 +470,153 @@ function generateCountryChart() {
 
   };
 
+  document.getElementById("stats-chart").innerHTML = '<img src="/assets/img/loading.gif"/>';
   xhttp.open("GET", "/country-chart" + '?' + `country=${country}&rankingOption=${rankingOption}`, true);
   xhttp.send();
 }
 
 function pickInstitution() {
+  var institutionsDropdown = document.getElementById("institution");
+  var selectedInstitution = institutionsDropdown.options[institutionsDropdown.selectedIndex].value;
 
-  var institutional_selected = `
-    <label for="type">Statistics Type</label>
-    <select id="type" onchange="changeStats()">
-    <option value="select-option">Select Statistics Type</option>
-    <option value="specific-questions">Specific Questions</option>
-    <option value="international">International</option>
-    <option value="institutional" selected>Institutional</option>
-    <option value="random">Random</option>
-    </select>
-    <label for="institution">Pick Institution</label>
-    <select id="institution" onchange="pickInstitution()">
-    <option value="select-Institution" selected>Select Institution</option>
-    `
-
-  for (var i = 0; i < INSTITUTIONS.length; i++) {
-    institutional_selected += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
+  current_container_html = statistics_type_dropdown.replace('value="institutional"', 'value="institutional" selected')
+  current_container_html += institutions_dropdown.replace(`value="${selectedInstitution}"`, `value="${selectedInstitution}" selected`)
+  if (selectedInstitution != 'select-institution') {
+    current_container_html += institution_options_dropdown
   }
-  institutional_selected += '</select>';
-
-  var institution_chosen = `
-      <label for="type">Statistics Type</label>
-      <select id="type" onchange="changeStats()">
-      <option value="select-option">Select Statistics Type</option>
-      <option value="specific-questions">Specific Questions</option>
-      <option value="international">International</option>
-      <option value="institutional" selected>Institutional</option>
-      <option value="random">Random</option>
-      </select>
-      <label for="institution">Pick Institution</label>
-      <select id="institution" onchange="pickInstitution()">
-      <option value="select-Institution">Select Institution</option>
-      `
-  var selectBox2 = document.getElementById("institution");
-  var selectedValue2 = selectBox2.options[selectBox2.selectedIndex].value;
-  var selectBoxInst = selectBox2.options[selectBox2.selectedIndex].text;
-  for (var i = 0; i < INSTITUTIONS.length; i++) {
-    if (INSTITUTIONS[i] == selectBoxInst) {
-      institution_chosen += '<option value = "' + INSTITUTIONS[i] + '" selected>' + INSTITUTIONS[i] + '</option>';
-    } else {
-      institution_chosen += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
-    }
-  }
-  institution_chosen += '</select>' + `
-      <label for="option-type">Statistics Options</label>
-      <select id="option-type" onchange="chosenInstOption()">
-      <option value="select-option2">Select Option</option>
-      <option value="gender-option">Gender</option>
-      <option value="questions-option">Questions</option>
-      <option value="comparison-option">Comparison</option>
-      </select>
-      `
-
-
-  if (selectedValue2 != "select-Institution") {
-    document.getElementById("stats").innerHTML = institution_chosen;
-  } else {
-    document.getElementById("stats").innerHTML = institutional_selected;
-  }
+  document.getElementById("stats").innerHTML = current_container_html;
 }
 
 function chosenInstOption() {
-  var institution_chosen = `
-      <label for="type">Statistics Type</label>
-      <select id="type" onchange="changeStats()">
-      <option value="select-option">Select Statistics Type</option>
-      <option value="specific-questions">Specific Questions</option>
-      <option value="international">International</option>
-      <option value="institutional" selected>Institutional</option>
-      <option value="random">Random</option>
-      </select>
-      <label for="institution">Pick Institution</label>
-      <select id="institution" onchange="pickInstitution()">
-      <option value="select-Institution">Select Institution</option>
-      `
-  var selectBox2 = document.getElementById("institution");
-  var selectedValue2 = selectBox2.options[selectBox2.selectedIndex].value;
-  var selectBoxInst = selectBox2.options[selectBox2.selectedIndex].text;
-  for (var i = 0; i < INSTITUTIONS.length; i++) {
-    if (INSTITUTIONS[i] == selectBoxInst) {
-      institution_chosen += '<option value = "' + INSTITUTIONS[i] + '" selected>' + INSTITUTIONS[i] + '</option>';
-    } else {
-      institution_chosen += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
+  var institutionsDropdown = document.getElementById("institution");
+  var selectedInstitution = institutionsDropdown.options[institutionsDropdown.selectedIndex].value;
+  var institutionsOptionDropdown = document.getElementById("option-type");
+  var selectedInstitutionOption = institutionsOptionDropdown.options[institutionsOptionDropdown.selectedIndex].value;
+
+  current_container_html = statistics_type_dropdown.replace('value="institutional"', 'value="institutional" selected')
+  current_container_html += institutions_dropdown.replace(`value="${selectedInstitution}"`, `value="${selectedInstitution}" selected`)
+  current_container_html += institution_options_dropdown.replace(`value="${selectedInstitutionOption}"`, `value="${selectedInstitutionOption}" selected`)
+  if (selectedInstitutionOption === 'gender-option') {
+    current_container_html += generate_button.replace(`onclick=""`, `onclick="generateGenderGraph('${selectedInstitution}')"`)
+  } else if (selectedInstitutionOption === 'questions-option') {
+    current_container_html += all_question_dropdown_start
+    for (var key in QUESTIONS_FEELINGS) {
+      current_container_html += `<option value="${key}">${QUESTIONS_FEELINGS[key]}</option>"`
     }
-  }
-  institution_chosen += '</select>' + `
-      <label for="option-type">Statistics Options</label>
-      <select id="option-type" onchange="chosenInstOption()">
-      <option value="select-option2">Select Option</option>
-      <option value="gender-option">Gender</option>
-      <option value="questions-option">Questions</option>
-      <option value="comparison-option">Comparison</option>
-      </select>
-      `
-
-  var gender_chosen = `
-      <label for="type">Statistics Type</label>
-      <select id="type" onchange="changeStats()">
-      <option value="select-option">Select Statistics Type</option>
-      <option value="specific-questions">Specific Questions</option>
-      <option value="international">International</option>
-      <option value="institutional" selected>Institutional</option>
-      <option value="random">Random</option>
-      </select>
-      <label for="institution">Pick Institution</label>
-      <select id="institution" onchange="pickInstitution()">
-      <option value="select-Institution">Select Institution</option>
-      `;
-
-  var selectBox2 = document.getElementById("institution");
-  var selectedValue2 = selectBox2.options[selectBox2.selectedIndex].value;
-  var selectBoxInst = selectBox2.options[selectBox2.selectedIndex].text;
-  for (var i = 0; i < INSTITUTIONS.length; i++) {
-    if (INSTITUTIONS[i] == selectBoxInst) {
-      gender_chosen += '<option value = "' + INSTITUTIONS[i] + '" selected>' + INSTITUTIONS[i] + '</option>';
-    } else {
-      gender_chosen += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
+    for (var key in QUESTIONS_TRUST) {
+      current_container_html += `<option value="${key}">${QUESTIONS_TRUST[key]}</option>"`
     }
-  }
-  gender_chosen += '</select>' + `
-      <label for="option-type">Statistics Options</label>
-      <select id="option-type" onchange="chosenInstOption()">
-      <option value="select-option2">Select Option</option>
-      <option value="gender-option" selected>Gender</option>
-      <option value="questions-option">Questions</option>
-      <option value="comparison-option">Comparison</option>
-      </select>
-      <button class="button gen-button" onclick="generateGenderGraph()"> Generate </button>`;
-
-  var questions_chosen = `
-      <label for="type">Statistics Type</label>
-      <select id="type" onchange="changeStats()">
-      <option value="select-option">Select Statistics Type</option>
-      <option value="specific-questions">Specific Questions</option>
-      <option value="international">International</option>
-      <option value="institutional" selected>Institutional</option>
-      <option value="random">Random</option>
-      </select>
-      <label for="institution">Pick Institution</label>
-      <select id="institution" onchange="pickInstitution()">
-      <option value="select-Institution">Select Institution</option>
-      `;
-
-
-  var selectBox2 = document.getElementById("institution");
-  var selectedValue2 = selectBox2.options[selectBox2.selectedIndex].value;
-  var selectBoxInst = selectBox2.options[selectBox2.selectedIndex].text;
-
-  for (var i = 0; i < INSTITUTIONS.length; i++) {
-    if (INSTITUTIONS[i] == selectBoxInst) {
-      questions_chosen += '<option value = "' + INSTITUTIONS[i] + '" selected>' + INSTITUTIONS[i] + '</option>';
-    } else {
-      questions_chosen += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
+    for (var key in QUESTIONS_HOME_CONDITIONS) {
+      current_container_html += `<option value="${key}">${QUESTIONS_HOME_CONDITIONS[key]}</option>"`
     }
-  }
-  questions_chosen += '</select>' + `
-        <label for="option-type">Statistics Options</label>
-        <select id="option-type" onchange="chosenInstOption()">
-        <option value="select-option2">Select Option</option>
-        <option value="gender-option">Gender</option>
-        <option value="questions-option" selected>Questions</option>
-        <option value="comparison-option">Comparison</option>
-        </select>
-        <label for="all-questions">Questions</label>
-        <select id="all-questions">
-        <option value="select-question" selected>Select Question</option>`
-  for (question in QUESTIONS) {
-    questions_chosen += '<option value = "' + question + '">' + QUESTIONS[question] + '</option>';
-  }
-  questions_chosen += `</select>
-        <button class="button gen-button" onclick="chooseInstQuestions()"> Generate </button>
-        </div>
-        `;
-
-  var comparison_chosen = `
-        <label for="type">Statistics Type</label>
-        <select id="type" onchange="changeStats()">
-        <option value="select-option">Select Statistics Type</option>
-        <option value="specific-questions">Specific Questions</option>
-        <option value="international">International</option>
-        <option value="institutional" selected>Institutional</option>
-        <option value="random">Random</option>
-        </select>
-        <label for="institution">Pick Institution</label>
-        <select id="institution" onchange="pickInstitution()">
-        <option value="select-Institution">Select Institution</option>
-        `;
-
-
-  var selectBox2 = document.getElementById("institution");
-  var selectedValue2 = selectBox2.options[selectBox2.selectedIndex].value;
-  var selectBoxInst = selectBox2.options[selectBox2.selectedIndex].text;
-
-  for (var i = 0; i < INSTITUTIONS.length; i++) {
-    if (INSTITUTIONS[i] == selectBoxInst) {
-      comparison_chosen += '<option value = "' + INSTITUTIONS[i] + '" selected>' + INSTITUTIONS[i] + '</option>';
-    } else {
-      comparison_chosen += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
+    for (var key in QUESTIONS_AGREE) {
+      current_container_html += `<option value="${key}">${QUESTIONS_AGREE[key]}</option>"`
     }
+    for (var key in QUESTIONS_MATH) {
+      current_container_html += `<option value="${key}">${QUESTIONS_MATH[key]}</option>"`
+    }
+    for (var key in QUESTIONS_SCIENCE) {
+      current_container_html += `<option value="${key}">${QUESTIONS_SCIENCE[key]}</option>"`
+    }
+    for (var key in QUESTIONS_READING) {
+      current_container_html += `<option value="${key}">${QUESTIONS_READING[key]}</option>"`
+    }
+    current_container_html += question_dropdown_end
+  } else if (selectedInstitutionOption === 'comparison-option') {
+    current_container_html += institutions_comparison_dropdown
   }
-  comparison_chosen += '</select>' + `
-        <label for="option-type">Statistics Options</label>
-        <select id="option-type" onchange="chosenInstOption()">
-        <option value="select-option2">Select Option</option>
-        <option value="gender-option">Gender</option>
-        <option value="questions-option" >Questions</option>
-        <option value="comparison-option" selected>Comparison</option>
-        </select>
-        <label for="pick-institution2">Pick Institution #2</label>
-        <select id="pick-institution2" onchange="pickQuestionForComparison()">
-        <option value="select-option2" selected>Select Institution #2</option>`
-  for (var i = 0; i < INSTITUTIONS.length; i++) {
-    comparison_chosen += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
-  }
-  comparison_chosen += `</select>
-        `;
+  document.getElementById("stats").innerHTML = current_container_html;
+}
 
-  var selectBox = document.getElementById("option-type");
-  var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-  if (selectedValue == "questions-option") {
-    document.getElementById("stats").innerHTML = questions_chosen;
-  } else if (selectedValue == "gender-option") {
-    document.getElementById("stats").innerHTML = gender_chosen;
-  } else if (selectedValue == "comparison-option") {
-    document.getElementById("stats").innerHTML = comparison_chosen;
-  } else {
-    document.getElementById("stats").innerHTML = institution_chosen;
+function pickQuestionFromAll() {
+  var institutionsDropdown = document.getElementById("institution");
+  var selectedInstitution = institutionsDropdown.options[institutionsDropdown.selectedIndex].value;
+  var institutionsOptionDropdown = document.getElementById("option-type");
+  var selectedInstitutionOption = institutionsOptionDropdown.options[institutionsOptionDropdown.selectedIndex].value;
+  var questionDropdown = document.getElementById("pick-question2");
+  var selectedQuestionId = questionDropdown.options[questionDropdown.selectedIndex].value;
+  var selectedQuestion = questionDropdown.options[questionDropdown.selectedIndex].text;
+
+  var question_selected = current_container_html.replace(`value="${selectedQuestionId}"`, `value="${selectedQuestionId}" selected`).replace(`value="${selectedInstitution}"`, `value="${selectedInstitution}" selected`).replace(`value="${selectedInstitutionOption}"`, `value="${selectedInstitutionOption}" selected`)
+  if (selectedQuestionId != 'select-question2') {
+    question_selected += generate_button.replace(`onclick=""`, `onclick="generateInstitutionQuestionChart('${selectedInstitution}', '${selectedQuestionId}', '${selectedQuestion}')"`)
   }
+  document.getElementById("stats").innerHTML = question_selected;
 }
 
 function pickQuestionForComparison() {
-  var comparison_chosen = `
-        <label for="type">Statistics Type</label>
-        <select id="type" onchange="changeStats()">
-        <option value="select-option">Select Statistics Type</option>
-        <option value="specific-questions">Specific Questions</option>
-        <option value="international">International</option>
-        <option value="institutional" selected>Institutional</option>
-        <option value="random">Random</option>
-        </select>
-        <label for="institution">Pick Institution</label>
-        <select id="institution" onchange="pickInstitution()">
-        <option value="select-Institution">Select Institution</option>
-        `;
+  var institutionsDropdown = document.getElementById("institution");
+  var selectedInstitution = institutionsDropdown.options[institutionsDropdown.selectedIndex].value;
+  var institutionsOptionDropdown = document.getElementById("option-type");
+  var selectedInstitutionOption = institutionsOptionDropdown.options[institutionsOptionDropdown.selectedIndex].value;
+  var institutionDropdown_2 = document.getElementById("pick-institution2");
+  var selectedInstitution_2 = institutionDropdown_2.options[institutionDropdown_2.selectedIndex].value;
 
+  current_container_html = statistics_type_dropdown.replace('value="institutional"', 'value="institutional" selected')
+  current_container_html += institutions_dropdown.replace(`value="${selectedInstitution}"`, `value="${selectedInstitution}" selected`)
+  current_container_html += institution_options_dropdown.replace(`value="${selectedInstitutionOption}"`, `value="${selectedInstitutionOption}" selected`)
+  current_container_html += institutions_comparison_dropdown.replace(`value="${selectedInstitution_2}"`, `value="${selectedInstitution_2}" selected`)
 
-  var selectBox2 = document.getElementById("institution");
-  var selectedValue2 = selectBox2.options[selectBox2.selectedIndex].value;
-  var selectBoxInst = selectBox2.options[selectBox2.selectedIndex].text;
-
-  for (var i = 0; i < INSTITUTIONS.length; i++) {
-    if (INSTITUTIONS[i] == selectBoxInst) {
-      comparison_chosen += '<option value = "' + INSTITUTIONS[i] + '" selected>' + INSTITUTIONS[i] + '</option>';
-    } else {
-      comparison_chosen += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
+  if (selectedInstitution_2 !== "select-institution2") {
+    current_container_html += all_question_institutions_dropdown_start
+    for (var key in QUESTIONS_FEELINGS) {
+      current_container_html += `<option value="${key}">${QUESTIONS_FEELINGS[key]}</option>"`
     }
-  }
-  comparison_chosen += '</select>' + `
-        <label for="option-type">Statistics Options</label>
-        <select id="option-type" onchange="chosenInstOption()">
-        <option value="select-option2">Select Option</option>
-        <option value="gender-option">Gender</option>
-        <option value="questions-option" >Questions</option>
-        <option value="comparison-option" selected>Comparison</option>
-        </select>
-        <label for="pick-institution2">Pick Institution #2</label>
-        <select id="pick-institution2" onchange="pickQuestionForComparison()">
-        <option value="select-option2" selected>Select Institution #2</option>`
-  for (var i = 0; i < INSTITUTIONS.length; i++) {
-    comparison_chosen += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
-  }
-  comparison_chosen += `</select>`;
-
-  var institution2_chosen = `
-      <label for="type">Statistics Type</label>
-      <select id="type" onchange="changeStats()">
-      <option value="select-option">Select Statistics Type</option>
-      <option value="specific-questions">Specific Questions</option>
-      <option value="international">International</option>
-      <option value="institutional" selected>Institutional</option>
-      <option value="random">Random</option>
-      </select>
-      <label for="institution">Pick Institution</label>
-      <select id="institution" onchange="pickInstitution()">
-      <option value="select-Institution">Select Institution</option>
-      `;
-
-
-  var selectBox2 = document.getElementById("institution");
-  var selectedValue2 = selectBox2.options[selectBox2.selectedIndex].value;
-  var selectBoxInst = selectBox2.options[selectBox2.selectedIndex].text;
-  for (var i = 0; i < INSTITUTIONS.length; i++) {
-    if (INSTITUTIONS[i] == selectBoxInst) {
-      institution2_chosen += '<option value = "' + INSTITUTIONS[i] + '" selected>' + INSTITUTIONS[i] + '</option>';
-    } else {
-      institution2_chosen += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
+    for (var key in QUESTIONS_TRUST) {
+      current_container_html += `<option value="${key}">${QUESTIONS_TRUST[key]}</option>"`
     }
-  }
-  institution2_chosen += '</select>' + `
-        <label for="option-type">Statistics Options</label>
-        <select id="option-type" onchange="chosenInstOption()">
-        <option value="select-option2">Select Option</option>
-        <option value="gender-option">Gender</option>
-        <option value="questions-option" >Questions</option>
-        <option value="comparison-option" selected>Comparison</option>
-        </select>
-        <label for="pick-institution2">Pick Institution #2</label>
-        <select id="pick-institution2" onchange="pickQuestionForComparison()">
-        <option value="select-option2" selected>Select Institution #2</option>`
-  var selectBox3 = document.getElementById("pick-institution2");
-  var selectedValue2 = selectBox2.options[selectBox3.selectedIndex].value;
-  var selectBoxInst2 = selectBox2.options[selectBox3.selectedIndex].text;
-  for (var i = 0; i < INSTITUTIONS.length; i++) {
-    if (INSTITUTIONS[i] == selectBoxInst2) {
-      institution2_chosen += '<option value = "' + INSTITUTIONS[i] + '" selected>' + INSTITUTIONS[i] + '</option>';
-    } else {
-      institution2_chosen += '<option value = "' + INSTITUTIONS[i] + '">' + INSTITUTIONS[i] + '</option>';
+    for (var key in QUESTIONS_HOME_CONDITIONS) {
+      current_container_html += `<option value="${key}">${QUESTIONS_HOME_CONDITIONS[key]}</option>"`
     }
+    for (var key in QUESTIONS_AGREE) {
+      current_container_html += `<option value="${key}">${QUESTIONS_AGREE[key]}</option>"`
+    }
+    for (var key in QUESTIONS_MATH) {
+      current_container_html += `<option value="${key}">${QUESTIONS_MATH[key]}</option>"`
+    }
+    for (var key in QUESTIONS_SCIENCE) {
+      current_container_html += `<option value="${key}">${QUESTIONS_SCIENCE[key]}</option>"`
+    }
+    for (var key in QUESTIONS_READING) {
+      current_container_html += `<option value="${key}">${QUESTIONS_READING[key]}</option>"`
+    }
+    current_container_html += question_dropdown_end
   }
-
-  institution2_chosen += `</select>
-        <label for="institution2-question">Pick Question</label>
-        <select id="institution2-question">
-        <option value="select-question-comparison" selected>Select Question</option>`
-  for (question in QUESTIONS) {
-    institution2_chosen += '<option value = "' + question + '">' + QUESTIONS[question] + '</option>';
-  }
-  institution2_chosen += `</select>
-        <button class="button gen-button" onclick="generateComparisonChart()"> Generate </button>
-        </div>`
-
-  var selectBox = document.getElementById("pick-institution2");
-  var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-  if (selectedValue !== "select-option2") {
-    document.getElementById("stats").innerHTML = institution2_chosen;
-  } else {
-    document.getElementById("stats").innerHTML = comparison_chosen;
-  }
+  document.getElementById("stats").innerHTML = current_container_html;
 }
 
-function generateComparisonChart() {
-  var selectBox = document.getElementById("institution");
-  var institution1 = selectBox.options[selectBox.selectedIndex].value;
+function pickQuestionForInstitutionComparison() {
+  var institutionsDropdown = document.getElementById("institution");
+  var selectedInstitution = institutionsDropdown.options[institutionsDropdown.selectedIndex].value;
+  var institutionsOptionDropdown = document.getElementById("option-type");
+  var selectedInstitutionOption = institutionsOptionDropdown.options[institutionsOptionDropdown.selectedIndex].value;
+  var institutionDropdown_2 = document.getElementById("pick-institution2");
+  var selectedInstitution_2 = institutionDropdown_2.options[institutionDropdown_2.selectedIndex].value;
+  var questionDropdown = document.getElementById("pick-question3");
+  var selectedQuestionId = questionDropdown.options[questionDropdown.selectedIndex].value;
+  var selectedQuestion = questionDropdown.options[questionDropdown.selectedIndex].text;
 
-  var selectBox2 = document.getElementById("pick-institution2");
-  var institution2 = selectBox2.options[selectBox2.selectedIndex].value;
+  var question_selected = current_container_html.replace(`value="${selectedQuestionId}"`, `value="${selectedQuestionId}" selected`).replace(`value="${selectedInstitution}"`, `value="${selectedInstitution}" selected`).replace(`value="${selectedInstitutionOption}"`, `value="${selectedInstitutionOption}" selected`)
+  if (selectedQuestionId != 'select-question3') {
+    question_selected += generate_button.replace(`onclick=""`, `onclick="generateComparisonChart('${selectedInstitution}', '${selectedInstitution_2}', '${selectedQuestionId}', '${selectedQuestion}')"`)
+  }
+  document.getElementById("stats").innerHTML = question_selected;
+}
 
-  var selectBox3 = document.getElementById("institution2-question");
-  var question = selectBox3.options[selectBox3.selectedIndex].value;
-
-  if (question == "select-question-comparison") {
+function generateComparisonChart(institution1, institution2, questionId, question) {
+  if (!QUESTIONS_FEELINGS.hasOwnProperty(questionId) && !QUESTIONS_TRUST.hasOwnProperty(questionId) && !QUESTIONS_HOME_CONDITIONS.hasOwnProperty(questionId) && !QUESTIONS_AGREE.hasOwnProperty(questionId) && !QUESTIONS_MATH.hasOwnProperty(questionId) && !QUESTIONS_SCIENCE.hasOwnProperty(questionId) && !QUESTIONS_READING.hasOwnProperty(questionId)) {
     alert("No question chosen!");
+    return;
+  }
+  if (!INSTITUTIONS.includes(institution1) || !INSTITUTIONS.includes(institution2)) {
+    alert("Invalid Institutions")
     return;
   }
 
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("stats-chart").innerHTML = ''
       resultData = JSON.parse(this.responseText)
 
       var keys = ``
@@ -844,7 +635,7 @@ function generateComparisonChart() {
         label_array.push(key)
       }
 
-      csvData = `Question,Institution,${keys}\n"${selectBox3.options[selectBox3.selectedIndex].text}",${institution1}${answers}\n${selectBox3.options[selectBox3.selectedIndex].text},${institution2}${answers2}`
+      csvData = `questionId,Institution,${keys}\n"${question}",${institution1}${answers}\n${question},${institution2}${answers2}`
 
       var data = {
         labels: label_array,
@@ -857,31 +648,30 @@ function generateComparisonChart() {
         seriesBarDistance: 10
       };
       var chart = new Chartist.Bar('.ct-chart', data, options);
-      document.getElementById("chart-title").innerHTML = `"${selectBox3.options[selectBox3.selectedIndex].text}"
+      document.getElementById("chart-title").innerHTML = `"${question}"
                 Asked in institutions ${institution1} and ${institution2}`;
     }
   };
 
-  xhttp.open("GET", "/comparison-chart" + '?' + `institution1=${institution1}&institution2=${institution2}&questionId=${question}`, true);
+  document.getElementById("stats-chart").innerHTML = '<img src="/assets/img/loading.gif"/>';
+  xhttp.open("GET", "/comparison-chart" + '?' + `institution1=${institution1}&institution2=${institution2}&questionId=${questionId}`, true);
   xhttp.send();
 }
 
-function chooseInstQuestions() {
-  var selectBox = document.getElementById("institution");
-  var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-  var selectQuest = document.getElementById("all-questions");
-  var selectValueQ = selectQuest.options[selectQuest.selectedIndex].value;
-  var selectQT = selectQuest.options[selectQuest.selectedIndex].text;
-
-  if (selectValueQ == "select-question") {
+function generateInstitutionQuestionChart(institution, questionId, question) {
+  if (!QUESTIONS_FEELINGS.hasOwnProperty(questionId) && !QUESTIONS_TRUST.hasOwnProperty(questionId) && !QUESTIONS_HOME_CONDITIONS.hasOwnProperty(questionId) && !QUESTIONS_AGREE.hasOwnProperty(questionId) && !QUESTIONS_MATH.hasOwnProperty(questionId) && !QUESTIONS_SCIENCE.hasOwnProperty(questionId) && !QUESTIONS_READING.hasOwnProperty(questionId)) {
     alert("No question chosen!");
     return;
   }
-
+  if (!INSTITUTIONS.includes(institution)) {
+    alert("Invalid Institution")
+    return;
+  }
 
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("stats-chart").innerHTML = ''
       resultData = JSON.parse(this.responseText).results
 
       var keys = ``
@@ -895,7 +685,7 @@ function chooseInstQuestions() {
         series_array.push(resultData[key])
         label_array.push(key)
       }
-      csvData = `Question,Institution,${keys}\n"${selectQT}",${selectedValue}${answers}`
+      csvData = `Question,Institution,${keys}\n"${question}",${institution}${answers}`
       var data = {
         series: series_array
       };
@@ -909,21 +699,19 @@ function chooseInstQuestions() {
           return Math.round(value / data.series.reduce(sum) * 100) + '% - ' + label_array[index++];
         }
       });
-      document.getElementById("chart-title").innerHTML = `"${selectQT}" Asked in institution ${selectBox.options[selectBox.selectedIndex].text}`;
+      document.getElementById("chart-title").innerHTML = `"${question}" Asked in institution ${institution}`;
     }
   };
-
-  xhttp.open("GET", "/question-inst-chart" + '?' + `institutionID=${selectedValue}&questionId=${selectValueQ}`, true);
+  document.getElementById("stats-chart").innerHTML = '<img src="/assets/img/loading.gif"/>';
+  xhttp.open("GET", "/question-inst-chart" + '?' + `institutionID=${institution}&questionId=${questionId}`, true);
   xhttp.send();
 }
 
-function generateGenderGraph() {
-  var selectBox = document.getElementById("institution");
-  var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-
+function generateGenderGraph(institution) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("stats-chart").innerHTML = ''
       resultData = JSON.parse(this.responseText)
       var data = {
         series: [resultData['male'], resultData['female']]
@@ -934,7 +722,7 @@ function generateGenderGraph() {
       };
 
       csvData = `Institution,Male,Female\n` +
-        `${selectedValue},${resultData['male']},${resultData['female']}`
+        `${institution},${resultData['male']},${resultData['female']}`
 
       new Chartist.Pie('.ct-chart', data, {
         labelInterpolationFnc: function(value) {
@@ -946,475 +734,70 @@ function generateGenderGraph() {
         }
       });
 
-      document.getElementById("chart-title").innerHTML = "Gender chart for institution: " + selectBox.options[selectBox.selectedIndex].text;
+      document.getElementById("chart-title").innerHTML = "Gender chart for institution: " + institution;
     }
   };
 
-  xhttp.open("GET", "/gender-inst-chart" + '?' + `institutionID=${selectedValue}`, true);
+  document.getElementById("stats-chart").innerHTML = '<img src="/assets/img/loading.gif"/>';
+  xhttp.open("GET", "/gender-inst-chart" + '?' + `institutionID=${institution}`, true);
   xhttp.send();
 }
 
-function pickCategory() {
-  nothing_selected = `
-      <label for="type">Statistics Type</label>
-      <select id="type" onchange="changeStats()">
-      <option value="select-option">Select Statistics Type</option>
-      <option value="specific-questions" selected>Specific Questions</option>
-      <option value="international">International</option>
-      <option value="institutional">Institutional</option>
-      <option value="random">Random</option>
-      </select>
-      <label for="category">Category</label>
-      <select id="category" onchange="pickCategory()">
-      <option value="select-category" selected>Select Category</option>
-      <option value="feelings">Feelings</option>
-      <option value="trust">Trust</option>
-      <option value="homecond">Home Conditions</option>
-      <option value="reading">Reading</option>
-      <option value="agreedisagree">Agree or Disagree</option>
-      <option value="math">Mathematics</option>
-      <option value="science">Sciences</option>
-      </select>`
-
-  let trust_selected = `
-      <label for="type">Statistics Type</label>
-      <select id="type" onchange="changeStats()">
-      <option value="select-option">Select Statistics Type</option>
-      <option value="specific-questions" selected>Specific Questions</option>
-      <option value="international">International</option>
-      <option value="institutional">Institutional</option>
-      <option value="random">Random</option>
-      </select>
-      <label for="category">Category</label>
-      <select id="category" onchange="pickCategory()">
-      <option value="select-category">Select Category</option>
-      <option value="feelings">Feelings</option>
-      <option value="trust" selected>Trust</option>
-      <option value="homecond">Home Conditions</option>
-      <option value="reading">Reading</option>
-      <option value="agreedisagree">Agree or Disagree</option>
-      <option value="math">Mathematics</option>
-      <option value="science">Sciences</option>
-      </select>
-      <label for="question">Question</label>
-      <select id="question">
-      <option value="select-question">Select Question</option>
-      <option value="ST123Q02NA">${QUESTIONS["ST123Q02NA"]}</option>
-      <option value="ST123Q03NA">${QUESTIONS["ST123Q03NA"]}</option>
-      <option value="ST123Q04NA">${QUESTIONS["ST123Q04NA"]}</option>
-      </select>
-      <button class="button gen-button" onclick="generateByQuestion()"> Generate </button>
-      </div>`;
-
-  let science_selected = `
-      <label for="type">Statistics Type</label>
-      <select id="type" onchange="changeStats()">
-      <option value="select-option">Select Statistics Type</option>
-      <option value="specific-questions" selected>Specific Questions</option>
-      <option value="international">International</option>
-      <option value="institutional">Institutional</option>
-      <option value="random">Random</option>
-      </select>
-      <label for="category">Category</label>
-      <select id="category" onchange="pickCategory()">
-      <option value="select-category">Select Category</option>
-      <option value="feelings">Feelings</option>
-      <option value="trust" >Trust</option>
-      <option value="homecond">Home Conditions</option>
-      <option value="reading">Reading</option>
-      <option value="agreedisagree">Agree or Disagree</option>
-      <option value="math">Mathematics</option>
-      <option value="science" selected>Sciences</option>
-      </select>
-      <label for="question">Question</label>
-      <select id="question">
-      <option value="select-question">Select Question</option>
-      <option value="PA002Q01TA">${QUESTIONS["PA002Q01TA"]}</option>
-      <option value="PA002Q02TA">${QUESTIONS["PA002Q02TA"]}</option>
-      <option value="PA002Q03TA">${QUESTIONS["PA002Q03TA"]}</option>
-      <option value="PA002Q04TA">${QUESTIONS["PA002Q04TA"]}</option>
-      <option value="PA002Q05TA">${QUESTIONS["PA002Q05TA"]}</option>
-      <option value="PA002Q06NA">${QUESTIONS["PA002Q06NA"]}</option>
-      <option value="PA002Q07NA">${QUESTIONS["PA002Q07NA"]}</option>
-      <option value="PA002Q08NA">${QUESTIONS["PA002Q08NA"]}</option>
-      <option value="PA002Q09NA">${QUESTIONS["PA002Q09NA"]}</option>
-      <option value="PA002Q10NA">${QUESTIONS["PA002Q10NA"]}</option>
-      <option value="EC013Q06NA">${QUESTIONS["EC013Q06NA"]}</option>
-      <option value="EC013Q07NA">${QUESTIONS["EC013Q07NA"]}</option>
-      <option value="EC013Q08NA">${QUESTIONS["EC013Q08NA"]}</option>
-      <option value="EC013Q09NA">${QUESTIONS["EC013Q09NA"]}</option>
-      <option value="EC013Q10NA">${QUESTIONS["EC013Q10NA"]}</option>
-      <option value="ST071Q01NA">${QUESTIONS["ST071Q01NA"]}</option>
-      <option value="ST094Q02NA">${QUESTIONS["ST094Q02NA"]}</option>
-      <option value="ST094Q03NA">${QUESTIONS["ST094Q03NA"]}</option>
-      <option value="ST094Q04NA">${QUESTIONS["ST094Q04NA"]}</option>
-      <option value="ST094Q05NA">${QUESTIONS["ST094Q05NA"]}</option>
-      <option value="ST095Q04NA">${QUESTIONS["ST095Q04NA"]}</option>
-      <option value="ST095Q07NA">${QUESTIONS["ST095Q07NA"]}</option>
-      <option value="ST095Q08NA">${QUESTIONS["ST095Q08NA"]}</option>
-      <option value="ST095Q13NA">${QUESTIONS["ST095Q13NA"]}</option>
-      <option value="ST095Q15NA">${QUESTIONS["ST095Q15NA"]}</option>
-      </select>
-      <button class="button gen-button" onclick="generateByQuestion()"> Generate </button>
-      </div>`;
-
-  let math_selected = `
-      <label for="type">Statistics Type</label>
-      <select id="type" onchange="changeStats()">
-      <option value="select-option">Select Statistics Type</option>
-      <option value="specific-questions" selected>Specific Questions</option>
-      <option value="international">International</option>
-      <option value="institutional">Institutional</option>
-      <option value="random">Random</option>
-      </select>
-      <label for="category">Category</label>
-      <select id="category" onchange="pickCategory()">
-      <option value="select-category">Select Category</option>
-      <option value="feelings">Feelings</option>
-      <option value="trust">Trust</option>
-      <option value="homecond">Home Conditions</option>
-      <option value="reading">Reading</option>
-      <option value="agreedisagree">Agree or Disagree</option>
-      <option value="math" selected>Mathematics</option>
-      <option value="science">Sciences</option>
-      </select>
-      <label for="question">Question</label>
-      <select id="question">
-      <option value="select-question">Select Question</option>
-      <option value="EC001Q02NA">${QUESTIONS["EC001Q02NA"]}</option>
-      <option value="EC014Q01NA">${QUESTIONS["EC014Q01NA"]}</option>
-      <option value="EC014Q02NA">${QUESTIONS["EC014Q02NA"]}</option>
-      <option value="EC015Q01NA">${QUESTIONS["EC015Q01NA"]}</option>
-      <option value="EC015Q07NA">${QUESTIONS["EC015Q07NA"]}</option>
-      <option value="EC015Q08NA">${QUESTIONS["EC015Q08NA"]}</option>
-      <option value="EC017Q01NA">${QUESTIONS["EC017Q01NA"]}</option>
-      <option value="EC017Q02NA">${QUESTIONS["EC017Q02NA"]}</option>
-      <option value="EC018Q01NA">${QUESTIONS["EC018Q01NA"]}</option>
-      <option value="EC018Q03NA">${QUESTIONS["EC018Q03NA"]}</option>
-      <option value="EC018Q04NA">${QUESTIONS["EC018Q04NA"]}</option>
-      <option value="EC019Q03NA">${QUESTIONS["EC019Q03NA"]}</option>
-      <option value="EC019Q07NA">${QUESTIONS["EC019Q07NA"]}</option>
-      <option value="EC019Q10NA">${QUESTIONS["EC019Q10NA"]}</option>
-      <option value="EC019Q12NA">${QUESTIONS["EC019Q12NA"]}</option>
-      <option value="EC023Q02NA">${QUESTIONS["EC023Q02NA"]}</option>
-      <option value="EC023Q03NA">${QUESTIONS["EC023Q03NA"]}</option>
-      <option value="EC023Q04NA">${QUESTIONS["EC023Q04NA"]}</option>
-      <option value="EC023Q05NA">${QUESTIONS["EC023Q05NA"]}</option>
-      <option value="EC023Q06NA">${QUESTIONS["EC023Q06NA"]}</option>
-      <option value="EC023Q07NA">${QUESTIONS["EC023Q07NA"]}</option>
-      <option value="EC023Q08NA">${QUESTIONS["EC023Q08NA"]}</option>
-      </select>
-      <button class="button gen-button" onclick="generateByQuestion()"> Generate </button>
-      </div>`;
-
-  let agree_selected = `
-      <label for="type">Statistics Type</label>
-      <select id="type" onchange="changeStats()">
-      <option value="select-option">Select Statistics Type</option>
-      <option value="specific-questions" selected>Specific Questions</option>
-      <option value="international">International</option>
-      <option value="institutional">Institutional</option>
-      <option value="random">Random</option>
-      </select>
-      <label for="category">Category</label>
-      <select id="category" onchange="pickCategory()">
-      <option value="select-category">Select Category</option>
-      <option value="feelings">Feelings</option>
-      <option value="trust">Trust</option>
-      <option value="homecond">Home Conditions</option>
-      <option value="reading">Reading</option>
-      <option value="agreedisagree" selected>Agree or Disagree</option>
-      <option value="math">Mathematics</option>
-      <option value="science">Sciences</option>
-      </select>
-      <label for="question">Question</label>
-      <select id="question">
-      <option value="select-question">Select Question</option>
-      <option value="ST161Q08HA">${QUESTIONS["ST161Q08HA"]}</option>
-      <option value="ST161Q07HA">${QUESTIONS["ST161Q07HA"]}</option>
-      <option value="ST161Q06HA">${QUESTIONS["ST161Q06HA"]}</option>
-      <option value="ST161Q03HA">${QUESTIONS["ST161Q03HA"]}</option>
-      <option value="ST161Q02HA">${QUESTIONS["ST161Q02HA"]}</option>
-      <option value="ST161Q01HA">${QUESTIONS["ST161Q01HA"]}</option>
-      <option value="ST185Q03HA">${QUESTIONS["ST185Q03HA"]}</option>
-      <option value="ST185Q01HA">${QUESTIONS["ST185Q01HA"]}</option>
-      <option value="ST184Q01HA">${QUESTIONS["ST184Q01HA"]}</option>
-      <option value="ST183Q03HA">${QUESTIONS["ST183Q03HA"]}</option>
-      <option value="ST183Q02HA">${QUESTIONS["ST183Q02HA"]}</option>
-      <option value="ST183Q01HA">${QUESTIONS["ST183Q01HA"]}</option>
-      <option value="ST182Q06HA">${QUESTIONS["ST182Q06HA"]}</option>
-      <option value="ST182Q05HA">${QUESTIONS["ST182Q05HA"]}</option>
-      <option value="ST182Q04HA">${QUESTIONS["ST182Q04HA"]}</option>
-      <option value="ST182Q03HA">${QUESTIONS["ST182Q03HA"]}</option>
-      <option value="ST181Q04HA">${QUESTIONS["ST181Q04HA"]}</option>
-      <option value="ST181Q03HA">${QUESTIONS["ST181Q03HA"]}</option>
-      <option value="ST181Q02HA">${QUESTIONS["ST181Q02HA"]}</option>
-      </select>
-      <button class="button gen-button" onclick="generateByQuestion()"> Generate </button>
-      </div>`;
-
-  let reading_selected = `
-      <label for="type">Statistics Type</label>
-      <select id="type" onchange="changeStats()">
-      <option value="select-option">Select Statistics Type</option>
-      <option value="specific-questions" selected>Specific Questions</option>
-      <option value="international">International</option>
-      <option value="institutional">Institutional</option>
-      <option value="random">Random</option>
-      </select>
-      <label for="category">Category</label>
-      <select id="category" onchange="pickCategory()">
-      <option value="select-category">Select Category</option>
-      <option value="feelings">Feelings</option>
-      <option value="trust">Trust</option>
-      <option value="homecond">Home Conditions</option>
-      <option value="reading" selected>Reading</option>
-      <option value="agreedisagree">Agree or Disagree</option>
-      <option value="math">Mathematics</option>
-      <option value="science">Sciences</option>
-      </select>
-      <label for="question">Question</label>
-      <select id="question">
-      <option value="select-question">Select Question</option>
-      <option value="ST150Q01IA">${QUESTIONS["ST150Q01IA"]}</option>
-      <option value="ST158Q07HA">${QUESTIONS["ST158Q07HA"]}</option>
-      <option value="ST158Q06HA">${QUESTIONS["ST158Q06HA"]}</option>
-      <option value="ST158Q05HA">${QUESTIONS["ST158Q05HA"]}</option>
-      <option value="ST158Q04HA">${QUESTIONS["ST158Q04HA"]}</option>
-      <option value="ST158Q03HA">${QUESTIONS["ST158Q03HA"]}</option>
-      <option value="ST158Q01HA">${QUESTIONS["ST158Q01HA"]}</option>
-      <option value="ST154Q01HA">${QUESTIONS["ST154Q01HA"]}</option>
-      <option value="ST153Q10HA">${QUESTIONS["ST153Q10HA"]}</option>
-      <option value="ST153Q09HA">${QUESTIONS["ST153Q09HA"]}</option>
-      <option value="ST153Q08HA">${QUESTIONS["ST153Q08HA"]}</option>
-      <option value="ST153Q06HA">${QUESTIONS["ST153Q06HA"]}</option>
-      <option value="ST153Q05HA">${QUESTIONS["ST153Q05HA"]}</option>
-      <option value="ST153Q04HA">${QUESTIONS["ST153Q04HA"]}</option>
-      <option value="ST153Q03HA">${QUESTIONS["ST153Q03HA"]}</option>
-      <option value="ST153Q02HA">${QUESTIONS["ST153Q02HA"]}</option>
-      <option value="ST153Q01HA">${QUESTIONS["ST153Q01HA"]}</option>
-      <option value="ST152Q08IA">${QUESTIONS["ST152Q08IA"]}</option>
-      <option value="ST152Q07IA">${QUESTIONS["ST152Q07IA"]}</option>
-      <option value="ST152Q06IA">${QUESTIONS["ST152Q06IA"]}</option>
-      <option value="ST152Q05IA">${QUESTIONS["ST152Q05IA"]}</option>
-      <option value="ST150Q04HA">${QUESTIONS["ST150Q04HA"]}</option>
-      <option value="ST150Q03IA">${QUESTIONS["ST150Q03IA"]}</option>
-      <option value="ST150Q02IA">${QUESTIONS["ST150Q02IA"]}</option>
-      <option value="ST160Q05IA">${QUESTIONS["ST160Q05IA"]}</option>
-      <option value="ST160Q04IA">${QUESTIONS["ST160Q04IA"]}</option>
-      <option value="ST160Q03IA">${QUESTIONS["ST160Q03IA"]}</option>
-      <option value="ST160Q02IA">${QUESTIONS["ST160Q02IA"]}</option>
-      <option value="ST160Q01IA">${QUESTIONS["ST160Q01IA"]}</option>
-      <option value="ST165Q05IA">${QUESTIONS["ST165Q05IA"]}</option>
-      <option value="ST165Q04IA">${QUESTIONS["ST165Q04IA"]}</option>
-      <option value="ST165Q03IA">${QUESTIONS["ST165Q03IA"]}</option>
-      <option value="ST165Q02IA">${QUESTIONS["ST165Q02IA"]}</option>
-      <option value="ST165Q01IA">${QUESTIONS["ST165Q01IA"]}</option>
-      <option value="ST164Q06IA">${QUESTIONS["ST164Q06IA"]}</option>
-      <option value="ST164Q05IA">${QUESTIONS["ST164Q05IA"]}</option>
-      <option value="ST164Q04IA">${QUESTIONS["ST164Q04IA"]}</option>
-      <option value="ST164Q03IA">${QUESTIONS["ST164Q03IA"]}</option>
-      <option value="ST164Q02IA">${QUESTIONS["ST164Q02IA"]}</option>
-      <option value="ST164Q01IA">${QUESTIONS["ST164Q01IA"]}</option>
-      <option value="ST163Q04HA">${QUESTIONS["ST163Q04HA"]}</option>
-      <option value="ST163Q03HA">${QUESTIONS["ST163Q03HA"]}</option>
-      <option value="ST163Q02HA">${QUESTIONS["ST163Q02HA"]}</option>
-      </select>
-      <button class="button gen-button" onclick="generateByQuestion()"> Generate </button>
-      </div>`;
-
-  let homecond_selected = `
-      <label for="type">Statistics Type</label>
-      <select id="type" onchange="changeStats()">
-      <option value="select-option">Select Statistics Type</option>
-      <option value="specific-questions" selected>Specific Questions</option>
-      <option value="international">International</option>
-      <option value="institutional">Institutional</option>
-      <option value="random">Random</option>
-      </select>
-      <label for="category">Category</label>
-      <select id="category" onchange="pickCategory()">
-      <option value="select-category">Select Category</option>
-      <option value="feelings">Feelings</option>
-      <option value="trust">Trust</option>
-      <option value="homecond" selected>Home Conditions</option>
-      <option value="reading">Reading</option>
-      <option value="agreedisagree">Agree/Disagree</option>
-      <option value="math">Mathematics</option>
-      <option value="science">Sciences</option>
-      </select>
-      <label for="question">Question</label>
-      <select id="question">
-      <option value="select-question">Select Question</option>
-      <option value="ST011Q01TA">${QUESTIONS["ST011Q01TA"]}</option>
-      <option value="ST011Q02TA">${QUESTIONS["ST011Q02TA"]}</option>
-      <option value="ST011Q03TA">${QUESTIONS["ST011Q03TA"]}</option>
-      <option value="ST011Q05TA">${QUESTIONS["ST011Q05TA"]}</option>
-      <option value="ST011Q03TA">${QUESTIONS["ST011Q03TA"]}</option>
-      <option value="ST011Q06TA">${QUESTIONS["ST011Q06TA"]}</option>
-      <option value="ST011Q07TA">${QUESTIONS["ST011Q07TA"]}</option>
-      <option value="ST011Q08TA">${QUESTIONS["ST011Q08TA"]}</option>
-      <option value="ST011Q09TA">${QUESTIONS["ST011Q09TA"]}</option>
-      <option value="ST011Q10TA">${QUESTIONS["ST011Q10TA"]}</option>
-      <option value="ST011Q11TA">${QUESTIONS["ST011Q11TA"]}</option>
-      <option value="ST011Q12TA">${QUESTIONS["ST011Q12TA"]}</option>
-      <option value="ST011Q16NA">${QUESTIONS["ST011Q16NA"]}</option>
-      <option value="ST011D17TA">${QUESTIONS["ST011D17TA"]}</option>
-      <option value="ST011D18TA">${QUESTIONS["ST011D18TA"]}</option>
-      <option value="ST011D19TA">${QUESTIONS["ST011D19TA"]}</option>
-      <option value="ST012Q01TA">${QUESTIONS["ST012Q01TA"]}</option>
-      <option value="ST012Q02TA">${QUESTIONS["ST012Q02TA"]}</option>
-      <option value="ST012Q03TA">${QUESTIONS["ST012Q03TA"]}</option>
-      <option value="ST012Q05NA">${QUESTIONS["ST012Q05NA"]}</option>
-      <option value="ST012Q06NA">${QUESTIONS["ST012Q06NA"]}</option>
-      <option value="ST012Q07NA">${QUESTIONS["ST012Q07NA"]}</option>
-      <option value="ST012Q08NA">${QUESTIONS["ST012Q08NA"]}</option>
-      <option value="ST012Q09NA">${QUESTIONS["ST012Q09NA"]}</option>
-      <option value="ST013Q01TA">${QUESTIONS["ST013Q01TA"]}</option>
-
-      </select>
-      <button class="button gen-button" onclick="generateByQuestion()"> Generate </button>
-      </div>`;
-
-
-  let feelings_selected = `
-      <label for="type">Statistics Type</label>
-      <select id="type" onchange="changeStats()">
-      <option value="select-option">Select Statistics Type</option>
-      <option value="specific-questions" selected>Specific Questions</option>
-      <option value="international">International</option>
-      <option value="institutional">Institutional</option>
-      <option value="random">Random</option>
-      </select>
-      <label for="category">Category</label>
-      <select id="category" onchange="pickCategory()">
-      <option value="select-category">Select Category</option>
-      <option value="feelings" selected>Feelings</option>
-      <option value="trust">Trust</option>
-      <option value="homecond">Home Conditions</option>
-      <option value="reading">Reading</option>
-      <option value="agreedisagree">Agree or Disagree</option>
-      <option value="math">Mathematics</option>
-      <option value="science">Sciences</option>
-      </select>
-      <label for="question">Question</label>
-      <select id="question">
-      <option value="select-question">Select Question</option>
-      <option value="ST186Q05HA">${QUESTIONS["ST186Q05HA"]}</option>
-      <option value="ST186Q06HA">${QUESTIONS["ST186Q06HA"]}</option>
-      <option value="ST186Q07HA">${QUESTIONS["ST186Q07HA"]}</option>
-      <option value="ST186Q10HA">${QUESTIONS["ST186Q10HA"]}</option>
-      <option value="ST186Q09HA">${QUESTIONS["ST186Q09HA"]}</option>
-      <option value="ST186Q02HA">${QUESTIONS["ST186Q02HA"]}</option>
-      <option value="ST186Q01HA">${QUESTIONS["ST186Q01HA"]}</option>
-      <option value="ST186Q08HA">${QUESTIONS["ST186Q08HA"]}</option>
-      <option value="ST186Q03HA">${QUESTIONS["ST186Q03HA"]}</option>
-      </select>
-      <button class="button gen-button" onclick="generateByQuestion()"> Generate </button>
-      </div>`;
-
-  var selectBox = document.getElementById("category");
-  var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-
-  if (selectedValue === "trust") {
-    document.getElementById("stats").innerHTML = trust_selected;
-  } else if (selectedValue === "feelings") {
-    document.getElementById("stats").innerHTML = feelings_selected;
-  } else if (selectedValue === "select-category") {
-    document.getElementById("stats").innerHTML = nothing_selected;
-  } else if (selectedValue === "homecond") {
-    document.getElementById("stats").innerHTML = homecond_selected;
-  } else if (selectedValue === "reading") {
-    document.getElementById("stats").innerHTML = reading_selected;
-  } else if (selectedValue === "agreedisagree") {
-    document.getElementById("stats").innerHTML = agree_selected;
-  } else if (selectedValue === "math") {
-    document.getElementById("stats").innerHTML = math_selected;
-  } else if (selectedValue === "science") {
-    document.getElementById("stats").innerHTML = science_selected;
-  }
+function getAllQuestions() {
+  var QUESTIONS = {}
+  Object.keys(QUESTIONS_FEELINGS).forEach(key => {
+    QUESTIONS[key] = QUESTIONS_FEELINGS[key];
+  });
+  Object.keys(QUESTIONS_TRUST).forEach(key => {
+    QUESTIONS[key] = QUESTIONS_TRUST[key];
+  });
+  Object.keys(QUESTIONS_HOME_CONDITIONS).forEach(key => {
+    QUESTIONS[key] = QUESTIONS_HOME_CONDITIONS[key];
+  });
+  Object.keys(QUESTIONS_AGREE).forEach(key => {
+    QUESTIONS[key] = QUESTIONS_AGREE[key];
+  });
+  Object.keys(QUESTIONS_MATH).forEach(key => {
+    QUESTIONS[key] = QUESTIONS_MATH[key];
+  });
+  Object.keys(QUESTIONS_SCIENCE).forEach(key => {
+    QUESTIONS[key] = QUESTIONS_SCIENCE[key];
+  });
+  Object.keys(QUESTIONS_READING).forEach(key => {
+    QUESTIONS[key] = QUESTIONS_READING[key];
+  });
+  return QUESTIONS
 }
 
-function generateByQuestion() {
-  var selectBox = document.getElementById("question");
-  var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-  var question = selectBox.options[selectBox.selectedIndex].text;
+function randomStats() {
+  var randomNumber = Math.floor(Math.random() * 6)
 
-  if (selectedValue == "select-question") {
-    alert("No question selected!");
-    return;
+  if (randomNumber == 1) {
+    let randomInstitution = INSTITUTIONS[Math.floor(Math.random() * INSTITUTIONS.length)]
+    generateGenderGraph(randomInstitution);
+  } else if (randomNumber == 2) {
+    let randomInstitution = INSTITUTIONS[Math.floor(Math.random() * INSTITUTIONS.length)]
+    let QUESTIONS = getAllQuestions()
+    let questionIds = Object.keys(QUESTIONS);
+    let randomQuestionId = questionIds[Math.floor(Math.random() * questionIds.length)];
+    generateInstitutionQuestionChart(randomInstitution, randomQuestionId, QUESTIONS[randomQuestionId])
+  } else if (randomNumber == 3) {
+    let randomInstitution1 = INSTITUTIONS[Math.floor(Math.random() * INSTITUTIONS.length)]
+    let randomInstitution2 = INSTITUTIONS[Math.floor(Math.random() * INSTITUTIONS.length)]
+    let QUESTIONS = getAllQuestions()
+    let questionIds = Object.keys(QUESTIONS);
+    let randomQuestionId = questionIds[Math.floor(Math.random() * questionIds.length)];
+    generateComparisonChart(randomInstitution1, randomInstitution2, randomQuestionId, QUESTIONS[randomQuestionId])
+  } else if (randomNumber == 4) {
+    rankingOptions = ["score", "tier"]
+    generateCountryChart(rankingOptions[Math.floor(Math.random() * rankingOptions.length)], COUNTRIES[Math.floor(Math.random() * COUNTRIES.length)])
+  } else if (randomNumber == 5) {
+    let QUESTIONS = getAllQuestions()
+    let questionIds = Object.keys(QUESTIONS);
+    let randomQuestionId = questionIds[Math.floor(Math.random() * questionIds.length)];
+    generateByQuestion(randomQuestionId, QUESTIONS[randomQuestionId])
   }
 
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      resultData = JSON.parse(this.responseText).results
-
-      var keys = ``
-      var answers = ``
-      var series_array = []
-      label_array = []
-
-      for (var key in resultData) {
-        keys += key + ','
-        answers += ',' + resultData[key]
-        series_array.push(resultData[key])
-        label_array.push(`${key} (${resultData[key]})`)
-      }
-
-      csvData = `Question,${keys}\n"${question}"${answers}`
-
-      var data = {
-        labels: label_array,
-        series: [series_array]
-      };
-      var options = {
-        seriesBarDistance: 5,
-        showLabel: true
-      };
-      var chart = new Chartist.Bar('.ct-chart', data, options);
-      document.getElementById("chart-title").innerHTML = question;
-    }
-  };
-
-  xhttp.open("GET", "/question-chart" + '?' + `questionId=${selectedValue}`, true);
-  xhttp.send();
-}
-
-function generateChart() {
-  var selectBox = document.getElementById("gender");
-  var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      genderData = JSON.parse(this.responseText)
-      var count
-      var label
-
-      if (selectedValue === "male") {
-        count = genderData['male']
-        label = 'Male (' + count + ')'
-      } else {
-        count = genderData['female']
-        label = 'Female (' + count + ')'
-      }
-
-      var data = {
-        labels: [label],
-        series: [
-          [count]
-        ]
-      };
-      var options = {
-        seriesBarDistance: 10,
-        showLabel: true
-      };
-      var chart = new Chartist.Bar('.ct-chart', data, options);
-    }
-  };
-  xhttp.open("GET", "/chart-gender", true);
-  xhttp.send();
 }
 
 function returnSvgElements(title) {
@@ -1440,7 +823,6 @@ function returnSvgElements(title) {
   return svg_elements;
 }
 
-
 function getSVG() {
   var svg = document.getElementById("stats-chart").getElementsByTagName("svg")[0];
 
@@ -1459,8 +841,6 @@ function getSVG() {
   //add xml declaration
   source = '<?xml version="1.0" standalone="no"?>\r\n' + source;
   return source;
-
-
 }
 
 function downloadSVG() {
