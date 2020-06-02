@@ -13,6 +13,8 @@ router.get('/css/contact-us.css', contactusController.getCSS)
 router.get('/assets/img/docs.svg', contactusController.getSVG)
 router.get('/assets/img/questionmark.svg', contactusController.getSVG)
 router.get('/assets/img/suitcase.svg', contactusController.getSVG)
+router.get('/js/scroller.js', contactusController.getJS)
+router.get('/js/header.js', contactusController.getJS)
 
 router.post('/sendMail', contactusController.sendMailtoFront)
 
