@@ -268,22 +268,6 @@ function generateEmptyChart() {
   document.getElementById("chart-title").innerHTML = "Empty Chart";
 }
 
-function changeFunc() {
-  var selectBox = document.getElementById("type");
-  var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-  alert(selectedValue);
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("stats-chart").innerHTML = ''
-      document.getElementById("demo").innerHTML = this.responseText;
-    }
-  };
-  document.getElementById("stats-chart").innerHTML = '<img src="/assets/img/loading.gif"/>';
-  xhttp.open("GET", "/chart-institutional", true);
-  xhttp.send();
-}
-
 function changeStats() {
   var selectBox = document.getElementById("type");
   var selectedValue = selectBox.options[selectBox.selectedIndex].value;

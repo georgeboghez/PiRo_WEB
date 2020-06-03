@@ -19,5 +19,4 @@ router.get('/js/custom-statistics.js', statisticsController.getJS)
 router.get('/assets/img/loading.gif', statisticsController.getGIF)
 
 
-
 module.exports.statistics = router
