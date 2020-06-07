@@ -1,236 +1,89 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Pagina mea</title>
-		<link href="css/custom-statistics.css" rel="stylesheet">
-		<link href="css/header.css" rel="stylesheet">
-		<link href="css/footer.css" rel="stylesheet">
-		<link href="css/page-content.css" rel="stylesheet">
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
-		<script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script type="text/javascript">
-			function changeFunc() {
-				var selectBox = document.getElementById("type");
-				var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-				console.log(selectedValue);
-				alert(selectedValue);
-				var xhttp = new XMLHttpRequest();
-				xhttp.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
-						document.getElementById("demo").innerHTML = this.responseText;
-					}
-				};
-				xhttp.open("GET", "/chart-institutional", true);
-				xhttp.send();
-			}
-			function myFunction() {
-				document.getElementById("myDropdown").classList.toggle("show");
-			}
+<html lang="en">
+<head>
+  <title>PiRo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Custom statistics chart page">
+  <meta charset="utf-8">
+  <link href="css/custom-statistics.css" rel="stylesheet">
+  <link href="css/header.css" rel="stylesheet">
+  <link href="css/footer.css" rel="stylesheet">
+  <link href="css/page-content.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+  <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+  <script type="text/javascript" src="/js/header.js" async></script>
+  <script type="text/javascript" src="/js/custom-statistics.js" async></script>
+</head>
 
-			function randomStats() {
+<body>
+  <header>
+    <div class="logo-container">
+      <a id="triangle-logo" href="index.html" aria-label="Home Page"></a>
+      <a id="page-title" href="index.html">PiRo</a>
+    </div>
+    <nav>
+      <a href="custom-statistics">Statistics</a>
+      <a href="contact-us.html">Contact Us</a>
+      <div class="dropdown">
+        <img class="dropbtn" src="assets/img/menu.svg" onclick="showDropdown()" alt="Menu">
+        <div id="myDropdown" class="dropdown-content">
+          <a href="custom-statistics">Statistics</a>
+          <a href="contact-us.html">Contact Us</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <p id="stats_title">Custom Statistics</p>
+    <p id="stats_text">Complete the form below to generate and export graphs based on custom statistics.</p>
+    <div class="custom-stats-grid">
+      <div class="custom-stats-container" id="stats">
+        <label for="type">Statistics Type</label>
+        <select id="type" onchange="changeStats()">
+          <option value="select-option"> Select Statistics Type</option>
+          <option value="specific-questions">Specific Questions</option>
+          <option value="international">International</option>
+          <option value="institutional">Institutional</option>
+          <option value="random">Random</option>
+        </select>
+      </div>
+      <div class="custom-stats-image-grid">
+        <p id="chart-title">Empty Chart</p>
+        <div class="ct-chart ct-perfect-fourth" id="stats-chart">
+          <script>
+            //This is the empty chart.
 
-				let smallStats = `
-				<label for="type">Statistics Type</label>
-					<select id="type" onchange="randomStats()">
-							<option value="national">National</option>
-							<option value="county">County</option>
-							<option value="institutional">Institutional</option>
-							<option selected="random">Random</option>
-							</select>
-							<button class="button gen-button" onclick="generateChart()"> Generate </button>
-							`;
+                    var data = {
+                        // A labels array that can contain any sort of values
+                        labels: [1, 2, 3, 4],
+                        // Our series array that contains series objects or in this case series data arrays
+                        series: [
+                        []
+                        ]
+                    };
 
-				let allStats = `
-				<label for="type">Statistics Type</label>
-				<select id="type" onchange="randomStats()">
-						<option value="national">National</option>
-						<option value="county">County</option>
-						<option value="institutional">Institutional</option>
-						<option value="random">Random</option>
-						</select>
-						<label for="gender">Gender</label>
-						<select id="gender">
-						<option value="male">Male</option>
-						<option value="female">Female</option>
-						</select>
-						<label for="grade">Grade</label>
-						<select id="grade">
-						<option value="male">9</option>
-						<option value="female">10</option>
-						</select>
-						<label for="category">Category</label>
-						<select id="category">
-						<option value="math">Mathematics</option>
-						<option value="science">Science</option>
-						<option value="reading">Reading</option>
-						</select>
-						<label for="question">Question</label>
-						<select id="question">
-						<option value="bar">----</option>
-						</select>
+                    // Create a new line chart object where as first parameter we pass in a selector
+                    // that is resolving to our chart container element. The Second parameter
+                    // is the actual data object.
+                    new Chartist.Line('.ct-chart', data);
 
-						<button class="button gen-button" onclick="generateChart()"> Generate </button>
-						</div>`;
+                </script>
+        </div>
+        <div class="custom-stats-buttons">
+          <p>Export: </p>
+          <button type="button" onclick="downloadSVG()"><a id="svg-button"></a>SVG</button>
+          <button type="button" onclick="downloadCSV()">CSV</button>
+          <button type="button" onclick="downloadPNG()">PNG</button>
+        </div>
+      </div>
+  </main>
+  <footer>
+    <div class="footer-container">
+      <p>Telefon: 0744443545</p>
+      <p>E-mail: abcd@gmail.com</p>
+      <p>Adresa: Strada X nr. 20, Iasi</p>
+    </div>
+  </footer>
+</body>
 
-
-				var selectBox = document.getElementById("type");
-				var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-
-				if (selectedValue === "random")
-					document.getElementById("stats").innerHTML = smallStats
-				else
-					document.getElementById("stats").innerHTML = allStats
-
-			}
-
-			function generateChart() {
-				var selectBox = document.getElementById("gender");
-				var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-
-				var xhttp = new XMLHttpRequest();
-				xhttp.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
-
-						/*let genderData  = JSON.parse(this.responseText)
-						let maleCount   = genderData['male']
-						let femaleCount = genderData['female']
-						let maleLabel   = 'Male (' + maleCount + ')'
-						let femaleLabel = 'Female (' + femaleCount + ')'
-
-						var data = {
-							labels: [maleLabel, femaleLabel],
-							series: [ [maleCount, femaleCount] ]
-						};
-						var options = {
-							seriesBarDistance: 10,
-							showLabel: true
-						};
-						var chart = new Chartist.Bar('.ct-chart', data, options);*/
-
-						genderData = JSON.parse(this.responseText)
-						var count
-						var label
-
-						if (selectedValue === "male") {
-							count = genderData['male']
-							label = 'Male (' + count + ')'
-						}
-
-						else {
-							count = genderData['female']
-							label = 'Female (' + count + ')'
-						}
-
-						var data = {
-							labels: [label],
-							series: [ [count] ]
-						};
-						var options = {
-							seriesBarDistance: 10,
-							showLabel: true
-						};
-						var chart = new Chartist.Bar('.ct-chart', data, options);
-					}
-				};
-				xhttp.open("GET", "/chart-gender", true);
-				xhttp.send();
-			}
-			
-			window.onclick = function(event) {
-				if (!event.target.matches('.dropbtn')) {
-					var dropdowns = document.getElementsByClassName("dropdown-content");
-					var i;
-					for (i = 0; i < dropdowns.length; i++) {
-						var openDropdown = dropdowns[i];
-						if (openDropdown.classList.contains('show')) {
-							openDropdown.classList.remove('show');
-						}
-					}
-				}
-			}
-		</script>
-	</head>
-	
-	<body>
-		<header>
-			<div class="logo-container">
-				<a id="triangle-logo" href="index.html"></a>
-				<a id="page-title" href="index.html">PiRo</a>
-			</div>
-			<nav>
-				<a href="custom-statistics">Statistics</a>
-				<a href="about-page.html">About</a>
-				<a href="contact-us.html">Contact Us</a>
-				<div class="dropdown">
-					<img src="assets/img/menu.svg" onclick="myFunction()" class="dropbtn"></img>
-					<div id="myDropdown" class="dropdown-content">
-						<a href="custom-statistics">Statistics</a>
-						<a href="about-page.html">About</a>
-						<a href="contact-us.html">Contact Us</a>
-					</div>
-				</div>
-			</nav>
-		</header>
-		
-		<main>
-			<p id="stats_title">Custom Statistics</p>
-			<p id="stats_text">Complete the form below to generate and export graphs based on custom statistics.</p>
-			<div class="custom-stats-grid">
-				
-				<div class="custom-stats-container" id="stats">
-					<label for="type">Statistics Type</label>
-					<select id="type" onchange="randomStats()">
-						<option value="national">National</option>
-						<option value="county">County</option>
-						<option value="institutional">Institutional</option>
-						<option value="random">Random</option>
-					</select>
-					<label for="gender">Gender</label>
-					<select id="gender">
-						<option value="male">Male</option>
-						<option value="female">Female</option>
-					</select>
-					<label for="grade">Grade</label>
-					<select id="grade">
-						<option value="male">9</option>
-						<option value="female">10</option>
-					</select>
-					<label for="category">Category</label>
-					<select id="category">
-						<option value="math">Mathematics</option>
-						<option value="science">Science</option>
-						<option value="reading">Reading</option>
-					</select>
-					<label for="question">Question</label>
-					<select id="question">
-						<option value="bar">----</option>
-					</select>
-
-					<button class="button gen-button" onclick="generateChart()"> Generate </button>
-				</div>
-				
-				<div class="custom-stats-image-grid">
-				 <div class="ct-chart ct-perfect-fourth" id="stats-chart"></div>
-					<div class="custom-stats-buttons">
-						<p>Export: </p>
-						<button type="button">SVG</button>
-						<button type="button">CSS</button>
-						<button type="button">PNG</button>
-					</div>
-					
-				</div>
-			</main>
-			<footer>
-				<div class = "footer-container">
-					<p>Telefon: 0744 443 545</p>
-					<p>E-mail: abcd@gmail.com</p>
-					<p>Adresa: Strada X nr. 20, Iasi</p>
-				</div>
-			</footer>
-			
-			
-		</body>
-		
-	</html>
+</html>

@@ -5,14 +5,15 @@
   "main": "app.js",
   "dependencies": {
     "chartist": "^0.11.4",
-    "co": "^4.6.0",
     "mongodb": "^3.5.7",
     "node-chartist": "^1.0.5",
-    "nodemailer": "^6.4.6"
+    "nodemailer": "^6.4.6",
+    "svg-captcha": "^1.4.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",

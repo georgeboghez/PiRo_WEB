@@ -1,39 +1,16 @@
 const fs = require('fs')
+const zlib = require('zlib');
 const util = require('util');
 const db = require('../model/db')
 
-function exempleAPI(req,res)
-{
-  res.statusCode = 200
-  res.setHeader('Content-Type', 'application/json')
-  res.write(JSON.stringify({ success: true, message: 'example ran successfully' }))
-}
 
-// db.connect((err, database) => {
-//   if (err) return next(err);
-
-//   database.collection('pisa_results').findOne({}, (err, result) => {
-//     if (err) throw err;
-
-//     console.log(result.CNTSTUID);
-
-
-//     db.disconnect((err) => {
-//       if (err) throw err;
-
-//       console.log('Everything finished, database connection closed');
-//     });
-//   });
-// });
-
-function getIndexHTML (req, res) {
+function getIndexHTML(req, res) {
   try {
     let indexHTML = fs.readFileSync('./views/index.html')
-    res.statusCode = 200
+    let compressedData = zlib.gzipSync(indexHTML);
 
-    res.setHeader('Content-Type', 'text/html')
-    res.write(indexHTML)
-
+    res.writeHead(200, { 'Content-Type': 'text/html', 'Content-Encoding': 'gzip' });
+    res.write(compressedData)
   } catch (e) {
     console.log(e)
     res.statusCode = 500
@@ -42,28 +19,13 @@ function getIndexHTML (req, res) {
   }
 }
 
-function createChartInstitutional (req, res) {
-  try {
-    let indexHTML = fs.readFileSync('./views/index.html')
-    res.statusCode = 200
-
-    res.setHeader('Content-Type', 'text/html')
-    res.write(indexHTML)
-
-  } catch (e) {
-    console.log(e)
-    res.statusCode = 500
-    res.setHeader('Content-Type', 'text/html')
-    res.write('Internal server error')
-  }
-}
-
-function getCSS (req, res) {
+function getCSS(req, res) {
   try {
     let css = fs.readFileSync('./views' + req.url)
-    res.statusCode = 200
-    res.setHeader('Content-Type', 'text/css')
-    res.write(css)
+    let compressedData = zlib.gzipSync(css);
+
+    res.writeHead(200, { 'Content-Type': 'text/css', 'Content-Encoding': 'gzip' });
+    res.write(compressedData)
   } catch (e) {
     console.log(e)
     res.statusCode = 500
@@ -73,31 +35,63 @@ function getCSS (req, res) {
 }
 
 function getSVG(req, res) {
-    try {
-      let svg = fs.readFileSync('views' + req.url)
-      res.statusCode = 200
-      res.setHeader('Content-Type', 'image/svg+xml')
-      res.write(svg)
-    } catch (e) {
-      console.log(e)
-      res.statusCode = 500
-      res.setHeader('Content-Type', 'text/html')
-      res.write('Internal server error')
-    }
+  try {
+    let svg = fs.readFileSync('views' + req.url)
+    let compressedData = zlib.gzipSync(svg);
+
+    res.writeHead(200, { 'Content-Type': 'image/svg+xml', 'Content-Encoding': 'gzip' });
+    res.write(compressedData)
+  } catch (e) {
+    console.log(e)
+    res.statusCode = 500
+    res.setHeader('Content-Type', 'text/html')
+    res.write('Internal server error')
+  }
+}
+
+function getPNG(req, res) {
+  try {
+    let png = fs.readFileSync('views' + req.url)
+    let compressedData = zlib.gzipSync(png);
+
+    res.writeHead(200, { 'Content-Type': 'image/png', 'Content-Encoding': 'gzip' });
+    res.write(compressedData)
+  } catch (e) {
+    console.log(e)
+    res.statusCode = 500
+    res.setHeader('Content-Type', 'text/html')
+    res.write('Internal server error')
+  }
 }
 
 function getJS(req, res) {
-    try {
-      let svg = fs.readFileSync('views' + req.url)
-      res.statusCode = 200
-      res.setHeader('Content-Type', 'text/javascript')
-      res.write(svg)
-    } catch (e) {
-      console.log(e)
-      res.statusCode = 500
-      res.setHeader('Content-Type', 'text/html')
-      res.write('Internal server error')
-    }
+  try {
+    let js = fs.readFileSync('views' + req.url)
+    let compressedData = zlib.gzipSync(js);
+
+    res.writeHead(200, { 'Content-Type': 'text/javascript', 'Content-Encoding': 'gzip' });
+    res.write(compressedData)
+  } catch (e) {
+    console.log(e)
+    res.statusCode = 500
+    res.setHeader('Content-Type', 'text/html')
+    res.write('Internal server error')
+  }
 }
 
-module.exports = { exempleAPI, getIndexHTML, getCSS, getSVG, getJS, createChartInstitutional }
+function getCertFile(req, res) {
+  try {
+    let text = fs.readFileSync('.well-known/pki-validation/89B565434212E33309ED41DC8C40B06C.txt')
+    // let compressedData = zlib.gzipSync(js);
+
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.write(text)
+  } catch (e) {
+    console.log(e)
+    res.statusCode = 500
+    res.setHeader('Content-Type', 'text/html')
+    res.write('Internal server error')
+  }
+}
+
+module.exports = { getIndexHTML, getCSS, getSVG, getJS, getPNG, getCertFile }
