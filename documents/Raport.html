@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>PiRo Scholarly HTML</title>
+  <link rel="stylesheet" href="scholarly.css">
+</head>
+
+<body>
+  <article>
+    <header>
+      <p class="title">PiRo Scholarly HTML</p>
+      <p class="subtitle">Statistici PiSa 2018 Romania</p>
+    </header>
+    <section>
+      <h2>Membrii Echipei</h2>
+      <ol>
+        <li>
+          <span property="schema:author">George Boghez</span>
+        </li>
+        <li>
+          <span property="schema:author">Teofil Tanase</span>
+        </li>
+        <li>
+          <span property="schema:author">Radu Placinta</span>
+        </li>
+      </ol>
+    </section>
+    <section>
+      <h2>Abstract</h2>
+      <p>
+        Pe baza unui API REST/GraphQL propriu, sa se implementeze o aplicatie Web de vizualizare flexibila a datelor referitoare la rezultatele obtinute de elevii romani la testul Pisa 2018. Statisticile si vizualizarile generate – minim 3 maniere – vor putea fi exportate in formatele CSV, PNG si SVG. Sistemul va oferi suport si pentru cautarea/filtrarea multi-criteriala a datelor, inclusiv comparatii cu alte tari – a se utiliza Education Statistics.
+      </p>
+    </section>
+    <section>
+      <h2>Introducere</h2>
+      <p>
+        Aplicația constituie un liant între utilizator și rezultatele testului PiSa 2018 din Romania, facilitând modul de vizualizare al acestora prin dispunerea conținutul sub forma de grafice atât în vederea analizării, cât și a comparării datelor. Astfel, vor fi regăsite informații referitoare la modul în care participanții s-au descurcat în cadrul examinării PiSa, datele fiind structurate pe țări și instituții de învățământ în scopul comparării acestora de către utilizator.
+      </p>
+    </section>
+    <section>
+      <h2>Structura</h2>
+      <p>
+        Paginile aplicației sunt: Main Page - o prezentare generală a conținutului aplicației -, Statistics Page - pagina unde se pot vizualiza statisticile -, Contact Page - pagina de explicații, întrebări și de contact suport -.
+      </p>
+      <section>
+        <h3>Main Page</h3>
+        <p>
+          Utilizatorul poate observa o prezentare generală a paginilor și, de asemenea, poate accesa conținutul altor pagini dat prin referințe atribuite anumitor elemente din pagina curentă.
+        </p>
+        <p>Desktop Screenshots</p>
+        <div class="screenshots">
+          <img class="desktop" src="./assets/MainPage1.png">
+          <img class="desktop" src="./assets/MainPage2.png">
+          <img class="desktop" src="./assets/MainPage3.png">
+        </div>
+        <p>Mobile Screenshots</p>
+        <div class="screenshots">
+          <img class="mobile" src="./assets/MainPageMobile1.png">
+          <img class="mobile" src="./assets/MainPageMobile2.png">
+          <img class="mobile" src="./assets/MainPageMobile3.png">
+        </div>
+      </section>
+      <section>
+        <h3>Statistics Page</h3>
+        <p>
+          Utilizatorul poate alege o optiune din cadrul select-box-urilor si apoi va putea apasa pe butonul de generare pentru a crea graficul.
+        </p>
+        <p>Desktop Screenshots</p>
+        <div class="screenshots">
+          <img class="desktop" src="./assets/StatisticsPage1.png">
+          <img class="desktop" src="./assets/StatisticsPage2.png">
+          <img class="desktop" src="./assets/StatisticsPage3.png">
+        </div>
+        <p>Mobile Screenshots</p>
+        <div class="screenshots">
+          <img class="mobile" src="./assets/StatisticsPageMobile1.png">
+          <img class="mobile" src="./assets/StatisticsPageMobile2.png">
+          <img class="mobile" src="./assets/StatisticsPageMobile3.png">
+        </div>
+      </section>
+      <section>
+        <h3>Contact Page</h3>
+        <p>
+          Utilizatorul poate afla răspunsul întrebărilor adresate frecvent, poate fi redirecționat pe paginile aferente programului "PiSa" prin accesarea link-urilor din pagina sau poate contacta suportul în urma completării formularului din josul paginii, ceea ce necesită și rezolvarea unui captcha.
+        </p>
+        <p>Desktop Screenshots</p>
+        <div class="screenshots">
+          <img class="desktop" src="./assets/ContactPage1.png">
+          <img class="desktop" src="./assets/ContactPage2.png">
+          <img class="desktop" src="./assets/ContactPage3.png">
+        </div>
+        <p>Mobile Screenshots</p>
+        <div class="screenshots">
+          <img class="mobile" src="./assets/ContactPageMobile1.png">
+          <img class="mobile" src="./assets/ContactPageMobile2.png">
+          <img class="mobile" src="./assets/ContactPageMobile3.png">
+        </div>
+      </section>
+      <section>
+        <h3>Arhitectura Aplicației</h3>
+        <p>Diagrame UML</p>
+        <ul>
+          <li>
+            <a href="https://app.creately.com/diagram/8OsJZoRCbE5/view">Backend Diagram Class</a>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>Flow-ul Aplicatiei</h3>
+        <ol>
+          <li>Pe pagina principală, utilizatorul va accesa una dintre paginile Statistics sau Contact prin intermediul referințelor din pagină atribuite anumitor elemente sau va alege una dintre opțiunile "Statistics" sau "Contact" din bara de navigare.</li>
+          <li>Pe pagina de statistici, va putea
+            <ul>
+              <li>genera diverse grafice utilizând select-box-urile și apăsând butonul "Generate"</li>
+              <li>exporta graficele create într-unul dintre formatele dorite - SVG, CSV sau PNG - apăsând pe butonul aferent</li>
+              <li>reveni pe pagina principală apăsând pe logo-ul/denumirea paginii din header-ul paginii</li>
+              <li>fi redirecționat pe pagina de contact accesând opțiunea "Contact" din bara de navigare</li>
+            </ul>
+          </li>
+          <li>Pe pagina de contact, va putea
+            <ul>
+              <li>vizualiza răspunsurile întrebărilor adresate frecvent</li>
+              <li>fi redirecționat pe paginile aferente programului PiSa</li>
+              <li>contacta suportul în urma completării formularului</li>
+              <li>reveni pe pagina principală apăsând pe logo-ul/denumirea paginii din header-ul paginii</li>
+              <li>fi redirecționat pe pagina de statistici accesând opțiunea "Statistics" din bara de navigare</li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+      <section>
+        <h2>Code Snippets</h2>
+        <p>
+          Generarea unuia dintre grafice
+        </p>
+        <pre><code>
+function generateByQuestion(questionId, question) {
+  if (!QUESTIONS_FEELINGS.hasOwnProperty(questionId) <br>&& !QUESTIONS_TRUST.hasOwnProperty(questionId) <br>&& !QUESTIONS_HOME_CONDITIONS.hasOwnProperty(questionId) <br>&& !QUESTIONS_AGREE.hasOwnProperty(questionId) <br>&& !QUESTIONS_MATH.hasOwnProperty(questionId) <br>&& !QUESTIONS_SCIENCE.hasOwnProperty(questionId) <br>&& !QUESTIONS_READING.hasOwnProperty(questionId)) {
+    alert("No question selected!");
+    return;
+  }
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("stats-chart").innerHTML = ''
+      resultData = JSON.parse(this.responseText).results
+
+      var keys = ``
+      var answers = ``
+      var series_array = []
+      label_array = []
+
+      for (var key in resultData) {
+        keys += key + ','
+        answers += ',' + resultData[key]
+        series_array.push(resultData[key])
+        label_array.push(`${key} (${resultData[key]})`)
+      }
+
+      csvData = `Question,${keys}\n"${question}"${answers}`
+
+      var data = {
+        labels: label_array,
+        series: [series_array]
+      };
+      var options = {
+        seriesBarDistance: 5,
+        showLabel: true
+      };
+      var chart = new Chartist.Bar('.ct-chart', data, options);
+      document.getElementById("chart-title").innerHTML = question;
+    }
+  };
+
+  document.getElementById("stats-chart").innerHTML = '&ltimg src="/assets/img/loading.gif"/&gt;';
+  xhttp.open("GET", "/question-chart" + '?' + `questionId=${questionId}`, true);
+  xhttp.send();
+}
+                  </code></pre>
+        
+        <p>
+          Post request pentru trimiterea datelor către back-end:
+        </p>
+        <pre>
+                      <code>
+function submitForm() {
+  var email = document.getElementById("email").value;
+  var name = document.getElementById("fname").value;
+  var surname = document.getElementById("lname").value;
+  var content = document.getElementById("subject").value;
+  var captcha_text = document.getElementById("captcha-text").value;
+
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+      let email_warning_div = document.getElementById("email-warning")
+      email_warning_div.innerHTML = this.responseText
+    }
+  }
+  xhr.open("POST", '/sendMail' + '?' + `EmailAddress=${email}&FirstName=${name}&LastName=${surname}&EmailContent=${content}&CaptchaText=${captcha_text}`, true);
+  xhr.send();
+}
+                      </code>
+                  </pre>
+        
+        <p>
+          Validarae, stocarea în baza de date a informațiilor din formular, cât și trimiterea email-ului către adresa suportului
+        </p>
+        <pre>
+                        <code>
+async function sendMailtoFront(req, res) {
+  try {
+    var data = url.parse(req.url, true).query;
+    res.setHeader('Content-Type', 'text/html')
+
+    if (isEmailValid(data["EmailAddress"]) && isNameValid(data["FirstName"]) && isNameValid(data["LastName"]) && isCaptchaTextCorrect(data["CaptchaText"])) {
+      let htmlcode = '&ltp class = "valid-data">Email sent!</p>'
+      res.statusCode = 200
+      res.write(htmlcode)
+
+      var transporter = await nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'testjavanodeemail@gmail.com',
+          pass: 'Kcropcps13'
+        }
+      });
+      var mailOptions = {
+        from: data["EmailAddress"],
+        to: 'testjavanodeemail@gmail.com',
+        subject: `Contact-Us Customer Email - ${data["EmailAddress"]}`,
+        text: `New email from ${data["FirstName"]} ${data["LastName"]} (${data["EmailAddress"]}):\n${data["EmailContent"]}`
+      };
+      var status = await db.insert({ FirstName: data["FirstName"], <br>LastName: data["LastName"], <br>EmailAddress: data["EmailAddress"], <br>Content: data["EmailContent"] }, "user_details")
+      await transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+    } else {
+      if (!isCaptchaTextCorrect(data["CaptchaText"])) {
+        let htmlcode = '&ltp class = "invalid-data">Invalid Captcha Text!</p>'
+        res.statusCode = 200
+        res.write(htmlcode)
+      }
+      if (!isEmailValid(data["EmailAddress"])) {
+        let htmlcode = '&ltp class = "invalid-data">Email incorrect!</p>'
+        res.statusCode = 200
+        res.write(htmlcode)
+      }
+      if (!isNameValid(data["FirstName"])) {
+        let htmlcode = '&ltp class = "invalid-data">First Name is mandatory!</p>'
+        res.statusCode = 200
+        res.write(htmlcode)
+      }
+      if (!isNameValid(data["LastName"])) {
+        let htmlcode = '&ltp class = "invalid-data">Last Name is mandatory!</p>'
+        res.statusCode = 200
+        res.write(htmlcode)
+      }
+
+    }
+    res.end();
+  } catch (e) {
+    console.log(e)
+    res.statusCode = 500
+    res.setHeader('Content-Type', 'text/html')
+    res.write('Internal server error')
+  }
+}
+                        </code>
+                    </pre>
+        
+        <p>
+          Trimiterea datelor ca response al reqest-ului
+        </p>
+        <pre>
+                        <code>
+async function getInstitutions(req, res) {
+  try {
+    let institutions = await db.distinct("CNTSCHID");
+
+    let compressedData = zlib.gzipSync(JSON.stringify({
+      institutions: institutions,
+    }));
+
+    res.writeHead(200, { 'Content-Type': 'application/json', 'Content-Encoding': 'gzip' });
+    res.write(compressedData)
+  } catch (e) {
+    console.log(e.message)
+    res.statusCode = 500
+    res.setHeader('Content-Type', 'text/html')
+    res.write('Internal server error')
+  }
+}
+                        </code>
+                    </pre>
+        
+        <p>
+          Preluarea unor date din baza de date
+        </p>
+        <pre>
+                        <code>
+distinct: async (field) => {
+    try {
+      if (!client) {
+        client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+      }
+      if (!db) {
+        db = client.db(dbName);
+      }
+      return db.collection(collName).distinct(field)
+    } catch (err) {
+      throw err;
+    }
+}
+                        </code>
+                    </pre>
+        
+        <p>
+          Descărcarea fișierului .svg
+        </p>
+        <pre>
+                        <code>
+function downloadSVG() {
+  source = getSVG();
+
+  var url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(source);
+
+  var link = document.createElement("a");
+
+  link.download = name;
+  link.href = url;
+  link.click();
+}
+                        </code>
+                    </pre>
+        
+        <p>Preluarea svg-ului creat prin intermediul bibliotecii chartist</p>
+        <pre>
+                        <code>
+function getSVG() {
+  var svg = document.getElementById("stats-chart").getElementsByTagName("svg")[0];
+
+  var serializer = new XMLSerializer();
+  var source = serializer.serializeToString(svg);
+
+  source = source.replace(/xmlns="http:\/\/www\.w3\.org\/2000\/xmlns\/"/g, '');
+  var title = document.getElementById("chart-title").innerHTML
+
+
+  var svg_elements = returnSvgElements(title);
+
+  source = source.replace(/&ltg/, '&ltdefs> &ltstyle type="text/css"> &lt!-- style* --> &lt/style> &lt/defs>&ltg');
+  source = source.replace(/&lt\/svg/, <br>`&ltsvg width="585" height = "200" x="50" y="400" font-family="sans-serif" font-size="20px" <br>fill="black" xmlns="http://www.w3.org/2000/svg">${svg_elements}&lt/svg>&lt/svg`);
+
+  source = '&lt?xml version="1.0" standalone="no"?>\r\n' + source;
+  return source;
+}
+                        </code>
+                    </pre>
+      </section>
+      <section>
+        <h2>Referinte</h2>
+        <ul>
+          <li>
+            <a href="https://github.com/mongodb/node-mongodb-native">https://github.com/mongodb/node-mongodb-native</a>
+          </li>
+          <li>
+            <a href="https://nodejs.org/api/">https://nodejs.org/api/</a>
+          </li>
+          <li>
+            <a href="https://gionkunz.github.io/chartist-js/">https://gionkunz.github.io/chartist-js/</a>
+          </li>
+          <li>
+            <a href="https://github.com/nodemailer/nodemailer">https://github.com/nodemailer/nodemailer</a>
+          </li>
+          <li>
+            <a href="https://github.com/produck/svg-captcha">https://github.com/produck/svg-captcha</a>
+          </li>
+          <li>
+            <a href="https://emailregex.com/">https://emailregex.com/</a>
+          </li>
+          <li>
+            <a href="https://github.com/stefanT9/Routing-In-NodeJs?fbclid=IwAR2reprcFLSUg4zc9ACr7fXbNt6rT5yiK1kzmoHTEluQCIbgaUOkkIeL4ks">https://github.com/stefanT9/Routing-In-NodeJs?fbclid=IwAR2reprcFLSUg4zc9ACr7fXbNt6rT5yiK1kzmoHTEluQCIbgaUOkkIeL4ks</a>
+          </li>
+          <li>
+            <a href="https://webkit.org/">https://webkit.org/</a>
+          </li>
+          <li>
+            <a href="https://developer.mozilla.org/en-US/">https://developer.mozilla.org/en-US</a>
+          </li>
+          <li>
+            <a href="https://www.w3schools.com/">https://www.w3schools.com</a>
+          </li>
+          <li>
+            <a href="https://www.w3schools.com/howto/howto_css_menu_icon.asp">https://www.w3schools.com/howto/howto_css_menu_icon.asp</a>
+          </li>
+          <li>
+            <a href="https://w3c.github.io/scholarly-html/">https://w3c.github.io/scholarly-html/</a>
+          </li>
+          <li>
+            <a href="https://profs.info.uaic.ro/~andrei.panu/">https://profs.info.uaic.ro/~andrei.panu/</a>
+          </li>
+        </ul>
+      </section>
+  </article>
+  <footer>
+    <p>
+      PiRo 2020
+    </p>
+  </footer>
+</body>
+
+</html>
