@@ -2,7 +2,7 @@ const fs = require('fs')
 const zlib = require('zlib');
 const util = require('util');
 const url = require('url');
-const db = require('../model/db')
+const DataAccessObject = require('../model/DataAccessObject')
 const controllerUtils = require('../utils/controllerUtils')
 const nodemailer = require('nodemailer')
 const svgCaptcha = require('svg-captcha')
@@ -134,7 +134,7 @@ class Controller {
 
   async getInstitutions(req, res) {
     try {
-      let institutions = await db.distinct("CNTSCHID");
+      let institutions = await DataAccessObject.distinct("CNTSCHID");
 
       let compressedData = zlib.gzipSync(JSON.stringify({
         institutions: institutions,
@@ -152,8 +152,8 @@ class Controller {
 
   async getGenderChart(req, res) {
     try {
-      let maleCount = await db.count({ ST004D01T: "1.0" });
-      let femaleCount = await db.count({ ST004D01T: "2.0" });
+      let maleCount = await DataAccessObject.count({ ST004D01T: "1.0" });
+      let femaleCount = await DataAccessObject.count({ ST004D01T: "2.0" });
 
       let compressedData = zlib.gzipSync(JSON.stringify({
         male: maleCount,
@@ -175,9 +175,9 @@ class Controller {
     try {
       let data = url.parse(req.url, true).query;
       let query = { CNTSCHID: data["institutionID"], ST004D01T: "1.0" }
-      let maleCount = await db.count(query)
+      let maleCount = await DataAccessObject.count(query)
       query = { CNTSCHID: data["institutionID"], ST004D01T: "2.0" }
-      let femaleCount = await db.count(query)
+      let femaleCount = await DataAccessObject.count(query)
 
       let compressedData = zlib.gzipSync(JSON.stringify({
         male: maleCount,
@@ -198,7 +198,7 @@ class Controller {
     try {
       let data = url.parse(req.url, true).query;
       let query = {}
-      let answers = await db.distinct(data.questionId);
+      let answers = await DataAccessObject.distinct(data.questionId);
       let index = answers.indexOf('');
 
       if (index > -1) {
@@ -211,7 +211,7 @@ class Controller {
       let results = {}
       for (index in answers) {
         query[data.questionId] = answers[index];
-        results[answers[index]] = await db.count(query);
+        results[answers[index]] = await DataAccessObject.count(query);
       }
 
       let compressedData = zlib.gzipSync(JSON.stringify({
@@ -249,9 +249,9 @@ class Controller {
         projection["_id"] = false;
         projection["Country"] = false;
       }
-      let romania_result = await db.findOne(query, projection, "worldwide_ranking");
+      let romania_result = await DataAccessObject.findOne(query, projection, "worldwide_ranking");
       query["Country"] = data.country;
-      let second_country_result = await db.findOne(query, projection, "worldwide_ranking");
+      let second_country_result = await DataAccessObject.findOne(query, projection, "worldwide_ranking");
 
       let compressedData = zlib.gzipSync(JSON.stringify({
         romania_result: romania_result,
@@ -273,7 +273,7 @@ class Controller {
       let data = url.parse(req.url, true).query;
       let query = {}
 
-      let answers = await db.distinct(data.questionId);
+      let answers = await DataAccessObject.distinct(data.questionId);
       let index = answers.indexOf('');
       if (index > -1) {
         answers.splice(index, 1);
@@ -283,7 +283,7 @@ class Controller {
       let results = {}
       for (index in answers) {
         query[data.questionId] = answers[index];
-        results[answers[index]] = await db.count(query);
+        results[answers[index]] = await DataAccessObject.count(query);
       }
 
       let compressedData = zlib.gzipSync(JSON.stringify({
@@ -305,7 +305,7 @@ class Controller {
       let data = url.parse(req.url, true).query;
       let query = {}
 
-      let answers = await db.distinct(data.questionId);
+      let answers = await DataAccessObject.distinct(data.questionId);
       let index = answers.indexOf('');
       if (index > -1) {
         answers.splice(index, 1);
@@ -318,10 +318,10 @@ class Controller {
       for (index in answers) {
         query['CNTSCHID'] = data.institution1
         query[data.questionId] = answers[index];
-        resultsInstitution1[answers[index]] = await db.count(query);
+        resultsInstitution1[answers[index]] = await DataAccessObject.count(query);
         query['CNTSCHID'] = data.institution2
         query[data.questionId] = answers[index];
-        resultsInstitution2[answers[index]] = await db.count(query);
+        resultsInstitution2[answers[index]] = await DataAccessObject.count(query);
       }
 
       let compressedData = zlib.gzipSync(JSON.stringify({
@@ -409,7 +409,7 @@ class Controller {
           subject: `Contact-Us Customer Email - ${data["EmailAddress"]}`,
           text: `New email from ${data["FirstName"]} ${data["LastName"]} (${data["EmailAddress"]}):\n${data["EmailContent"]}`
         };
-        var status = await db.insert({ FirstName: data["FirstName"], LastName: data["LastName"], EmailAddress: data["EmailAddress"], Content: data["EmailContent"] }, "user_details")
+        var status = await DataAccessObject.insert({ FirstName: data["FirstName"], LastName: data["LastName"], EmailAddress: data["EmailAddress"], Content: data["EmailContent"] }, "user_details")
         await transporter.sendMail(mailOptions, function(error, info) {
           if (error) {
             console.log(error);
