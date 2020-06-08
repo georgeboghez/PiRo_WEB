@@ -79,21 +79,6 @@ function getJS(req, res) {
   }
 }
 
-function getCertFile(req, res) {
-  try {
-    let text = fs.readFileSync('.well-known/pki-validation/89B565434212E33309ED41DC8C40B06C.txt')
-    // let compressedData = zlib.gzipSync(js);
-
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.write(text)
-  } catch (e) {
-    console.log(e)
-    res.statusCode = 500
-    res.setHeader('Content-Type', 'text/html')
-    res.write('Internal server error')
-  }
-}
-
 function get404Page(req, res) {
   try {
     let html = fs.readFileSync('./views/404.html')
@@ -109,4 +94,4 @@ function get404Page(req, res) {
   }
 }
 
-module.exports = { getIndexHTML, getCSS, getSVG, getJS, getPNG, getCertFile, get404Page }
+module.exports = { getIndexHTML, getCSS, getSVG, getJS, getPNG, get404Page }

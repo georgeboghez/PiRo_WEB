@@ -28,7 +28,7 @@ function submitForm() {
   var captcha_text = document.getElementById("captcha-text").value;
 
   var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function() { // Call a function when the state changes.
+  xhr.onreadystatechange = function() {
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
       let email_warning_div = document.getElementById("email-warning")
       email_warning_div.innerHTML = this.responseText
