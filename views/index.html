@@ -78,8 +78,8 @@
         A platform for visualizing statistics about the <a href="https://www.oecd.org/pisa/" aria-label="pisaLink">PISA</a> results from Romania.
       </p>
       <div class="summary-container">
-        <div class="summary-card">
-          <a class="itemLink" href="" aria-label="itemLink">
+        <div class="summary-card" onclick="goToStatisticsQuestions()">
+          <a class="itemLink">
             <img id="questionmark-img" alt="Question-mark">
             <p class="summary-item-title">
               Questions
@@ -87,16 +87,11 @@
             <p class="summary-item-subtitle">
               Specific Questions
             </p>
-            <ul class="summary-item-statisticsList">
-              <li> Statistic no. 1 </li>
-              <li> Statistic no. 2 </li>
-              <li> Statistic no. 3 </li>
-            </ul>
             <button class="button card-button">Learn More</button>
           </a>
         </div>
-        <div class="summary-card">
-          <a class="itemLink" href="" aria-label="itemLink">
+        <div class="summary-card" onclick="goToStatistics('China(Beijing,Shanghai,Jiangsu,Zhejiang)')">
+          <a class="itemLink">
             <img id="worldmap-img" alt="World Map">
             <p class="summary-item-title">
               International
@@ -104,16 +99,11 @@
             <p class="summary-item-subtitle">
               Comparison
             </p>
-            <ul class="summary-item-statisticsList">
-              <li> Statistic no. 1 </li>
-              <li> Statistic no. 2 </li>
-              <li> Statistic no. 3 </li>
-            </ul>
             <button class="button card-button">Learn More</button>
           </a>
         </div>
-        <div class="summary-card">
-          <a class="itemLink" href="" aria-label="itemLink">
+        <div class="summary-card" onclick="goToStatisticsInsitutional()">
+          <a class="itemLink">
             <img id="institution-img" alt="Institution">
             <p class="summary-item-title">
               Institutional
@@ -121,11 +111,6 @@
             <p class="summary-item-subtitle">
               Institutional Statistics
             </p>
-            <ul class="summary-item-statisticsList">
-              <li> Statistic no. 1 </li>
-              <li> Statistic no. 2 </li>
-              <li> Statistic no. 3 </li>
-            </ul>
             <button class="button card-button">Learn More</button>
           </a>
         </div>
@@ -138,11 +123,6 @@
             <p class="summary-item-subtitle">
               Random Statistics
             </p>
-            <ul class="summary-item-statisticsList">
-              <li> Statistic no. 1 </li>
-              <li> Statistic no. 2 </li>
-              <li> Statistic no. 3 </li>
-            </ul>
             <button class="button card-button">Learn More</button>
           </a>
         </div>

@@ -172,7 +172,12 @@ const QUESTIONS_SCIENCE = {
 
 var csvData = "empty";
 
+var keys = ``
+var answers = ``
 var label_array = []
+var series_array = []
+var series_array2 = []
+var index = 0
 
 var statistics_type_dropdown = `
   <label for="type">Statistics Type</label>
@@ -335,11 +340,11 @@ function pickCategory() {
 }
 
 function pickQuestion() {
-  var questionDropdown = document.getElementById("pick-question");
-  var selectedQuestionId = questionDropdown.options[questionDropdown.selectedIndex].value;
-  var selectedQuestion = questionDropdown.options[questionDropdown.selectedIndex].text;
+  let questionDropdown = document.getElementById("pick-question");
+  let selectedQuestionId = questionDropdown.options[questionDropdown.selectedIndex].value;
+  let selectedQuestion = questionDropdown.options[questionDropdown.selectedIndex].text;
 
-  var question_selected = current_container_html.replace(`value="${selectedQuestionId}"`, `value="${selectedQuestionId}" selected`)
+  let question_selected = current_container_html.replace(`value="${selectedQuestionId}"`, `value="${selectedQuestionId}" selected`)
   if (selectedQuestionId != 'select-question') {
     question_selected += generate_button.replace(`onclick=""`, `onclick="generateByQuestion('${selectedQuestionId}', '${selectedQuestion}')"`)
   }
@@ -352,15 +357,17 @@ function generateByQuestion(questionId, question) {
     return;
   }
 
+
+
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("stats-chart").innerHTML = ''
       resultData = JSON.parse(this.responseText).results
 
-      var keys = ``
-      var answers = ``
-      var series_array = []
+      keys = ``
+      answers = ``
+      series_array = []
       label_array = []
 
       for (var key in resultData) {
@@ -619,11 +626,11 @@ function generateComparisonChart(institution1, institution2, questionId, questio
       document.getElementById("stats-chart").innerHTML = ''
       resultData = JSON.parse(this.responseText)
 
-      var keys = ``
-      var answers = ``
+      keys = ``
+      answers = ``
       var answers2 = ``
-      var series_array = []
-      var series_array2 = []
+      series_array = []
+      series_array2 = []
       label_array = []
 
       for (var key in resultData.resultsInstitution1) {
@@ -674,9 +681,9 @@ function generateInstitutionQuestionChart(institution, questionId, question) {
       document.getElementById("stats-chart").innerHTML = ''
       resultData = JSON.parse(this.responseText).results
 
-      var keys = ``
-      var answers = ``
-      var series_array = []
+      keys = ``
+      answers = ``
+      series_array = []
       label_array = []
 
       for (var key in resultData) {
@@ -693,10 +700,13 @@ function generateInstitutionQuestionChart(institution, questionId, question) {
       var sum = function(a, b) {
         return a + b
       };
-      var index = 0;
+      index = 0;
       var chart = new Chartist.Pie('.ct-chart', data, {
         labelInterpolationFnc: function(value) {
-          return Math.round(value / data.series.reduce(sum) * 100) + '% - ' + label_array[index++];
+          let x = Math.round(value / data.series.reduce(sum) * 100) + '% - ' + label_array[index++];
+          if(index >= label_array.length)
+            index = 0
+          return x
         }
       });
       document.getElementById("chart-title").innerHTML = `"${question}" Asked in institution ${institution}`;

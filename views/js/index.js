@@ -116,6 +116,22 @@ function goToStatisticsRandom() {
   // location.href = "custom-statistics"
 }
 
+function goToStatisticsInsitutional() {
+  testwindow = window.open("custom-statistics");
+  testwindow.addEventListener('load', function(){
+    testwindow.generateGenderGraph("6.4200029E7");
+  });
+  // location.href = "custom-statistics"
+}
+
+function goToStatisticsQuestions() {
+  testwindow = window.open("custom-statistics");
+  testwindow.addEventListener('load', function(){
+    testwindow.generateByQuestion("ST013Q01TA", "How many books are there in your home?");
+  });
+  // location.href = "custom-statistics"
+}
+
 function showContent() {
   document.getElementById("dropdown-countries").classList.toggle("show");
 }
