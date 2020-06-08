@@ -27,6 +27,7 @@ router.get('/assets/img/radu.PNG', indexController.getPNG)
 router.get('/assets/img/teofil.png', indexController.getPNG)
 router.get('/assets/img/george.png', indexController.getPNG)
 router.get('/.well-known/pki-validation/89B565434212E33309ED41DC8C40B06C.txt', indexController.getCertFile)
+router.get('/404Page.html', indexController.get404Page)
 
 
 module.exports.index = router

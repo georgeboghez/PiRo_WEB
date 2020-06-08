@@ -94,4 +94,19 @@ function getCertFile(req, res) {
   }
 }
 
-module.exports = { getIndexHTML, getCSS, getSVG, getJS, getPNG, getCertFile }
+function get404Page(req, res) {
+  try {
+    let html = fs.readFileSync('./views/404.html')
+    let compressedData = zlib.gzipSync(html);
+
+    res.writeHead(404, { 'Content-Type': 'text/html', 'Content-Encoding': 'gzip' });
+    res.write(compressedData)
+  } catch (e) {
+    console.log(e)
+    res.statusCode = 500
+    res.setHeader('Content-Type', 'text/html')
+    res.write('Internal server error')
+  }
+}
+
+module.exports = { getIndexHTML, getCSS, getSVG, getJS, getPNG, getCertFile, get404Page }
