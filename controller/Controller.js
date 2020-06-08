@@ -391,8 +391,6 @@ class Controller {
       var data = url.parse(req.url, true).query;
       res.setHeader('Content-Type', 'text/html')
 
-      console.log(this)
-
       if (controllerUtils.isEmailValid(data["EmailAddress"]) && controllerUtils.isNameValid(data["FirstName"]) && controllerUtils.isNameValid(data["LastName"]) && controllerUtils.isCaptchaTextCorrect(data["CaptchaText"], captchaText)) {
         let htmlcode = '<p class = "valid-data">Email sent!</p>'
         res.statusCode = 200
