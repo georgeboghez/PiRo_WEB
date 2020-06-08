@@ -10,12 +10,6 @@ window.onclick = function(event) {
       }
     }
   }
-  if (!event.target.matches('#country-input')) {
-    var countries = document.getElementById("dropdown-countries")
-    if (countries.classList.contains('show')) {
-      countries.classList.remove('show');
-    }
-  }
 }
 
 function showDropdown() {
