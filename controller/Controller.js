@@ -47,7 +47,7 @@ class Controller {
       let css = fs.readFileSync('./views' + req.url)
       let compressedData = zlib.gzipSync(css);
 
-      res.writeHead(200, { 'Content-Type': 'text/css', 'Content-Encoding': 'gzip' });
+      res.writeHead(200, { 'Content-Type': 'text/css', 'Content-Encoding': 'gzip', 'Cache-Control': 'public, max-age=31557600' });
       res.write(compressedData)
     } catch (e) {
       console.log(e)
@@ -62,7 +62,7 @@ class Controller {
       let svg = fs.readFileSync('views' + req.url)
       let compressedData = zlib.gzipSync(svg);
 
-      res.writeHead(200, { 'Content-Type': 'image/svg+xml', 'Content-Encoding': 'gzip' });
+      res.writeHead(200, { 'Content-Type': 'image/svg+xml', 'Content-Encoding': 'gzip', 'Cache-Control': 'public, max-age=31557600' });
       res.write(compressedData)
     } catch (e) {
       console.log(e)
@@ -92,7 +92,7 @@ class Controller {
       let js = fs.readFileSync('views' + req.url)
       let compressedData = zlib.gzipSync(js);
 
-      res.writeHead(200, { 'Content-Type': 'text/javascript', 'Content-Encoding': 'gzip' });
+      res.writeHead(200, { 'Content-Type': 'text/javascript', 'Content-Encoding': 'gzip', 'Cache-Control': 'public, max-age=31557600' });
       res.write(compressedData)
     } catch (e) {
       console.log(e)
@@ -376,7 +376,7 @@ class Controller {
       let gif = fs.readFileSync('views' + req.url)
       let compressedData = zlib.gzipSync(gif);
 
-      res.writeHead(200, { 'Content-Type': 'image/gif', 'Content-Encoding': 'gzip' });
+      res.writeHead(200, { 'Content-Type': 'image/gif', 'Content-Encoding': 'gzip', 'Cache-Control': 'public, max-age=31557600' });
       res.write(compressedData)
     } catch (e) {
       console.log(e)
