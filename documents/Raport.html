@@ -10,104 +10,126 @@
 </head>
 
 <body>
-  <article>
-    <header>
-      <p class="title">PiRo Scholarly HTML</p>
-      <p class="subtitle">Statistici PiSa 2018 Romania</p>
-    </header>
+  <header>
+    <p class="title">PiRo Scholarly HTML</p>
+    <p class="subtitle">Statistici PiSa 2018 Romania</p>
+  </header>
+  <article typeof="schema:ScholarlyArticle" resource = "#">
+    <h1>Raport PiRo Web</h1>
     <section>
       <h2>Membrii Echipei</h2>
       <ol>
-        <li>
-          <span property="schema:author">George Boghez</span>
-        </li>
-        <li>
-          <span property="schema:author">Teofil Tanase</span>
-        </li>
-        <li>
-          <span property="schema:author">Radu Placinta</span>
-        </li>
-      </ol>
+    <li property="schema:author" typeof="sa:ContributorRole">
+      <a property="schema:author" href="https://github.com/georgeboghez/" typeof="schema:Person">
+        <span property="schema:givenName">George-Valentin</span>
+        <span property="schema:familyName">Boghez</span>
+      </a>
+      <a href="#computerscience" property="sa:roleAffiliation" resource="https://www.info.uaic.ro/"></a>
+      <sup property="sa:roleContactPoint" typeof="schema:ContactPoint">
+        <a property="schema:email" href="mailto:george.boghez@info.uaic.ro" title="corresponding author">✉</a>
+      </sup>
+    </li>
+    <li property="schema:author" typeof="sa:ContributorRole">
+      <a property="schema:author" href="https://github.com/radup99/" typeof="schema:Person">
+        <span property="schema:givenName">Radu</span>
+        <span property="schema:familyName">Plăcintă</span>
+      </a>
+      <a href="#computerscience" property="sa:roleAffiliation" resource="https://www.info.uaic.ro/"></a>
+      <sup property="sa:roleContactPoint" typeof="schema:ContactPoint">
+        <a property="schema:email" href="mailto:radu.placinta@info.uaic.ro" title="corresponding author">✉</a>
+      </sup>
+    </li>
+    <li property="schema:author" typeof="sa:ContributorRole">
+      <a property="schema:author" href="https://github.com/TanaseTeofil" typeof="schema:Person">
+        <span property="schema:givenName">Teofil</span>
+        <span property="schema:familyName">Tănase</span>
+      </a>
+      <a href="#computerscience" property="sa:roleAffiliation" resource="https://www.info.uaic.ro/"></a>
+      <sup property="sa:roleContactPoint" typeof="schema:ContactPoint">
+        <a property="schema:email" href="mailto:teofil.tanase@info.uaic.ro" title="corresponding author">✉</a>
+      </sup>
+    </li>
+  </ol>
     </section>
-    <section>
+    <section typeof ="sa:Abstract">
       <h2>Abstract</h2>
       <p>
         Pe baza unui API REST/GraphQL propriu, sa se implementeze o aplicatie Web de vizualizare flexibila a datelor referitoare la rezultatele obtinute de elevii romani la testul Pisa 2018. Statisticile si vizualizarile generate – minim 3 maniere – vor putea fi exportate in formatele CSV, PNG si SVG. Sistemul va oferi suport si pentru cautarea/filtrarea multi-criteriala a datelor, inclusiv comparatii cu alte tari – a se utiliza Education Statistics.
       </p>
     </section>
-    <section>
+    <section typeof ="sa:Abstract">
       <h2>Introducere</h2>
       <p>
         Aplicația constituie un liant între utilizator și rezultatele testului PiSa 2018 din Romania, facilitând modul de vizualizare al acestora prin dispunerea conținutul sub forma de grafice atât în vederea analizării, cât și a comparării datelor. Astfel, vor fi regăsite informații referitoare la modul în care participanții s-au descurcat în cadrul examinării PiSa, datele fiind structurate pe țări și instituții de învățământ în scopul comparării acestora de către utilizator.
       </p>
     </section>
-    <section>
+    <section typeof ="sa:Abstract">
       <h2>Structura</h2>
       <p>
         Paginile aplicației sunt: Main Page - o prezentare generală a conținutului aplicației -, Statistics Page - pagina unde se pot vizualiza statisticile -, Contact Page - pagina de explicații, întrebări și de contact suport -.
       </p>
-      <section>
+      <section typeof ="sa:Results">
         <h3>Main Page</h3>
         <p>
           Utilizatorul poate observa o prezentare generală a paginilor și, de asemenea, poate accesa conținutul altor pagini dat prin referințe atribuite anumitor elemente din pagina curentă.
         </p>
         <p>Desktop Screenshots</p>
         <div class="screenshots">
-          <img class="desktop" src="./assets/MainPage1.png">
-          <img class="desktop" src="./assets/MainPage2.png">
-          <img class="desktop" src="./assets/MainPage3.png">
+          <img typeof = "sa:Image" class="desktop" src="./assets/MainPage1.png">
+          <img typeof = "sa:Image" class="desktop" src="./assets/MainPage2.png">
+          <img typeof = "sa:Image" class="desktop" src="./assets/MainPage3.png">
         </div>
         <p>Mobile Screenshots</p>
         <div class="screenshots">
-          <img class="mobile" src="./assets/MainPageMobile1.png">
-          <img class="mobile" src="./assets/MainPageMobile2.png">
-          <img class="mobile" src="./assets/MainPageMobile3.png">
+          <img typeof = "sa:Image" class="mobile" src="./assets/MainPageMobile1.png">
+          <img typeof = "sa:Image" class="mobile" src="./assets/MainPageMobile2.png">
+          <img typeof = "sa:Image" class="mobile" src="./assets/MainPageMobile3.png">
         </div>
       </section>
-      <section>
+      <section typeof ="sa:Results">
         <h3>Statistics Page</h3>
         <p>
           Utilizatorul poate alege o optiune din cadrul select-box-urilor si apoi va putea apasa pe butonul de generare pentru a crea graficul.
         </p>
         <p>Desktop Screenshots</p>
         <div class="screenshots">
-          <img class="desktop" src="./assets/StatisticsPage1.png">
-          <img class="desktop" src="./assets/StatisticsPage2.png">
-          <img class="desktop" src="./assets/StatisticsPage3.png">
+          <img typeof = "sa:Image" class="desktop" src="./assets/StatisticsPage1.png">
+          <img typeof = "sa:Image" class="desktop" src="./assets/StatisticsPage2.png">
+          <img typeof = "sa:Image" class="desktop" src="./assets/StatisticsPage3.png">
         </div>
         <p>Mobile Screenshots</p>
         <div class="screenshots">
-          <img class="mobile" src="./assets/StatisticsPageMobile1.png">
-          <img class="mobile" src="./assets/StatisticsPageMobile2.png">
-          <img class="mobile" src="./assets/StatisticsPageMobile3.png">
+          <img typeof = "sa:Image" class="mobile" src="./assets/StatisticsPageMobile1.png">
+          <img typeof = "sa:Image" class="mobile" src="./assets/StatisticsPageMobile2.png">
+          <img typeof = "sa:Image" class="mobile" src="./assets/StatisticsPageMobile3.png">
         </div>
       </section>
-      <section>
+      <section typeof ="sa:Results">
         <h3>Contact Page</h3>
         <p>
           Utilizatorul poate afla răspunsul întrebărilor adresate frecvent, poate fi redirecționat pe paginile aferente programului "PiSa" prin accesarea link-urilor din pagina sau poate contacta suportul în urma completării formularului din josul paginii, ceea ce necesită și rezolvarea unui captcha.
         </p>
         <p>Desktop Screenshots</p>
         <div class="screenshots">
-          <img class="desktop" src="./assets/ContactPage1.png">
-          <img class="desktop" src="./assets/ContactPage2.png">
-          <img class="desktop" src="./assets/ContactPage3.png">
+          <img typeof = "sa:Image" class="desktop" src="./assets/ContactPage1.png">
+          <img typeof = "sa:Image" class="desktop" src="./assets/ContactPage2.png">
+          <img typeof = "sa:Image" class="desktop" src="./assets/ContactPage3.png">
         </div>
         <p>Mobile Screenshots</p>
         <div class="screenshots">
-          <img class="mobile" src="./assets/ContactPageMobile1.png">
-          <img class="mobile" src="./assets/ContactPageMobile2.png">
-          <img class="mobile" src="./assets/ContactPageMobile3.png">
+          <img typeof = "sa:Image" class="mobile" src="./assets/ContactPageMobile1.png">
+          <img typeof = "sa:Image" class="mobile" src="./assets/ContactPageMobile2.png">
+          <img typeof = "sa:Image" class="mobile" src="./assets/ContactPageMobile3.png">
         </div>
       </section>
-      <section>
+      <section typeof = "sa:MaterialsAndMethods">
         <h3>Arhitectura Aplicației</h3>
         <ul>
           <li> <a href="https://app.creately.com/diagram/3aEe0r92N4g/edit">Diagrama UML a claselor</a> </li>
           <li> <a href="https://app.creately.com/diagram/NhBxeMHr41E/edit">Diagrama structurii aplicatiei</a> </li>
         </ul>
       </section>
-      <section>
+      <section typeof = "sa:Abstract">
         <h3>Flow-ul Aplicatiei</h3>
         <ol>
           <li>Pe pagina principală, utilizatorul va accesa una dintre paginile Statistics sau Contact prin intermediul referințelor din pagină atribuite anumitor elemente sau va alege una dintre opțiunile "Statistics" sau "Contact" din bara de navigare.</li>
@@ -130,7 +152,7 @@
           </li>
         </ol>
       </section>
-      <section>
+      <section typeof="schema:SoftwareSourceCode">
         <h2>Code Snippets</h2>
         <p>
           Generarea unuia dintre grafice
@@ -180,7 +202,7 @@ function generateByQuestion(questionId, question) {
   xhttp.send();
 }
                   </code></pre>
-        
+
         <p>
           Post request pentru trimiterea datelor către back-end:
         </p>
@@ -205,7 +227,7 @@ function submitForm() {
 }
                       </code>
                   </pre>
-        
+
         <p>
           Validarae, stocarea în baza de date a informațiilor din formular, cât și trimiterea email-ului către adresa suportului
         </p>
@@ -275,7 +297,7 @@ async function sendMailtoFront(req, res) {
 }
                         </code>
                     </pre>
-        
+
         <p>
           Trimiterea datelor ca response al reqest-ului
         </p>
@@ -300,7 +322,7 @@ async function getInstitutions(req, res) {
 }
                         </code>
                     </pre>
-        
+
         <p>
           Preluarea unor date din baza de date
         </p>
@@ -321,7 +343,7 @@ distinct: async (field) => {
 }
                         </code>
                     </pre>
-        
+
         <p>
           Descărcarea fișierului .svg
         </p>
@@ -340,7 +362,7 @@ function downloadSVG() {
 }
                         </code>
                     </pre>
-        
+
         <p>Preluarea svg-ului creat prin intermediul bibliotecii chartist</p>
         <pre>
                         <code>
@@ -366,6 +388,47 @@ function getSVG() {
                     </pre>
       </section>
       <section>
+        <h2>Individual Work</h2>
+        <h3>George-Valentin Boghez</h3>
+        <ol>
+          <li>Frontend for Main Page, header/navbar</li>
+          <li>Web Server functionality</li>
+          <li>Async functions handling</li>
+          <li>Data access object</li>
+          <li>Heroku hosting and database addon</li>
+          <li>Data encoding</li>
+          <li>Cache-Control - HTTP</li>
+          <li>Chart export methods: export chart in SVG format</li>
+          <li>Chart creation for International and Random functionalities; pie charts</li>
+          <li>Error solving and protection improvements</li>
+          <li>CRUD/HTTP methods handling</li>
+          <li>Created routes in order to properly responded to requests</li>
+        </ol>
+        <h3>Radu Plăcintă</h3>
+        <ol>
+          <li>Frontend for Statistics Page, footer</li>
+          <li>Chart export methods: export chart in CSV and PNG formats</li>
+          <li>Chart creation method using chartist</li>
+          <li>Chart creation for Specific Questions</li>
+          <li>Async functions handling</li>
+          <li>Error solving and protection improvements</li>
+          <li>Added browser alerts for error handling</li>
+          <li>Created routes in order to properly responded to requests</li>
+        </ol>
+        <h3>Tănase Teofil</h3>
+        <ol>
+          <li>Frontend for Contact page</li>
+          <li>Chart creation for Institutional dropdown</li>
+          <li>Post route handling</li>
+          <li>Contact method: send email from page to designated email adress</li>
+          <li>Validation through regex for input in email form</li>
+          <li>Captcha method for email form</li>
+          <li>Async functions handling</li>
+          <li>Error solving and protection improvements</li>
+          <li>Created routes in order to properly responded to requests</li>
+        </ol>
+      </section>
+      <section typeof = "sa:RefrenceList">
         <h2>Referinte</h2>
         <ul>
           <li>

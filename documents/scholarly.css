@@ -31,14 +31,17 @@ article {
     max-width: 1200px;
 }
 
-h1,
 h2,
 h3,
 h4 {
     font-weight: 700;
     margin-bottom: 1em;
 }
-
+h1 {
+  font-weight: 700;
+  font-size:36px;
+  margin-bottom: 1em;
+}
 .desktop {
     width: 300px;
 }

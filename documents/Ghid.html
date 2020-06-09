@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>PiRo Scholarly HTML</title>
+  <link rel="stylesheet" href="scholarly.css">
+</head>
+
+<body>
+  <header>
+    <p class="title">PiRo Scholarly HTML</p>
+    <p class="subtitle">Statistici PiSa 2018 Romania</p>
+  </header>
+  <article typeof="schema:ScholarlyArticle" resource = "#">
+    <h1>Raport PiRo Web</h1>
+    <section>
+      <h2>Membrii Echipei</h2>
+      <ol>
+    <li property="schema:author" typeof="sa:ContributorRole">
+      <a property="schema:author" href="https://github.com/georgeboghez/" typeof="schema:Person">
+        <span property="schema:givenName">George-Valentin</span>
+        <span property="schema:familyName">Boghez</span>
+      </a>
+      <a href="#computerscience" property="sa:roleAffiliation" resource="https://www.info.uaic.ro/"></a>
+      <sup property="sa:roleContactPoint" typeof="schema:ContactPoint">
+        <a property="schema:email" href="mailto:george.boghez@info.uaic.ro" title="corresponding author">✉</a>
+      </sup>
+    </li>
+    <li property="schema:author" typeof="sa:ContributorRole">
+      <a property="schema:author" href="https://github.com/radup99/" typeof="schema:Person">
+        <span property="schema:givenName">Radu</span>
+        <span property="schema:familyName">Plăcintă</span>
+      </a>
+      <a href="#computerscience" property="sa:roleAffiliation" resource="https://www.info.uaic.ro/"></a>
+      <sup property="sa:roleContactPoint" typeof="schema:ContactPoint">
+        <a property="schema:email" href="mailto:radu.placinta@info.uaic.ro" title="corresponding author">✉</a>
+      </sup>
+    </li>
+    <li property="schema:author" typeof="sa:ContributorRole">
+      <a property="schema:author" href="https://github.com/TanaseTeofil" typeof="schema:Person">
+        <span property="schema:givenName">Teofil</span>
+        <span property="schema:familyName">Tănase</span>
+      </a>
+      <a href="#computerscience" property="sa:roleAffiliation" resource="https://www.info.uaic.ro/"></a>
+      <sup property="sa:roleContactPoint" typeof="schema:ContactPoint">
+        <a property="schema:email" href="mailto:teofil.tanase@info.uaic.ro" title="corresponding author">✉</a>
+      </sup>
+    </li>
+  </ol>
+      <section typeof = "sa:Abstract">
+        <h2>Flow-ul Aplicatiei</h2>
+        <ol>
+          <li>Pe pagina principală, utilizatorul va accesa una dintre paginile Statistics sau Contact prin intermediul referințelor din pagină atribuite anumitor elemente sau va alege una dintre opțiunile "Statistics" sau "Contact" din bara de navigare.</li>
+          <li>Pe pagina de statistici, va putea
+            <ul>
+              <li>genera diverse grafice utilizând select-box-urile și apăsând butonul "Generate"</li>
+              <li>exporta graficele create într-unul dintre formatele dorite - SVG, CSV sau PNG - apăsând pe butonul aferent</li>
+              <li>reveni pe pagina principală apăsând pe logo-ul/denumirea paginii din header-ul paginii</li>
+              <li>fi redirecționat pe pagina de contact accesând opțiunea "Contact" din bara de navigare</li>
+            </ul>
+          </li>
+          <li>Pe pagina de contact, va putea
+            <ul>
+              <li>vizualiza răspunsurile întrebărilor adresate frecvent</li>
+              <li>fi redirecționat pe paginile aferente programului PiSa</li>
+              <li>contacta suportul în urma completării formularului</li>
+              <li>reveni pe pagina principală apăsând pe logo-ul/denumirea paginii din header-ul paginii</li>
+              <li>fi redirecționat pe pagina de statistici accesând opțiunea "Statistics" din bara de navigare</li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+  </article>
+  <footer>
+    <p>
+      PiRo 2020
+    </p>
+  </footer>
+</body>
+
+</html>
