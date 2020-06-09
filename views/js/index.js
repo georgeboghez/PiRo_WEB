@@ -202,7 +202,6 @@ function loadPng(png_name, container_id) {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       let img = document.getElementById(container_id);
-      console.log(btoa(unescape(encodeURIComponent(this.responseText))))
       img.setAttribute("src", "data:image/png;base64," + btoa(unescape(encodeURIComponent(this.responseText))));
     }
   };

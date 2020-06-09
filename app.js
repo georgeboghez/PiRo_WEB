@@ -22,5 +22,3 @@ console.log(router)
 
 const app = new WebApp(router)
 app.listen(process.env.PORT || constants.port)
-
-console.log()
