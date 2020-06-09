@@ -14,7 +14,7 @@ class Controller {
 
   getHTML(req, res) {
     try {
-      let indexHTML = fs.readFileSync('./views' + req.url)
+      let indexHTML = fs.readFileSync('./views' + req.url.split('?')[0])
       let compressedData = zlib.gzipSync(indexHTML);
 
       res.writeHead(200, { 'Content-Type': 'text/html', 'Content-Encoding': 'gzip' });
@@ -44,7 +44,7 @@ class Controller {
 
   getCSS(req, res) {
     try {
-      let css = fs.readFileSync('./views' + req.url)
+      let css = fs.readFileSync('./views' + req.url.split('?')[0])
       let compressedData = zlib.gzipSync(css);
 
       res.writeHead(200, { 'Content-Type': 'text/css', 'Content-Encoding': 'gzip', 'Cache-Control': 'public, max-age=31557600' });
@@ -59,7 +59,7 @@ class Controller {
 
   getSVG(req, res) {
     try {
-      let svg = fs.readFileSync('views' + req.url)
+      let svg = fs.readFileSync('views' + req.url.split('?')[0])
       let compressedData = zlib.gzipSync(svg);
 
       res.writeHead(200, { 'Content-Type': 'image/svg+xml', 'Content-Encoding': 'gzip', 'Cache-Control': 'public, max-age=31557600' });
@@ -74,7 +74,7 @@ class Controller {
 
   getPNG(req, res) {
     try {
-      let png = fs.readFileSync('views' + req.url)
+      let png = fs.readFileSync('views' + req.url.split('?')[0])
       let compressedData = zlib.gzipSync(png);
 
       res.writeHead(200, { 'Content-Type': 'image/png', 'Content-Encoding': 'gzip' });
@@ -89,7 +89,7 @@ class Controller {
 
   getJS(req, res) {
     try {
-      let js = fs.readFileSync('views' + req.url)
+      let js = fs.readFileSync('views' + req.url.split('?')[0])
       let compressedData = zlib.gzipSync(js);
 
       res.writeHead(200, { 'Content-Type': 'text/javascript', 'Content-Encoding': 'gzip', 'Cache-Control': 'public, max-age=31557600' });
@@ -373,7 +373,7 @@ class Controller {
 
   getGIF(req, res) {
     try {
-      let gif = fs.readFileSync('views' + req.url)
+      let gif = fs.readFileSync('views' + req.url.split('?')[0])
       let compressedData = zlib.gzipSync(gif);
 
       res.writeHead(200, { 'Content-Type': 'image/gif', 'Content-Encoding': 'gzip', 'Cache-Control': 'public, max-age=31557600' });
