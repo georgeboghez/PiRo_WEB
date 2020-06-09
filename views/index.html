@@ -35,41 +35,41 @@
     </nav>
   </header>
   <main>
-    <div class="description">
+    <section class="description">
       <h2 class="description-title">
         PISA Results from Romania
       </h2>
       <div class="description-container">
         <div class="description-card" onclick="goToStatistics('China(Beijing,Shanghai,Jiangsu,Zhejiang)')">
-          <a class="itemLink">
+          <div class="item">
             <div class="ct-chart ct-octave" id="stats-chart1">
             </div>
-            <p class="summary-item-subtitle">
+            <p class="item-subtitle">
               First 10 Countries Ranked by Score
             </p>
-          </a>
+          </div>
         </div>
         <div class="description-card" onclick="goToStatistics('Malaysia')">
-          <a class="itemLink">
+          <div class="item">
             <div class="ct-chart2 ct-octave" id="stats-chart2">
             </div>
-            <p class="summary-item-subtitle">
+            <p class="item-subtitle">
               Romania's Ranking
             </p>
-          </a>
+          </div>
         </div>
         <div class="description-card" onclick="goToStatistics('Dominican Republic')">
-          <a class="itemLink">
+          <div class="item">
             <div class="ct-chart3 ct-octave" id="stats-chart3">
             </div>
-            <p class="summary-item-subtitle">
+            <p class="item-subtitle">
               Last 10 Countries Ranked by Score
             </p>
-          </a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="summary">
+    </section>
+    <section class="summary">
       <h2 class="summary-title">
         What is PiRo?
       </h2>
@@ -77,56 +77,56 @@
         A platform for visualizing statistics about the <a href="https://www.oecd.org/pisa/" aria-label="pisaLink">PISA</a> results from Romania.
       </p>
       <div class="summary-container">
-        <div class="summary-card" onclick="goToStatisticsQuestions()">
-          <a class="itemLink">
+        <div class="section-card" onclick="goToStatisticsQuestions()">
+          <div class="item">
             <img id="questionmark-img" alt="Question-mark">
-            <p class="summary-item-title">
+            <p class="item-title">
               Questions
             </p>
-            <p class="summary-item-subtitle">
+            <p class="item-subtitle">
               Specific Questions
             </p>
             <button class="button card-button">Learn More</button>
-          </a>
+          </div>
         </div>
-        <div class="summary-card" onclick="goToStatistics('China(Beijing,Shanghai,Jiangsu,Zhejiang)')">
-          <a class="itemLink">
+        <div class="section-card" onclick="goToStatistics('China(Beijing,Shanghai,Jiangsu,Zhejiang)')">
+          <div class="item">
             <img id="worldmap-img" alt="World Map">
-            <p class="summary-item-title">
+            <p class="item-title">
               International
             </p>
-            <p class="summary-item-subtitle">
+            <p class="item-subtitle">
               Comparison
             </p>
             <button class="button card-button">Learn More</button>
-          </a>
+          </div>
         </div>
-        <div class="summary-card" onclick="goToStatisticsInsitutional()">
-          <a class="itemLink">
+        <div class="section-card" onclick="goToStatisticsInsitutional()">
+          <div class="item">
             <img id="institution-img" alt="Institution">
-            <p class="summary-item-title">
+            <p class="item-title">
               Institutional
             </p>
-            <p class="summary-item-subtitle">
+            <p class="item-subtitle">
               Institutional Statistics
             </p>
             <button class="button card-button">Learn More</button>
-          </a>
+          </div>
         </div>
-        <div class="summary-card" onclick="goToStatisticsRandom()">
-          <a class="itemLink">
+        <div class="section-card" onclick="goToStatisticsRandom()">
+          <div class="item">
             <img id="random-img" alt="Dice">
-            <p class="summary-item-title">
+            <p class="item-title">
               Random
             </p>
-            <p class="summary-item-subtitle">
+            <p class="item-subtitle">
               Random Statistics
             </p>
             <button class="button card-button">Learn More</button>
-          </a>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
     <div class="map-container">
       <h2>
         World Results
@@ -139,65 +139,65 @@
         </div>
       </div>
     </div>
-    <div class="contact">
+    <section class="contact">
       <h2 class="contact-title">Meet the Team</h2>
       <div class="contact-container">
-        <div class="summary-card">
-          <a class="itemLink" href="" aria-label="itemLink">
+        <div class="section-card">
+          <div class="item">
             <div class="img-container">
               <img id="george-img" src="/assets/img/george.png" alt="George's Profile Picture">
             </div>
-            <p class="summary-item-title">
+            <p class="item-title">
               George Boghez
             </p>
-            <p class="summary-item-subtitle">
+            <p class="item-subtitle">
               Student
             </p>
-            <ul class="summary-item-statisticsList">
+            <ul class="item-list">
               <li> Phone: 0720 000 000 </li>
               <li> Email: gvb@gmail.com </li>
             </ul>
-          </a>
+          </div>
         </div>
-        <div class="summary-card">
-          <a class="itemLink" href="" aria-label="itemLink">
+        <div class="section-card">
+          <div class="item">
             <div class="img-container">
               <img id="teofil-img" src="/assets/img/teofil.png" alt="Teofil's Profile Picture">
             </div>
-            <p class="summary-item-title">
+            <p class="item-title">
               Teofil T&#259;nase
             </p>
-            <p class="summary-item-subtitle">
+            <p class="item-subtitle">
               Student
             </p>
-            <ul class="summary-item-statisticsList">
+            <ul class="item-list">
               <li> Phone: 0721 111 111 </li>
               <li> Email: ttn@gmail.com </li>
             </ul>
-          </a>
+          </div>
         </div>
-        <div class="summary-card">
-          <a class="itemLink" href="" aria-label="itemLink">
+        <div class="section-card">
+          <div class="item">
             <div class="img-container">
               <img id="radu-img" src="/assets/img/radu.PNG" alt="Radu's Profile Picture">
             </div>
-            <p class="summary-item-title">
+            <p class="item-title">
               Radu Pl&#259;cint&#259;
             </p>
-            <p class="summary-item-subtitle">
+            <p class="item-subtitle">
               Student
             </p>
-            <ul class="summary-item-statisticsList">
+            <ul class="item-list">
               <li> Phone: 0722 222 222 </li>
               <li> Email: rpl@gmail.com </li>
             </ul>
-          </a>
+          </div>
         </div>
       </div>
       <div class="button-container">
         <a class="button card-button" href="/contact-us.html#contact-formular">Contact Us</a>
       </div>
-    </div>
+    </section>
   </main>
   <footer>
     <div class="footer-container">

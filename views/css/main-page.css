@@ -71,7 +71,7 @@
   width: 100%;
 }
 
-.summary-card {
+.section-card {
   cursor: pointer;
   display: block;
   background-color: #fff;
@@ -82,11 +82,15 @@
   padding: 12px;
 }
 
-.summary-card:hover {
+.section-card:hover {
   box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.2);
 }
 
-.itemLink {
+.contact .item {
+  cursor: default;
+}
+
+.item {
   display: flex;
   flex: 1 1 160px;
   flex-direction: column;
@@ -97,18 +101,18 @@
   padding: 12px;
 }
 
-.itemLink>img {
+.item>img {
   height: 100px;
 }
 
-.summary-item-title {
+.item-title {
   text-align: center;
   font-size: 36px;
   font-weight: bold;
   margin: 12px;
 }
 
-.summary-item-subtitle {
+.item-subtitle {
   display: flex;
   text-align: center;
   justify-content: center;
@@ -121,15 +125,14 @@
 }
 
 @media (-webkit-min-device-pixel-ratio: 0) {
-  .summary-item-subtitle {
+  .item-subtitle {
     display: -webkit-box;
     -webkit-line-clamp: 2;
-    /* number of lines to show */
     -webkit-box-orient: vertical;
   }
 }
 
-.summary-item-statisticsList {
+.item-list {
   list-style-type: circle;
   font-size: 18px;
   padding: 12px;
@@ -283,8 +286,8 @@
   position: absolute;
   background-color: #f6f6f6;
   min-width: 300px;
-  max-height:250px;/* you can change as you need it */
-  overflow:auto;/* to get scroll */
+  max-height:250px;
+  overflow:auto;
   border: 1px solid #ddd;
   z-index: 1;
   margin-top: 90px;
@@ -308,7 +311,11 @@
     height: calc(width * 0.5);
   }
 
-  .summary-card {
+  .contact {
+  min-height: 60vh;
+  }
+
+  .section-card {
     flex: 0 1 33%;
   }
 }
@@ -339,13 +346,19 @@
   }
 }
 
+@media (max-width: 700px) {
+  .item-list {
+    font-size: 12px;
+  }
+}
+
 @media (max-width: 600px) {
   .map-container svg {
     width: 100%;
     height: calc(width * 0.5);
   }
 
-  .summary-card {
+  .section-card {
     flex: 0 1 50%;
   }
 }
