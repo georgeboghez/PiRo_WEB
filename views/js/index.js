@@ -1,8 +1,6 @@
 function loadCharts() {
   var data = {
-    // A labels array that can contain any sort of values
     labels: ["CN (1)", "SG (2)", "MO (3)", "HK (4)", "EE (5)", "JP (6)", "KR (7)", "CA (8)", "TW (9)", "FI (10)"],
-    // Our series array that contains series objects or in this case series data arrays
     series: [
       [578.7, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 556.3, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -23,16 +21,10 @@ function loadCharts() {
     seriesBarDistance: 1
   };
 
-  // Create a new line chart object where as first parameter we pass in a selector
-  // that is resolving to our chart container element. The Second parameter
-  // is the actual data object.
   new Chartist.Bar('.ct-chart', data, options);
 
-  //This is the empty chart.
   data = {
-    // A labels array that can contain any sort of values
     labels: ["CY (45)", "CL (46)", "AE (47)", "MY (48)", "RO (49)", "BG (50)", "MD (51)", "UY (52)", "BN (53)", "ME (54)"],
-    // Our series array that contains series objects or in this case series data arrays
     series: [
       [438.0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 437.7, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -47,15 +39,10 @@ function loadCharts() {
     ]
   };
 
-  // Create a new line chart object where as first parameter we pass in a selector
-  // that is resolving to our chart container element. The Second parameter
-  // is the actual data object.
   new Chartist.Bar('.ct-chart2', data, options);
 
   data = {
-    // A labels array that can contain any sort of values
     labels: ["AR (68)", "GE (69)", "SA (70)", "ID (71)", "LB (72)", "MA (73)", "PA (74)", "XK (75)", "PH (76)", "DO (77)"],
-    // Our series array that contains series objects or in this case series data arrays
     series: [
       [395.0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 387.0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -70,9 +57,6 @@ function loadCharts() {
     ]
   };
 
-  // Create a new line chart object where as first parameter we pass in a selector
-  // that is resolving to our chart container element. The Second parameter
-  // is the actual data object.
   new Chartist.Bar('.ct-chart3', data, options);
 }
 
@@ -126,34 +110,30 @@ function loadSvg(svg_name, container_id) {
 
 function goToStatistics(id) {
   testwindow = window.open("custom-statistics");
-  testwindow.addEventListener('load', function(){
+  testwindow.addEventListener('load', function() {
     testwindow.generateCountryChart('score', id);
   });
-  // location.href = "custom-statistics"
 }
 
 function goToStatisticsRandom() {
   testwindow = window.open("custom-statistics");
-  testwindow.addEventListener('load', function(){
+  testwindow.addEventListener('load', function() {
     testwindow.randomStats();
   });
-  // location.href = "custom-statistics"
 }
 
 function goToStatisticsInsitutional() {
   testwindow = window.open("custom-statistics");
-  testwindow.addEventListener('load', function(){
+  testwindow.addEventListener('load', function() {
     testwindow.generateGenderGraph("6.4200029E7");
   });
-  // location.href = "custom-statistics"
 }
 
 function goToStatisticsQuestions() {
   testwindow = window.open("custom-statistics");
-  testwindow.addEventListener('load', function(){
+  testwindow.addEventListener('load', function() {
     testwindow.generateByQuestion("ST013Q01TA", "How many books are there in your home?");
   });
-  // location.href = "custom-statistics"
 }
 
 function showContent() {
@@ -186,15 +166,36 @@ function stopHovering(htmlOfElement) {
   document.getElementById(htmlOfElement).style.stroke = '#D89909'
 }
 
+function getCountries(cb) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      let data = JSON.parse(this.response)
+      if (!data.countries) {
+        cb(data, null)
+      } else {
+        cb(null, JSON.parse(this.response).countries)
+      }
+    }
+  };
+  xhttp.open("GET", `/get-all-countries`, true);
+  xhttp.send();
+}
+
 function loadDropdownCountries() {
   let countriesDropdownContent = document.getElementById("dropdown-countries")
-  const COUNTRIES = ["China(Beijing,Shanghai,Jiangsu,Zhejiang)", "Singapore", "Macao", "Hong Kong,China", "Estonia", "Japan", "South Korea", "Canada", "Taiwan", "Finland", "Poland", "Ireland", "Slovenia", "United Kingdom", "New Zealand", "Netherlands", "Sweden", "Denmark", "Germany", "Belgium", "Australia", "Switzerland", "Norway", "Czechia", "United States", "France", "Portugal", "Austria", "Latvia", "Russia", "Iceland", "Lithuania", "Hungary", "Italy", "Luxembourg", "Belarus", "Croatia", "Slovakia", "Israel", "Turkey", "Ukraine", "Malta", "Greece", "Serbia", "Cyprus", "Chile", "United Arab Emirates", "Malaysia", "Romania", "Bulgaria", "Moldova", "Uruguay", "Brunei", "Montenegro", "Albania", "Jordan", "Mexico", "Costa Rica", "Qatar", "Thailand", "Colombia", "Kazakhstan", "Azerbaijan", "Bosnia and Herzegovina", "Peru", "Brazil", "North Macedonia", "Argentina", "Georgia", "Saudi Arabia", "Indonesia", "Lebanon", "Morocco", "Panama", "Kosovo", "Philippines", "Dominican Republic"]
-  let content = ''
-  for (var i = 0; i < COUNTRIES.length; i++) {
-    content += `<a onclick="goToStatistics(this.innerHTML)" onmouseover="hoverCountry(this.innerHTML)" onmouseout="stopHovering(this.innerHTML)">${COUNTRIES[i]}</a>`
-  }
+  getCountries((error, countries) => {
+    if (error) {
+      console.log('Database error')
+    } else {
+      let content = ''
+      for (var i = 0; i < countries.length; i++) {
+        content += `<a onclick="goToStatistics(this.innerHTML)" onmouseover="hoverCountry(this.innerHTML)" onmouseout="stopHovering(this.innerHTML)">${countries[i]}</a>`
+      }
+      countriesDropdownContent.innerHTML = content
+    }
+  })
 
-  countriesDropdownContent.innerHTML = content
 }
 
 function loadPng(png_name, container_id) {
@@ -220,24 +221,4 @@ function loadElements() {
   // loadPng("radu.PNG", "radu-img");
   loadMap();
   loadDropdownCountries();
-}
-
-function submitForm() {
-  var email = document.getElementById("email").value;
-  var name = document.getElementById("fname").value;
-  var surname = document.getElementById("lname").value;
-  var content = document.getElementById("subject").value;
-
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", '/sendMail', true);
-
-  //Send the proper header information along with the request
-  xhr.setRequestHeader("Content-Type", "application/json");
-
-  xhr.onreadystatechange = function() { // Call a function when the state changes.
-    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-      document.getElementById("email-warning").innerHTML = this.responseText;
-    }
-  }
-  xhr.send(JSON.stringify({ EmailAddress: email, FirstName: name, LastName: surname, EmailContent: content }));
 }

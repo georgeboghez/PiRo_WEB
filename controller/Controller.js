@@ -464,6 +464,23 @@ class Controller {
       res.write('Internal server error')
     }
   }
+
+  async getAllCountries(req, res) {
+    try {
+      let countries = await DataAccessObject.distinct("Country", "worldwide_ranking");
+      countries.sort(function(a,b){return a.localeCompare(b);})
+
+      let compressedData = zlib.gzipSync(JSON.stringify({countries: countries}));
+
+      res.writeHead(200, { 'Content-Type': 'application/json', 'Content-Encoding': 'gzip', 'Cache-Control': 'public, max-age=31557600' });
+      res.write(compressedData)
+    } catch (e) {
+      console.log(e)
+      res.statusCode = 500
+      res.setHeader('Content-Type', 'text/html')
+      res.write('Internal server error')
+    }
+  }
 }
 
 module.exports = { Controller }

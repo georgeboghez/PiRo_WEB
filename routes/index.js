@@ -28,6 +28,7 @@ router.get('/assets/img/radu.PNG', controller.getPNG)
 router.get('/assets/img/teofil.png', controller.getPNG)
 router.get('/assets/img/george.png', controller.getPNG)
 router.get('/favicon.ico', controller.getIcon)
+router.get('/get-all-countries', controller.getAllCountries)
 router.get('/404Page.html', controller.get404Page)
 
 

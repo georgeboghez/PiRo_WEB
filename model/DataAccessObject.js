@@ -60,9 +60,7 @@ module.exports = {
       return db.collection(collName).findOne(query, projection);
     } catch (err) {
       throw err;
-    } //finally {
-    //   client.close();
-    // }
+    }
   },
   count: async (query) => {
     try {
@@ -75,11 +73,9 @@ module.exports = {
       return db.collection(collName).countDocuments(query)
     } catch (err) {
       throw err;
-    } //finally {
-    //   client.close();
-    // }
+    }
   },
-  distinct: async (field) => {
+  distinct: async (field, collName='pisa_results') => {
     try {
       if (!client) {
         client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
