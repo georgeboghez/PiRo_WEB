@@ -111,28 +111,36 @@ function loadSvg(svg_name, container_id) {
 function goToStatistics(id) {
   testwindow = window.open("custom-statistics");
   testwindow.addEventListener('load', function() {
-    testwindow.generateCountryChart('score', id);
+    setTimeout(function() {
+      testwindow.generateCountryChart('score', id);
+    }, 5);
   });
 }
 
 function goToStatisticsRandom() {
   testwindow = window.open("custom-statistics");
   testwindow.addEventListener('load', function() {
-    testwindow.randomStats();
+    setTimeout(function() {
+      testwindow.randomStats();
+    }, 5);
   });
 }
 
 function goToStatisticsInsitutional() {
   testwindow = window.open("custom-statistics");
   testwindow.addEventListener('load', function() {
-    testwindow.generateGenderGraph("6.4200029E7");
+    setTimeout(function() {
+      testwindow.generateGenderGraph("6.4200029E7");
+    }, 5);
   });
 }
 
 function goToStatisticsQuestions() {
   testwindow = window.open("custom-statistics");
   testwindow.addEventListener('load', function() {
-    testwindow.generateByQuestion("ST013Q01TA", "How many books are there in your home?");
+    setTimeout(function() {
+      testwindow.generateByQuestion("ST013Q01TA", "How many books are there in your home?");
+    }, 5);
   });
 }
 
