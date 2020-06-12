@@ -29,7 +29,7 @@ function submitForm() {
 
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
-    if (this.readyState === XMLHttpRequest.DONE && (this.status === 201) && (this.status === 418)) {
+    if (this.readyState === XMLHttpRequest.DONE && (this.status === 201 || this.status === 418)) {
       let email_warning_div = document.getElementById("email-warning")
       email_warning_div.innerHTML = this.responseText
     }
