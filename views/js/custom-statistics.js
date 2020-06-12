@@ -352,6 +352,22 @@ function generateCountryChart(rankingOption, country) {
           offset: 70
         }
       };
+
+      var xhttpApi = new XMLHttpRequest();
+      xhttpApi.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          let relevantData = JSON.parse(this.response)[1]
+          for (let index in relevantData)
+            if (relevantData[index].value !== null){
+              document.getElementById("chart-title").innerHTML += ` (The percentage of GDP for ${country} allocated to Education in ${relevantData[index].date} is ${relevantData[index].value}% according to The World Bank)`
+              break;
+            }
+        }
+      };
+
+      xhttpApi.open("GET", `https://api.worldbank.org/v2/country/${resultData["second_country_result"]["CountryIso2Code"]}/indicator/SE.XPD.TOTL.GD.ZS?format=json`, true);
+      xhttpApi.send();
+
       var chart = new Chartist.Bar('.ct-chart', data, options);
       document.getElementById("chart-title").innerHTML = `Countries Romania and ${country} ranked by ${rankingOption}`;
     }
