@@ -1,174 +1,12 @@
-const INSTITUTIONS = ["6.4200029E7", "6.4200103E7", "6.4200031E7", "6.4200146E7", "6.4200116E7", "6.4200056E7", "6.4200139E7", "6.4200147E7", "6.4200161E7", "6.4200054E7", "6.4200145E7", "6.4200156E7", "6.4200073E7", "6.4200153E7", "6.4200059E7", "6.4200039E7", "6.4200081E7", "6.4200128E7", "6.4200131E7", "6.420013E7", "6.4200046E7", "6.4200157E7", "6.4200094E7", "6.4200134E7", "6.4200165E7", "6.4200015E7", "6.4200011E7", "6.4200126E7", "6.4200155E7", "6.42001E7", "6.4200078E7", "6.4200089E7", "6.4200104E7", "6.4200044E7", "6.4200079E7", "6.4200047E7", "6.420002E7", "6.4200049E7", "6.4200057E7", "6.4200119E7", "6.4200167E7", "6.4200061E7", "6.4200151E7", "6.4200032E7", "6.4200042E7", "6.4200082E7", "6.4200088E7", "6.4200037E7", "6.4200109E7", "6.4200023E7", "6.4200006E7", "6.4200117E7", "6.4200115E7", "6.4200028E7", "6.4200137E7", "6.4200008E7", "6.4200083E7", "6.4200012E7", "6.4200005E7", "6.4200123E7", "6.4200038E7", "6.4200068E7", "6.420001E7", "6.4200098E7", "6.420011E7", "6.4200036E7", "6.4200135E7", "6.4200018E7", "6.4200076E7", "6.4200105E7", "6.420015E7", "6.4200169E7", "6.4200097E7", "6.4200106E7", "6.4200051E7", "6.4200136E7", "6.4200065E7", "6.4200168E7", "6.4200112E7", "6.4200102E7", "6.4200052E7", "6.4200113E7", "6.4200085E7", "6.4200062E7", "6.4200013E7", "6.4200162E7", "6.420004E7", "6.4200053E7", "6.4200164E7", "6.4200108E7", "6.4200121E7", "6.420016E7", "6.4200021E7", "6.4200093E7", "6.4200019E7", "6.4200086E7", "6.4200154E7", "6.4200127E7", "6.4200149E7", "6.4200152E7", "6.4200141E7", "6.4200118E7", "6.4200072E7", "6.4200144E7", "6.4200092E7", "6.4200017E7", "6.4200101E7", "6.420012E7", "6.4200009E7", "6.4200014E7", "6.4200171E7", "6.420009E7", "6.4200129E7", "6.4200071E7", "6.4200026E7", "6.4200045E7", "6.4200035E7", "6.4200069E7", "6.4200075E7", "6.4200099E7", "6.4200022E7", "6.4200064E7", "6.4200024E7", "6.4200058E7", "6.4200041E7", "6.4200034E7", "6.4200159E7", "6.4200091E7", "6.4200025E7", "6.4200166E7", "6.4200143E7", "6.420003E7", "6.420005E7", "6.4200033E7", "6.4200063E7", "6.4200084E7", "6.4200138E7", "6.4200124E7", "6.4200114E7", "6.420014E7", "6.420008E7"]
-const COUNTRIES = ["China(Beijing,Shanghai,Jiangsu,Zhejiang)", "Singapore", "Macao", "Hong Kong,China", "Estonia", "Japan", "South Korea", "Canada", "Taiwan", "Finland", "Poland", "Ireland", "Slovenia", "United Kingdom", "New Zealand", "Netherlands", "Sweden", "Denmark", "Germany", "Belgium", "Australia", "Switzerland", "Norway", "Czechia", "United States", "France", "Portugal", "Austria", "Latvia", "Russia", "Iceland", "Lithuania", "Hungary", "Italy", "Luxembourg", "Belarus", "Croatia", "Slovakia", "Israel", "Turkey", "Ukraine", "Malta", "Greece", "Serbia", "Cyprus", "Chile", "United Arab Emirates", "Malaysia", "Romania", "Bulgaria", "Moldova", "Uruguay", "Brunei", "Montenegro", "Albania", "Jordan", "Mexico", "Costa Rica", "Qatar", "Thailand", "Colombia", "Kazakhstan", "Azerbaijan", "Bosnia and Herzegovina", "Peru", "Brazil", "North Macedonia", "Argentina", "Georgia", "Saudi Arabia", "Indonesia", "Lebanon", "Morocco", "Panama", "Kosovo", "Philippines", "Dominican Republic"]
-const QUESTIONS_TRUST = {
-  "ST123Q02NA": "Thinking about 2018: My parents support my educational efforts and achievements.",
-  "ST123Q03NA": "Thinking about 2018: My parents support me when I am facing difficulties at school.",
-  "ST123Q04NA": "Thinking about 2018: My parents encourage me to be confident."
-}
-
-const QUESTIONS_FEELINGS = {
-  "ST186Q10HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Miserable",
-  "ST186Q09HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Proud",
-  "ST186Q08HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Sad",
-  "ST186Q07HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Lively",
-  "ST186Q06HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Scared",
-  "ST186Q05HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Happy",
-  "ST186Q03HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Cheerful",
-  "ST186Q02HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Afraid",
-  "ST186Q01HA": "Thinking about yourself and how you normally feel: how often do you feel as described below? Joyful"
-}
-
-const QUESTIONS_HOME_CONDITIONS = {
-  'ST011Q01TA': 'In your home: A desk to study at',
-  'ST011Q02TA': 'In your home: A room of your own',
-  'ST011Q03TA': 'In your home: A quiet place to study',
-  'ST011Q04TA': 'In your home: A computer you can use for school work',
-  'ST011Q05TA': 'In your home: Educational software',
-  'ST011Q06TA': 'In your home: A link to the Internet',
-  'ST011Q07TA': 'In your home: Classic literature (e.g. Shakespeare)',
-  'ST011Q08TA': 'In your home: Books of poetry',
-  'ST011Q09TA': 'In your home: Works of art (e.g. paintings)',
-  'ST011Q10TA': 'In your home: Books to help with your school work',
-  'ST011Q11TA': 'In your home: Technical reference books',
-  'ST011Q12TA': 'In your home: A dictionary',
-  'ST011Q16NA': 'In your home: Books on art, music, or design',
-  'ST011D17TA': 'In your home: Country-specific wealth item 1',
-  'ST011D18TA': 'In your home: Country-specific wealth item 2',
-  'ST011D19TA': 'In your home: Country-specific wealth item 3',
-  'ST012Q01TA': 'How many in your home: Televisions',
-  'ST012Q02TA': 'How many in your home: Cars',
-  'ST012Q03TA': 'How many in your home: Rooms with a bath or shower',
-  'ST012Q05NA': 'How many in your home: Cell phones with Internet access (e.g. smartphones)',
-  'ST012Q06NA': 'How many in your home: Computers (desktop computer, portable laptop, or notebook)',
-  'ST012Q07NA': 'How many in your home: Tablet computers (e.g. iPad, BlackBerry PlayBook)',
-  'ST012Q08NA': 'How many in your home: E-book readers (e.g. Kindle, Kobo, Bookeen)',
-  'ST012Q09NA': 'How many in your home: Musical instruments (e.g. guitar, piano)',
-  'ST013Q01TA': 'How many books are there in your home?'
-}
-
-const QUESTIONS_READING = {
-  "ST150Q01IA": "During the last month, how often did you have to read for school: Texts that include diagrams or maps",
-  "ST158Q07HA": "Taught at school: How to detect phishing or spam emails",
-  "ST158Q06HA": "Taught at school: How to detect whether the information is subjective or biased",
-  "ST158Q05HA": "Taught at school: How to use the short description below the links in the list of results of a search",
-  "ST158Q04HA": "Taught at school: To understand the consequences of making information publicly available online on Facebook, [...]",
-  "ST158Q03HA": "Taught at school: How to compare different web pages and decide what information is more relevant for your school work",
-  "ST158Q02HA": "Taught at school: How to decide whether to trust information from the Internet",
-  "ST158Q01HA": "Taught at school: How to use keywords when using a search engine such as Google, Yahoo, etc.",
-  "ST154Q01HA": "this academic year, how many pages was the longest piece of text you had to read for your test language lessons?",
-  "ST153Q10HA": "When you have to read, does the teacher ask you to: Write a text related to what you have read",
-  "ST153Q09HA": "When you have to read, does the teacher ask you to: Select a passage you liked or disliked and explain why",
-  "ST153Q08HA": "When you have to read, does the teacher ask you to: Compare the book with other books or texts on a similar topic",
-  "ST153Q06HA": "When you have to read, does the teacher ask you to: Compare the content of the book or the chapter with your own [...]",
-  "ST153Q05HA": "When you have to read, does the teacher ask you to: Answer questions about the book or the chapter",
-  "ST153Q04HA": "When you have to read, does the teacher ask you to: Give your personal thoughts about the book or the chapter [...]",
-  "ST153Q03HA": "When you have to read, does the teacher ask you to: Discuss in small groups with other students who read the same [...]",
-  "ST153Q02HA": "When you have to read, does the teacher ask you to: List and write a short description of the main characters",
-  "ST153Q01HA": "When you have to read, does the teacher ask you to: Write a summary of the book or the chapter",
-  "ST152Q08IA": "In your test language lessons, how often: The teacher poses questions that motivate students to participate actively.",
-  "ST152Q07IA": "In your test language lessons, how often: The teacher shows students how the information in texts builds on [...]",
-  "ST152Q06IA": "In your test language lessons, how often: The teacher helps students relate the stories they read to their lives.",
-  "ST152Q05IA": "In your test language lessons, how often: The teacher encourages students to express their opinion about a text.",
-  "ST150Q04HA": "During the last month, how often did you have to read for school: Digital texts including links",
-  "ST150Q03IA": "During the last month, how often did you have to read for school: Texts that include tables or graphs",
-  "ST150Q02IA": "During the last month, how often did you have to read for school: Fiction (e.g., novels, short stories)",
-  "ST160Q05IA": "How much do you agree or disagree? I read only to get information that I need.",
-  "ST160Q04IA": "How much do you agree or disagree? For me, reading is a waste of time.",
-  "ST160Q03IA": "How much do you agree or disagree? I like talking about books with other people.",
-  "ST160Q02IA": "How much do you agree or disagree? Reading is one of my favourite hobbies.",
-  "ST160Q01IA": "How much do you agree or disagree? I read only if I have to.",
-  "ST165Q05IA": "Usefulness for writing a summary: I read through the text, underlining the most important sentences. Then I write [...]",
-  "ST165Q04IA": "Usefulness for writing a summary: I carefully check whether the most important facts in the text are represented [...]",
-  "ST165Q03IA": "Usefulness for writing a summary: Before writing the summary, I read the text as many times as possible.",
-  "ST165Q02IA": "Usefulness for writing a summary: I try to copy out accurately as many sentences as possible.",
-  "ST165Q01IA": "Usefulness for writing a summary: I write a summary. Then I check that each paragraph is covered in the summary, [...]",
-  "ST164Q06IA": "Usefulness for understanding and memorising text: I read the text aloud to another person.",
-  "ST164Q05IA": "Usefulness for understanding and memorising text: I summarise the text in my own words.",
-  "ST164Q04IA": "Usefulness for understanding and memorising text: I underline important parts of the text.",
-  "ST164Q03IA": "Usefulness for understanding and memorising text: After reading the text, I discuss its content with other people.",
-  "ST164Q02IA": "Usefulness for understanding and memorising text: I quickly read through the text twice.",
-  "ST164Q01IA": "Usefulness for understanding and memorising text: I concentrate on the parts of the text that are easy to understand.",
-  "ST163Q04HA": "In the PISA test, how do you feel about the reading tasks: I was lost when I had to navigate between different pages.",
-  "ST163Q03HA": "In the PISA test, how do you feel about the reading tasks: Many texts were too difficult for me.",
-  "ST163Q02HA": "In the PISA test, how do you feel about the reading tasks: There were many words I could not understand."
-}
-
-const QUESTIONS_AGREE = {
-  "ST161Q08HA": "Agree: I find it difficult to answer questions about a text.",
-  "ST161Q07HA": "Agree: I have to read a text several times before completely understanding it.",
-  "ST161Q06HA": "Agree: I have always had difficulty with reading.",
-  "ST161Q03HA": "Agree: I read fluently.",
-  "ST161Q02HA": "Agree: I am able to understand difficult texts.",
-  "ST161Q01HA": "Agree: I am a good reader.",
-  "ST185Q03HA": "Agree: I have a clear sense of what gives meaning to my life.",
-  "ST185Q02HA": "Agree: I have discovered a satisfactory meaning in life.",
-  "ST185Q01HA": "Agree: My life has clear meaning or purpose.",
-  "ST184Q01HA": "Agree: Your intelligence is something about you that you can't change very much.",
-  "ST183Q03HA": "Agree: When I am failing, this makes me doubt my plans for the future.",
-  "ST183Q02HA": "Agree: When I am failing, I am afraid that I might not have enough talent.",
-  "ST183Q01HA": "Agree: When I am failing, I worry about what others think of me.",
-  "ST182Q06HA": "Agree: If I am not good at something, I would rather keep struggling to master it than move on to something I may [...]",
-  "ST182Q05HA": "Agree: Part of the enjoyment I get from doing things is when I improve on my past performance.",
-  "ST182Q04HA": "Agree: Once I start a task, I persist until it is finished.",
-  "ST182Q03HA": "Agree: I find satisfaction in working as hard as I can.",
-  "ST181Q04HA": "Agree: I try harder when Im in competition with other people.",
-  "ST181Q03HA": "Agree: It is important for me to perform better than other people on a task.",
-  "ST181Q02HA": "Agree: I enjoy working in situations involving competition with others."
-}
-
-const QUESTIONS_MATH = {
-  "EC001Q02NA": "Approx how many hrs\\week attend add. instruct in the follow. domains? Mathematics",
-  "EC014Q01NA": "What does additional math cover? Content covered in regular school courses",
-  "EC014Q02NA": "What does additonal math cover? New or additional content notcovered in regular school courses",
-  "EC015Q01NA": "Which math instruction do you participate? One-on-one tutoring with a person",
-  "EC015Q07NA": "Which math instruction do you participate? Large group study or practice (8 or more students)",
-  "EC015Q08NA": "Which math instruction do you participate? Other additional mathematics instruction",
-  "EC017Q01NA": "Where do you attend this additional mathematics instruction? In my regular school building",
-  "EC017Q02NA": "Where do you attend this additional mathematics instruction? At some other place, i.e., not in my regular school",
-  "EC018Q01NA": "The teacher is one of my regular teachers in this years school courses. (mathematics)",
-  "EC018Q03NA": "The teacher mainly works for a business or organisation specialised in additional instruction. (mathematics)",
-  "EC018Q04NA": "The teacher is not specialised teaching personnel (e.g. a student). (mathematics)",
-  "EC019Q03NA": "My teacher does a lot to help me.",
-  "EC019Q07NA": "My teacher is pleased when I come up with new solutions to a problem.",
-  "EC019Q10NA": "My teacher gives hints or offers strategies that help me to solve a task.",
-  "EC019Q12NA": "My teacher helps me to find ways how to solve a problem.",
-  "EC023Q02NA": "Why don't you attend additional mathematics in this school year: None of the offerings suit my needs.",
-  "EC023Q03NA": "Why don't you attend additional mathematics in this school year: Not many of my friends are doing it.",
-  "EC023Q04NA": "Why don't you attend additional mathematics in this school year: I don't have time.",
-  "EC023Q05NA": "Why don't you attend additional mathematics in this school year: I don't have the money.",
-  "EC023Q06NA": "Why don't you attend additional mathematics in this school year: My teachers are knowledgeable enough.",
-  "EC023Q07NA": "Why don't you attend additional mathematics in this school year: My parents don't want me to do it.",
-  "EC023Q08NA": "Why don't you attend additional mathematics in this school year: It doesnt seem worth the money."
-}
-
-const QUESTIONS_SCIENCE = {
-  "PA002Q01TA": "Watched TV programmes about science",
-  "PA002Q02TA": "Read books on scientific discoveries",
-  "PA002Q03TA": "Watched, read or listened to science fiction",
-  "PA002Q04TA": "Visited web sites about science topics",
-  "PA002Q05TA": "Attended a science club",
-  "PA002Q06NA": "Construction play, e.g.Lego bricks",
-  "PA002Q07NA": "Took apart technical devices",
-  "PA002Q08NA": "Fixed broken objects or items, e.g. broken electronic toys",
-  "PA002Q09NA": "Experimented with a science kit, electronics kit, or chemistry set, used a microscope or telescope",
-  "PA002Q10NA": "Played computer games with a science content",
-  "EC013Q06NA": "Why don't you attend additional science in this school year? My school teachers are knowledgeable enough.",
-  "EC013Q07NA": "Why don't you attend additional science in this school year? My parents don't want me to do it.",
-  "EC013Q08NA": "Why don't you attend additional science in this school year? It doesnt seem worth the money.",
-  "EC013Q09NA": "Why don't you attend additional science in this school year? My teachers say it is not useful.",
-  "EC013Q10NA": "Why don't you attend additional science in this school year? I have never considered add. science instruction.",
-  "ST071Q01NA": "This school year, approximately how many hours per week do you spend learning in addition? School Science",
-  "ST094Q01NA": "Disagree or agree with the statements? I have fun when I am learning broad science",
-  "ST094Q02NA": "Disagree or agree with the statements? I like reading about broad science topics.",
-  "ST094Q03NA": "Disagree or agree with the statements? I am happy working on broad science topics.",
-  "ST094Q04NA": "Disagree or agree with the statements? I enjoy acquiring new knowledge in broad science.",
-  "ST094Q05NA": "Disagree or agree with the statements? I am interested in learning about broad science.",
-  "ST095Q04NA": "To what extent are you interested in: Biosphere (e.g. ecosystem services, sustainability)",
-  "ST095Q07NA": "To what extent are you interested in: Motion and forces (e.g. velocity, friction, magnetic and gravi forces)",
-  "ST095Q08NA": "To what extent are you interested in: Energy and its transformation (e.g. conservation, chemical reactions)",
-  "ST095Q13NA": "To what extent are you interested in: broad science topics? The Universe and its history",
-  "ST095Q15NA": "To what extent are you interested in: broad science topics? How science can help us prevent disease"
-}
+var INSTITUTIONS = []
+var COUNTRIES = []
+var QUESTIONS_TRUST = {}
+var QUESTIONS_FEELINGS = {}
+var QUESTIONS_HOME_CONDITIONS = {}
+var QUESTIONS_READING = {}
+var QUESTIONS_AGREE = {}
+var QUESTIONS_MATH = {}
+var QUESTIONS_SCIENCE = {}
 
 var csvData = "empty";
 
@@ -213,27 +51,17 @@ const rank_by_dropdown = `
 var institutions_dropdown = `<label for="institution">Pick Institution</label>
   <select id="institution" onchange="pickInstitution()">
   <option value="select-institution" selected>Select Institution</option>`
-for (var i = 0; i < INSTITUTIONS.length; i++) {
-  institutions_dropdown += `<option value="${INSTITUTIONS[i]}"> ${INSTITUTIONS[i]} </option>`;
-}
-institutions_dropdown += '</select>';
+
 
 var institutions_comparison_dropdown = `<label for="pick-institution2">Pick Institution #2</label>
   <select id="pick-institution2" onchange="pickQuestionForComparison()">
   <option value="select-institution2" selected>Select Institution #2</option>`
-for (var i = 0; i < INSTITUTIONS.length; i++) {
-  institutions_comparison_dropdown += `<option value="${INSTITUTIONS[i]}"> ${INSTITUTIONS[i]} </option>`;
-}
-institutions_comparison_dropdown += `</select>`;
 
 var countries_dropdown =
   `<label for="pick-country">Pick Country</label>
   <select id="pick-country" onchange="pickCountry()">
   <option value="select-country">Select Country</option>`
-for (var i = 0; i < COUNTRIES.length; i++) {
-  countries_dropdown += `<option value="${COUNTRIES[i]}"> ${COUNTRIES[i]} </option>`;
-}
-countries_dropdown += `</select>`
+
 
 const question_dropdown_start = `<label for="pick-question">Question</label>
   <select id="pick-question" onchange="pickQuestion()">
@@ -258,6 +86,59 @@ const institution_options_dropdown = `<label for="option-type">Statistics Option
 var generate_button = `<button class="button gen-button" onclick=""> Generate </button>`
 
 var current_container_html = ''
+
+
+function getData() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      let data = JSON.parse(this.response)
+      COUNTRIES = data.countries
+      for (var i = 0; i < COUNTRIES.length; i++) {
+        countries_dropdown += `<option value="${COUNTRIES[i]}"> ${COUNTRIES[i]} </option>`;
+      }
+      countries_dropdown += `</select>`
+    }
+  };
+  xhttp.open("GET", `/get-all-countries`, true);
+  xhttp.send();
+
+  var xhttp2 = new XMLHttpRequest();
+  xhttp2.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      let data = JSON.parse(this.response)
+      INSTITUTIONS = data.institutions
+      for (var i = 0; i < INSTITUTIONS.length; i++) {
+        institutions_dropdown += `<option value="${INSTITUTIONS[i]}"> ${INSTITUTIONS[i]} </option>`;
+      }
+      institutions_dropdown += '</select>';
+
+
+      for (var i = 0; i < INSTITUTIONS.length; i++) {
+        institutions_comparison_dropdown += `<option value="${INSTITUTIONS[i]}"> ${INSTITUTIONS[i]} </option>`;
+      }
+      institutions_comparison_dropdown += `</select>`;
+    }
+  };
+  xhttp2.open("GET", `/get-institutions`, true);
+  xhttp2.send();
+
+  var xhttp3 = new XMLHttpRequest();
+  xhttp3.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      let data = JSON.parse(this.response)
+      QUESTIONS_TRUST = data.QUESTIONS_TRUST
+      QUESTIONS_FEELINGS = data.QUESTIONS_FEELINGS
+      QUESTIONS_HOME_CONDITIONS = data.QUESTIONS_HOME_CONDITIONS
+      QUESTIONS_READING = data.QUESTIONS_READING
+      QUESTIONS_AGREE = data.QUESTIONS_AGREE
+      QUESTIONS_MATH = data.QUESTIONS_MATH
+      QUESTIONS_SCIENCE = data.QUESTIONS_SCIENCE
+    }
+  };
+  xhttp3.open("GET", `/get-questions-categorized`, true);
+  xhttp3.send();
+}
 
 
 function generateEmptyChart() {
@@ -704,7 +585,7 @@ function generateInstitutionQuestionChart(institution, questionId, question) {
       var chart = new Chartist.Pie('.ct-chart', data, {
         labelInterpolationFnc: function(value) {
           let x = Math.round(value / data.series.reduce(sum) * 100) + '% - ' + label_array[index++];
-          if(index >= label_array.length)
+          if (index >= label_array.length)
             index = 0
           return x
         }
