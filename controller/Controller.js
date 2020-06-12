@@ -394,7 +394,7 @@ class Controller {
       if (controllerUtils.isEmailValid(data["EmailAddress"]) && controllerUtils.isNameValid(data["FirstName"]) && controllerUtils.isNameValid(data["LastName"]) && controllerUtils.isCaptchaTextCorrect(data["CaptchaText"], captchaText)) {
         captchaText = 'ReCaptcha Safety Measure &%!@1234'
         let htmlcode = '<p class = "valid-data">Email sent!</p>'
-        res.statusCode = 200
+        res.statusCode = 201
         res.write(htmlcode)
 
         var transporter = await nodemailer.createTransport({
@@ -421,22 +421,22 @@ class Controller {
       } else {
         if (!controllerUtils.isCaptchaTextCorrect(data["CaptchaText"], captchaText)) {
           let htmlcode = '<p class = "invalid-data">Invalid Captcha Text!</p>'
-          res.statusCode = 200
+          res.statusCode = 418
           res.write(htmlcode)
         }
         if (!controllerUtils.isEmailValid(data["EmailAddress"])) {
           let htmlcode = '<p class = "invalid-data">Email incorrect!</p>'
-          res.statusCode = 200
+          res.statusCode = 418
           res.write(htmlcode)
         }
         if (!controllerUtils.isNameValid(data["FirstName"])) {
           let htmlcode = '<p class = "invalid-data">First Name is mandatory!</p>'
-          res.statusCode = 200
+          res.statusCode = 418
           res.write(htmlcode)
         }
         if (!controllerUtils.isNameValid(data["LastName"])) {
           let htmlcode = '<p class = "invalid-data">Last Name is mandatory!</p>'
-          res.statusCode = 200
+          res.statusCode = 418
           res.write(htmlcode)
         }
 
@@ -500,7 +500,7 @@ class Controller {
       const QUESTIONS_SCIENCE = ["PA002Q01TA", "PA002Q02TA", "PA002Q03TA", "PA002Q04TA", "PA002Q05TA", "PA002Q06NA", "PA002Q07NA", "PA002Q08NA", "PA002Q09NA", "PA002Q10NA", "ST071Q01NA", "ST094Q01NA", "ST094Q02NA", "ST094Q03NA", "ST094Q04NA", "ST094Q05NA", "ST095Q04NA", "ST095Q07NA", "ST095Q08NA", "ST095Q13NA", "ST095Q15NA"]
 
       let doc = await DataAccessObject.findOne({ "CNTRYID": "Country Identifier" }, {}, "fields_infromation");
-      
+
       let json = {}
 
       json["QUESTIONS_TRUST"] = {}
