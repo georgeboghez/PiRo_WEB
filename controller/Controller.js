@@ -392,6 +392,7 @@ class Controller {
       res.setHeader('Content-Type', 'text/html')
 
       if (controllerUtils.isEmailValid(data["EmailAddress"]) && controllerUtils.isNameValid(data["FirstName"]) && controllerUtils.isNameValid(data["LastName"]) && controllerUtils.isCaptchaTextCorrect(data["CaptchaText"], captchaText)) {
+        captchaText = 'ReCaptcha Safety Measure &%!@1234'
         let htmlcode = '<p class = "valid-data">Email sent!</p>'
         res.statusCode = 200
         res.write(htmlcode)
