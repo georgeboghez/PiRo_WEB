@@ -1,3 +1,5 @@
+// Referintele se gasesc in documents/Raport.html
+
 const { Router } = require('./utils/Router')
 const { WebApp } = require('./utils/WebApp')
 const constants = require('./utils/constants')

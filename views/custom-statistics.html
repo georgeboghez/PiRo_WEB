@@ -52,23 +52,17 @@
         <p id="chart-title">Empty Chart</p>
         <div class="ct-chart ct-perfect-fourth" id="stats-chart">
           <script>
-            //This is the empty chart.
 
+            //This is the empty chart.
                     var data = {
-                        // A labels array that can contain any sort of values
                         labels: [1, 2, 3, 4],
-                        // Our series array that contains series objects or in this case series data arrays
                         series: [
                         []
                         ]
                     };
-
-                    // Create a new line chart object where as first parameter we pass in a selector
-                    // that is resolving to our chart container element. The Second parameter
-                    // is the actual data object.
                     new Chartist.Line('.ct-chart', data);
 
-                </script>
+          </script>
         </div>
         <div class="custom-stats-buttons">
           <p>Export: </p>
@@ -77,6 +71,7 @@
           <button type="button" onclick="downloadPNG()">PNG</button>
         </div>
       </div>
+    </div>
   </main>
   <footer>
     <div class="footer-container">
